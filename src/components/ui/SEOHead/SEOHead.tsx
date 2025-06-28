@@ -1,4 +1,4 @@
-import { Helmet } from 'react-helmet-async';
+import React from 'react';
 
 interface SEOHeadProps {
   title: string;
@@ -23,7 +23,7 @@ export const SEOHead: React.FC<SEOHeadProps> = ({
   const baseUrl = "https://br16batiment.fr"; // À adapter selon le domaine final
 
   return (
-    <Helmet>
+    <>
       {/* Titre et description */}
       <title>{fullTitle}</title>
       <meta name="description" content={description} />
@@ -98,6 +98,6 @@ export const SEOHead: React.FC<SEOHeadProps> = ({
           }
         })}
       </script>
-    </Helmet>
+    </>
   );
 };
