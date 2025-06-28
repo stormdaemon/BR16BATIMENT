@@ -43,13 +43,13 @@ export const Home: React.FC<HomeProps> = () => {
 
   const itemVariants = {
     hidden: { y: 50, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: {
-        duration: 0.6,
-        ease: "easeOut"
-      }
+    visible: { 
+      y: 0, 
+      opacity: 1, 
+      transition: { 
+        duration: 0.6, 
+        ease: [0.25, 0.1, 0.25, 1] // ✅ Tableau de nombres
+      } 
     }
   };
 
