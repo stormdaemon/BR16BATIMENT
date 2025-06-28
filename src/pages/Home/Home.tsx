@@ -48,10 +48,10 @@ export const Home: React.FC<HomeProps> = () => {
       opacity: 1, 
       transition: { 
         duration: 0.6, 
-        ease: [0.25, 0.1, 0.25, 1] // ✅ Tableau de nombres
+        ease: 'easeInOut' // Using a named easing function instead of bezier array
       } 
     }
-  };
+  } as const;
 
   return (
     <>
