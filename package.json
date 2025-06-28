@@ -8,7 +8,7 @@
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "sitemap": "tsc sitemap.ts && node sitemap.js"
+    "sitemap": "ts-node sitemap.ts"
   },
   "dependencies": {
     "@types/react-router-dom": "^5.3.3",
@@ -32,6 +32,7 @@
     "eslint-plugin-react-refresh": "^0.4.20",
     "globals": "^16.2.0",
     "react-router-sitemap-generator": "^0.0.8",
+    "ts-node": "^10.9.2",
     "typescript": "~5.8.3",
     "typescript-eslint": "^8.34.1",
     "vite": "^7.0.0"

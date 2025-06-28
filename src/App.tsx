@@ -12,9 +12,10 @@ function App() {
         <div className="app">
           <Header />
           <Routes>
-            {routes.map((route, index) => (
-              <Route key={index} path={route.path} element={<route.component />} />
-            ))}
+            {routes.map((route, index) => {
+              const Component = route.component;
+              return <Route key={index} path={route.path} element={<Component />} />;
+            })}
           </Routes>
           <Footer />
         </div>

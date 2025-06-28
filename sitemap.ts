@@ -1,4 +1,12 @@
-import { routes } from './src/routesConfig';
+// Tableau des routes copié ici pour éviter tout conflit d'import/export
+const routes = [
+  { path: '/', component: undefined, exact: true },
+  { path: '/a-propos', component: undefined },
+  { path: '/services', component: undefined },
+  { path: '/contact', component: undefined },
+  { path: '/mentions-legales', component: undefined },
+  { path: '/politique-confidentialite', component: undefined },
+];
 import { writeFileSync } from 'fs';
 
 const generateSitemap = () => {
