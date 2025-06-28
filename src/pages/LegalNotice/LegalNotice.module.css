@@ -1,0 +1,82 @@
+.main {
+  min-height: 100vh;
+  padding-top: 80px;
+  background: #fff;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 4rem 2rem;
+}
+
+.title {
+  font-family: 'Bebas Neue', cursive;
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 400;
+  color: #282425;
+  margin: 0 0 3rem;
+  letter-spacing: 3px;
+  text-align: center;
+}
+
+.section {
+  margin-bottom: 3rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.section:last-of-type {
+  border-bottom: none;
+}
+
+.sectionTitle {
+  font-family: 'Bebas Neue', cursive;
+  font-size: 1.8rem;
+  font-weight: 400;
+  color: #E7CF25;
+  margin: 0 0 1.5rem;
+  letter-spacing: 2px;
+}
+
+.content {
+  font-family: 'Oswald', sans-serif;
+  font-size: 1rem;
+  line-height: 1.7;
+  color: #555;
+}
+
+.content p {
+  margin: 0 0 1rem;
+}
+
+.content p:last-child {
+  margin-bottom: 0;
+}
+
+.content strong {
+  color: #282425;
+  font-weight: 600;
+}
+
+.lastUpdate {
+  text-align: center;
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 2px solid #E7CF25;
+}
+
+.lastUpdate p {
+  font-family: 'Oswald', sans-serif;
+  font-size: 0.9rem;
+  color: #888;
+  margin: 0;
+  font-style: italic;
+}
+
+/* Tablet and Desktop */
+@media (min-width: 768px) {
+  .container {
+    padding: 6rem 4rem;
+  }
+}

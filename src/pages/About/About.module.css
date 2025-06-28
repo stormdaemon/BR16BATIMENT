@@ -1,0 +1,377 @@
+.main {
+  min-height: 100vh;
+  padding-top: 80px;
+}
+
+.hero {
+  padding: 4rem 0;
+  background: linear-gradient(135deg, #282425 0%, #1a1718 100%);
+  min-height: 60vh;
+  display: flex;
+  align-items: center;
+}
+
+.heroContent {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+  align-items: center;
+}
+
+.heroText {
+  text-align: center;
+}
+
+.heroTitle {
+  font-family: 'Bebas Neue', cursive;
+  font-size: clamp(3rem, 6vw, 5rem);
+  font-weight: 400;
+  color: #E7CF25;
+  margin: 0 0 1rem;
+  letter-spacing: 3px;
+  line-height: 1.1;
+}
+
+.heroSubtitle {
+  font-family: 'Oswald', sans-serif;
+  font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+  color: #ccc;
+  margin: 0;
+  font-weight: 300;
+  letter-spacing: 1px;
+}
+
+.heroImage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.aboutImg {
+  width: 100%;
+  max-width: 500px;
+  height: 400px;
+  object-fit: cover;
+  border-radius: 0;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  border: 4px solid #E7CF25;
+}
+
+.story {
+  padding: 6rem 0;
+  background: #fff;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.storyContent {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.sectionTitle {
+  font-family: 'Bebas Neue', cursive;
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 400;
+  color: #282425;
+  margin: 0 0 3rem;
+  letter-spacing: 3px;
+}
+
+.storyText {
+  font-family: 'Oswald', sans-serif;
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: #555;
+  text-align: left;
+}
+
+.storyText p {
+  margin: 0 0 2rem;
+}
+
+.storyText strong {
+  color: #E7CF25;
+  font-weight: 600;
+}
+
+.values {
+  padding: 6rem 0;
+  background: #f8f8f8;
+}
+
+.sectionHeader {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.sectionDescription {
+  font-family: 'Oswald', sans-serif;
+  font-size: 1.2rem;
+  color: #666;
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+.valuesGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+
+.valueCard {
+  background: #fff;
+  padding: 3rem 2rem;
+  text-align: center;
+  border-radius: 0;
+  box-shadow: 0 5px 30px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.valueCard::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: #E7CF25;
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+.valueCard:hover::before {
+  transform: scaleX(1);
+}
+
+.valueIcon {
+  font-size: 3rem;
+  margin-bottom: 1.5rem;
+}
+
+.valueTitle {
+  font-family: 'Bebas Neue', cursive;
+  font-size: 1.8rem;
+  font-weight: 400;
+  color: #282425;
+  margin: 0 0 1rem;
+  letter-spacing: 2px;
+}
+
+.valueDescription {
+  font-family: 'Oswald', sans-serif;
+  font-size: 1rem;
+  color: #666;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.timeline {
+  padding: 6rem 0;
+  background: #282425;
+}
+
+.timeline .sectionTitle {
+  color: #E7CF25;
+}
+
+.timeline .sectionDescription {
+  color: #ccc;
+}
+
+.timelineContainer {
+  max-width: 800px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.timelineContainer::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: #E7CF25;
+  transform: translateX(-50%);
+}
+
+.timelineItem {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 2rem;
+  margin-bottom: 3rem;
+  align-items: center;
+}
+
+.timelineItem:nth-child(even) {
+  direction: rtl;
+}
+
+.timelineItem:nth-child(even) .timelineContent {
+  direction: ltr;
+  text-align: right;
+}
+
+.timelineYear {
+  background: #E7CF25;
+  color: #282425;
+  padding: 1rem;
+  border-radius: 50%;
+  width: 80px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Bebas Neue', cursive;
+  font-size: 1.2rem;
+  font-weight: 400;
+  letter-spacing: 1px;
+  z-index: 1;
+  position: relative;
+}
+
+.timelineContent {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 2rem;
+  border-radius: 0;
+  backdrop-filter: blur(10px);
+}
+
+.timelineTitle {
+  font-family: 'Bebas Neue', cursive;
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: #E7CF25;
+  margin: 0 0 1rem;
+  letter-spacing: 2px;
+}
+
+.timelineDescription {
+  font-family: 'Oswald', sans-serif;
+  font-size: 1rem;
+  color: #ccc;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.certifications {
+  padding: 6rem 0;
+  background: #E7CF25;
+}
+
+.certifications .sectionTitle {
+  color: #282425;
+}
+
+.certGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.certItem {
+  background: rgba(40, 36, 37, 0.9);
+  padding: 2rem;
+  text-align: center;
+  border-radius: 0;
+  transition: all 0.3s ease;
+}
+
+.certItem:hover {
+  background: #282425;
+  transform: translateY(-5px);
+}
+
+.certItem h3 {
+  font-family: 'Bebas Neue', cursive;
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: #E7CF25;
+  margin: 0 0 1rem;
+  letter-spacing: 2px;
+}
+
+.certItem p {
+  font-family: 'Oswald', sans-serif;
+  font-size: 1rem;
+  color: #ccc;
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* Mobile Timeline Adjustments */
+@media (max-width: 767px) {
+  .timelineContainer::before {
+    left: 30px;
+  }
+  
+  .timelineItem {
+    grid-template-columns: auto 1fr;
+    gap: 1rem;
+    direction: ltr;
+  }
+  
+  .timelineItem:nth-child(even) {
+    direction: ltr;
+  }
+  
+  .timelineItem:nth-child(even) .timelineContent {
+    text-align: left;
+  }
+  
+  .timelineYear {
+    width: 60px;
+    height: 60px;
+    font-size: 1rem;
+  }
+}
+
+/* Tablet */
+@media (min-width: 768px) {
+  .heroContent {
+    grid-template-columns: 1fr 1fr;
+    padding: 0 4rem;
+  }
+  
+  .heroText {
+    text-align: left;
+  }
+  
+  .valuesGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 3rem;
+  }
+  
+  .certGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 3rem;
+  }
+}
+
+/* Desktop */
+@media (min-width: 1024px) {
+  .valuesGrid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  
+  .certGrid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  
+  .container {
+    padding: 0 4rem;
+  }
+}
