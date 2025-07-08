@@ -10,76 +10,52 @@ interface ServicesProps {}
 export const Services: React.FC<ServicesProps> = () => {
   const mainServices = [
     {
-      title: "Charpente Traditionnelle",
-      description: "Conception et réalisation de charpentes en bois massif selon les techniques ancestrales françaises. Assemblages à tenons et mortaises, chevilles en bois.",
-      features: [
-        "Charpente à la française",
-        "Assemblages traditionnels",
-        "Bois massif sélectionné",
-        "Taille sur mesure"
-      ],
-      image: "🏗️"
+      title: "Charpente - Couverture",
+      description: "Réalisation de charpentes et couvertures en accord avec les normes et les règles de construction.",
+      image: "🏠"
     },
     {
-      title: "Charpente Industrielle",
-      description: "Solutions modernes et performantes utilisant des connecteurs métalliques et des techniques industrialisées pour tous types de constructions.",
-      features: [
-        "Fermettes industrielles",
-        "Calculs de structure",
-        "Pose rapide",
-        "Optimisation des coûts"
-      ],
-      image: "🏭"
+      title: "Plaquisterie",
+      description: "Conception et réalisation de plaquisterie",
+      image: "◻️"
     },
     {
-      title: "Ossature Bois",
-      description: "Construction écologique et durable en ossature bois pour maisons individuelles, extensions et bâtiments tertiaires.",
-      features: [
-        "Construction écologique",
-        "Isolation performante",
-        "Montage rapide",
-        "Design moderne"
-      ],
+      title: "Rénovation",
+      description: "Je mets tout en oeuvre pour l'amélioration de votre habitat",
+      image: "🔨"
+    },
+    {
+      title: "Ossature bois",
+      description: "Construction écologique et durable en ossature bois",
       image: "🌲"
     },
     {
-      title: "Rénovation & Restauration",
-      description: "Restauration de charpentes anciennes, renforcement de structures existantes et mise aux normes des bâtiments patrimoniaux.",
-      features: [
-        "Diagnostic structure",
-        "Renforcement",
-        "Respect du patrimoine",
-        "Mise aux normes"
-      ],
-      image: "🔨"
+      title: "Menuiserie",
+      description: "En neuf ou en rénovation, je m'occupe de toute les menuiseries de votre habitat",
+      image: "🪟"
+    },
+    {
+      title: "Isolation",
+      description: "Isolation thermique et phonique",
+      image: "🧊"
+    },
+    {
+      title: "Aménagement intérieur",
+      description: "Conception et réalisation d'amenagement intérieur",
+      image: "🪑"
+    },
+    {
+      title: "Nettoyage de vos toitures",
+      description: "Je nettoie vos toitures pour assurer leur durabilité et leur longévité, avec des produits de haute qualité.",
+      image: "🧼"
     }
   ];
 
   const additionalServices = [
     {
-      title: "Couverture",
-      description: "Pose et rénovation de toitures",
-      icon: "🏠"
-    },
-    {
-      title: "Zinguerie",
-      description: "Gouttières et évacuation des eaux",
-      icon: "💧"
-    },
-    {
-      title: "Isolation",
-      description: "Isolation thermique et phonique",
-      icon: "🛡️"
-    },
-    {
       title: "Bardage",
       description: "Habillage extérieur en bois",
       icon: "🪵"
-    },
-    {
-      title: "Terrasses",
-      description: "Terrasses et structures extérieures",
-      icon: "🏡"
     },
     {
       title: "Aménagement",
@@ -101,13 +77,8 @@ export const Services: React.FC<ServicesProps> = () => {
     },
     {
       step: "03",
-      title: "Fabrication",
-      description: "Préparation et usinage des éléments en atelier"
-    },
-    {
-      step: "04",
       title: "Montage",
-      description: "Installation sur site avec respect des délais convenus"
+      description: "Installation sur site avec respect des normes en vigueur"
     }
   ];
 
@@ -132,7 +103,7 @@ export const Services: React.FC<ServicesProps> = () => {
             >
               <h1 className={styles.heroTitle}>Mes Services</h1>
               <p className={styles.heroDescription}>
-                Mon savoir-faire complet au service de tous vos projets de charpente et construction bois
+                Mon savoir-faire complet au service de tous vos projets en neuf et en rénovation
               </p>
             </motion.div>
           </div>
@@ -173,11 +144,6 @@ export const Services: React.FC<ServicesProps> = () => {
                     <h3 className={styles.serviceTitle}>{service.title}</h3>
                   </div>
                   <p className={styles.serviceDescription}>{service.description}</p>
-                  <ul className={styles.serviceFeatures}>
-                    {service.features.map((feature, featureIndex) => (
-                      <li key={featureIndex}>{feature}</li>
-                    ))}
-                  </ul>
                 </motion.div>
               ))}
             </div>
@@ -196,7 +162,7 @@ export const Services: React.FC<ServicesProps> = () => {
             >
               <h2 className={styles.sectionTitle}>Services Complémentaires</h2>
               <p className={styles.sectionDescription}>
-                Une approche globale pour tous vos besoins en construction bois
+                Une approche globale pour tous vos besoins en construction et rénovation
               </p>
             </motion.div>
 

@@ -25,7 +25,7 @@ export const Footer: React.FC<FooterProps> = () => {
           <div className={styles.section}>
             <h3 className={styles.sectionTitle}>BR16BATIMENT</h3>
             <p className={styles.description}>
-              Spécialiste en travaux de charpente depuis 2017. 
+              Spécialiste en travaux de second œuvre depuis 2001. 
               J'apporte expertise, qualité et savoir-faire artisanal pour tous vos projets de construction et rénovation.
             </p>
             <div className={styles.companyInfo}>
@@ -65,7 +65,7 @@ export const Footer: React.FC<FooterProps> = () => {
             <h4 className={styles.sectionTitle}>Contact</h4>
             <div className={styles.contactInfo}>
               <p>Raphaël Bardan</p>
-              <p>Artisan Charpentier</p>
+              <p>Artisan de second œuvre</p>
               <a href="tel:0667116760" className={styles.contactLink}>
                 06 67 11 67 60
               </a>
@@ -78,7 +78,7 @@ export const Footer: React.FC<FooterProps> = () => {
             <p>&copy; {currentYear} BR16BATIMENT - Tous droits réservés</p>
           </div>
           <div className={styles.credits}>
-            <p>Réalisé avec passion pour mon métier d'artisan</p>
+            <p>Une réalisation Théo Multimédia</p>
           </div>
         </div>
       </div>

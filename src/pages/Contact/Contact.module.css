@@ -70,7 +70,7 @@
 
 .contactInfo {
   background: #f8f8f8;
-  padding: 3rem;
+  padding: 4rem;
   border-radius: 0;
 }
 
@@ -359,7 +359,7 @@
   }
   
   .infoGrid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(1, 2fr);
   }
   
   .container {
@@ -376,5 +376,120 @@
   .submitButton {
     align-self: flex-start;
     padding: 1.5rem 4rem;
+  }
+}
+
+/* Modal Styles */
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 2rem;
+}
+
+.modalContent {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  max-width: 500px;
+  width: 100%;
+  overflow: hidden;
+}
+
+.modalHeader {
+  padding: 2rem 2rem 1rem;
+  text-align: center;
+  background: linear-gradient(135deg, #E7CF25 0%, #d4bc22 100%);
+  color: #282425;
+}
+
+.modalIcon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.modalTitle {
+  font-family: 'Bebas Neue', cursive;
+  font-size: 2rem;
+  font-weight: 400;
+  margin: 0;
+  letter-spacing: 2px;
+}
+
+.modalBody {
+  padding: 2rem;
+  text-align: center;
+}
+
+.modalText {
+  font-family: 'Oswald', sans-serif;
+  font-size: 1.1rem;
+  color: #555;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.modalFooter {
+  padding: 1rem 2rem 2rem;
+  text-align: center;
+}
+
+.modalButton {
+  background: linear-gradient(135deg, #282425 0%, #1a1718 100%);
+  color: #E7CF25;
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 8px;
+  font-family: 'Oswald', sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  min-width: 120px;
+}
+
+.modalButton:hover {
+  background: linear-gradient(135deg, #1a1718 0%, #282425 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(40, 36, 37, 0.3);
+}
+
+.modalButton:active {
+  transform: translateY(0);
+}
+
+/* Modal responsive */
+@media (max-width: 768px) {
+  .modalOverlay {
+    padding: 1rem;
+  }
+  
+  .modalHeader {
+    padding: 1.5rem 1.5rem 1rem;
+  }
+  
+  .modalBody {
+    padding: 1.5rem;
+  }
+  
+  .modalFooter {
+    padding: 1rem 1.5rem 1.5rem;
+  }
+  
+  .modalTitle {
+    font-size: 1.5rem;
+  }
+  
+  .modalText {
+    font-size: 1rem;
   }
 }

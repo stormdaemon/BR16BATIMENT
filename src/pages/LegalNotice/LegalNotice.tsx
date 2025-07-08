@@ -39,8 +39,8 @@ export const LegalNotice: React.FC<LegalNoticeProps> = () => {
           <section className={styles.section}>
             <h2 className={styles.sectionTitle}>Contact</h2>
             <div className={styles.content}>
-              <p><strong>Email :</strong> contact@br16batiment.fr</p>
-              <p><strong>Téléphone :</strong> Sur demande via le formulaire de contact</p>
+              <p><strong>Email :</strong> br16batiment@gmail.com</p>
+              <p><strong>Téléphone :</strong> 06.67.11.67.60</p>
             </div>
           </section>
 

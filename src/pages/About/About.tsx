@@ -11,7 +11,7 @@ export const About: React.FC<AboutProps> = () => {
   const values = [
     {
       title: "Expertise",
-      description: "Plus de 7 ans d'expérience dans les travaux de charpente traditionnelle et moderne",
+      description: "Plus de 25 ans d'expérience dans les travaux de second œuvre",
       icon: "🎯"
     },
     {
@@ -21,7 +21,7 @@ export const About: React.FC<AboutProps> = () => {
     },
     {
       title: "Passion",
-      description: "L'amour du bois et de l'artisanat au cœur de chaque projet",
+      description: "L'artisanat au cœur de chaque projet",
       icon: "❤️"
     },
     {
@@ -35,22 +35,22 @@ export const About: React.FC<AboutProps> = () => {
     {
       year: "2017",
       title: "Création de l'entreprise",
-      description: "Lancement de BR16BATIMENT avec ma passion de l'artisanat du bois"
+      description: "Lancement de BR16BATIMENT avec ma passion de l'artisanat"
     },
     {
       year: "2019",
-      title: "Développement des compétences",
-      description: "Spécialisation en charpente traditionnelle et ossature bois"
+      title: "L'année du neuf",
+      description: "Réalisation d'un grand nombre de projets de maisons neuves"
     },
     {
-      year: "2021",
+      year: "2023",
       title: "Expansion des services",
-      description: "Élargissement vers la rénovation et la restauration de patrimoine"
+      description: "Élargissement vers la rénovation"
     },
     {
       year: "2024",
-      title: "Excellence reconnue",
-      description: "Plus de 100 projets réalisés avec satisfaction client garantie"
+      title: "Les particuliers sont à l'honneur",
+      description: "Renforcement de notre engagement auprès des particuliers pour concrétiser leurs projets."
     }
   ];
 
@@ -58,7 +58,7 @@ export const About: React.FC<AboutProps> = () => {
     <>
       <SEOHead
         title="À propos"
-        description="Découvrez mon histoire, Raphaël Bardan, artisan charpentier passionné en Charente. Plus de 7 ans d'expertise au service de vos projets de charpente et construction bois."
+        description="Découvrez mon histoire, Raphaël Bardan, artisan charpentier passionné en Charente. Plus de 12 ans d'expertise au service de vos projets de charpente et construction bois."
         keywords="Raphaël Bardan, charpentier Charente, artisan charpentier, histoire BR16BATIMENT, expertise charpente"
         canonicalUrl="/a-propos"
       />
@@ -74,10 +74,10 @@ export const About: React.FC<AboutProps> = () => {
               transition={{ duration: 0.8 }}
             >
               <h1 className={styles.heroTitle}>
-                L'Art de la Charpente
+                L'Art du second œuvre
               </h1>
               <p className={styles.heroSubtitle}>
-                Une passion transmise par l'excellence artisanale
+                Je mets mon expertise au service de vos projets depuis plus de 12 ans.
               </p>
             </motion.div>
             
@@ -109,20 +109,20 @@ export const About: React.FC<AboutProps> = () => {
               <h2 className={styles.sectionTitle}>Mon Histoire</h2>
               <div className={styles.storyText}>
                 <p>
-                  Depuis 2017, j'incarne l'excellence de l'artisanat français 
-                  dans le domaine de la charpente. Basé à Champagne-Vigny en Charente, j'ai créé BR16BATIMENT 
-                  suite à ma passion profonde pour le travail du bois et l'architecture traditionnelle.
+                  Depuis 2013, j'incarne l'excellence de l'artisanat français 
+                  dans le domaine du second œuvre. Basé à Champagne-Vigny en Charente, j'ai créé BR16BATIMENT 
+                  suite à ma passion profonde pour mon métier.
                 </p>
                 <p>
-                  Formé aux techniques ancestrales de la charpente, j'ai su allier savoir-faire 
-                  traditionnel et innovations modernes pour offrir des solutions sur-mesure à chaque client. 
-                  Chaque projet est une nouvelle aventure, une occasion de sublimer la matière noble 
-                  qu'est le bois.
+                  Après l'obtention de mon Baccalauréat Professionnel en Menuiserie en 1999,
+                  je me suis formé sur le terrain et j'ai acquis une expérience solide dans les domaines
+                  de la menuiserie, charpente, couverture, plâtrerie, isolation et ossature bois.
                 </p>
                 <p>
-                  Aujourd'hui, c'est plus de 100 réalisations que j'ai accomplies, des particuliers aux 
-                  professionnels, en passant par la restauration de patrimoine historique. 
-                  Mon engagement : faire de votre vision une réalité durable et authentique.
+                  J'ai su m'adapter aux différentes normes successives pour faire évoluer votre
+                  habitat. Ainsi je suis en capacité d'offrir à chaque client des solutions sur mesure.
+                  Chaque projet, est une nouvelle aventure, une occassion de donner vie 
+                  à chacune de vos idées.
                 </p>
               </div>
             </motion.div>

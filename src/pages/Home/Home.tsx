@@ -10,24 +10,44 @@ interface HomeProps {}
 export const Home: React.FC<HomeProps> = () => {
   const services = [
     {
-      title: "Charpente traditionnelle",
-      description: "Conception et réalisation de charpentes en bois massif selon les techniques ancestrales",
-      icon: "🏗️"
+      title: "Charpente - Couverture",
+      description: "Conception et réalisation de charpentes et couvertures",
+      icon: "🏠"
     },
     {
-      title: "Charpente industrielle",
-      description: "Solutions modernes et performantes pour tous types de constructions",
-      icon: "🏭"
+      title: "Plaquisterie",
+      description: "Conception et réalisation de plaquisterie",
+      icon: "◻️"
     },
     {
       title: "Rénovation",
-      description: "Restauration et modernisation de charpentes existantes",
+      description: "Je mets tout en oeuvre pour l'amélioration de votre habitat",
       icon: "🔨"
     },
     {
       title: "Ossature bois",
       description: "Construction écologique et durable en ossature bois",
       icon: "🌲"
+    },
+    {
+      title: "Menuiserie",
+      description: "En neuf ou en rénovation, je m'occupe de toutes les menuiseries de votre habitat",
+      icon: "🪟"
+    },
+    {
+      title: "Isolation",
+      description: "Je réalise des travaux d'isolation thermique et phonique",
+      icon: "🧊"
+    },
+    {
+      title: "Aménagement intérieur",
+      description: "Je m'occupe de la mise en place du montage de vos cuisines, placards et de vos parquets flottants.",
+      icon: "🪑"
+    },
+    {
+      title: "Nettoyage de vos toitures",
+      description: "Je nettoie vos toitures pour assurer leur durabilité et leur longévité, avec des produits de haute qualité.",
+      icon: "🧼"
     }
   ];
 
@@ -57,8 +77,8 @@ export const Home: React.FC<HomeProps> = () => {
     <>
       <SEOHead
         title="Accueil"
-        description="BR16BATIMENT - Spécialiste en travaux de charpente en Charente. Charpentier professionnel depuis 2017, je réalise vos projets de construction et rénovation avec expertise et savoir-faire artisanal."
-        keywords="charpentier Charente, charpente bois, construction charpente, rénovation charpente, artisan charpentier, Champagne-Vigny"
+        description="BR16BATIMENT - Spécialiste en second œuvre en Charente. Charpentier professionnel depuis 2013, je réalise vos projets de construction et rénovation avec expertise et savoir-faire artisanal."
+        keywords="charpentier Charente, charpente bois, construction charpente, rénovation charpente, plaquiste, ossature bois, menuiserie, isolation, aménagement intérieur, nettoyage toitures, artisan de second œuvre, Champagne-Vigny, Charente"
         canonicalUrl="/"
       />
       
@@ -74,10 +94,10 @@ export const Home: React.FC<HomeProps> = () => {
             >
               <h1 className={styles.heroTitle}>
                 <span className={styles.titleMain}>BR16BATIMENT</span>
-                <span className={styles.titleSub}>Maître Charpentier</span>
+                <span className={styles.titleSub}>Artisan de second œuvre</span>
               </h1>
               <p className={styles.heroDescription}>
-                Depuis 2017, je donne vie à vos projets de charpente avec passion et expertise. 
+                Depuis 2013, je donne vie à vos projets de second œuvre avec passion et expertise. 
                 De la conception à la réalisation, découvrez l'excellence de mon savoir-faire artisanal.
               </p>
               <div className={styles.heroActions}>
@@ -156,8 +176,8 @@ export const Home: React.FC<HomeProps> = () => {
               >
                 <h2 className={styles.aboutTitle}>L'Excellence Artisanale</h2>
                 <p className={styles.aboutDescription}>
-                  Raphaël Bardan, artisan charpentier passionné, je mets mon expertise au service 
-                  de vos projets depuis plus de 7 ans. Chaque réalisation est unique et 
+                  Raphaël Bardan, artisan passionné, je mets mon expertise au service 
+                  de vos projets depuis plus de 12 ans. Chaque réalisation est unique et 
                   reflète mon engagement pour la qualité et la tradition.
                 </p>
                 <Link to="/a-propos" className={styles.aboutCta}>

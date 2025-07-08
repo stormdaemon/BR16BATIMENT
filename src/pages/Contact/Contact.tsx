@@ -1,7 +1,8 @@
 "use client";
 
-import { useState } from 'react';
-import { motion } from 'framer-motion';
+import { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { useForm } from '@formspree/react';
 import { SEOHead } from '../../components/ui/SEOHead';
 import styles from './Contact.module.css';
 
@@ -26,16 +27,19 @@ export const Contact: React.FC<ContactProps> = () => {
     projectType: ''
   });
 
-  const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
-  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+  const [state, handleFormspreeSubmit] = useForm("xeokbklz");
+  const [showModal, setShowModal] = useState<boolean>(false);
 
   const projectTypes = [
-    'Charpente traditionnelle',
-    'Charpente industrielle',
+    'Charpente',
     'Ossature bois',
-    'Rénovation/Restauration',
+    'Rénovation',
     'Couverture',
-    'Extension',
+    'Isolation',
+    'Menuiserie',
+    'Plaquisterie',
+    'Aménagement Intérieur',
+    'Nettoyages toitures',
     'Autre'
   ];
 
@@ -47,12 +51,12 @@ export const Contact: React.FC<ContactProps> = () => {
     },
     {
       title: "Téléphone",
-      content: "06 67 11 67 60\nAppelez-moi pour un devis gratuit",
+      content: "06 67 11 67 60",
       icon: "📞"
     },
     {
       title: "Email",
-      content: "contact@br16batiment.fr",
+      content: "br16batiment@gmail.com",
       icon: "✉️"
     },
     {
@@ -72,13 +76,15 @@ export const Contact: React.FC<ContactProps> = () => {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>): Promise<void> => {
     e.preventDefault();
-    setIsSubmitting(true);
     
-    try {
-      // Simulation d'envoi de formulaire
-      await new Promise(resolve => setTimeout(resolve, 2000));
-      
-      setSubmitStatus('success');
+    // Submit to Formspree
+    await handleFormspreeSubmit(e);
+  };
+
+  // Watch for successful submission to show modal
+  useEffect(() => {
+    if (state.succeeded) {
+      setShowModal(true);
       setFormData({
         name: '',
         email: '',
@@ -87,11 +93,11 @@ export const Contact: React.FC<ContactProps> = () => {
         message: '',
         projectType: ''
       });
-    } catch (error) {
-      setSubmitStatus('error');
-    } finally {
-      setIsSubmitting(false);
     }
+  }, [state.succeeded]);
+
+  const closeModal = (): void => {
+    setShowModal(false);
   };
 
   return (
@@ -156,10 +162,10 @@ export const Contact: React.FC<ContactProps> = () => {
                 <div className={styles.companyInfo}>
                   <h3 className={styles.companyTitle}>BR16BATIMENT</h3>
                   <div className={styles.companyDetails}>
-                    <p><strong>Raphaël Bardan</strong> - Artisan Charpentier</p>
+                    <p><strong>Raphaël Bardan</strong> - Artisan</p>
                     <p>SIRET: 833 229 727 00015</p>
                     <p>Assurance décennale</p>
-                    <p>Devis gratuit sous 48h</p>
+                    <p>Devis gratuit</p>
                   </div>
                 </div>
               </motion.div>
@@ -174,13 +180,7 @@ export const Contact: React.FC<ContactProps> = () => {
               >
                 <h2 className={styles.formTitle}>Demande de Devis</h2>
                 
-                {submitStatus === 'success' && (
-                  <div className={styles.successMessage}>
-                    <p>✅ Votre message a été envoyé avec succès ! Je vous recontacterai sous 48h.</p>
-                  </div>
-                )}
-
-                {submitStatus === 'error' && (
+                {state.errors && Object.keys(state.errors).length > 0 && (
                   <div className={styles.errorMessage}>
                     <p>❌ Une erreur s'est produite. Veuillez réessayer ou me contacter directement.</p>
                   </div>
@@ -293,10 +293,10 @@ export const Contact: React.FC<ContactProps> = () => {
 
                   <button
                     type="submit"
-                    disabled={isSubmitting}
-                    className={`${styles.submitButton} ${isSubmitting ? styles.submitting : ''}`}
+                    disabled={state.submitting}
+                    className={`${styles.submitButton} ${state.submitting ? styles.submitting : ''}`}
                   >
-                    {isSubmitting ? 'Envoi en cours...' : 'Envoyer ma demande'}
+                    {state.submitting ? 'Envoi en cours...' : 'Envoyer ma demande'}
                   </button>
                 </form>
               </motion.div>
@@ -322,11 +322,52 @@ export const Contact: React.FC<ContactProps> = () => {
                 <div className={styles.mapIcon}>🗺️</div>
                 <p>Carte interactive disponible prochainement</p>
                 <p><strong>Zone principale :</strong> Charente (16)</p>
-                <p><strong>Déplacements possibles :</strong> Charente-Maritime, Vienne, Deux-Sèvres</p>
+                <p><strong>Déplacements possibles :</strong> Charente-Maritime, Dordogne</p>
               </div>
             </motion.div>
           </div>
         </section>
+
+        {/* Success Modal */}
+        <AnimatePresence>
+          {showModal && (
+            <motion.div
+              className={styles.modalOverlay}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.3 }}
+              onClick={closeModal}
+            >
+              <motion.div
+                className={styles.modalContent}
+                initial={{ opacity: 0, scale: 0.8, y: 50 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                exit={{ opacity: 0, scale: 0.8, y: 50 }}
+                transition={{ duration: 0.3, ease: "easeOut" }}
+                onClick={(e) => e.stopPropagation()}
+              >
+                <div className={styles.modalHeader}>
+                  <div className={styles.modalIcon}>✅</div>
+                  <h3 className={styles.modalTitle}>Message envoyé !</h3>
+                </div>
+                <div className={styles.modalBody}>
+                  <p className={styles.modalText}>
+                    Votre demande a été envoyée avec succès. Je vous recontacterai sous 48h pour discuter de votre projet.
+                  </p>
+                </div>
+                <div className={styles.modalFooter}>
+                  <button
+                    onClick={closeModal}
+                    className={styles.modalButton}
+                  >
+                    Fermer
+                  </button>
+                </div>
+              </motion.div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </main>
     </>
   );
