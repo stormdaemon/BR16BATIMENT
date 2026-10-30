@@ -1,0 +1,115 @@
+---
+import { Font } from 'astro:assets';
+import '../styles/global.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { SITE } from '../data/site';
+import { abs, breadcrumbList, graph, organization, person, webpage, website } from '../lib/schema';
+
+interface Crumb { name: string; href: string }
+interface Props {
+  title: string;
+  description: string;
+  noindex?: boolean;
+  ogType?: 'website' | 'article';
+  crumbs?: Crumb[];
+  schema?: object[];
+  modified?: Date;
+}
+
+const { title, description, noindex = false, ogType = 'website', crumbs = [], schema = [], modified } = Astro.props;
+
+const path = Astro.url.pathname.replace(/\.html$/, '').replace(/(\/index)?\/?$/, '') || '/';
+const canonical = abs(path);
+const ogImage = abs('/og-image.png');
+
+const nodes = [
+  organization(),
+  person(),
+  website(),
+  webpage(path, title, description, modified),
+  ...(crumbs.length ? [breadcrumbList(crumbs)] : []),
+  ...schema,
+];
+---
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    {noindex ? <meta name="robots" content="noindex, follow" /> : <meta name="robots" content="index, follow, max-image-preview:large" />}
+
+    <meta property="og:type" content={ogType} />
+    <meta property="og:site_name" content={SITE.name} />
+    <meta property="og:locale" content="fr_FR" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Logo BR 16 BATIMENT : charpente, couverture et rénovation en Charente" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <meta name="theme-color" content="#282425" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+
+    <Font cssVariable="--font-display" preload />
+    <Font cssVariable="--font-body" />
+    <Font cssVariable="--font-mono" />
+
+    <script is:inline>document.documentElement.classList.add('js');</script>
+    <script type="application/ld+json" set:html={JSON.stringify(graph(nodes))} />
+    <slot name="head" />
+  </head>
+  <body>
+    <a class="skip" href="#contenu">Aller au contenu</a>
+    <Header />
+    <main id="contenu">
+      <slot />
+    </main>
+    <Footer />
+    <nav class="action-bar" aria-label="Contact rapide">
+      <a href={SITE.phoneHref}>Appeler</a>
+      <a href="/contact">Devis gratuit</a>
+    </nav>
+    <script is:inline>
+      (() => {
+        const items = document.querySelectorAll('[data-reveal]');
+        if (!('IntersectionObserver' in window)) { items.forEach((el) => el.classList.add('is-in')); return; }
+        const io = new IntersectionObserver((entries) => {
+          for (const entry of entries) {
+            if (!entry.isIntersecting) continue;
+            entry.target.classList.add('is-in');
+            io.unobserve(entry.target);
+          }
+        }, { rootMargin: '0px 0px -6% 0px', threshold: 0.01 });
+        items.forEach((el) => io.observe(el));
+      })();
+    </script>
+  </body>
+</html>
+
+<style>
+  .action-bar {
+    position: fixed; inset: auto 0 0; z-index: 40;
+    display: grid; grid-template-columns: 1fr 1fr;
+    font-weight: 700; text-align: center;
+    box-shadow: 0 -1px 0 var(--anthracite);
+  }
+  .action-bar a { padding: 0.95rem 0.5rem calc(0.95rem + env(safe-area-inset-bottom)); text-decoration: none; }
+  .action-bar a:first-child { background: var(--anthracite); color: var(--yellow); }
+  .action-bar a:last-child { background: var(--yellow); color: var(--anthracite); }
+  body { padding-bottom: 3.4rem; }
+  @media (min-width: 60rem) {
+    .action-bar { display: none; }
+    body { padding-bottom: 0; }
+  }
+</style>

@@ -1,0 +1,45 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import Cta from '../../components/Cta.astro';
+import Cote from '../../components/Cote.astro';
+import House from '../../components/House.astro';
+import LinkRows from '../../components/LinkRows.astro';
+import PageHero from '../../components/PageHero.astro';
+
+const services = (await getCollection('services')).sort((a, b) => a.data.order - b.data.order);
+const crumbs = [{ name: 'Accueil', href: '/' }, { name: 'Services', href: '/services' }];
+const items = services.map((s, i) => ({
+  href: `/services/${s.id}`,
+  title: s.data.label,
+  meta: String(i + 1).padStart(2, '0'),
+  text: s.data.description,
+}));
+---
+<Base
+  title="Travaux de charpente, toiture et rénovation | BR 16 BATIMENT"
+  description="Charpente, couverture, isolation, plaquisterie, menuiserie, ossature bois, bardage et rénovation : tous les travaux réalisés par BR 16 BATIMENT en Charente."
+  crumbs={crumbs}
+>
+  <PageHero
+    crumbs={crumbs}
+    kicker="Services · Charente (16)"
+    h1="Tous les métiers de la maison, de la charpente aux finitions."
+    answer="BR 16 BATIMENT réalise onze types de travaux en Charente, en neuf comme en rénovation : la structure et le toit, l'isolation, les cloisons, les menuiseries et l'aménagement intérieur. Chaque devis est gratuit."
+  >
+    <House slot="visual" active="renovation" markers={false} />
+  </PageHero>
+
+  <section class="s-paper section">
+    <div class="wrap">
+      <Cote left="Le détail" right={`${services.length} services`} />
+      <div class="list"><LinkRows items={items} heading="h2" /></div>
+    </div>
+  </section>
+
+  <Cta title="Plusieurs corps de métier sur votre projet ?" />
+</Base>
+
+<style>
+  .list { margin-top: 1.5rem; }
+</style>

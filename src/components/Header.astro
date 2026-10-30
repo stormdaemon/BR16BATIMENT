@@ -1,0 +1,118 @@
+---
+import { Picture } from 'astro:assets';
+import logo from '../assets/logo.png';
+import { NAV, SERVICES, SITE } from '../data/site';
+
+const path = Astro.url.pathname.replace(/\.html$/, '').replace(/(\/index)?\/?$/, '') || '/';
+const isCurrent = (href: string) => path === href || path.startsWith(`${href}/`);
+---
+<header class="site-header">
+  <div class="bar">
+    <a class="logo" href="/">
+      <Picture src={logo} formats={['avif', 'webp']} widths={[136, 272]} sizes="136px" alt={`Logo ${SITE.name}, retour à l'accueil`} loading="eager" fetchpriority="high" />
+    </a>
+
+    <nav class="nav" aria-label="Navigation principale">
+      <ul>
+        {NAV.map((item) => (
+          <li class:list={[{ 'has-sub': item.href === '/services' }]}>
+            <a href={item.href} aria-current={isCurrent(item.href) ? 'page' : undefined}>{item.label}</a>
+            {item.href === '/services' && (
+              <div class="sub">
+                <ul>
+                  {SERVICES.map((s) => (
+                    <li><a href={`/services/${s.slug}`}>{s.label}</a></li>
+                  ))}
+                </ul>
+              </div>
+            )}
+          </li>
+        ))}
+      </ul>
+    </nav>
+
+    <a class="tel" href={SITE.phoneHref}>
+      <span class="diamond" aria-hidden="true"></span>
+      {SITE.phone}
+    </a>
+
+    <button class="burger" type="button" popovertarget="menu" aria-label="Ouvrir le menu">
+      <span aria-hidden="true"></span><span aria-hidden="true"></span>
+    </button>
+  </div>
+
+  <div id="menu" class="menu s-dark" popover>
+    <div class="menu__top">
+      <span class="label label--accent">Menu</span>
+      <button class="close" type="button" popovertarget="menu" popovertargetaction="hide" aria-label="Fermer le menu">Fermer</button>
+    </div>
+    <nav aria-label="Menu mobile">
+      <ul class="menu__main">
+        <li style="--i:0"><a href="/">Accueil</a></li>
+        {NAV.map((item, i) => (
+          <li style={`--i:${i + 1}`}><a href={item.href} aria-current={isCurrent(item.href) ? 'page' : undefined}>{item.label}</a></li>
+        ))}
+      </ul>
+      <p class="label menu__sub-title">Tous les services</p>
+      <ul class="menu__services">
+        {SERVICES.map((s) => (
+          <li><a href={`/services/${s.slug}`}>{s.label}</a></li>
+        ))}
+      </ul>
+    </nav>
+    <a class="btn menu__tel" href={SITE.phoneHref}>Appeler le {SITE.phone}</a>
+  </div>
+</header>
+
+<style>
+  .site-header { position: sticky; top: 0; z-index: 50; background: var(--anthracite); color: var(--paper); --link: var(--yellow); --focus: var(--yellow); }
+  .bar { display: flex; align-items: center; gap: 1.5rem; min-height: var(--header-h); width: min(100%, var(--wide)); margin-inline: auto; padding-inline: var(--gutter); }
+  .logo { flex: none; display: block; padding-block: 0.4rem; transition: scale 0.3s var(--ease-out); }
+  .logo:hover { scale: 1.04; }
+  .logo :global(img) { height: calc(var(--header-h) - 0.5rem); width: auto; }
+
+  .nav { display: none; margin-inline: auto; }
+  .nav > ul { display: flex; gap: 0.25rem; padding: 0; margin: 0; list-style: none; }
+  .nav a { display: block; padding: 0.55rem 0.8rem; text-decoration: none; font-weight: 500; font-size: var(--fs-s); position: relative; }
+  .nav > ul > li > a::after { content: ''; position: absolute; left: 0.8rem; right: 0.8rem; bottom: 0.3rem; height: 2px; background: var(--yellow); scale: 0 1; transform-origin: left; transition: scale 0.3s var(--ease-out); }
+  .nav > ul > li > a:hover::after, .nav > ul > li > a[aria-current='page']::after, .has-sub:focus-within > a::after { scale: 1 1; }
+
+  .has-sub { position: relative; }
+  .sub { position: absolute; top: 100%; left: 0; padding-top: 0.5rem; visibility: hidden; opacity: 0; translate: 0 0.5rem; transition: opacity 0.2s, translate 0.25s var(--ease-out), visibility 0.2s; }
+  .has-sub:hover .sub, .has-sub:focus-within .sub { visibility: visible; opacity: 1; translate: 0 0; }
+  .sub ul { display: grid; grid-template-columns: repeat(2, minmax(13rem, 1fr)); margin: 0; padding: 0.6rem; list-style: none; background: var(--ink); border-top: 3px solid var(--yellow); }
+  .sub a:hover { background: var(--yellow); color: var(--anthracite); }
+
+  .tel { display: none; align-items: center; gap: 0.6rem; flex: none; font-weight: 700; text-decoration: none; color: var(--yellow); font-variant-numeric: tabular-nums; }
+  .tel .diamond { --accent: var(--yellow); animation: pulse 2.6s ease-in-out infinite; }
+  @keyframes pulse { 50% { scale: 0.7; } }
+
+  .burger { margin-left: auto; display: grid; gap: 0.45rem; width: 2.75rem; height: 2.75rem; place-content: center; background: none; border: 0; }
+  .burger span { display: block; width: 1.7rem; height: 3px; background: var(--yellow); }
+  .burger span:last-child { width: 1.1rem; margin-left: auto; }
+
+  .menu { position: fixed; inset: 0; width: 100%; height: 100dvh; max-width: none; max-height: none; margin: 0; border: 0; padding: 1rem var(--gutter) 2rem; overflow-y: auto; opacity: 0; translate: 0 -2rem; transition: opacity 0.3s, translate 0.45s var(--ease-out), display 0.45s allow-discrete, overlay 0.45s allow-discrete; }
+  .menu:popover-open { display: flex; flex-direction: column; gap: 1.25rem; opacity: 1; translate: 0 0; }
+  @starting-style { .menu:popover-open { opacity: 0; translate: 0 -2rem; } }
+  .menu__top { display: flex; justify-content: space-between; align-items: center; min-height: 3rem; }
+  .close { background: none; border: 2px solid var(--yellow); color: var(--yellow); padding: 0.45rem 0.9rem; font-weight: 600; }
+  .menu ul { padding: 0; margin: 0; list-style: none; }
+  .menu__main a { display: block; padding-block: 0.2rem; font-family: var(--font-display), sans-serif; font-weight: 800; font-variation-settings: 'wdth' 75; font-size: clamp(2.2rem, 11vw, 3.4rem); line-height: 1.08; text-decoration: none; }
+  .menu__main a[aria-current='page'] { color: var(--yellow); }
+  .menu__main li { opacity: 1; translate: 0 0; transition: opacity 0.5s var(--ease-out), translate 0.5s var(--ease-out); transition-delay: calc(var(--i) * 45ms + 60ms); }
+  @starting-style { .menu:popover-open .menu__main li { opacity: 0; translate: 0 1.2rem; } }
+  .menu__sub-title { margin-top: 0.5rem; }
+  .menu__services { display: grid; grid-template-columns: 1fr 1fr; gap: 0.25rem 1rem; margin-top: 0.5rem !important; }
+  .menu__services a { display: block; padding-block: 0.3rem; font-size: var(--fs-s); }
+  .menu__tel { margin-top: auto; --btn-shadow: transparent; }
+
+  @media (min-width: 60rem) {
+    .nav, .tel { display: flex; }
+    .burger { display: none; }
+  }
+  @media (min-width: 60rem) and (max-width: 72rem) {
+    .nav a { padding-inline: 0.5rem; }
+    .nav > ul > li > a::after { left: 0.5rem; right: 0.5rem; }
+  }
+  @media (prefers-reduced-motion: reduce) { .tel .diamond { animation: none; } }
+</style>

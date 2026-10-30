@@ -1,0 +1,93 @@
+---
+import Base from '../../layouts/Base.astro';
+import CharenteMap from '../../components/CharenteMap.astro';
+import Cote from '../../components/Cote.astro';
+import Cta from '../../components/Cta.astro';
+import Faq from '../../components/Faq.astro';
+import PageHero from '../../components/PageHero.astro';
+import geo from '../../data/geo.json';
+import { SITE } from '../../data/site';
+
+const crumbs = [{ name: 'Accueil', href: '/' }, { name: "Zone d'intervention", href: '/zone-intervention' }];
+const towns = [...geo.communes].sort((a, b) => a.km - b.km);
+const near = towns.filter((c) => c.km <= 25).map((c) => c.name).join(', ');
+
+const faq = [
+  { q: 'Quelle est la zone d\'intervention de BR 16 BATIMENT ?', a: `L'entreprise est installée à ${SITE.address.city}, dans le sud de la Charente. Elle intervient dans tout le département, et se déplace aussi en Charente-Maritime et en Dordogne.` },
+  { q: 'Ma commune n\'est pas dans la liste : pouvez-vous intervenir ?', a: `Très probablement, si vous êtes en Charente. Les communes citées ici sont des repères, pas une limite. Appelez le ${SITE.phone} ou décrivez votre projet dans le formulaire : vous serez fixé rapidement.` },
+  { q: 'Les distances indiquées sont-elles des distances réelles ?', a: 'Oui. Ce sont des distances et des temps de trajet routiers depuis Champagne-Vigny, calculés avec le service d\'itinéraire de l\'IGN. Le temps réel dépend bien sûr de la circulation.' },
+];
+---
+<Base
+  title="Zone d'intervention en Charente | BR 16 BATIMENT"
+  description="BR 16 BATIMENT intervient dans toute la Charente depuis Champagne-Vigny : Angoulême, Cognac, Barbezieux, Jarnac… et en Charente-Maritime et Dordogne."
+  crumbs={crumbs}
+>
+  <PageHero
+    crumbs={crumbs}
+    kicker="Zone d'intervention"
+    h1="De Champagne-Vigny à toute la Charente."
+    answer={`BR 16 BATIMENT est basé à Champagne-Vigny (16250) et intervient dans toute la Charente, avec des déplacements possibles en Charente-Maritime et en Dordogne. Les communes les plus proches sont à moins de 25 km de route : ${near}.`}
+  >
+    <CharenteMap slot="visual" />
+  </PageHero>
+
+  <section class="s-paper section">
+    <div class="wrap">
+      <Cote left="Depuis Champagne-Vigny" right="Distances routières, source IGN" />
+      <div class="table" data-reveal>
+        <table>
+          <caption class="sr-only">Communes desservies, distance et temps de route depuis Champagne-Vigny</caption>
+          <thead>
+            <tr><th scope="col">Commune</th><th scope="col">Distance</th><th scope="col">Trajet</th><th scope="col">Intercommunalité</th></tr>
+          </thead>
+          <tbody>
+            {towns.map((c) => (
+              <tr>
+                <th scope="row"><a href={`/zone-intervention/${c.slug}`}>{c.name}</a></th>
+                <td>{c.km} km</td>
+                <td>{c.minutes} min</td>
+                <td class="epci">{c.epci}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+      <div class="deps">
+        <a href="/zone-intervention/charente-maritime" data-reveal>
+          <span class="label">Département voisin</span>
+          <span class="dep display">Charente-Maritime (17)</span>
+        </a>
+        <a href="/zone-intervention/dordogne" data-reveal style="--d:.08s">
+          <span class="label">Département voisin</span>
+          <span class="dep display">Dordogne (24)</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="s-white section">
+    <div class="wrap narrow"><Faq items={faq} title="Votre commune, vos questions" /></div>
+  </section>
+
+  <Cta title="Votre chantier est dans le secteur ?" />
+</Base>
+
+<style>
+  .table { margin-top: 1.5rem; overflow-x: auto; }
+  table { width: 100%; border-collapse: collapse; }
+  th, td { padding: 0.85rem 1rem 0.85rem 0; border-bottom: 1px solid var(--line); text-align: left; white-space: nowrap; font-variant-numeric: tabular-nums; }
+  thead th { font-family: var(--font-mono), monospace; font-weight: 400; font-size: var(--fs-xs); letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); border-bottom: 2px solid var(--anthracite); }
+  tbody th { font-weight: 700; font-size: var(--fs-l); }
+  tbody th a { text-decoration: none; background: linear-gradient(var(--yellow), var(--yellow)) left bottom / 0 3px no-repeat; transition: background-size 0.3s var(--ease-out); }
+  tbody tr:hover th a { background-size: 100% 3px; }
+  .epci { color: var(--muted); font-size: var(--fs-s); }
+  .deps { display: grid; gap: 1rem; margin-top: 3rem; }
+  .deps a { display: grid; gap: 0.5rem; padding: 1.5rem; background: var(--anthracite); color: var(--paper); text-decoration: none; --muted: var(--paper-70); transition: background 0.25s, color 0.25s; }
+  .deps a:hover { background: var(--yellow); color: var(--anthracite); }
+  .deps a:hover .label { color: var(--anthracite); }
+  .dep { font-size: var(--fs-xl); }
+  @media (min-width: 48rem) { .deps { grid-template-columns: 1fr 1fr; } }
+  .narrow { max-width: 64rem; }
+</style>

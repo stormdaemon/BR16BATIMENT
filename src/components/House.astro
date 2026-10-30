@@ -1,0 +1,193 @@
+---
+// La maison en coupe : chaque service correspond à un calque (data-layer).
+// À l'accueil, le défilement la construit calque par calque ; sur une page service,
+// le calque du service est mis en avant. Sans JavaScript, le dessin reste complet.
+interface Props { active?: string; class?: string; markers?: boolean }
+const { active, class: cls, markers = true } = Astro.props;
+
+const EL = [112, 343];
+const ER = [708, 343];
+const R = [410, 110];
+const at = (a: number[], b: number[], t: number) => [a[0] + (b[0] - a[0]) * t, a[1] + (b[1] - a[1]) * t];
+const f = (n: number) => +n.toFixed(1);
+const slope = Math.atan2(R[1] - EL[1], R[0] - EL[0]);
+const deg = (slope * 180) / Math.PI;
+
+// Tuiles canal le long de chaque versant, décalées vers l'extérieur.
+const tiles = (a: number[], b: number[], side: 1 | -1) => {
+  const n = 13;
+  const nx = side * Math.sin(slope) * 1;
+  const ny = -Math.abs(Math.cos(slope));
+  const off = 13;
+  let d = '';
+  for (let i = 0; i < n; i++) {
+    const p0 = at(a, b, i / n);
+    const p1 = at(a, b, (i + 1) / n);
+    const s = [p0[0] + nx * off * -side, p0[1] + ny * off];
+    const e = [p1[0] + nx * off * -side, p1[1] + ny * off];
+    d += `${i === 0 ? `M${f(s[0])} ${f(s[1])}` : ''}A12 12 0 0 ${side === 1 ? 1 : 0} ${f(e[0])} ${f(e[1])}`;
+  }
+  return d;
+};
+
+// Isolant souple : le symbole normalisé en boucles.
+const wool = (x0: number, x1: number, y: number, h = 11, step = 18) => {
+  let d = `M${x0} ${y}`;
+  for (let x = x0; x < x1; x += step) d += `q${step / 4} ${-h} ${step / 2} 0q${step / 4} ${h} ${step / 2} 0`;
+  return d;
+};
+
+const purlins = [0.3, 0.55, 0.8].flatMap((t) => {
+  const [lx, ly] = at(EL, R, t);
+  const [rx, ry] = at(ER, R, t);
+  return [
+    { x: f(lx), y: f(ly + 7), rot: f(deg) },
+    { x: f(rx), y: f(ry + 7), rot: f(-deg) },
+  ];
+});
+
+const studs = Array.from({ length: 6 }, (_, i) => 716 + i * 36);
+const topAt = (x: number) => 428 + ((x - 680) / 225) * 28;
+const roofWindow = at(EL, R, 0.62);
+const droplets = [0.2, 0.34, 0.48, 0.62, 0.76].map((t, i) => {
+  const [x, y] = at(ER, R, t);
+  return { x: f(x + 26 + (i % 2) * 12), y: f(y - 30 - (i % 3) * 8) };
+});
+
+const mark = [
+  { layer: 'charpente', n: '01', x: 410, y: 216 },
+  { layer: 'couverture', n: '02', x: 250, y: 176 },
+  { layer: 'nettoyage-toiture', n: '03', x: 620, y: 186 },
+  { layer: 'isolation', n: '04', x: 560, y: 306 },
+  { layer: 'amenagement-combles', n: '05', x: 262, y: 300 },
+  { layer: 'plaquisterie', n: '06', x: 400, y: 440 },
+  { layer: 'menuiserie', n: '07', x: 245, y: 420 },
+  { layer: 'amenagement-interieur', n: '08', x: 540, y: 575 },
+  { layer: 'ossature-bois', n: '09', x: 790, y: 545 },
+  { layer: 'bardage', n: '10', x: 930, y: 500 },
+];
+---
+<svg class:list={['house', cls, { 'house--static': !!active, 'is-all': active === 'renovation' }]} viewBox="0 0 1000 720" role="img" aria-labelledby="house-t" data-active={active}>
+  <title id="house-t">Coupe d'une maison montrant chaque corps de métier réalisé par BR 16 BATIMENT : charpente, couverture, isolation, plaquisterie, menuiserie, aménagement intérieur, ossature bois et bardage</title>
+
+  <g class="base">
+    <path pathLength="1" d="M0 660H1000" />
+    {Array.from({ length: 33 }, (_, i) => <path pathLength="1" d={`M${i * 30 + 6} 662l-14 16`} class="hatch" />)}
+    <path pathLength="1" d="M140 660V330H162V660M680 660V330H658V660" />
+    <path pathLength="1" d="M162 490H658M162 502H658" />
+  </g>
+
+  <g class:list={['layer', { 'is-active': active === 'charpente' }]} data-layer="charpente">
+    <path pathLength="1" class="thick" d={`M${EL[0]} ${EL[1]}L${R[0]} ${R[1]}L${ER[0]} ${ER[1]}`} />
+    <path pathLength="1" d="M128 330H692M128 342H692" />
+    <path pathLength="1" d="M402 124V330M418 124V330" />
+    <path pathLength="1" d={`M402 296L${f(at(EL, R, 0.55)[0] + 6)} ${f(at(EL, R, 0.55)[1] + 16)}M418 296L${f(at(ER, R, 0.55)[0] - 6)} ${f(at(ER, R, 0.55)[1] + 16)}`} />
+    <rect pathLength="1" x="397" y="92" width="26" height="26" />
+    {purlins.map((p) => <rect pathLength="1" x={p.x - 9} y={p.y - 9} width="18" height="18" transform={`rotate(${p.rot} ${p.x} ${p.y})`} />)}
+  </g>
+
+  <g class:list={['layer', { 'is-active': active === 'couverture' }]} data-layer="couverture">
+    <path pathLength="1" d={tiles(EL, R, 1)} />
+    <path pathLength="1" d={tiles(ER, R, -1)} />
+    <path pathLength="1" d="M388 92a24 24 0 0 1 44 0" />
+    <path pathLength="1" d="M96 344a14 14 0 0 0 26 0M698 344a14 14 0 0 0 26 0" />
+    <path pathLength="1" d="M108 356V660" />
+  </g>
+
+  <g class:list={['layer', { 'is-active': active === 'nettoyage-toiture' }]} data-layer="nettoyage-toiture">
+    {droplets.map((d) => <path pathLength="1" d={`M${d.x} ${d.y}c-7 10-9 13-9 17a9 9 0 0 0 18 0c0-4-2-7-9-17z`} />)}
+    <path pathLength="1" d="M782 150l6 14 14 6-14 6-6 14-6-14-14-6 14-6zM846 214l4 10 10 4-10 4-4 10-4-10-10-4 10-4z" />
+  </g>
+
+  <g class:list={['layer', { 'is-active': active === 'isolation' }]} data-layer="isolation">
+    <path pathLength="1" d={wool(176, 390, 318)} />
+    <path pathLength="1" d={wool(430, 645, 318)} />
+    <path pathLength="1" d="M151 350l-6 10 12 10-12 10 12 10-12 10 12 10-12 10 12 10-12 10 12 10-12 10 12 10M669 350l-6 10 12 10-12 10 12 10-12 10 12 10-12 10 12 10-12 10 12 10-12 10 12 10" />
+  </g>
+
+  <g class:list={['layer', { 'is-active': active === 'amenagement-combles' }]} data-layer="amenagement-combles">
+    <path pathLength="1" d={`M205 322V${f(EL[1] + ((R[1] - EL[1]) * (205 - EL[0])) / (R[0] - EL[0]) + 24)}L396 ${R[1] + 40}H424L615 ${f(EL[1] + ((R[1] - EL[1]) * (205 - EL[0])) / (R[0] - EL[0]) + 24)}V322`} />
+    <rect pathLength="1" x={f(roofWindow[0] - 22)} y={f(roofWindow[1] + 2)} width="44" height="30" transform={`rotate(${f(deg)} ${f(roofWindow[0])} ${f(roofWindow[1] + 17)})`} />
+    <path pathLength="1" d="M440 322v-34h96v34M448 288v-14h24v14" />
+  </g>
+
+  <g class:list={['layer', { 'is-active': active === 'plaquisterie' }]} data-layer="plaquisterie">
+    <path pathLength="1" d="M172 352H648" />
+    <path pathLength="1" d="M172 352V490M648 352V490" />
+    <path pathLength="1" d="M394 352V490M402 352V490" />
+    <path pathLength="1" d="M172 512H648" />
+    <path pathLength="1" d="M172 512V660M648 512V660" />
+    <path pathLength="1" d="M408 512V660M416 512V660" />
+  </g>
+
+  <g class:list={['layer', { 'is-active': active === 'menuiserie' }]} data-layer="menuiserie">
+    <rect pathLength="1" x="200" y="385" width="90" height="70" />
+    <path pathLength="1" d="M245 385V455M200 420H290" />
+    <rect pathLength="1" x="480" y="385" width="110" height="70" />
+    <path pathLength="1" d="M535 385V455M480 420H590" />
+    <rect pathLength="1" x="196" y="540" width="62" height="120" />
+    <path pathLength="1" d="M247 602h3" />
+    <path pathLength="1" d="M274 660h14v-19h14v-19h14v-19h14v-19h14v-19h14v-19h14v-19h14v-14" />
+  </g>
+
+  <g class:list={['layer', { 'is-active': active === 'amenagement-interieur' }]} data-layer="amenagement-interieur">
+    <rect pathLength="1" x="440" y="600" width="196" height="60" />
+    <path pathLength="1" d="M489 600V660M538 600V660M587 600V660M434 596H642" />
+    <rect pathLength="1" x="470" y="530" width="136" height="36" />
+    <path pathLength="1" d="M538 530V566" />
+    <rect pathLength="1" x="312" y="372" width="74" height="118" />
+    <path pathLength="1" d="M349 372V490M340 430h3M355 430h3" />
+    <path pathLength="1" d="M172 656H258M172 650H258" />
+  </g>
+
+  <g class:list={['layer', { 'is-active': active === 'ossature-bois' }]} data-layer="ossature-bois">
+    <path pathLength="1" d="M680 428L905 456V660H680" />
+    <path pathLength="1" d="M680 648H905" />
+    {studs.map((x) => <path pathLength="1" d={`M${x} ${f(topAt(x))}V648`} />)}
+    <path pathLength="1" d="M684 648L880 460" />
+    <path pathLength="1" d="M668 420L920 451" />
+  </g>
+
+  <g class:list={['layer', { 'is-active': active === 'bardage' }]} data-layer="bardage">
+    <path pathLength="1" d="M914 462V660M922 462V660M930 462V660M938 462V660" />
+    <path pathLength="1" d="M906 462H938M906 660H938" />
+  </g>
+
+  {markers && (
+    <g class="marks" aria-hidden="true">
+      {mark.map((m) => (
+        <g class:list={['mark', { 'is-active': active === m.layer }]} data-layer={m.layer} transform={`translate(${m.x} ${m.y})`}>
+          <path d="M0 -19 19 0 0 19 -19 0Z" />
+          <text y="5" text-anchor="middle">{m.n}</text>
+        </g>
+      ))}
+    </g>
+  )}
+</svg>
+
+<style>
+  .house { width: 100%; height: auto; overflow: visible; color: var(--fg, var(--paper)); }
+  .house path, .house rect { fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+  .house .thick { stroke-width: 3.5; }
+  .house .hatch { stroke-width: 1; opacity: 0.45; }
+  .base { opacity: 0.8; }
+
+  .layer { opacity: 0.62; transition: opacity 0.45s, color 0.45s; }
+  .layer.is-active { color: var(--yellow); opacity: 1; }
+  .layer.is-active path, .layer.is-active rect { stroke-width: 2.4; }
+  .layer.is-active .thick { stroke-width: 4.5; }
+  .house.is-all .layer { color: var(--yellow); opacity: 1; }
+  .house.is-dim .layer:not(.is-active) { opacity: 0.32; }
+
+  .mark path { fill: var(--anthracite); stroke: var(--paper-40); stroke-width: 1.2; transition: fill 0.3s, stroke 0.3s; }
+  .mark text { font-family: var(--font-mono), monospace; font-size: 14px; fill: var(--paper-70); transition: fill 0.3s; }
+  .mark.is-active path { fill: var(--yellow); stroke: var(--yellow); }
+  .mark.is-active text { fill: var(--anthracite); }
+
+  .house--static .layer:not(.is-active) { opacity: 0.3; }
+  @media (prefers-reduced-motion: no-preference) {
+    .house--static .layer.is-active > * { stroke-dasharray: 1; stroke-dashoffset: 1; animation: house-draw 1.6s var(--ease-inout) 0.25s forwards; }
+  }
+  @keyframes house-draw { to { stroke-dashoffset: 0; } }
+</style>
+

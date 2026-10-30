@@ -1,0 +1,96 @@
+---
+import { getCollection, render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import Cta from '../../components/Cta.astro';
+import Faq from '../../components/Faq.astro';
+import PageHero from '../../components/PageHero.astro';
+import Sources from '../../components/Sources.astro';
+import { article } from '../../lib/schema';
+import { SITE } from '../../data/site';
+
+export async function getStaticPaths() {
+  const guides = await getCollection('guides');
+  return guides.map((entry) => ({ params: { slug: entry.id }, props: { entry } }));
+}
+
+const { entry } = Astro.props;
+const { Content, headings } = await render(entry);
+const d = entry.data;
+const path = `/guides/${entry.id}`;
+const toc = headings.filter((h) => h.depth === 2);
+
+const all = await getCollection('services');
+const service = all.find((s) => s.id === d.service);
+const related = (await getCollection('guides')).filter((g) => g.id !== entry.id && g.data.service === d.service).slice(0, 3);
+
+const fmt = (date: Date) => date.toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' });
+const crumbs = [
+  { name: 'Accueil', href: '/' },
+  { name: 'Guides', href: '/guides' },
+  { name: d.label, href: path },
+];
+---
+<Base title={d.title} description={d.description} crumbs={crumbs} ogType="article" modified={d.updated} schema={[article(path, d.h1, d.description, d.published, d.updated)]}>
+  <PageHero crumbs={crumbs} kicker={d.label} h1={d.h1} answer={d.answer} cta={false}>
+    <p slot="meta" class="label">
+      Par <a href="/a-propos">{SITE.owner}</a>, {SITE.name} · Mis à jour le <time datetime={d.updated.toISOString().slice(0, 10)}>{fmt(d.updated)}</time>
+    </p>
+  </PageHero>
+
+  <section class="s-paper section">
+    <div class="wrap body">
+      {toc.length > 2 && (
+        <nav class="toc" aria-label="Sommaire">
+          <p class="label">Sommaire</p>
+          <ol>
+            {toc.map((h) => <li><a href={`#${h.slug}`}>{h.text}</a></li>)}
+          </ol>
+        </nav>
+      )}
+      <article class="prose"><Content /></article>
+    </div>
+  </section>
+
+  {d.faq.length > 0 && (
+    <section class="s-white section">
+      <div class="wrap narrow"><Faq items={d.faq} /></div>
+    </section>
+  )}
+
+  <section class="s-white src">
+    <div class="wrap narrow">
+      <Sources items={d.sources} />
+      <div class="author">
+        <p class="label">À propos de l'auteur</p>
+        <p><strong>{SITE.owner}</strong> dirige {SITE.name} à {SITE.address.city} (Charente). Titulaire d'un bac professionnel menuiserie, il travaille dans le second œuvre depuis 2001. <a href="/a-propos">Voir son parcours</a>.</p>
+        <p class="note">Les prix cités sont des fourchettes publiées par les sources ci-dessus, à titre indicatif : seul un devis établi sur place engage l'entreprise.</p>
+      </div>
+      {(service || related.length > 0) && (
+        <div class="next">
+          <p class="label">Pour aller plus loin</p>
+          <ul>
+            {service && <li><a href={`/services/${service.id}`}>{service.data.label} avec BR 16 BATIMENT</a></li>}
+            {related.map((g) => <li><a href={`/guides/${g.id}`}>{g.data.h1}</a></li>)}
+          </ul>
+        </div>
+      )}
+    </div>
+  </section>
+
+  <Cta title="Besoin d'un chiffrage précis ?" service={service?.data.label} />
+</Base>
+
+<style>
+  .body { display: grid; gap: 2.5rem; }
+  .toc { padding: 1.15rem 1.25rem; background: var(--white); border-left: 6px solid var(--yellow); font-size: var(--fs-s); }
+  .toc ol { margin: 0.6rem 0 0; padding-left: 1.3em; display: grid; gap: 0.35rem; }
+  @media (min-width: 60rem) {
+    .body { grid-template-columns: 19rem minmax(0, 1fr); gap: clamp(3rem, 6vw, 7rem); align-items: start; }
+    .toc { position: sticky; top: calc(var(--header-h) + 1.5rem); }
+  }
+  .narrow { max-width: 64rem; }
+  .src { padding-block: 0 var(--section); }
+  .author, .next { margin-top: 2.5rem; display: grid; gap: 0.6rem; }
+  .note { color: var(--muted); font-size: var(--fs-s); }
+  .next ul { display: grid; gap: 0.35rem; font-weight: 600; padding: 0; list-style: none; margin: 0; }
+</style>

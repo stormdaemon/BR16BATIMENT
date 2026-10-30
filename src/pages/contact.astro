@@ -1,0 +1,156 @@
+---
+import Base from '../layouts/Base.astro';
+import CharenteMap from '../components/CharenteMap.astro';
+import PageHero from '../components/PageHero.astro';
+import { SERVICES, SITE } from '../data/site';
+
+const crumbs = [{ name: 'Accueil', href: '/' }, { name: 'Contact', href: '/contact' }];
+---
+<Base
+  title="Contact et devis gratuit en Charente | BR 16 BATIMENT"
+  description="Demandez un devis gratuit à BR 16 BATIMENT : 06 67 11 67 60 ou formulaire en ligne. Réponse sous 48 h. Basé à Champagne-Vigny, en Charente."
+  crumbs={crumbs}
+>
+  <PageHero
+    crumbs={crumbs}
+    kicker="Contact"
+    h1="Parlons de votre projet."
+    answer={`Pour un devis gratuit, appelez le ${SITE.phone} ou remplissez le formulaire ci-dessous. Je vous réponds ${SITE.responseDelay}. BR 16 BATIMENT est basé à ${SITE.address.city} et intervient dans toute la Charente.`}
+    cta={false}
+  />
+
+  <section class="s-paper section">
+    <div class="wrap grid">
+      <form class="form" action={SITE.formspree} method="POST" data-form novalidate>
+        <h2>Demande de devis</h2>
+        <input type="hidden" name="_subject" value="Nouvelle demande de devis depuis br16batiment.com" />
+        <p class="hp" aria-hidden="true">
+          <label>Ne pas remplir <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" /></label>
+        </p>
+        <div class="field">
+          <label for="name">Nom et prénom <span aria-hidden="true">*</span></label>
+          <input id="name" name="name" type="text" autocomplete="name" required />
+        </div>
+        <div class="row">
+          <div class="field">
+            <label for="email">Email <span aria-hidden="true">*</span></label>
+            <input id="email" name="email" type="email" autocomplete="email" required />
+          </div>
+          <div class="field">
+            <label for="phone">Téléphone</label>
+            <input id="phone" name="phone" type="tel" autocomplete="tel" />
+          </div>
+        </div>
+        <div class="row">
+          <div class="field">
+            <label for="projectType">Type de projet <span aria-hidden="true">*</span></label>
+            <select id="projectType" name="projectType" required>
+              <option value="">Choisissez</option>
+              {SERVICES.map((s) => <option value={s.label}>{s.label}</option>)}
+              <option value="Autre">Autre</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="city">Commune du chantier</label>
+            <input id="city" name="city" type="text" autocomplete="address-level2" />
+          </div>
+        </div>
+        <div class="field">
+          <label for="message">Votre projet <span aria-hidden="true">*</span></label>
+          <textarea id="message" name="message" rows="6" required placeholder="Dimensions, matériaux souhaités, délais, budget approximatif…"></textarea>
+        </div>
+        <p class="legal">Vos données servent uniquement à répondre à votre demande. <a href="/politique-confidentialite">Politique de confidentialité</a>.</p>
+        <button class="btn btn--dark" type="submit" data-submit>Envoyer ma demande <span class="arrow" aria-hidden="true">→</span></button>
+        <p class="status" role="status" aria-live="polite" data-status hidden></p>
+      </form>
+
+      <aside class="nap">
+        <div class="card s-dark">
+          <p class="label label--accent">Téléphone</p>
+          <a class="tel display" href={SITE.phoneHref}>{SITE.phone}</a>
+          <p class="label label--accent">Email</p>
+          <p><a href={`mailto:${SITE.email}`}>{SITE.email}</a></p>
+          <p class="label label--accent">Adresse</p>
+          <address>{SITE.name}<br />{SITE.address.street}<br />{SITE.address.postalCode} {SITE.address.city}</address>
+          <p class="label label--accent">Horaires</p>
+          <p>{SITE.hours.text}</p>
+          <p class="label label--accent">Entreprise</p>
+          <p>{SITE.owner}, président. SIRET {SITE.legal.siret}. Assurance décennale. Devis gratuit.</p>
+        </div>
+        <div class="card s-dark">
+          <p class="label label--accent">Zone d'intervention</p>
+          <CharenteMap />
+          <p>Toute la Charente, et sur demande en Charente-Maritime et en Dordogne. <a href="/zone-intervention">Voir les communes</a>.</p>
+        </div>
+      </aside>
+    </div>
+  </section>
+</Base>
+
+<script>
+  const form = document.querySelector<HTMLFormElement>('[data-form]');
+  if (form) {
+    const status = form.querySelector<HTMLElement>('[data-status]')!;
+    const submit = form.querySelector<HTMLButtonElement>('[data-submit]')!;
+    const select = form.querySelector<HTMLSelectElement>('#projectType')!;
+
+    const wanted = new URLSearchParams(location.search).get('projet');
+    if (wanted && [...select.options].some((o) => o.value === wanted)) select.value = wanted;
+
+    const show = (kind: 'ok' | 'err', text: string) => {
+      status.hidden = false;
+      status.dataset.kind = kind;
+      status.textContent = text;
+    };
+
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      form.querySelectorAll('[aria-invalid]').forEach((el) => el.removeAttribute('aria-invalid'));
+      const invalid = [...form.querySelectorAll<HTMLInputElement>('input:not([type=hidden]), select, textarea')].filter((el) => !el.checkValidity());
+      if (invalid.length) {
+        invalid.forEach((el) => el.setAttribute('aria-invalid', 'true'));
+        invalid[0].focus();
+        show('err', 'Merci de compléter les champs obligatoires, avec une adresse email valide.');
+        return;
+      }
+      submit.disabled = true;
+      show('ok', 'Envoi en cours…');
+      try {
+        const response = await fetch(form.action, { method: 'POST', body: new FormData(form), headers: { Accept: 'application/json' } });
+        if (!response.ok) throw new Error(String(response.status));
+        form.reset();
+        show('ok', 'Message envoyé. Je vous recontacte sous 48 h pour parler de votre projet.');
+      } catch {
+        show('err', 'L\'envoi n\'a pas abouti. Réessayez, ou appelez directement le 06 67 11 67 60.');
+      } finally {
+        submit.disabled = false;
+      }
+    });
+  }
+</script>
+
+<style>
+  .grid { display: grid; gap: 3rem; align-items: start; }
+  @media (min-width: 60rem) { .grid { grid-template-columns: 1.25fr 1fr; gap: clamp(3rem, 5vw, 6rem); } }
+  .form { display: grid; gap: 1.1rem; }
+  .hp { position: absolute; left: -9999px; }
+  .row { display: grid; gap: 1.1rem; }
+  @media (min-width: 40rem) { .row { grid-template-columns: 1fr 1fr; } }
+  .field { display: grid; gap: 0.35rem; }
+  label { font-weight: 600; font-size: var(--fs-s); }
+  input:not([type='hidden']), select, textarea { width: 100%; min-height: 3.1rem; padding: 0.7rem 0.9rem; border: 2px solid var(--anthracite); border-radius: 0; background: var(--white); color: var(--anthracite); transition: box-shadow 0.18s; }
+  input:focus-visible, select:focus-visible, textarea:focus-visible { outline: none; box-shadow: 5px 5px 0 var(--yellow); }
+  [aria-invalid='true'] { border-color: var(--err-ink); background: var(--err-bg); }
+  textarea { resize: vertical; }
+  .legal { font-size: var(--fs-s); color: var(--muted); }
+  .form .btn { justify-self: start; --btn-shadow: var(--yellow); }
+  .form .btn[disabled] { opacity: 0.6; cursor: progress; }
+  .status { padding: 0.8rem 1rem; font-weight: 600; }
+  .status[data-kind='ok'] { color: var(--ok-ink); background: var(--ok-bg); }
+  .status[data-kind='err'] { color: var(--err-ink); background: var(--err-bg); }
+  .nap { display: grid; gap: 1.25rem; }
+  .card { display: grid; gap: 0.35rem; padding: clamp(1.25rem, 1rem + 1.5vw, 2rem); }
+  .card .label:not(:first-child) { margin-top: 0.9rem; }
+  .tel { font-size: var(--fs-xl); text-decoration: none; color: var(--yellow); white-space: nowrap; }
+  address { font-style: normal; }
+</style>

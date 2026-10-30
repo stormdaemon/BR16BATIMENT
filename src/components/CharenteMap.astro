@@ -1,0 +1,88 @@
+---
+// Carte réelle de la Charente (contours Etalab), générée par scripts/build-geo-data.mjs.
+// Chaque commune est un lien réel ; la ligne de cote relie Champagne-Vigny à la commune survolée.
+import geo from '../data/geo.json';
+
+interface Props { active?: string; class?: string; links?: boolean }
+const { active, class: cls, links = true } = Astro.props;
+
+// Décalages des étiquettes pour éviter les chevauchements.
+const labels: Record<string, { text: string; dx: number; dy: number; a: 'start' | 'end' | 'middle' }> = {
+  angouleme: { text: 'Angoulême', dx: -8, dy: -3, a: 'end' },
+  cognac: { text: 'Cognac', dx: -8, dy: 4, a: 'end' },
+  'barbezieux-saint-hilaire': { text: 'Barbezieux', dx: -8, dy: 4, a: 'end' },
+  'coteaux-du-blanzacais': { text: 'Blanzac', dx: -8, dy: 5, a: 'end' },
+  'villebois-lavalette': { text: 'Villebois-Lavalette', dx: 8, dy: 4, a: 'start' },
+  montmoreau: { text: 'Montmoreau', dx: 8, dy: 4, a: 'start' },
+  chalais: { text: 'Chalais', dx: -8, dy: 4, a: 'end' },
+  'aubeterre-sur-dronne': { text: 'Aubeterre-sur-Dronne', dx: 8, dy: 4, a: 'start' },
+  jarnac: { text: 'Jarnac', dx: 0, dy: -9, a: 'middle' },
+  'chateauneuf-sur-charente': { text: 'Châteauneuf', dx: 8, dy: 15, a: 'end' },
+  segonzac: { text: 'Segonzac', dx: -8, dy: 4, a: 'end' },
+  'la-couronne': { text: 'La Couronne', dx: 8, dy: 5, a: 'start' },
+  soyaux: { text: 'Soyaux', dx: 8, dy: 4, a: 'start' },
+  'ruelle-sur-touvre': { text: 'Ruelle-sur-Touvre', dx: 8, dy: 3, a: 'start' },
+};
+const [bx, by] = geo.base.xy;
+---
+<svg class:list={['map', cls]} viewBox="150 125 520 510" role="img" aria-labelledby="map-t">
+  <title id="map-t">Carte de la Charente : BR 16 BATIMENT est basé à Champagne-Vigny et intervient dans tout le département ainsi qu'en Charente-Maritime et en Dordogne</title>
+  <path class="dep dep--near" d={geo.paths['charente-maritime']} />
+  <path class="dep dep--near" d={geo.paths.dordogne} />
+  <path class="dep dep--main" d={geo.paths.charente} />
+
+  <text class="dep-name" x="158" y="610">Charente-Maritime</text>
+  <text class="dep-name" x="560" y="600">Dordogne</text>
+  <text class="dep-name dep-name--main" x="400" y="270">Charente</text>
+
+  {geo.communes.map((c) => {
+    const [x, y] = c.xy;
+    const p = labels[c.slug] ?? { text: c.name, dx: 8, dy: 4, a: 'start' };
+    const isActive = active === c.slug;
+    const inner = (
+      <>
+        <path class="route" pathLength="1" d={`M${bx} ${by}L${x} ${y}`} />
+        <circle class="hit" cx={x} cy={y} r="11" />
+        <circle class="dot" cx={x} cy={y} r="3.5" />
+        <text class="name" x={x + p.dx} y={y + p.dy} text-anchor={p.a}>{p.text}</text>
+      </>
+    );
+    return links
+      ? <a class:list={['commune', { 'is-active': isActive }]} href={`/zone-intervention/${c.slug}`} aria-label={`${c.name}, ${c.km} km de Champagne-Vigny`}>{inner}</a>
+      : <g class:list={['commune', { 'is-active': isActive }]}>{inner}</g>;
+  })}
+
+  <g class="base-mark" transform={`translate(${bx} ${by})`}>
+    <path d="M0 -8 8 0 0 8 -8 0Z" />
+  </g>
+  <text class="base-name" x={bx + 12} y={by - 5}>Champagne-Vigny</text>
+</svg>
+
+<style>
+  .map { width: 100%; height: auto; }
+  .dep { fill: none; stroke-linejoin: round; }
+  .dep--near { stroke: var(--paper-14); stroke-width: 0.8; }
+  .dep--main { stroke: var(--yellow); stroke-width: 1.4; fill: rgb(231 207 37 / 0.05); }
+  .dep-name { font-family: var(--font-mono), monospace; font-size: 9px; letter-spacing: 0.08em; text-transform: uppercase; fill: var(--paper-40); }
+  .dep-name--main { fill: var(--paper-70); text-anchor: middle; font-size: 11px; letter-spacing: 0.2em; }
+  .commune { cursor: pointer; }
+  .route { stroke: var(--yellow); stroke-width: 1.1; stroke-dasharray: 1; stroke-dashoffset: 1; transition: stroke-dashoffset 0.7s var(--ease-inout); fill: none; }
+  .hit { fill: transparent; }
+  .dot { fill: var(--paper); transition: fill 0.2s, r 0.2s; }
+  .name { font-family: var(--font-mono), monospace; font-size: 10.5px; fill: var(--paper); transition: fill 0.2s; }
+  .commune:hover .route, .commune:focus-visible .route, .commune.is-active .route { stroke-dashoffset: 0; }
+  .commune:hover .dot, .commune:focus-visible .dot, .commune.is-active .dot { fill: var(--yellow); r: 5.5; }
+  .commune:hover .name, .commune:focus-visible .name, .commune.is-active .name { fill: var(--yellow); }
+  .commune:focus-visible { outline: none; }
+  .base-mark path { fill: var(--yellow); }
+  .base-name { font-family: var(--font-display), sans-serif; font-weight: 800; font-size: 13px; fill: var(--yellow); }
+  /* Sur petit écran, les noms sont illisibles : seule la commune active reste nommée. La liste en dessous prend le relais. */
+  @media (max-width: 40rem) {
+    .name { font-size: 15px; display: none; }
+    .commune.is-active .name { display: block; }
+    .base-name { font-size: 16px; }
+    .dep-name { font-size: 12px; }
+    .dep-name--main { font-size: 14px; }
+    .dot { r: 5; }
+  }
+</style>

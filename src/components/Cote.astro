@@ -1,0 +1,9 @@
+---
+interface Props { left?: string; right?: string }
+const { left, right } = Astro.props;
+---
+<div class="cote label" data-reveal>
+  {left && <span>{left}</span>}
+  <span class="cote__line" aria-hidden="true"></span>
+  {right && <span>{right}</span>}
+</div>

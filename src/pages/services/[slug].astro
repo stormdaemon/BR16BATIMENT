@@ -1,0 +1,116 @@
+---
+import { getCollection, render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import Cta from '../../components/Cta.astro';
+import Faq from '../../components/Faq.astro';
+import House from '../../components/House.astro';
+import LinkRows from '../../components/LinkRows.astro';
+import PageHero from '../../components/PageHero.astro';
+import Sources from '../../components/Sources.astro';
+import { service as serviceSchema } from '../../lib/schema';
+import geo from '../../data/geo.json';
+
+export async function getStaticPaths() {
+  const services = await getCollection('services');
+  return services.map((entry) => ({ params: { slug: entry.id }, props: { entry } }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+const d = entry.data;
+const path = `/services/${entry.id}`;
+
+const all = await getCollection('services');
+const guides = await getCollection('guides');
+const relatedServices = d.related.map((s) => all.find((x) => x.id === s)).filter((x) => x !== undefined);
+const relatedGuides = d.guides.map((s) => guides.find((x) => x.id === s)).filter((x) => x !== undefined);
+const towns = [...geo.communes].sort((a, b) => a.km - b.km).slice(0, 8);
+
+const crumbs = [
+  { name: 'Accueil', href: '/' },
+  { name: 'Services', href: '/services' },
+  { name: d.label, href: path },
+];
+---
+<Base title={d.title} description={d.description} crumbs={crumbs} modified={d.updated} schema={[serviceSchema(path, d.label, d.description)]}>
+  <PageHero crumbs={crumbs} kicker={`Service · Charente (16)`} h1={d.h1} answer={d.answer} contactHref={`/contact?projet=${encodeURIComponent(d.label)}`}>
+    <House slot="visual" active={entry.id} />
+  </PageHero>
+
+  <section class="includes s-yellow">
+    <div class="wrap">
+      <h2 class="label">Ce que je prends en charge</h2>
+      <ul>
+        {d.includes.map((item, i) => (
+          <li data-reveal style={`--d:${(i % 4) * 0.05}s`}><span class="diamond" aria-hidden="true"></span>{item}</li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <section class="s-paper section">
+    <div class="wrap body">
+      <article class="prose"><Content /></article>
+      <aside class="side">
+        {relatedGuides.length > 0 && (
+          <div>
+            <h2 class="label">Guides pour préparer vos travaux</h2>
+            <ul class="side__list">
+              {relatedGuides.map((g) => <li><a href={`/guides/${g.id}`}>{g.data.h1}</a></li>)}
+            </ul>
+          </div>
+        )}
+        <div>
+          <h2 class="label">Où j'interviens</h2>
+          <ul class="side__list side__towns">
+            {towns.map((c) => <li><a href={`/zone-intervention/${c.slug}`}>{c.name}</a></li>)}
+          </ul>
+          <a class="more" href="/zone-intervention">Toute la zone d'intervention</a>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  {d.faq.length > 0 && (
+    <section class="s-white section">
+      <div class="wrap narrow"><Faq items={d.faq} title={`${d.label} : vos questions`} /></div>
+    </section>
+  )}
+
+  {relatedServices.length > 0 && (
+    <section class="s-paper section">
+      <div class="wrap">
+        <h2 class="related__title">Souvent réalisé avec</h2>
+        <LinkRows items={relatedServices.map((s) => ({ href: `/services/${s.id}`, title: s.data.label, text: s.data.description }))} />
+      </div>
+    </section>
+  )}
+
+  {d.sources.length > 0 && (
+    <section class="s-white src">
+      <div class="wrap narrow"><Sources items={d.sources} /></div>
+    </section>
+  )}
+
+  <Cta title={`Un projet de ${d.label.toLowerCase()} ?`} service={d.label} />
+</Base>
+
+<style>
+  .includes { padding-block: clamp(2.5rem, 2rem + 2vw, 4rem); }
+  .includes ul { display: grid; gap: 0.75rem 2.5rem; margin-top: 1.1rem; }
+  .includes li { display: flex; gap: 0.8rem; align-items: baseline; font-weight: 600; font-size: var(--fs-l); line-height: 1.25; }
+  .includes .diamond { --accent: var(--anthracite); }
+  @media (min-width: 48rem) { .includes ul { grid-template-columns: repeat(2, 1fr); } }
+  .body { display: grid; gap: 3rem; }
+  .side { display: grid; gap: 2.25rem; align-content: start; }
+  .side__list { margin-top: 0.7rem; display: grid; gap: 0.45rem; border-top: 2px solid var(--anthracite); padding-top: 0.8rem; font-weight: 600; }
+  .side__towns { grid-template-columns: 1fr 1fr; font-weight: 500; font-size: var(--fs-s); }
+  .more { display: inline-block; margin-top: 0.8rem; font-weight: 700; }
+  @media (min-width: 60rem) {
+    .body { grid-template-columns: minmax(0, 1fr) 21rem; gap: clamp(3rem, 6vw, 7rem); }
+    .side { position: sticky; top: calc(var(--header-h) + 1.5rem); }
+  }
+  .narrow { max-width: 64rem; }
+  .related__title { margin-bottom: 1.5rem; }
+  .src { padding-block: 0 var(--section); }
+</style>

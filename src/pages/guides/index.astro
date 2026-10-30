@@ -1,0 +1,35 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import Cta from '../../components/Cta.astro';
+import Cote from '../../components/Cote.astro';
+import LinkRows from '../../components/LinkRows.astro';
+import PageHero from '../../components/PageHero.astro';
+
+const guides = (await getCollection('guides')).sort((a, b) => a.data.label.localeCompare(b.data.label, 'fr'));
+const crumbs = [{ name: 'Accueil', href: '/' }, { name: 'Guides', href: '/guides' }];
+const items = guides.map((g) => ({ href: `/guides/${g.id}`, title: g.data.h1, meta: g.data.label, text: g.data.description }));
+---
+<Base
+  title="Guides travaux : prix, aides et règles en Charente | BR 16"
+  description="Prix au m², aides, autorisations d'urbanisme, garanties : des guides sourcés pour préparer vos travaux de toiture, d'isolation et de rénovation en Charente."
+  crumbs={crumbs}
+>
+  <PageHero
+    crumbs={crumbs}
+    kicker="Guides travaux"
+    h1="Comprendre avant de signer."
+    answer="Combien coûte une toiture, faut-il une autorisation pour aménager des combles, quelles aides existent : ces guides répondent aux questions les plus fréquentes, avec les sources officielles et les fourchettes de prix publiées. Ils ne remplacent pas un devis, mais vous aident à le lire."
+  />
+  <section class="s-paper section">
+    <div class="wrap">
+      <Cote left="Tous les guides" right={`${guides.length} guides`} />
+      <div class="list"><LinkRows items={items} heading="h2" /></div>
+    </div>
+  </section>
+  <Cta title="Une question sur votre projet ?" />
+</Base>
+
+<style>
+  .list { margin-top: 1.5rem; }
+</style>

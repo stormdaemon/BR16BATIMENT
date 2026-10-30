@@ -1,0 +1,25 @@
+---
+interface Props { items: { label: string; url: string; date?: string }[] }
+const { items } = Astro.props;
+---
+{items.length > 0 && (
+  <aside class="sources" aria-label="Sources">
+    <h2 class="label">Sources</h2>
+    <ol>
+      {items.map((s) => (
+        <li>
+          <a href={s.url} rel="noopener" target="_blank">{s.label}</a>
+          {s.date && <span class="date"> ({s.date})</span>}
+        </li>
+      ))}
+    </ol>
+  </aside>
+)}
+
+<style>
+  .sources { padding-top: 1.25rem; border-top: 2px solid currentColor; font-size: var(--fs-s); }
+  h2 { font-family: var(--font-mono), monospace; font-weight: 400; font-variation-settings: normal; font-size: var(--fs-xs); letter-spacing: 0.06em; }
+  ol { margin: 0.75rem 0 0; padding-left: 1.3em; display: grid; gap: 0.4rem; }
+  a { overflow-wrap: anywhere; }
+  .date { color: var(--muted); }
+</style>

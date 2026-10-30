@@ -1,0 +1,83 @@
+---
+import Base from '../layouts/Base.astro';
+import Cta from '../components/Cta.astro';
+import Faq from '../components/Faq.astro';
+import PageHero from '../components/PageHero.astro';
+import { SITE, yearsSince } from '../data/site';
+import geo from '../data/geo.json';
+
+const crumbs = [{ name: 'Accueil', href: '/' }, { name: 'Questions fréquentes', href: '/faq' }];
+const km = (slug: string) => geo.communes.find((c) => c.slug === slug)?.km;
+
+const groups = [
+  {
+    title: 'L\'entreprise',
+    items: [
+      { q: 'Qu\'est-ce que BR 16 BATIMENT ?', a: `BR 16 BATIMENT est une entreprise artisanale du bâtiment installée à ${SITE.address.city}, dans le sud de la Charente. Elle réalise la charpente, la couverture, le nettoyage de toiture, l'isolation, l'aménagement de combles, la plaquisterie, la menuiserie, l'aménagement intérieur, l'ossature bois, le bardage et la rénovation.` },
+      { q: 'Qui dirige BR 16 BATIMENT ?', a: `L'entreprise est présidée par ${SITE.owner}. Titulaire d'un bac professionnel menuiserie obtenu en 1999, il travaille dans le second œuvre depuis 2001, soit plus de ${yearsSince(2001) - 1} ans d'expérience.` },
+      { q: 'L\'entreprise est-elle en activité ?', a: `Oui. BR 16 BATIMENT est une ${SITE.legal.form}, immatriculée le ${SITE.legal.registered} (${SITE.legal.rcs}, SIRET ${SITE.legal.siret}). Elle prolonge l'activité créée en 2017 en entreprise individuelle, dont l'immatriculation (SIREN 833 229 727) a pris fin le 31 octobre 2025. Si un annuaire affiche l'ancienne entreprise comme fermée, c'est pour cette raison.` },
+      { q: 'Comment contacter BR 16 BATIMENT ?', a: `Par téléphone au ${SITE.phone}, par email à ${SITE.email} ou avec le formulaire de la page contact. ${SITE.hours.text}` },
+      { q: 'Où se trouve l\'entreprise ?', a: `Au ${SITE.address.street}, ${SITE.address.postalCode} ${SITE.address.city}, en Charente. L'entreprise intervient chez ses clients, sur leur chantier.` },
+    ],
+  },
+  {
+    title: 'Le devis',
+    items: [
+      { q: 'Le devis est-il gratuit ?', a: 'Oui, le devis est gratuit et sans engagement.' },
+      { q: 'En combien de temps ai-je une réponse ?', a: `Une réponse vous est apportée ${SITE.responseDelay} pour discuter de votre projet.` },
+      { q: 'Que dois-je préparer pour demander un devis ?', a: 'Décrivez votre projet : nature des travaux, commune, dimensions approximatives, matériaux souhaités, délai et budget si vous en avez un. Des photos aident beaucoup. Pour un chiffrage définitif, une visite sur place reste nécessaire.' },
+      { q: 'Quelles informations un devis doit-il contenir ?', a: 'Un devis doit notamment indiquer l\'identité complète de l\'entreprise, la description détaillée des travaux, le prix de chaque poste, la TVA, le délai et la durée de validité. Avant de signer, demandez aussi l\'attestation d\'assurance décennale. Notre guide pour bien choisir un artisan détaille ces points.' },
+    ],
+  },
+  {
+    title: 'Les garanties',
+    items: [
+      { q: 'BR 16 BATIMENT a-t-elle une assurance décennale ?', a: 'Oui. L\'entreprise est couverte par une assurance responsabilité civile professionnelle et décennale. Les références de l\'assurance sont communiquées sur demande. Vérifiez toujours que l\'attestation couvre bien les travaux prévus : c\'est valable pour n\'importe quel artisan.' },
+      { q: 'BR 16 BATIMENT est-elle certifiée RGE ?', a: 'Non. L\'entreprise ne figure pas à ce jour dans l\'annuaire officiel des professionnels RGE (vérification du 30 octobre 2026). Or MaPrimeRénov\', les primes CEE et l\'éco-prêt à taux zéro exigent en principe une entreprise RGE. Si ces aides sont importantes pour votre projet, signalez-le dès le premier contact.' },
+      { q: 'Quelles garanties s\'appliquent à des travaux ?', a: 'Trois garanties légales encadrent la construction : la garantie de parfait achèvement pendant un an, la garantie biennale de bon fonctionnement pendant deux ans et la garantie décennale pendant dix ans, à compter de la réception des travaux.' },
+    ],
+  },
+  {
+    title: 'La zone d\'intervention',
+    items: [
+      { q: 'Dans quelles communes intervenez-vous ?', a: `Dans toute la Charente, notamment à Angoulême (${km('angouleme')} km de route), Barbezieux-Saint-Hilaire (${km('barbezieux-saint-hilaire')} km), Châteauneuf-sur-Charente (${km('chateauneuf-sur-charente')} km), Jarnac (${km('jarnac')} km) et Cognac (${km('cognac')} km). Les déplacements en Charente-Maritime et en Dordogne sont possibles.` },
+      { q: 'Vous déplacez-vous en dehors de la Charente ?', a: 'Oui, en Charente-Maritime et en Dordogne, sur demande.' },
+    ],
+  },
+  {
+    title: 'Les travaux',
+    items: [
+      { q: 'Quels types de travaux réalisez-vous ?', a: 'Charpente, couverture, nettoyage de toiture, isolation thermique et phonique, aménagement de combles, plaquisterie, menuiserie en PVC, aluminium et bois, pose de cuisines, placards et parquets flottants, ossature bois, bardage et rénovation.' },
+      { q: 'Travaillez-vous pour les particuliers ?', a: 'Oui. Depuis 2024, BR 16 BATIMENT a renforcé son engagement auprès des particuliers pour concrétiser leurs projets, en neuf comme en rénovation.' },
+      { q: 'Réalisez-vous l\'électricité et la plomberie ?', a: 'Ces lots ne font pas partie des prestations de l\'entreprise. Ils sont à confier à des artisans spécialisés, et les interventions sont coordonnées avec eux.' },
+      { q: 'Y a-t-il des termites en Charente ?', a: "L'arrêté préfectoral du 24 juillet 2026 considère la totalité du département comme contaminée ou susceptible de l'être à court terme. Toute transaction immobilière doit donc s'accompagner d'un état parasitaire de moins de 6 mois, et la présence de termites se déclare en mairie." },
+      { q: 'Faut-il une autorisation pour mes travaux ?', a: 'Cela dépend : changer l\'aspect extérieur d\'une maison ou créer de la surface impose en général une déclaration préalable ou un permis de construire. Dans un secteur protégé, l\'avis de l\'Architecte des Bâtiments de France peut s\'ajouter. Votre mairie reste la référence, et les guides détaillent les cas les plus courants.' },
+      { q: 'Dans quel ordre rénover une maison ?', a: 'On commence par mettre la maison hors d\'eau et hors d\'air : toiture, charpente et menuiseries. Viennent ensuite les réseaux, l\'isolation, les cloisons et les plafonds, puis les finitions.' },
+    ],
+  },
+];
+---
+<Base
+  title="Questions fréquentes sur nos travaux | BR 16 BATIMENT"
+  description="Devis, assurance décennale, RGE, zone d'intervention, travaux réalisés : toutes les réponses sur BR 16 BATIMENT, artisan du bâtiment à Champagne-Vigny (16)."
+  crumbs={crumbs}
+>
+  <PageHero
+    crumbs={crumbs}
+    kicker="Questions fréquentes"
+    h1="Les réponses, sans détour."
+    answer="Qui est BR 16 BATIMENT, où intervient l'entreprise, ce que couvrent ses garanties et comment demander un devis : cette page réunit les questions qu'on nous pose le plus souvent, avec des réponses vérifiables."
+  />
+
+  {groups.map((g, i) => (
+    <section class:list={[i % 2 ? 's-white' : 's-paper', 'section']}>
+      <div class="wrap narrow"><Faq items={g.items} title={g.title} /></div>
+    </section>
+  ))}
+
+  <Cta title="Votre question n'est pas dans la liste ?" />
+</Base>
+
+<style>
+  .narrow { max-width: 64rem; }
+</style>

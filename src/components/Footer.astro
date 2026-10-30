@@ -1,0 +1,76 @@
+---
+import { Picture } from 'astro:assets';
+import logo from '../assets/logo.png';
+import geo from '../data/geo.json';
+import { SERVICES, SITE } from '../data/site';
+
+const year = new Date().getFullYear();
+const zones = [...geo.communes].sort((a, b) => b.population - a.population).slice(0, 8);
+---
+<footer class="site-footer s-ink">
+  <div class="wrap grid">
+    <div class="id">
+      <Picture src={logo} formats={['avif', 'webp']} width={220} alt="Logo BR 16 BATIMENT, depuis 2017 : charpente, couverture, isolation, plâtrerie et menuiserie" loading="lazy" />
+      <address>
+        <strong>{SITE.name}</strong><br />
+        {SITE.address.street}<br />
+        {SITE.address.postalCode} {SITE.address.city}, {SITE.address.department}<br />
+        <a href={SITE.phoneHref}>{SITE.phone}</a><br />
+        <a href={`mailto:${SITE.email}`}>{SITE.email}</a>
+      </address>
+      <p class="hours">{SITE.hours.text}</p>
+    </div>
+
+    <nav aria-label="Services">
+      <p class="label label--accent">Services</p>
+      <ul>
+        <li><a href="/services">Tous les services</a></li>
+        {SERVICES.map((s) => <li><a href={`/services/${s.slug}`}>{s.label}</a></li>)}
+      </ul>
+    </nav>
+
+    <nav aria-label="Zone d'intervention">
+      <p class="label label--accent">Zone d'intervention</p>
+      <ul>
+        <li><a href="/zone-intervention">Toute la zone</a></li>
+        {zones.map((c) => <li><a href={`/zone-intervention/${c.slug}`}>{c.name}</a></li>)}
+        <li><a href="/zone-intervention/charente-maritime">Charente-Maritime</a></li>
+        <li><a href="/zone-intervention/dordogne">Dordogne</a></li>
+      </ul>
+    </nav>
+
+    <nav aria-label="Informations">
+      <p class="label label--accent">Informations</p>
+      <ul>
+        <li><a href="/guides">Guides travaux</a></li>
+        <li><a href="/faq">Questions fréquentes</a></li>
+        <li><a href="/a-propos">À propos</a></li>
+        <li><a href="/contact">Contact et devis</a></li>
+        <li><a href="/mentions-legales">Mentions légales</a></li>
+        <li><a href="/politique-confidentialite">Politique de confidentialité</a></li>
+      </ul>
+    </nav>
+  </div>
+
+  <div class="wrap bottom">
+    <p>© {year} {SITE.name}. {SITE.legal.form}, {SITE.legal.rcs}. SIRET {SITE.legal.siret}.</p>
+    <p>{SITE.credit}</p>
+  </div>
+</footer>
+
+<style>
+  .site-footer { padding-block: clamp(3rem, 2rem + 4vw, 6rem) 1.5rem; font-size: var(--fs-s); }
+  .grid { display: grid; gap: 2.5rem 2rem; grid-template-columns: 1fr 1fr; }
+  .id { grid-column: 1 / -1; display: grid; gap: 1rem; }
+  .id :global(img) { width: 13.75rem; height: auto; }
+  address { font-style: normal; line-height: 1.75; }
+  .hours { color: var(--muted); }
+  nav ul { list-style: none; padding: 0; margin: 0.7rem 0 0; display: grid; gap: 0.2rem; }
+  nav a { display: inline-block; padding-block: 0.28rem; text-decoration: none; background: linear-gradient(var(--yellow), var(--yellow)) left bottom / 0 2px no-repeat; transition: background-size 0.3s var(--ease-out); }
+  nav a:hover { background-size: 100% 2px; }
+  .bottom { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 0.5rem 2rem; margin-top: 3rem; padding-top: 1.25rem; border-top: 1px solid var(--line); color: var(--muted); font-size: var(--fs-xs); }
+  @media (min-width: 60rem) {
+    .grid { grid-template-columns: 1.4fr 1fr 1fr 1fr; }
+    .id { grid-column: auto; }
+  }
+</style>

@@ -1,0 +1,279 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import CharenteMap from '../components/CharenteMap.astro';
+import Cote from '../components/Cote.astro';
+import Cta from '../components/Cta.astro';
+import Faq from '../components/Faq.astro';
+import House from '../components/House.astro';
+import Truss from '../components/Truss.astro';
+import { SERVICES, SITE, yearsSince } from '../data/site';
+import geo from '../data/geo.json';
+
+const guides = (await getCollection('guides')).sort((a, b) => b.data.updated.valueOf() - a.data.updated.valueOf()).slice(0, 6);
+const km = (slug: string) => geo.communes.find((c) => c.slug === slug)?.km;
+
+const facts = [
+  ['Dirigeant', `${SITE.owner}, président`],
+  ['Siège', `${SITE.address.street}, ${SITE.address.postalCode} ${SITE.address.city}`],
+  ['Téléphone', SITE.phone],
+  ['Horaires', SITE.hours.text],
+  ['Zone', `Toute la Charente, Charente-Maritime et Dordogne`],
+  ['Entreprise', `SAS, SIRET ${SITE.legal.siret}`],
+];
+
+const method = [
+  { n: '01', title: 'Étude et devis', text: 'Analyse de votre projet et établissement d\'un devis détaillé, gratuit.' },
+  { n: '02', title: 'Conception', text: 'Plans techniques et choix des matériaux adaptés à vos besoins.' },
+  { n: '03', title: 'Montage', text: 'Réalisation sur place, dans le respect des normes en vigueur.' },
+];
+
+const faq = [
+  { q: 'Où intervient BR 16 BATIMENT ?', a: `L'entreprise est basée à Champagne-Vigny et intervient dans toute la Charente, notamment à Angoulême (${km('angouleme')} km de route), Barbezieux-Saint-Hilaire (${km('barbezieux-saint-hilaire')} km) et Cognac (${km('cognac')} km). Les déplacements en Charente-Maritime et en Dordogne sont possibles.` },
+  { q: 'Le devis est-il gratuit ?', a: `Oui. Vous pouvez demander un devis gratuit et sans engagement au ${SITE.phone} ou avec le formulaire de contact. Une réponse vous est apportée ${SITE.responseDelay}.` },
+  { q: 'L\'entreprise a-t-elle une assurance décennale ?', a: 'Oui. BR 16 BATIMENT est couverte par une assurance responsabilité civile professionnelle et décennale. Les références de l\'assurance sont communiquées sur demande.' },
+  { q: 'Quels travaux sont réalisés ?', a: `Charpente, couverture, nettoyage de toiture, isolation, aménagement de combles, plaquisterie, menuiserie, aménagement intérieur, ossature bois, bardage et rénovation, en neuf comme sur l'existant.` },
+  { q: 'Depuis quand l\'entreprise existe-t-elle ?', a: `L'activité de BR 16 BATIMENT a été créée le 10 novembre 2017 à Champagne-Vigny et se poursuit depuis novembre 2025 sous la forme d'une SAS. Raphaël Bardan, titulaire d'un bac professionnel menuiserie obtenu en 1999, travaille dans le second œuvre depuis 2001, soit plus de ${yearsSince(2001) - 1} ans de métier.` },
+];
+---
+<Base
+  title="Charpentier couvreur en Charente (16) | BR 16 BATIMENT"
+  description="Charpente, couverture, isolation, plaquisterie et rénovation en Charente. BR 16 BATIMENT, artisan à Champagne-Vigny. Devis gratuit au 06 67 11 67 60."
+>
+  <section class="hero s-dark">
+    <div class="hero__grid" aria-hidden="true"></div>
+    <div class="wrap hero__inner">
+      <p class="label label--accent hero__kicker">{SITE.name} · {SITE.address.city} (16)</p>
+      <h1 class="hero__title">
+        <span class="line" style="--i:0"><span>Charpente,</span></span>
+        <span class="line" style="--i:1"><span>couverture</span></span>
+        <span class="line" style="--i:2"><span>et rénovation</span></span>
+        <span class="line" style="--i:3"><span class="accent">en Charente.</span></span>
+      </h1>
+      <div class="hero__visual"><Truss class="hero__truss" /></div>
+      <div class="hero__foot">
+        <p class="lede">De la conception à la réalisation, je prends en charge vos travaux de charpente et de second œuvre, en neuf comme en rénovation.</p>
+        <div class="btn-row">
+          <a class="btn" href="/contact">Demander un devis gratuit <span class="arrow" aria-hidden="true">→</span></a>
+          <a class="btn btn--ghost" href={SITE.phoneHref}>{SITE.phone}</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="marquee s-yellow" aria-hidden="true">
+    <div class="marquee__track">
+      {[0, 1].map(() => (
+        <div class="marquee__group">
+          {SERVICES.map((s) => (<span>{s.label}<i class="diamond"></i></span>))}
+        </div>
+      ))}
+    </div>
+  </div>
+
+  <section class="who s-paper">
+    <div class="wrap who__grid">
+      <div class="who__text">
+        <p class="label">Qui sommes-nous ?</p>
+        <h2>Une seule entreprise, du faîtage au parquet.</h2>
+        <p data-reveal>
+          <strong>BR 16 BATIMENT est une entreprise artisanale du bâtiment installée à Champagne-Vigny, dans le sud de la Charente, et dirigée par Raphaël Bardan.</strong>
+          Elle réalise la charpente, la couverture, le nettoyage de toiture, l'isolation, l'aménagement de combles, la plaquisterie, la menuiserie, l'aménagement intérieur, l'ossature bois, le bardage et la rénovation.
+          L'activité a été créée en 2017 ; Raphaël Bardan travaille sur les chantiers depuis 2001, après un bac professionnel menuiserie obtenu en 1999.
+          L'entreprise intervient dans toute la Charente, notamment à Angoulême, Barbezieux-Saint-Hilaire et Cognac, ainsi qu'en Charente-Maritime et en Dordogne.
+          Le devis est gratuit et les travaux sont couverts par une assurance décennale.
+        </p>
+        <a class="link-arrow" href="/a-propos">Découvrir le parcours de Raphaël <span aria-hidden="true">→</span></a>
+      </div>
+      <dl class="who__facts" data-reveal style="--d:.1s">
+        {facts.map(([k, v]) => (
+          <div><dt class="label">{k}</dt><dd>{v}</dd></div>
+        ))}
+      </dl>
+    </div>
+  </section>
+
+  <section class="build s-dark" id="metiers">
+    <div class="wrap build__head">
+      <p class="label label--accent">La maison en coupe</p>
+      <h2 class="h1">Tous les métiers d'une maison, sous le même toit.</h2>
+    </div>
+    <div class="wrap build__grid">
+      <div class="build__sticky"><House /></div>
+      <ol class="build__steps">
+        {SERVICES.map((s, i) => (
+          <li class="step" data-step={s.slug}>
+            <span class="label label--accent">{String(i + 1).padStart(2, '0')}</span>
+            <h3><a href={`/services/${s.slug}`}>{s.label}</a></h3>
+            <p>{s.short}</p>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <section class="method s-white section">
+    <div class="wrap">
+      <Cote left="Ma méthode" right="3 étapes" />
+      <h2 class="h1 method__title">Un projet clair, de l'étude au montage.</h2>
+      <div class="method__rail">
+        <div class="method__line" aria-hidden="true"></div>
+        <ol class="method__steps">
+          {method.map((m, i) => (
+            <li data-reveal style={`--d:${i * 0.1}s`}>
+              <span class="method__n display">{m.n}</span>
+              <h3>{m.title}</h3>
+              <p>{m.text}</p>
+            </li>
+          ))}
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <section class="zone s-ink section">
+    <div class="wrap zone__grid">
+      <div class="zone__text">
+        <p class="label label--accent">Zone d'intervention</p>
+        <h2 class="h1">Basé à Champagne-Vigny, présent dans toute la Charente.</h2>
+        <p class="lede">Angoulême est à {km('angouleme')} km de route, Barbezieux à {km('barbezieux-saint-hilaire')} km, Cognac à {km('cognac')} km. Charente-Maritime et Dordogne sur demande.</p>
+        <a class="btn" href="/zone-intervention">Voir toutes les communes <span class="arrow" aria-hidden="true">→</span></a>
+      </div>
+      <CharenteMap class="zone__map" />
+    </div>
+  </section>
+
+  {guides.length > 0 && (
+    <section class="guides s-paper section">
+      <div class="wrap">
+        <Cote left="Guides travaux" right="Prix, règles, conseils" />
+        <h2 class="h1 guides__title">Avant de signer un devis, renseignez-vous.</h2>
+        <ul class="guides__list">
+          {guides.map((g, i) => (
+            <li data-reveal style={`--d:${(i % 3) * 0.08}s`}>
+              <a href={`/guides/${g.id}`}>
+                <span class="label">{g.data.label}</span>
+                <h3>{g.data.h1}</h3>
+                <span class="guides__go" aria-hidden="true">→</span>
+              </a>
+            </li>
+          ))}
+        </ul>
+        <a class="link-arrow" href="/guides">Tous les guides <span aria-hidden="true">→</span></a>
+      </div>
+    </section>
+  )}
+
+  <section class="s-white section">
+    <div class="wrap faq-wrap"><Faq items={faq} /></div>
+  </section>
+
+  <Cta />
+</Base>
+
+<script src="../scripts/home.ts"></script>
+
+<style>
+  /* Héros */
+  .hero { position: relative; overflow: clip; min-height: calc(100svh - var(--header-h)); display: flex; }
+  .hero__grid { position: absolute; inset: 0; background-image: linear-gradient(var(--paper-06) 1px, transparent 1px), linear-gradient(90deg, var(--paper-06) 1px, transparent 1px); background-size: clamp(3rem, 8.33vw, 8rem) clamp(3rem, 8.33vw, 8rem); mask-image: linear-gradient(to bottom, var(--ink) 40%, transparent); }
+  .hero__inner { position: relative; display: grid; align-content: space-between; gap: clamp(1.5rem, 1rem + 2vw, 3rem); padding-block: clamp(1.5rem, 1rem + 2.5vw, 3.5rem); }
+  .hero__title { font-size: var(--fs-hero); line-height: 0.9; letter-spacing: -0.02em; }
+  .line { display: block; overflow: clip; overflow-clip-margin: 0.04em; padding-bottom: 0.09em; margin-bottom: -0.09em; }
+  .line > span { display: block; }
+  .accent { color: var(--yellow); }
+  .hero__visual { margin-inline: calc(var(--gutter) * -0.4); }
+  .hero__foot { display: grid; gap: 1.5rem; align-items: end; }
+  @media (prefers-reduced-motion: no-preference) {
+    .line > span { animation: rise 1s var(--ease-out) both; animation-delay: calc(var(--i) * 80ms + 80ms); }
+    .hero__kicker, .hero__foot { animation: fade 0.8s ease 0.55s both; }
+  }
+  @keyframes rise { from { transform: translateY(105%); } }
+  @keyframes fade { from { opacity: 0; transform: translateY(0.6rem); } }
+
+  @media (min-width: 60rem) {
+    .hero__title { position: relative; z-index: 1; }
+    .line { white-space: nowrap; }
+    .hero__visual { position: absolute; right: calc(var(--gutter) * -1); top: 4%; width: min(58%, 60rem); margin: 0; }
+    .hero__foot { grid-template-columns: minmax(0, 1fr) auto; }
+  }
+
+  /* Bandeau */
+  .marquee { position: relative; z-index: 2; overflow: clip; padding-block: 0.85rem; border-block: 2px solid var(--anthracite); }
+  .marquee__track { display: flex; width: max-content; animation: slide 42s linear infinite; }
+  .marquee__track.is-driven { animation: none; }
+  .marquee__group { display: flex; flex: none; }
+  .marquee__group span { display: inline-flex; align-items: center; gap: 1.6rem; padding-right: 1.6rem; font-family: var(--font-display), sans-serif; font-weight: 800; font-variation-settings: 'wdth' 75; font-size: var(--fs-xl); line-height: 1; white-space: nowrap; }
+  .marquee .diamond { --accent: var(--anthracite); width: 0.42em; height: 0.42em; }
+  @keyframes slide { to { transform: translateX(-50%); } }
+  @media (prefers-reduced-motion: reduce) { .marquee__track { animation: none; flex-wrap: wrap; width: auto; } .marquee__group:last-child { display: none; } .marquee__group { flex-wrap: wrap; } }
+
+  /* Qui sommes-nous */
+  .who { padding-block: var(--section); }
+  .who__grid { display: grid; gap: clamp(2.5rem, 2rem + 3vw, 6rem); }
+  .who__text { display: grid; gap: 1.25rem; justify-items: start; }
+  .who__text p:not(.label) { max-width: 62ch; }
+  .who__text h2 { font-size: var(--fs-2xl); }
+  .who__facts { display: grid; align-content: start; border-top: 2px solid var(--anthracite); }
+  .who__facts > div { display: grid; gap: 0.15rem; padding-block: 0.8rem; border-bottom: 1px solid var(--line); }
+  .who__facts dd { font-weight: 500; }
+  @media (min-width: 60rem) { .who__grid { grid-template-columns: 1.25fr 1fr; } }
+  .link-arrow { display: inline-flex; gap: 0.6em; font-weight: 700; text-decoration: underline; text-decoration-thickness: 3px; }
+  .link-arrow span { transition: translate 0.25s var(--ease-out); }
+  .link-arrow:hover span { translate: 0.3em 0; }
+
+  /* Maison en coupe */
+  .build { padding-block: var(--section) 0; position: relative; }
+  .build__head { display: grid; gap: 1rem; padding-bottom: clamp(2rem, 1rem + 3vw, 4rem); }
+  .build__head h2 { max-width: 18ch; }
+  .build__grid { display: grid; gap: 0; }
+  .build__sticky { position: sticky; top: var(--header-h); z-index: 2; padding-block: 0.75rem; background: var(--anthracite); }
+  .build__sticky :global(.house) { max-height: 38svh; }
+  .build__steps { display: grid; padding-block: 1rem 22svh; }
+  .step { display: grid; gap: 0.35rem; min-height: 46svh; align-content: center; padding-block: 1.25rem; border-top: 1px solid var(--line); transition: opacity 0.4s; }
+  .js .step { opacity: 0.42; }
+  .js .step.is-current { opacity: 1; }
+  .step h3 { font-size: var(--fs-2xl); }
+  .step h3 a { text-decoration: none; background: linear-gradient(var(--yellow), var(--yellow)) left bottom / 0 4px no-repeat; transition: background-size 0.4s var(--ease-out), color 0.2s; }
+  .step h3 a:hover { color: var(--yellow); background-size: 100% 4px; }
+  .step p { color: var(--muted); font-size: var(--fs-l); line-height: 1.3; max-width: 30ch; }
+  @media (min-width: 60rem) {
+    .build__grid { grid-template-columns: 1.45fr 1fr; gap: clamp(2rem, 4vw, 5rem); align-items: start; }
+    .build__sticky { top: calc(var(--header-h) + 3svh); padding: 0; background: none; }
+    .build__sticky :global(.house) { max-height: 86svh; }
+    .step { min-height: 62svh; }
+  }
+
+  /* Méthode */
+  .method__title { margin-block: 1.5rem clamp(2.5rem, 2rem + 3vw, 5rem); max-width: 16ch; }
+  .method__rail { position: relative; }
+  .method__line { display: none; }
+  .method__steps { display: grid; gap: 2.5rem; }
+  .method__n { display: block; font-size: var(--fs-3xl); line-height: 0.9; color: var(--anthracite); }
+  .method__steps h3 { margin-block: 0.75rem 0.4rem; }
+  .method__steps p { color: var(--muted); max-width: 32ch; }
+  @media (min-width: 60rem) {
+    .method__steps { grid-template-columns: repeat(3, 1fr); gap: clamp(2rem, 4vw, 4rem); padding-top: 2rem; }
+    .method__line { display: block; position: absolute; left: 0; right: 0; top: 0; height: 6px; background: var(--yellow); box-shadow: inset 0 0 0 1px var(--anthracite); }
+  }
+
+  /* Zone */
+  .zone__grid { display: grid; gap: 2.5rem; align-items: center; }
+  .zone__text { display: grid; gap: 1.25rem; justify-items: start; }
+  .zone__text :global(.btn) { --btn-shadow: var(--paper-40); }
+  @media (min-width: 60rem) { .zone__grid { grid-template-columns: 1fr 1.25fr; } }
+
+  /* Guides */
+  .guides__title { margin-block: 1.5rem clamp(2rem, 1.5rem + 2vw, 3.5rem); max-width: 18ch; }
+  .guides__list { display: grid; gap: 0; border-top: 2px solid var(--anthracite); margin-bottom: 2rem; }
+  .guides__list a { position: relative; display: grid; gap: 0.5rem; padding: 1.4rem 3rem 1.4rem 0; border-bottom: 1px solid var(--line); text-decoration: none; isolation: isolate; transition: padding 0.35s var(--ease-out); }
+  .guides__list a::before { content: ''; position: absolute; inset: 0; z-index: -1; background: var(--yellow); scale: 0 1; transform-origin: left; transition: scale 0.45s var(--ease-out); }
+  .guides__list a:hover { padding-left: 1rem; }
+  .guides__list a:hover::before { scale: 1 1; }
+  .guides__list a:hover .label { color: var(--anthracite); }
+  .guides__list h3 { font-size: var(--fs-xl); font-variation-settings: 'wdth' 80; }
+  .guides__go { position: absolute; right: 0.75rem; top: 50%; translate: 0 -50%; font-size: var(--fs-xl); transition: translate 0.3s var(--ease-out); }
+  .guides__list a:hover .guides__go { translate: 0.3em -50%; }
+
+  .faq-wrap { max-width: 64rem; }
+</style>

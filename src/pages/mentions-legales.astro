@@ -1,0 +1,65 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import { SITE } from '../data/site';
+
+const crumbs = [{ name: 'Accueil', href: '/' }, { name: 'Mentions légales', href: '/mentions-legales' }];
+---
+<Base
+  title="Mentions légales | BR 16 BATIMENT, Champagne-Vigny"
+  description="Mentions légales de BR 16 BATIMENT, SAS au capital de 38 873 €, RCS Angoulême 994 082 071, à Champagne-Vigny : éditeur, hébergeur, assurance et médiation."
+  crumbs={crumbs}
+  noindex
+>
+  <PageHero crumbs={crumbs} h1="Mentions légales" cta={false} />
+  <section class="s-paper section">
+    <div class="wrap">
+      <div class="prose">
+        <h2>Éditeur du site</h2>
+        <ul>
+          <li><strong>Dénomination sociale :</strong> {SITE.legal.denomination}</li>
+          <li><strong>Forme juridique :</strong> {SITE.legal.form}</li>
+          <li><strong>Capital social :</strong> {SITE.legal.capital}</li>
+          <li><strong>Siège social :</strong> {SITE.address.street}, {SITE.address.postalCode} {SITE.address.city}, France</li>
+          <li><strong>Immatriculation :</strong> {SITE.legal.rcs}, le {SITE.legal.registered}</li>
+          <li><strong>SIRET du siège :</strong> {SITE.legal.siret}</li>
+          <li><strong>Code NAF/APE :</strong> {SITE.legal.naf}</li>
+          <li><strong>TVA intracommunautaire :</strong> {SITE.legal.vat}</li>
+          <li><strong>Président et directeur de la publication :</strong> {SITE.legal.president}</li>
+          <li><strong>Téléphone :</strong> <a href={SITE.phoneHref}>{SITE.phone}</a></li>
+          <li><strong>Email :</strong> <a href={`mailto:${SITE.email}`}>{SITE.email}</a></li>
+        </ul>
+        <p>La société BR 16 BATIMENT prolonge l'activité exercée auparavant en nom propre. {SITE.legal.previous}</p>
+
+        <h2>Hébergement</h2>
+        <p><strong>Netlify, Inc.</strong>, 2325 3rd Street, Suite 296, San Francisco, CA 94107, États-Unis.</p>
+
+        <h2>Réalisation</h2>
+        <p>Théo Multimédia.</p>
+
+        <h2>Propriété intellectuelle</h2>
+        <p>L'ensemble de ce site relève de la législation française et internationale sur le droit d'auteur et la propriété intellectuelle. La reproduction de tout ou partie de ce site sur un support électronique, quel qu'il soit, est interdite sauf autorisation expresse du directeur de la publication.</p>
+
+        <h2>Responsabilité</h2>
+        <p>Les informations de ce site sont aussi précises que possible, mais peuvent contenir des inexactitudes ou des omissions. Si vous constatez une erreur, merci de la signaler par email. Les prix et les règles cités dans les guides sont donnés à titre indicatif : ils sont datés et sourcés, et seul un devis engage l'entreprise.</p>
+
+        <h2>Liens hypertextes</h2>
+        <p>Les liens vers d'autres sites n'engagent pas la responsabilité de BR 16 BATIMENT, qui ne saurait non plus être tenue responsable du contenu des sites renvoyant vers celui-ci.</p>
+
+        <h2>Cookies</h2>
+        <p>Ce site ne dépose aucun cookie de mesure d'audience ni de publicité.</p>
+
+        <h2>Droit applicable</h2>
+        <p>Ce site et ses conditions d'utilisation sont régis par le droit français. En cas de contestation, et après l'échec de toute tentative de résolution amiable, les tribunaux français sont seuls compétents.</p>
+
+        <h2>Assurance professionnelle</h2>
+        <p>BR 16 BATIMENT est couverte par une assurance responsabilité civile professionnelle et décennale, conformément à la réglementation applicable aux activités de construction. Les références de l'assurance sont communiquées sur demande.</p>
+
+        <h2>Médiation</h2>
+        <p>En cas de litige, vous pouvez recourir à la médiation de la consommation. Le médiateur compétent est : <strong>Médiateur de la Fédération Française du Bâtiment</strong>, 33 avenue Kléber, 75784 Paris Cedex 16. Email : mediation@ffbatiment.fr.</p>
+
+        <p class="label">Dernière mise à jour : 30 octobre 2026</p>
+      </div>
+    </div>
+  </section>
+</Base>

@@ -1,0 +1,27 @@
+---
+import Base from '../layouts/Base.astro';
+import { SERVICES, SITE } from '../data/site';
+---
+<Base title="Page introuvable | BR 16 BATIMENT, artisan en Charente" description="Cette page n'existe pas ou plus. Retrouvez les services de BR 16 BATIMENT, artisan du bâtiment à Champagne-Vigny en Charente, ou demandez un devis gratuit." noindex>
+  <section class="nf s-dark">
+    <div class="wrap">
+      <p class="label label--accent">Erreur 404</p>
+      <h1>Cette page n'est pas sur le plan.</h1>
+      <p class="lede">L'adresse n'existe pas ou plus. Voici de quoi retomber sur vos pieds.</p>
+      <div class="btn-row">
+        <a class="btn" href="/">Retour à l'accueil <span class="arrow" aria-hidden="true">→</span></a>
+        <a class="btn btn--ghost" href={SITE.phoneHref}>{SITE.phone}</a>
+      </div>
+      <ul>
+        {SERVICES.map((s) => <li><a href={`/services/${s.slug}`}>{s.label}</a></li>)}
+      </ul>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .nf { padding-block: var(--section); min-height: 70svh; }
+  .wrap { display: grid; gap: 1.5rem; justify-items: start; }
+  h1 { font-size: var(--fs-3xl); max-width: 14ch; }
+  ul { display: flex; flex-wrap: wrap; gap: 0.5rem 1.5rem; margin: 1rem 0 0; padding: 0; list-style: none; }
+</style>

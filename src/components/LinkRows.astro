@@ -1,0 +1,31 @@
+---
+// Liste de liens à grande échelle, avec remplissage jaune au survol.
+interface Item { href: string; title: string; meta?: string; text?: string }
+interface Props { items: Item[]; heading?: 'h2' | 'h3' }
+const { items, heading: H = 'h3' } = Astro.props;
+---
+<ul class="rows">
+  {items.map((item, i) => (
+    <li data-reveal style={`--d:${(i % 4) * 0.05}s`}>
+      <a href={item.href}>
+        {item.meta && <span class="label">{item.meta}</span>}
+        <H class="rows__title">{item.title}</H>
+        {item.text && <p>{item.text}</p>}
+        <span class="rows__go" aria-hidden="true">→</span>
+      </a>
+    </li>
+  ))}
+</ul>
+
+<style>
+  .rows { display: grid; border-top: 2px solid currentColor; }
+  a { position: relative; display: grid; gap: 0.3rem; padding: 1.15rem 3.25rem 1.15rem 0; border-bottom: 1px solid var(--line); text-decoration: none; isolation: isolate; transition: padding 0.35s var(--ease-out), color 0.2s; }
+  a::before { content: ''; position: absolute; inset: 0; z-index: -1; background: var(--yellow); scale: 0 1; transform-origin: left; transition: scale 0.45s var(--ease-out); }
+  a:hover { padding-left: 1rem; color: var(--anthracite); }
+  a:hover::before { scale: 1 1; }
+  a:hover .label, a:hover p { color: var(--anthracite); }
+  .rows__title { font-size: var(--fs-xl); font-variation-settings: 'wdth' 80; }
+  p { color: var(--muted); max-width: 60ch; }
+  .rows__go { position: absolute; right: 0.75rem; top: 50%; translate: 0 -50%; font-size: var(--fs-xl); transition: translate 0.3s var(--ease-out); }
+  a:hover .rows__go { translate: 0.3em -50%; }
+</style>

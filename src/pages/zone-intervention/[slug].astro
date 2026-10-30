@@ -1,0 +1,109 @@
+---
+import { getCollection, render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import CharenteMap from '../../components/CharenteMap.astro';
+import Cta from '../../components/Cta.astro';
+import Faq from '../../components/Faq.astro';
+import PageHero from '../../components/PageHero.astro';
+import Sources from '../../components/Sources.astro';
+import { SERVICES } from '../../data/site';
+import geo from '../../data/geo.json';
+
+export async function getStaticPaths() {
+  const zones = await getCollection('zones');
+  return zones.map((entry) => ({ params: { slug: entry.id }, props: { entry } }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+const d = entry.data;
+const commune = geo.communes.find((c) => c.slug === entry.id);
+
+const crumbs = [
+  { name: 'Accueil', href: '/' },
+  { name: "Zone d'intervention", href: '/zone-intervention' },
+  { name: d.name, href: `/zone-intervention/${entry.id}` },
+];
+
+// Communes voisines : les plus proches à vol d'oiseau.
+const dist = (a: number[], b: number[]) => Math.hypot(a[0] - b[0], a[1] - b[1]);
+const neighbours = commune
+  ? geo.communes.filter((c) => c.slug !== commune.slug).sort((a, b) => dist(a.xy, commune.xy) - dist(b.xy, commune.xy)).slice(0, 4)
+  : geo.communes.slice(0, 4);
+
+const facts = commune
+  ? [
+      ['Depuis Champagne-Vigny', `${commune.km} km de route`],
+      ['Temps de trajet', `Environ ${commune.minutes} minutes`],
+      ['Code postal', commune.postalCode],
+      ['Intercommunalité', (commune.epci ?? '').replace(/^CA /, "Communauté d'agglomération ").replace(/^CC /, 'Communauté de communes ')],
+    ]
+  : [];
+---
+<Base title={d.title} description={d.description} crumbs={crumbs} modified={d.updated}>
+  <PageHero crumbs={crumbs} kicker={d.kind === 'commune' ? "Zone d'intervention · Charente" : "Zone d'intervention · Département voisin"} h1={d.h1} answer={d.answer}>
+    <CharenteMap slot="visual" active={entry.id} />
+  </PageHero>
+
+  {facts.length > 0 && (
+    <section class="facts s-yellow">
+      <dl class="wrap">
+        {facts.map(([k, v], i) => (
+          <div data-reveal style={`--d:${i * 0.05}s`}><dt class="label">{k}</dt><dd class="display">{v}</dd></div>
+        ))}
+      </dl>
+    </section>
+  )}
+
+  <section class="s-paper section">
+    <div class="wrap body">
+      <article class="prose"><Content /></article>
+      <aside class="side">
+        <div>
+          <h2 class="label">Travaux réalisés sur place</h2>
+          <ul class="side__list">
+            {SERVICES.map((s) => <li><a href={`/services/${s.slug}`}>{s.label}</a></li>)}
+          </ul>
+        </div>
+        <div>
+          <h2 class="label">À proximité</h2>
+          <ul class="side__list">
+            {neighbours.map((c) => <li><a href={`/zone-intervention/${c.slug}`}>{c.name}</a></li>)}
+          </ul>
+          <a class="more" href="/zone-intervention">Toute la zone d'intervention</a>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  {d.faq.length > 0 && (
+    <section class="s-white section">
+      <div class="wrap narrow"><Faq items={d.faq} title={`Travaux à ${d.name} : vos questions`} /></div>
+    </section>
+  )}
+
+  {d.sources.length > 0 && (
+    <section class="s-white src">
+      <div class="wrap narrow"><Sources items={d.sources} /></div>
+    </section>
+  )}
+
+  <Cta title={`Un chantier à ${d.name} ?`} />
+</Base>
+
+<style>
+  .facts { padding-block: clamp(1.75rem, 1.5rem + 1.5vw, 3rem); }
+  .facts dl { display: grid; gap: 1.25rem 2rem; grid-template-columns: 1fr 1fr; }
+  .facts dd { font-size: var(--fs-l); line-height: 1.1; margin-top: 0.25rem; }
+  @media (min-width: 60rem) { .facts dl { grid-template-columns: repeat(4, 1fr); } }
+  .body { display: grid; gap: 3rem; }
+  .side { display: grid; gap: 2.25rem; align-content: start; }
+  .side__list { margin-top: 0.7rem; display: grid; grid-template-columns: 1fr 1fr; gap: 0.45rem 1rem; border-top: 2px solid var(--anthracite); padding-top: 0.8rem; font-size: var(--fs-s); font-weight: 500; }
+  .more { display: inline-block; margin-top: 0.8rem; font-weight: 700; }
+  @media (min-width: 60rem) {
+    .body { grid-template-columns: minmax(0, 1fr) 21rem; gap: clamp(3rem, 6vw, 7rem); }
+    .side { position: sticky; top: calc(var(--header-h) + 1.5rem); }
+  }
+  .narrow { max-width: 64rem; }
+  .src { padding-block: 0 var(--section); }
+</style>

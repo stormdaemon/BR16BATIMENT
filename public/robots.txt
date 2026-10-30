@@ -32,4 +32,4 @@ Allow: /
 User-agent: Googlebot
 Allow: /
 
-Sitemap: https://br16batiment.com/sitemap.xml
+Sitemap: https://br16batiment.com/sitemap-index.xml

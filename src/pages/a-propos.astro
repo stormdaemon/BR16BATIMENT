@@ -1,0 +1,108 @@
+---
+import Base from '../layouts/Base.astro';
+import Cote from '../components/Cote.astro';
+import Cta from '../components/Cta.astro';
+import PageHero from '../components/PageHero.astro';
+import { SITE, TIMELINE, yearsSince } from '../data/site';
+
+const crumbs = [{ name: 'Accueil', href: '/' }, { name: 'À propos', href: '/a-propos' }];
+const years = yearsSince(2001);
+
+const values = [
+  { title: 'Expertise', text: `Plus de ${years - 1} ans d'expérience dans les travaux de second œuvre.` },
+  { title: 'Qualité', text: 'Des matériaux choisis et des techniques éprouvées, pour des réalisations durables.' },
+  { title: 'Passion', text: 'L\'artisanat au cœur de chaque projet.' },
+  { title: 'Modernité', text: 'Le savoir-faire traditionnel, adapté aux normes successives et aux techniques actuelles.' },
+];
+
+const guarantees = [
+  { title: 'Assurance décennale', text: 'Vos travaux couverts pendant 10 ans. Les références de l\'assurance sont communiquées sur demande.' },
+  { title: 'Devis gratuit', text: 'Une étude personnalisée, sans engagement.' },
+  { title: `Réponse ${SITE.responseDelay}`, text: 'Chaque demande reçoit une réponse rapide pour parler de votre projet.' },
+  { title: 'Entreprise identifiée', text: `${SITE.legal.form}, ${SITE.legal.rcs}, SIRET ${SITE.legal.siret}.` },
+];
+---
+<Base
+  title="Raphaël Bardan, artisan du bâtiment en Charente | BR 16"
+  description="Bac pro menuiserie en 1999, sur les chantiers depuis 2001, BR 16 BATIMENT créée en 2017 : le parcours de Raphaël Bardan, artisan à Champagne-Vigny (16)."
+  crumbs={crumbs}
+>
+  <PageHero
+    crumbs={crumbs}
+    kicker="À propos"
+    h1="Raphaël Bardan, plus de vingt ans de bâtiment en Charente."
+    answer={`Raphaël Bardan dirige BR 16 BATIMENT à Champagne-Vigny (16). Titulaire d'un bac professionnel menuiserie obtenu en 1999, il travaille depuis 2001 dans le second œuvre : menuiserie, charpente, couverture, plâtrerie, isolation et ossature bois. Il a créé l'entreprise le 10 novembre 2017, devenue une SAS en novembre 2025.`}
+  />
+
+  <section class="s-paper section">
+    <div class="wrap story">
+      <h2 class="h1">Une formation au bois, une expérience de terrain.</h2>
+      <div class="prose" data-reveal>
+        <p>Après mon baccalauréat professionnel en menuiserie, obtenu en 1999, je me suis formé sur le terrain. J'y ai acquis une expérience solide dans la menuiserie, la charpente, la couverture, la plâtrerie, l'isolation et l'ossature bois.</p>
+        <p>Depuis 2013, je mets cette expertise au service de vos projets de second œuvre. En 2017, j'ai créé BR 16 BATIMENT à Champagne-Vigny, dans le sud de la Charente. Le « 16 » du nom, c'est celui du département.</p>
+        <p>J'ai su m'adapter aux normes successives pour faire évoluer votre habitat, ce qui me permet de proposer à chaque client une solution sur mesure. Chaque projet est une nouvelle aventure, et une occasion de donner vie à vos idées.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="beam s-dark section">
+    <div class="wrap">
+      <p class="label label--accent">Mon parcours</p>
+      <ol class="beam__list">
+        {TIMELINE.map((t, i) => (
+          <li data-reveal style={`--d:${(i % 2) * 0.06}s`}>
+            <span class="beam__year display">{t.year}</span>
+            <div>
+              <h3>{t.title}</h3>
+              <p>{t.text}</p>
+            </div>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <section class="s-yellow section">
+    <div class="wrap">
+      <Cote left="Mes valeurs" />
+      <ul class="cards">
+        {values.map((v, i) => (
+          <li data-reveal style={`--d:${i * 0.06}s`}>
+            <h3>{v.title}</h3>
+            <p>{v.text}</p>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <section class="s-paper section">
+    <div class="wrap">
+      <Cote left="Mes garanties" />
+      <ul class="cards">
+        {guarantees.map((v, i) => (
+          <li data-reveal style={`--d:${i * 0.06}s`}>
+            <h3>{v.title}</h3>
+            <p>{v.text}</p>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <Cta />
+</Base>
+
+<style>
+  .story { display: grid; gap: 2rem; }
+  @media (min-width: 60rem) { .story { grid-template-columns: 1fr 1fr; gap: clamp(3rem, 6vw, 7rem); } }
+  .beam__list { display: grid; margin-top: 1.5rem; border-top: 2px solid var(--yellow); }
+  .beam__list li { display: grid; gap: 0.5rem 2rem; padding-block: 1.35rem; border-bottom: 1px solid var(--line); }
+  .beam__year { font-size: var(--fs-2xl); line-height: 1; color: var(--yellow); }
+  .beam__list p { color: var(--muted); margin-top: 0.3rem; max-width: 56ch; }
+  @media (min-width: 48rem) { .beam__list li { grid-template-columns: 13rem 1fr; align-items: baseline; } }
+  .cards { display: grid; gap: 1.75rem 2.5rem; margin-top: 1.75rem; }
+  .cards li { display: grid; gap: 0.5rem; align-content: start; padding-top: 0.9rem; border-top: 2px solid currentColor; }
+  @media (min-width: 48rem) { .cards { grid-template-columns: repeat(2, 1fr); } }
+  @media (min-width: 72rem) { .cards { grid-template-columns: repeat(4, 1fr); } }
+</style>

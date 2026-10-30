@@ -1,0 +1,75 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import { SITE } from '../data/site';
+
+const crumbs = [{ name: 'Accueil', href: '/' }, { name: 'Politique de confidentialité', href: '/politique-confidentialite' }];
+---
+<Base
+  title="Politique de confidentialité | BR 16 BATIMENT"
+  description="Comment BR 16 BATIMENT protège vos données personnelles : données du formulaire de contact, destinataires, durées de conservation et droits RGPD."
+  crumbs={crumbs}
+  noindex
+>
+  <PageHero crumbs={crumbs} h1="Politique de confidentialité" cta={false} answer="BR 16 BATIMENT s'engage à protéger vos données personnelles, conformément au Règlement général sur la protection des données (RGPD)." />
+  <section class="s-paper section">
+    <div class="wrap">
+      <div class="prose">
+        <h2>1. Responsable du traitement</h2>
+        <p>{SITE.legal.denomination}, {SITE.legal.form}, représentée par {SITE.legal.president}, président. {SITE.address.street}, {SITE.address.postalCode} {SITE.address.city}. Email : <a href={`mailto:${SITE.email}`}>{SITE.email}</a>. SIRET : {SITE.legal.siret}.</p>
+
+        <h2>2. Données collectées</h2>
+        <h3>Formulaire de contact</h3>
+        <ul>
+          <li>Nom et prénom</li>
+          <li>Adresse email</li>
+          <li>Numéro de téléphone (facultatif)</li>
+          <li>Type de projet et commune du chantier</li>
+          <li>Description du projet</li>
+        </ul>
+        <h3>Données techniques</h3>
+        <p>Le site n'utilise aucun outil de mesure d'audience. L'hébergeur enregistre des journaux techniques (adresse IP, navigateur, pages demandées) pour assurer le service et sa sécurité.</p>
+
+        <h2>3. Finalités et base légale</h2>
+        <ul>
+          <li><strong>Répondre à vos demandes de contact et de devis :</strong> mesures précontractuelles prises à votre demande.</li>
+          <li><strong>Suivre votre projet :</strong> exécution du contrat.</li>
+          <li><strong>Assurer la sécurité du site :</strong> intérêt légitime.</li>
+          <li><strong>Conserver les documents commerciaux et comptables :</strong> obligation légale.</li>
+        </ul>
+
+        <h2>4. Destinataires</h2>
+        <ul>
+          <li>BR 16 BATIMENT et ses collaborateurs autorisés</li>
+          <li><strong>Formspree, Inc.</strong> (États-Unis) : réception et transmission des messages du formulaire</li>
+          <li><strong>Netlify, Inc.</strong> (États-Unis) : hébergement du site</li>
+          <li>Les autorités compétentes, en cas d'obligation légale</li>
+        </ul>
+        <p>Aucune donnée n'est vendue, louée ou cédée à des fins commerciales. Les polices de caractères sont hébergées sur le site lui-même : aucune donnée n'est transmise à Google à ce titre.</p>
+
+        <h2>5. Durée de conservation</h2>
+        <ul>
+          <li><strong>Prospects et contacts :</strong> 3 ans après le dernier contact</li>
+          <li><strong>Clients :</strong> 10 ans après la fin du contrat (obligation légale)</li>
+        </ul>
+
+        <h2>6. Vos droits</h2>
+        <p>Vous disposez des droits d'accès, de rectification, d'effacement, de limitation, de portabilité et d'opposition. Pour les exercer, écrivez à <a href={`mailto:${SITE.email}`}>{SITE.email}</a> en précisant votre demande.</p>
+
+        <h2>7. Sécurité</h2>
+        <p>Des mesures techniques et organisationnelles adaptées protègent vos données contre l'accès non autorisé, la modification, la divulgation et la perte.</p>
+
+        <h2>8. Cookies</h2>
+        <p>Ce site ne dépose aucun cookie de mesure d'audience ni de publicité.</p>
+
+        <h2>9. Transferts hors de l'Union européenne</h2>
+        <p>Formspree et Netlify sont établis aux États-Unis. Ces transferts sont encadrés par des garanties appropriées, telles que les clauses contractuelles types de la Commission européenne.</p>
+
+        <h2>10. Réclamations</h2>
+        <p>Si vous estimez que le traitement de vos données n'est pas conforme au RGPD, vous pouvez saisir la <strong>CNIL</strong>, 3 place de Fontenoy, TSA 80715, 75334 Paris Cedex 07, <a href="https://www.cnil.fr" rel="noopener">www.cnil.fr</a>.</p>
+
+        <p class="label">Dernière mise à jour : 30 octobre 2026</p>
+      </div>
+    </div>
+  </section>
+</Base>

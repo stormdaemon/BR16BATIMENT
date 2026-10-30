@@ -1,0 +1,34 @@
+---
+// Questions fréquentes en <details> natif : aucune dépendance, contenu présent dans le HTML.
+// Pas de balisage FAQPage : Google a retiré ce résultat enrichi le 7 mai 2026.
+interface Props { items: { q: string; a: string }[]; title?: string; id?: string }
+const { items, title = 'Questions fréquentes', id } = Astro.props;
+---
+{items.length > 0 && (
+  <div class="faq" id={id}>
+    <h2>{title}</h2>
+    <div class="faq__list">
+      {items.map((item) => (
+        <details data-reveal>
+          <summary><h3>{item.q}</h3><span class="diamond" aria-hidden="true"></span></summary>
+          <p>{item.a}</p>
+        </details>
+      ))}
+    </div>
+  </div>
+)}
+
+<style>
+  .faq { display: grid; gap: clamp(1.5rem, 1rem + 2vw, 3rem); }
+  .faq__list { border-top: 2px solid currentColor; }
+  details { border-bottom: 1px solid var(--line); }
+  summary { display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; padding-block: 1.15rem; cursor: pointer; list-style: none; }
+  summary::-webkit-details-marker { display: none; }
+  summary h3 { font-size: var(--fs-l); line-height: 1.15; font-variation-settings: 'wdth' 85; font-weight: 700; letter-spacing: 0; }
+  summary .diamond { --accent: var(--yellow); outline: 1px solid var(--anthracite); transition: rotate 0.35s var(--ease-out), scale 0.35s var(--ease-out); }
+  details[open] summary .diamond { rotate: 225deg; scale: 1.3; }
+  details p { padding-bottom: 1.4rem; max-width: var(--measure); }
+  details::details-content { block-size: 0; overflow: clip; transition: block-size 0.4s var(--ease-out), content-visibility 0.4s allow-discrete; }
+  details[open]::details-content { block-size: auto; }
+  summary:hover h3 { text-decoration: underline; text-decoration-color: var(--yellow); text-decoration-thickness: 3px; text-underline-offset: 0.18em; }
+</style>
