@@ -51,6 +51,11 @@ export const About: React.FC<AboutProps> = () => {
       year: "2024",
       title: "Les particuliers sont à l'honneur",
       description: "Renforcement de notre engagement auprès des particuliers pour concrétiser leurs projets."
+    },
+    {
+      year: "2025",
+      title: "BR 16 BATIMENT devient une société",
+      description: "L'activité se poursuit sous la forme d'une SAS, immatriculée à Angoulême en novembre 2025."
     }
   ];
 
@@ -89,7 +94,7 @@ export const About: React.FC<AboutProps> = () => {
             >
               <img 
                 src={aboutImage} 
-                alt="Raphaël Bardan - Artisan charpentier BR16BATIMENT au travail"
+                alt="Affiche BR 16 BATIMENT : menuiserie, charpente, couverture, isolation et plâtrerie, par Raphaël Bardan"
                 className={styles.aboutImg}
               />
             </motion.div>

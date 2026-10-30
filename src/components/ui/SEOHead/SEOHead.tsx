@@ -14,13 +14,13 @@ export const SEOHead: React.FC<SEOHeadProps> = ({
   title,
   description,
   keywords = "charpentier, charpente, construction, rénovation, artisan, bois, Charente, Champagne-Vigny",
-  ogImage = "/logo.png",
+  ogImage = "/og-image.png",
   ogType = "website",
   canonicalUrl,
   noIndex = false
 }) => {
   const fullTitle = `${title} | BR16BATIMENT - Charpentier professionnel en Charente`;
-  const baseUrl = "https://br16batiment.fr"; // À adapter selon le domaine final
+  const baseUrl = "https://br16batiment.com";
 
   return (
     <>
@@ -56,48 +56,8 @@ export const SEOHead: React.FC<SEOHeadProps> = ({
       <meta name="company" content="BR16BATIMENT" />
       <meta name="geo.region" content="FR-16" />
       <meta name="geo.placename" content="Champagne-Vigny" />
-      <meta name="geo.position" content="45.8167;0.2833" />
-      <meta name="ICBM" content="45.8167, 0.2833" />
-      
-      {/* Données structurées pour l'entreprise locale */}
-      <script type="application/ld+json">
-        {JSON.stringify({
-          "@context": "https://schema.org",
-          "@type": "LocalBusiness",
-          "name": "BR16BATIMENT",
-          "description": "Spécialiste en travaux de charpente et construction bois en Charente",
-          "url": baseUrl,
-          "telephone": "+33",
-          "address": {
-            "@type": "PostalAddress",
-            "streetAddress": "3 Les Vignes de Chez Rullier",
-            "addressLocality": "Champagne-Vigny",
-            "postalCode": "16250",
-            "addressCountry": "FR"
-          },
-          "geo": {
-            "@type": "GeoCoordinates",
-            "latitude": 45.8167,
-            "longitude": 0.2833
-          },
-          "openingHours": "Mo-Fr 08:00-18:00",
-          "priceRange": "€€",
-          "founder": {
-            "@type": "Person",
-            "name": "Raphaël Bardan"
-          },
-          "foundingDate": "2017-11-10",
-          "areaServed": {
-            "@type": "State",
-            "name": "Charente"
-          },
-          "serviceType": "Travaux de charpente",
-          "hasCredential": {
-            "@type": "EducationalOccupationalCredential",
-            "credentialCategory": "Artisan"
-          }
-        })}
-      </script>
+      <meta name="geo.position" content="45.50348;0.03990" />
+      <meta name="ICBM" content="45.50348, 0.03990" />
     </>
   );
 };

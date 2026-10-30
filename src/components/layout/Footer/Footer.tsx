@@ -29,7 +29,7 @@ export const Footer: React.FC<FooterProps> = () => {
               J'apporte expertise, qualité et savoir-faire artisanal pour tous vos projets de construction et rénovation.
             </p>
             <div className={styles.companyInfo}>
-              <p>SIRET: 833 229 727 00015</p>
+              <p>SAS au capital de 38 873 € · SIRET : 994 082 071 00014</p>
               <p>3 Les Vignes de Chez Rullier</p>
               <p>16250 Champagne-Vigny, France</p>
             </div>
@@ -66,8 +66,11 @@ export const Footer: React.FC<FooterProps> = () => {
             <div className={styles.contactInfo}>
               <p>Raphaël Bardan</p>
               <p>Artisan de second œuvre</p>
-              <a href="tel:0667116760" className={styles.contactLink}>
+              <a href="tel:+33667116760" className={styles.contactLink}>
                 06 67 11 67 60
+              </a>
+              <a href="mailto:br16batiment@gmail.com" className={styles.contactLink}>
+                br16batiment@gmail.com
               </a>
             </div>
           </div>

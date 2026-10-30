@@ -20,19 +20,24 @@ export const LegalNotice: React.FC<LegalNoticeProps> = () => {
           <section className={styles.section}>
             <h2 className={styles.sectionTitle}>Identification de l'entreprise</h2>
             <div className={styles.content}>
-              <p><strong>Dénomination sociale :</strong> BR16BATIMENT</p>
-              <p><strong>Forme juridique :</strong> Entrepreneur individuel</p>
-              <p><strong>Dirigeant :</strong> Monsieur Raphaël BARDAN</p>
+              <p><strong>Dénomination sociale :</strong> BR 16 BATIMENT</p>
+              <p><strong>Forme juridique :</strong> Société par actions simplifiée (SAS)</p>
+              <p><strong>Capital social :</strong> 38 873 €</p>
+              <p><strong>Président et directeur de la publication :</strong> Raphaël BARDAN</p>
               <p><strong>Adresse du siège social :</strong><br />
                 3 Les Vignes de Chez Rullier<br />
                 16250 Champagne-Vigny<br />
                 France
               </p>
-              <p><strong>SIREN :</strong> 833 229 727</p>
-              <p><strong>SIRET du siège social :</strong> 833 229 727 00015</p>
-              <p><strong>Code NAF/APE :</strong> 4391A - Travaux de charpente</p>
-              <p><strong>TVA intracommunautaire :</strong> FR66833229727</p>
-              <p><strong>Date de création :</strong> 10 novembre 2017</p>
+              <p><strong>RCS :</strong> Angoulême 994 082 071</p>
+              <p><strong>SIRET du siège social :</strong> 994 082 071 00014</p>
+              <p><strong>Code NAF/APE :</strong> 43.31Z - Travaux de plâtrerie</p>
+              <p><strong>TVA intracommunautaire :</strong> FR43994082071</p>
+              <p><strong>Date d'immatriculation :</strong> 20 novembre 2025</p>
+              <p>
+                La société BR 16 BATIMENT prolonge l'activité exercée depuis le 10 novembre 2017
+                par Raphaël Bardan en entreprise individuelle (SIREN 833 229 727, fermée le 31 octobre 2025).
+              </p>
             </div>
           </section>
 
@@ -113,13 +118,7 @@ export const LegalNotice: React.FC<LegalNoticeProps> = () => {
             <h2 className={styles.sectionTitle}>Cookies</h2>
             <div className={styles.content}>
               <p>
-                Ce site peut utiliser des cookies pour améliorer l'expérience utilisateur. 
-                Les cookies sont de petits fichiers stockés sur votre ordinateur par votre 
-                navigateur web.
-              </p>
-              <p>
-                Vous pouvez configurer votre navigateur pour refuser les cookies, mais 
-                certaines fonctionnalités du site pourraient ne pas fonctionner correctement.
+                Ce site ne dépose aucun cookie de mesure d'audience ni de publicité.
               </p>
             </div>
           </section>
@@ -167,7 +166,7 @@ export const LegalNotice: React.FC<LegalNoticeProps> = () => {
           </section>
 
           <div className={styles.lastUpdate}>
-            <p>Dernière mise à jour : {new Date().toLocaleDateString('fr-FR')}</p>
+            <p>Dernière mise à jour : 30 octobre 2026</p>
           </div>
         </div>
       </main>

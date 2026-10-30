@@ -163,7 +163,7 @@ export const Contact: React.FC<ContactProps> = () => {
                   <h3 className={styles.companyTitle}>BR16BATIMENT</h3>
                   <div className={styles.companyDetails}>
                     <p><strong>Raphaël Bardan</strong> - Artisan</p>
-                    <p>SIRET: 833 229 727 00015</p>
+                    <p>SIRET : 994 082 071 00014</p>
                     <p>Assurance décennale</p>
                     <p>Devis gratuit</p>
                   </div>
@@ -320,7 +320,6 @@ export const Contact: React.FC<ContactProps> = () => {
               </p>
               <div className={styles.mapPlaceholder}>
                 <div className={styles.mapIcon}>🗺️</div>
-                <p>Carte interactive disponible prochainement</p>
                 <p><strong>Zone principale :</strong> Charente (16)</p>
                 <p><strong>Déplacements possibles :</strong> Charente-Maritime, Dordogne</p>
               </div>

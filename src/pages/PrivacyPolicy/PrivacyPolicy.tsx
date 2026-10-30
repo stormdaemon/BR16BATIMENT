@@ -28,10 +28,10 @@ export const PrivacyPolicy: React.FC<PrivacyPolicyProps> = () => {
           <section className={styles.section}>
             <h2 className={styles.sectionTitle}>1. Responsable du traitement</h2>
             <div className={styles.content}>
-              <p><strong>Responsable :</strong> Raphaël BARDAN - BR16BATIMENT</p>
+              <p><strong>Responsable :</strong> BR 16 BATIMENT (SAS), représentée par Raphaël BARDAN, président</p>
               <p><strong>Adresse :</strong> 3 Les Vignes de Chez Rullier, 16250 Champagne-Vigny, France</p>
-              <p><strong>Email :</strong> contact@br16batiment.fr</p>
-              <p><strong>SIRET :</strong> 833 229 727 00015</p>
+              <p><strong>Email :</strong> br16batiment@gmail.com</p>
+              <p><strong>SIRET :</strong> 994 082 071 00014</p>
             </div>
           </section>
 
@@ -47,14 +47,11 @@ export const PrivacyPolicy: React.FC<PrivacyPolicyProps> = () => {
                 <li>Sujet et description du projet</li>
               </ul>
 
-              <h3 className={styles.subTitle}>2.2 Données de navigation</h3>
-              <ul>
-                <li>Adresse IP</li>
-                <li>Type de navigateur</li>
-                <li>Pages visitées</li>
-                <li>Durée de visite</li>
-                <li>Données de géolocalisation approximative</li>
-              </ul>
+              <h3 className={styles.subTitle}>2.2 Données techniques</h3>
+              <p>
+                Le site n'utilise aucun outil de mesure d'audience. L'hébergeur enregistre des journaux
+                techniques (adresse IP, navigateur, pages demandées) pour assurer le service et sa sécurité.
+              </p>
             </div>
           </section>
 
@@ -65,7 +62,7 @@ export const PrivacyPolicy: React.FC<PrivacyPolicyProps> = () => {
               <ul>
                 <li><strong>Répondre à vos demandes :</strong> traitement de vos demandes de devis et de contact</li>
                 <li><strong>Relation commerciale :</strong> suivi de votre projet et communication</li>
-                <li><strong>Amélioration du service :</strong> analyse de l'utilisation du site</li>
+                <li><strong>Sécurité et bon fonctionnement du site :</strong> journaux techniques de l'hébergeur</li>
                 <li><strong>Obligations légales :</strong> conservation des documents commerciaux</li>
               </ul>
             </div>
@@ -78,7 +75,7 @@ export const PrivacyPolicy: React.FC<PrivacyPolicyProps> = () => {
               <ul>
                 <li><strong>Votre consentement :</strong> pour l'envoi de communications commerciales</li>
                 <li><strong>L'exécution d'un contrat :</strong> pour le traitement de vos demandes de devis</li>
-                <li><strong>L'intérêt légitime :</strong> pour l'amélioration de nos services</li>
+                <li><strong>L'intérêt légitime :</strong> pour la sécurité et le bon fonctionnement du site</li>
                 <li><strong>Les obligations légales :</strong> pour la conservation des documents comptables</li>
               </ul>
             </div>
@@ -89,8 +86,10 @@ export const PrivacyPolicy: React.FC<PrivacyPolicyProps> = () => {
             <div className={styles.content}>
               <p>Vos données personnelles sont destinées à :</p>
               <ul>
-                <li>BR16BATIMENT et ses collaborateurs autorisés</li>
-                <li>Nos prestataires techniques (hébergement, maintenance)</li>
+                <li>BR 16 BATIMENT et ses collaborateurs autorisés</li>
+                <li><strong>Formspree, Inc.</strong> (États-Unis) : réception et transmission des messages du formulaire de contact</li>
+                <li><strong>Netlify, Inc.</strong> (États-Unis) : hébergement du site</li>
+                <li><strong>Google</strong> : fourniture des polices de caractères (Google Fonts), qui reçoit à ce titre votre adresse IP</li>
                 <li>Les autorités compétentes en cas d'obligation légale</li>
               </ul>
               <p>
@@ -108,7 +107,6 @@ export const PrivacyPolicy: React.FC<PrivacyPolicyProps> = () => {
                 <li><strong>Données de contact :</strong> 3 ans après le dernier contact</li>
                 <li><strong>Données de prospects :</strong> 3 ans après la collecte</li>
                 <li><strong>Données clients :</strong> 10 ans après la fin du contrat (obligation légale)</li>
-                <li><strong>Données de navigation :</strong> 13 mois maximum</li>
               </ul>
             </div>
           </section>
@@ -128,7 +126,7 @@ export const PrivacyPolicy: React.FC<PrivacyPolicyProps> = () => {
               </ul>
               
               <p>
-                Pour exercer ces droits, contactez-nous à l'adresse : contact@br16batiment.fr 
+                Pour exercer ces droits, contactez-nous à l'adresse : br16batiment@gmail.com
                 en précisant votre demande et en joignant une copie de votre pièce d'identité.
               </p>
             </div>
@@ -157,20 +155,7 @@ export const PrivacyPolicy: React.FC<PrivacyPolicyProps> = () => {
             <h2 className={styles.sectionTitle}>9. Cookies</h2>
             <div className={styles.content}>
               <p>
-                Notre site peut utiliser des cookies pour améliorer votre expérience de navigation. 
-                Les cookies sont de petits fichiers stockés sur votre appareil.
-              </p>
-              
-              <h3 className={styles.subTitle}>Types de cookies utilisés :</h3>
-              <ul>
-                <li><strong>Cookies techniques :</strong> nécessaires au fonctionnement du site</li>
-                <li><strong>Cookies analytiques :</strong> pour mesurer l'audience (anonymisés)</li>
-                <li><strong>Cookies de préférences :</strong> pour mémoriser vos choix</li>
-              </ul>
-              
-              <p>
-                Vous pouvez configurer votre navigateur pour refuser les cookies, 
-                mais certaines fonctionnalités du site pourraient être limitées.
+                Ce site ne dépose aucun cookie de mesure d'audience ni de publicité.
               </p>
             </div>
           </section>
@@ -225,14 +210,14 @@ export const PrivacyPolicy: React.FC<PrivacyPolicyProps> = () => {
                 ou le traitement de vos données personnelles, contactez-nous :
               </p>
               <p>
-                <strong>Email :</strong> contact@br16batiment.fr<br />
+                <strong>Email :</strong> br16batiment@gmail.com<br />
                 <strong>Courrier :</strong> BR16BATIMENT - 3 Les Vignes de Chez Rullier, 16250 Champagne-Vigny
               </p>
             </div>
           </section>
 
           <div className={styles.lastUpdate}>
-            <p>Dernière mise à jour : {new Date().toLocaleDateString('fr-FR')}</p>
+            <p>Dernière mise à jour : 30 octobre 2026</p>
           </div>
         </div>
       </main>
