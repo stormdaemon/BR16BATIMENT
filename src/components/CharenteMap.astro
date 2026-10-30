@@ -48,7 +48,7 @@ const [bx, by] = geo.base.xy;
       </>
     );
     return links
-      ? <a class:list={['commune', { 'is-active': isActive }]} href={`/zone-intervention/${c.slug}`} aria-label={`${c.name}, ${c.km} km de Champagne-Vigny`}>{inner}</a>
+      ? <a class:list={['commune', { 'is-active': isActive }]} href={`/zone-intervention/${c.slug}`} aria-label={`${c.name.includes(p.text) ? c.name : `${p.text}, ${c.name}`}, ${c.km} km de Champagne-Vigny`}>{inner}</a>
       : <g class:list={['commune', { 'is-active': isActive }]}>{inner}</g>;
   })}
 

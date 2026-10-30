@@ -120,6 +120,10 @@ for (const file of htmlFiles) {
   if (/br16batiment\.fr|netlify\.app|contact@br16/.test(html)) fail(page, 'référence à un ancien domaine ou email');
   if (/833 ?229 ?727 ?00015|FR66833229727/.test(html)) fail(page, 'ancien SIRET ou ancienne TVA');
 
+  // Le site parle avec la voix de l'artisan : pas de tournures de chercheur.
+  const voice = text.match(/je n.ai (pas trouvé|trouvé aucune?|pas pu|pas vérifié|pas de donnée|pas identifié)|sources? (ouvertes?|consultées?)|pu être consultés?|reprises? par wikipédia/i);
+  if (voice) fail(page, `tournure à reformuler : « ${voice[0]} »`);
+
   if (page.startsWith('/zone-intervention/')) zoneTexts.set(page, (main?.querySelector('article')?.text ?? '').toLowerCase());
 }
 

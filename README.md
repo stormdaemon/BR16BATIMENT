@@ -67,3 +67,5 @@ Audit, inventaire des requêtes et plan d'action : [`docs/seo/`](docs/seo/).
 ## Règles de contenu
 
 Rien n'est inventé sur ce site : ni avis, ni chiffre de chantiers, ni certification. Les prix des guides sont des fourchettes publiées, datées et sourcées. Si vous ajoutez un fait sur l'entreprise, il doit être vérifiable.
+
+Les pages parlent avec la voix de l'artisan. Quand un chiffre n'existe pas, on explique pourquoi il dépend du chantier, sans écrire « je n'ai pas trouvé » : le contrôle qualité refuse ces tournures.

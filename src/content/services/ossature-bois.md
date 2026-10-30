@@ -1,10 +1,10 @@
 ---
 title: "Maison et extension ossature bois en Charente | BR 16"
-description: "Extension ou maison à ossature bois en Charente : construction durable et chantier rapide, par BR 16 BATIMENT, artisan à Champagne-Vigny. Devis gratuit."
-h1: "Ossature bois en Charente : maison et extension"
+description: "Extension ou maison à ossature bois en Charente : construction durable et chantier rapide, par BR 16 BATIMENT, artisan à Champagne-Vigny. Devis gratuit."
+h1: "Ossature bois en Charente : maison et extension"
 label: "Ossature bois"
 order: 9
-answer: "BR 16 BATIMENT construit en ossature bois en Charente : extensions, annexes et projets de maisons. Cette technique associe une structure légère en bois, une forte épaisseur d'isolant et un chantier rapide. Depuis Champagne-Vigny, l'entreprise réalise aussi la charpente, la couverture, le bardage et les finitions. Le devis est gratuit et personnalisé."
+answer: "BR 16 BATIMENT construit en ossature bois en Charente : extensions, annexes et projets de maisons. Cette technique associe une structure légère en bois, une forte épaisseur d'isolant et un chantier rapide. Depuis Champagne-Vigny, l'entreprise réalise aussi la charpente, la couverture, le bardage et les finitions. Le devis est gratuit et personnalisé."
 includes:
   - "Extension de maison en ossature bois"
   - "Annexes en ossature bois"
@@ -21,38 +21,38 @@ related:
   - "isolation"
 updated: 2026-10-30
 faq:
-  - q: "Combien coûte une extension en ossature bois ?"
+  - q: "Combien coûte une extension en ossature bois ?"
     a: "Le prix dépend de la surface, du niveau de finition, de la nature du sol et de la liaison avec la maison existante. Le guide dédié réunit les fourchettes publiées au mètre carré et leurs sources. Le devis est gratuit."
-  - q: "Faut-il un permis de construire pour une extension en bois ?"
+  - q: "Faut-il un permis de construire pour une extension en bois ?"
     a: "Tout dépend de la surface créée et du zonage de votre commune. Une petite extension relève de la déclaration préalable, une plus grande du permis de construire, et le recours à un architecte peut devenir obligatoire. Les seuils officiels figurent dans le guide dédié."
-  - q: "Une maison à ossature bois est-elle durable ?"
-    a: "Oui, si la conception protège le bois de l'humidité : soubassement surélevé, pare-pluie continu, bardage ventilé, débords de toit. Il s'agit d'une technique constructive éprouvée, couverte par la garantie décennale comme les autres."
-  - q: "L'ossature bois résiste-t-elle aux termites ?"
-    a: "Le risque se traite à la conception : bois adapté ou traité, barrières au niveau du soubassement et contrôles réguliers. C'est un point à intégrer en Charente, dont tout le territoire est classé à risque par arrêté préfectoral. Le guide dédié détaille les obligations."
+  - q: "Une maison à ossature bois est-elle durable ?"
+    a: "Oui, si la conception protège le bois de l'humidité : soubassement surélevé, pare-pluie continu, bardage ventilé, débords de toit. Il s'agit d'une technique constructive éprouvée, couverte par la garantie décennale comme les autres."
+  - q: "L'ossature bois résiste-t-elle aux termites ?"
+    a: "Le risque se traite à la conception : bois adapté ou traité, barrières au niveau du soubassement et contrôles réguliers. C'est un point à intégrer en Charente, dont tout le territoire est classé à risque par arrêté préfectoral. Le guide dédié détaille les obligations."
 ---
 
-L'ossature bois permet de construire vite, proprement et avec de très bonnes performances d'isolation. C'est une solution particulièrement adaptée aux extensions : le chantier est léger, ce qui limite les fondations, et la structure se monte en peu de temps.
+L'ossature bois permet de construire vite, proprement et avec de très bonnes performances d'isolation. C'est une solution particulièrement adaptée aux extensions : le chantier est léger, ce qui limite les fondations, et la structure se monte en peu de temps.
 
-## Qu'est-ce qu'une ossature bois ?
+## Qu'est-ce qu'une ossature bois ?
 
 Il s'agit d'une structure de montants et de traverses en bois, contreventée par des panneaux, sur laquelle viennent se fixer les parois. L'isolant se loge dans l'épaisseur des murs, ce qui permet d'obtenir une bonne isolation sans épaissir la construction. Un pare-vapeur côté intérieur et un pare-pluie côté extérieur protègent l'ensemble, puis on habille avec un [bardage](/services/bardage), un enduit ou des plaques.
 
-Attention à ne pas la confondre avec la maison en rondins ou en madriers : avec une ossature bois, le bois peut rester totalement invisible.
+Attention à ne pas la confondre avec la maison en rondins ou en madriers : avec une ossature bois, le bois peut rester totalement invisible.
 
-## Pourquoi choisir l'ossature bois pour une extension ?
+## Pourquoi choisir l'ossature bois pour une extension ?
 
 - **Un chantier plus court.** Une grande partie du travail se fait à sec, sans temps de séchage.
 - **Une structure légère.** Les fondations sont plus simples, ce qui est utile sur un terrain difficile ou pour une surélévation étudiée.
 - **Une bonne isolation.** L'épaisseur de paroi accueille beaucoup d'isolant.
 - **Un matériau renouvelable.** Le bois stocke du carbone, ce qui répond aux exigences actuelles de la construction neuve.
 
-## À quoi faut-il faire attention ?
+## À quoi faut-il faire attention ?
 
-Le bois n'aime pas l'eau stagnante : c'est l'unique véritable ennemi de cette technique. Une bonne conception garde la structure au sec, grâce à un soubassement surélevé, un pare-pluie continu, une lame d'air ventilée derrière le bardage et des débords de toit suffisants.
+Le bois n'aime pas l'eau stagnante : c'est l'unique véritable ennemi de cette technique. Une bonne conception garde la structure au sec, grâce à un soubassement surélevé, un pare-pluie continu, une lame d'air ventilée derrière le bardage et des débords de toit suffisants.
 
-En Charente, tout le département est classé à risque de termites par arrêté préfectoral : il faut donc y penser dès la conception. Je détaille les obligations dans [le guide sur les termites et le traitement de charpente](/guides/traitement-charpente-termites-charente).
+En Charente, tout le département est classé à risque de termites par arrêté préfectoral : il faut donc y penser dès la conception. Je détaille les obligations dans [le guide sur les termites et le traitement de charpente](/guides/traitement-charpente-termites-charente).
 
-## Quelles démarches pour une extension ?
+## Quelles démarches pour une extension ?
 
 Selon la surface créée et le zonage du plan local d'urbanisme, il faudra une déclaration préalable ou un permis de construire. L'extension doit aussi respecter les règles d'implantation, de hauteur et d'aspect. Je vous recommande de consulter votre mairie dès l'esquisse. Les seuils officiels sont détaillés dans [le guide des prix d'une extension en ossature bois](/guides/prix-extension-ossature-bois).
 

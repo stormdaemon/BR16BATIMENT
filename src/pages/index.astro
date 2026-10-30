@@ -171,7 +171,12 @@ const faq = [
   <Cta />
 </Base>
 
-<script src="../scripts/home.ts"></script>
+<script>
+  // GSAP démarre quand le navigateur est libre : le premier affichage n'attend pas les animations.
+  const start = () => import('../scripts/home.ts');
+  if ('requestIdleCallback' in window) requestIdleCallback(start, { timeout: 2000 });
+  else setTimeout(start, 1200);
+</script>
 
 <style>
   /* Héros */

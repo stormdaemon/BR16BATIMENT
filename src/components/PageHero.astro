@@ -1,5 +1,6 @@
 ---
 import { SITE } from '../data/site';
+import { fr } from '../lib/typo';
 interface Crumb { name: string; href: string }
 interface Props { crumbs: Crumb[]; kicker?: string; h1: string; answer?: string; contactHref?: string; cta?: boolean }
 const { crumbs, kicker, h1, answer, contactHref = '/contact', cta = true } = Astro.props;
@@ -17,8 +18,8 @@ const hasVisual = Astro.slots.has('visual');
         </ol>
       </nav>
       {kicker && <p class="label label--accent">{kicker}</p>}
-      <h1>{h1}</h1>
-      {answer && <p class="ph__answer">{answer}</p>}
+      <h1>{fr(h1)}</h1>
+      {answer && <p class="ph__answer">{fr(answer)}</p>}
       <slot name="meta" />
       {cta && (
         <div class="btn-row">

@@ -1,4 +1,5 @@
 ---
+import { fr } from '../lib/typo';
 // Liste de liens à grande échelle, avec remplissage jaune au survol.
 interface Item { href: string; title: string; meta?: string; text?: string }
 interface Props { items: Item[]; heading?: 'h2' | 'h3' }
@@ -9,8 +10,8 @@ const { items, heading: H = 'h3' } = Astro.props;
     <li data-reveal style={`--d:${(i % 4) * 0.05}s`}>
       <a href={item.href}>
         {item.meta && <span class="label">{item.meta}</span>}
-        <H class="rows__title">{item.title}</H>
-        {item.text && <p>{item.text}</p>}
+        <H class="rows__title">{fr(item.title)}</H>
+        {item.text && <p>{fr(item.text)}</p>}
         <span class="rows__go" aria-hidden="true">→</span>
       </a>
     </li>
