@@ -46,7 +46,7 @@ const walk = (dir) => readdirSync(dir).flatMap((f) => {
 });
 const files = walk(DIST);
 // Le fichier de vérification de la Search Console n'est pas une page du site.
-const htmlFiles = files.filter((f) => f.endsWith('.html') && !/google[0-9a-f]+.html$/.test(f));
+const htmlFiles = files.filter((f) => f.endsWith('.html') && !/google[0-9a-f]+\.html$/.test(f));
 
 const urlOf = (file) => {
   const rel = `/${relative(DIST, file).split(sep).join('/')}`;
