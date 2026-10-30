@@ -93,7 +93,7 @@ Par ordre d'impact. Aucune ne peut être faite à sa place.
 5. **Fournir des photos de chantiers réels** : le signal d'expérience le plus fort, et le seul élément que le site ne peut pas créer.
 6. **Vérifier l'attestation décennale** : couverture, ossature bois et nettoyage de toiture ne figurent pas dans l'objet publié au BODACC.
 7. **Relire les pages services et guides** : les prestations exactes doivent être confirmées par Raphaël Bardan.
-8. **Déclarer le site à Google Search Console et Bing Webmaster Tools**, soumettre `sitemap-index.xml`.
+8. **Déclarer le site à Google Search Console**, soumettre `sitemap-index.xml`. Pour Bing, IndexNow suffit, sans compte : voir le README.
 9. ~~**Décider pour le RGE**~~ : décidé par le client, l'entreprise n'est pas RGE et le site le dit clairement.
 
 ## Indicateurs

@@ -70,7 +70,7 @@ Ce que le site seul ne peut pas obtenir :
 2. **Avis :** en demander aux derniers clients, en les invitant à citer le travail réalisé.
 3. **Photos de chantiers,** avant et après si possible, par métier, à ajouter dans `src/data/preuves.ts`.
 4. **Annuaires :** Bing Places, PagesJaunes, Mappy, Travaux.com, Obat, à corriger avec la SAS et non l'ancienne entreprise fermée.
-5. **Search Console et Bing Webmaster Tools :** déclarer le domaine et le sitemap, demander l'indexation des pages clés.
+5. **Search Console :** déclarer le domaine et le sitemap, demander l'indexation des pages clés. Pour Bing, aucun compte n'est nécessaire : les pages sont envoyées avec IndexNow (`npm run indexnow`).
 6. **Attestation d'assurance :** vérifier qu'elle couvre le démoussage, l'hydrofuge, la pose de cuisine et les sols.
 7. **Logo :** le vrai logo affiche encore « charpente, couverture » en premier. Il n'a pas été modifié ; c'est une décision à prendre.
 8. **Relecture par Raphaël :** les pages disent ce qu'il fait et comment il travaille. Il est le seul à pouvoir le confirmer, en particulier sur le lino, le dressing, les portes intérieures et l'hydrofuge.
