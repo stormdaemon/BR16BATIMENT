@@ -51,7 +51,7 @@ Les priorités commerciales et leurs raisons sont dans `docs/seo/05-recentrage.m
 
 ## Signaler une modification à Bing
 
-`npm run indexnow -- /services/plaquisterie /faq` envoie ces pages à Bing et aux autres moteurs IndexNow, une fois le déploiement terminé. Sans argument, le script envoie tout le sitemap. Aucun compte n'est nécessaire : la clé est le fichier `.txt` à la racine de `public/`. Google n'utilise pas ce protocole.
+`npm run indexnow -- services/plaquisterie faq` envoie ces pages à Bing et aux autres moteurs IndexNow, une fois le déploiement terminé. Sans argument, le script envoie tout le sitemap. Aucun compte n'est nécessaire : la clé est le fichier `.txt` à la racine de `public/`. Google n'utilise pas ce protocole.
 
 ## Identité
 
