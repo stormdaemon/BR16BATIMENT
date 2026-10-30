@@ -23,7 +23,15 @@ const services = defineCollection({
     ...seo,
     label: z.string(),
     order: z.number(),
+    // Autres noms du service, ceux qu'emploient les clients : repris dans les données structurées.
+    names: z.array(z.string()).default([]),
+    // Chaque page part du problème du client et dit ce que l'entreprise y fait.
+    problems: z.array(z.object({ problem: z.string(), solution: z.string() })).min(3),
     includes: z.array(z.string()).min(3),
+    // Ce qui atteste ce métier en particulier : un fait vérifiable, jamais un avis inventé.
+    proof: z.string(),
+    // Ce que l'entreprise ne fait pas : à dire avant que le client n'appelle.
+    limits: z.array(z.string()).default([]),
     guides: z.array(z.string()).default([]),
     related: z.array(z.string()).default([]),
     faq,

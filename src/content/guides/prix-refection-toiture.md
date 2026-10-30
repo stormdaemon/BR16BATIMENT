@@ -4,7 +4,7 @@ description: "Réfection de toiture : prix au m² par matériau, réparation, d
 h1: "Combien coûte une réfection de toiture ?"
 label: "Toiture"
 service: "couverture"
-answer: "Début 2026, le comparateur Habitatpresto situe la réfection complète d'une toiture entre 160 et 240 €/m² en tuile mécanique, 210 et 275 €/m² en tuile plate ou canal, et 190 et 280 €/m² en ardoise naturelle, pose comprise. Le montant final dépend surtout de ce que le devis inclut : couverture seule, ou aussi charpente et isolation."
+answer: "Début 2026, le comparateur Habitatpresto situe la réfection complète d'une toiture entre 160 et 240 €/m² en tuile mécanique, 210 et 275 €/m² en tuile plate ou canal, et 190 et 280 €/m² en ardoise naturelle, pose comprise. Le montant final dépend surtout de ce que le devis inclut : couverture seule, ou aussi charpente et isolation. Ce sont des repères pour comparer : chez BR 16 BATIMENT, le prix est sur devis."
 published: 2026-10-30
 updated: 2026-10-30
 faq:
@@ -15,7 +15,7 @@ faq:
   - q: "Quelle TVA s'applique à une réfection de toiture ?"
     a: "Sur un logement achevé depuis plus de deux ans, les travaux d'amélioration et d'entretien relèvent en principe du taux de 10 %. Le taux de 5,5 % concerne la rénovation énergétique, comme l'amélioration de l'isolation thermique. Le devis doit indiquer le taux appliqué."
   - q: "Existe-t-il une aide pour refaire une toiture ?"
-    a: "Depuis le 1er septembre 2026, MaPrimeRénov' par geste ne finance plus l'isolation. La toiture peut entrer dans une rénovation d'ampleur, sous conditions, avec une entreprise RGE. Le guide des aides détaille ces règles."
+    a: "Depuis le 1er septembre 2026, MaPrimeRénov' par geste ne finance plus l'isolation. La toiture peut entrer dans une rénovation d'ampleur, sous conditions, avec une entreprise RGE. BR 16 BATIMENT n'étant pas qualifiée RGE, ses travaux n'y ouvrent pas droit."
 sources:
   - label: "Habitatpresto : tarif d'un couvreur"
     url: "https://www.habitatpresto.com/mag/toiture/tarif-couvreur"
@@ -79,10 +79,10 @@ En secteur protégé, l'accord de l'Architecte des Bâtiments de France peut s'a
 
 D'après impots.gouv.fr, les travaux d'amélioration et d'entretien d'un logement achevé depuis plus de deux ans relèvent en principe du taux de 10 %. Le taux de 5,5 % vise la rénovation énergétique, comme l'amélioration de l'isolation thermique. Le devis doit indiquer clairement le taux appliqué et sa justification.
 
-Pour les aides, les règles ont changé le 1er septembre 2026 : consultez [le point complet sur les aides](/guides/aides-renovation-2026). Elles exigent en principe une entreprise RGE, ce que BR 16 BATIMENT n'est pas à ce jour.
+Pour les aides, les règles ont changé le 1er septembre 2026 : elles exigent en principe une entreprise RGE. BR 16 BATIMENT ne l'est pas : ses travaux n'y ouvrent pas droit.
 
 ## En Charente, un point à ne pas oublier
 
-Quand la couverture est déposée, la charpente devient accessible. C'est le bon moment pour la contrôler, d'autant que toute la Charente est classée à risque de termites par arrêté préfectoral. Si des bois infestés sont retirés, des règles précises s'appliquent : voir [le guide sur les termites](/guides/traitement-charpente-termites-charente).
+Quand la couverture est déposée, la charpente devient accessible. C'est le bon moment pour la contrôler, d'autant que toute la Charente est classée à risque de termites par arrêté préfectoral. Si des bois infestés sont retirés, des règles précises s'appliquent et le traitement relève d'une entreprise spécialisée : BR 16 BATIMENT n'intervient pas sur les termites.
 
 Pour un chiffrage de votre toit, [une visite gratuite](/services/couverture) reste le seul moyen d'obtenir un prix fiable.

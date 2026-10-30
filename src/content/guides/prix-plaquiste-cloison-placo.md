@@ -1,10 +1,10 @@
 ---
-title: "Prix d'un plaquiste au m² : placo et doublage | BR 16"
+title: "Prix d'un plaquiste au m² : placo, doublage | BR 16 BATIMENT"
 description: "Prix d'un plaquiste en 2026 : plaques BA13 et hydrofuges, pose, doublage standard ou phonique, et comment comparer deux devis. Repères sourcés pour la Charente."
 h1: "Combien coûte un plaquiste au mètre carré ?"
 label: "Plaquisterie"
 service: "plaquisterie"
-answer: "Selon le comparateur Habitatpresto, en octobre 2026, la pose seule de plaques coûte de 14 à 32 € TTC au mètre carré, et un doublage complet, fourniture et pose incluses, de 38 à 75 €/m². Une plaque BA13 démarre vers 3 €/m² et une hydrofuge vers 6 €/m², hors pose. Le prix dépend surtout de la pièce, du support et des finitions."
+answer: "Selon le comparateur Habitatpresto, en octobre 2026, la pose seule de plaques coûte de 14 à 32 € TTC au mètre carré, et un doublage complet, fourniture et pose incluses, de 38 à 75 €/m². Une plaque BA13 démarre vers 3 €/m² et une hydrofuge vers 6 €/m², hors pose. Le prix dépend surtout de la pièce, du support et des finitions. Ce sont des repères pour comparer : chez BR 16 BATIMENT, le prix est sur devis."
 published: 2026-10-30
 updated: 2026-10-30
 faq:

@@ -1,45 +1,52 @@
 ---
-import { getCollection } from 'astro:content';
 import Base from '../../layouts/Base.astro';
 import Cta from '../../components/Cta.astro';
-import Cote from '../../components/Cote.astro';
 import House from '../../components/House.astro';
 import LinkRows from '../../components/LinkRows.astro';
 import PageHero from '../../components/PageHero.astro';
+import { COMPLEMENTS, SPECIALITES } from '../../data/site';
 
-const services = (await getCollection('services')).sort((a, b) => a.data.order - b.data.order);
 const crumbs = [{ name: 'Accueil', href: '/' }, { name: 'Services', href: '/services' }];
-const items = services.map((s, i) => ({
-  href: `/services/${s.id}`,
-  title: s.data.label,
-  meta: String(i + 1).padStart(2, '0'),
-  text: s.data.description,
-}));
+
+const row = (s: (typeof SPECIALITES)[number] | (typeof COMPLEMENTS)[number]) => ({ href: `/services/${s.slug}`, meta: s.label, title: s.problem, text: s.short });
+const interieur = SPECIALITES.filter((s) => s.place === 'interieur').map(row);
+const toit = SPECIALITES.filter((s) => s.place === 'toit').map(row);
+const complements = COMPLEMENTS.map(row);
 ---
 <Base
-  title="Travaux de charpente, toiture et rénovation | BR 16 BATIMENT"
-  description="Charpente, couverture, isolation, plaquisterie, menuiserie, ossature bois, bardage et rénovation : tous les travaux réalisés par BR 16 BATIMENT en Charente."
+  title="Placo, isolation, menuiserie, démoussage | BR 16 BATIMENT"
+  description="Cloisons à refaire, murs froids, sol usé, mousse sur le toit : partez de votre problème. BR 16 BATIMENT intervient dans toute la Charente. Devis gratuit."
   crumbs={crumbs}
 >
   <PageHero
     crumbs={crumbs}
     kicker="Services · Charente (16)"
-    h1="Tous les métiers de la maison, de la charpente aux finitions."
-    answer="BR 16 BATIMENT réalise onze types de travaux en Charente, en neuf comme en rénovation : la structure et le toit, l'isolation, les cloisons, les menuiseries et l'aménagement intérieur. Chaque devis est gratuit."
+    h1="Quel est votre problème ?"
+    answer="BR 16 BATIMENT refait l'intérieur des maisons et entretient les toitures en Charente : plaquisterie, isolation intérieure, menuiserie, parquet flottant, lino, dressing, pose de cuisine, démoussage et traitement hydrofuge. Partez de ce qui ne va pas chez vous : chaque page dit ce que je peux y faire, où et à quelles conditions. Le devis est gratuit."
   >
-    <House slot="visual" active="renovation" markers={false} />
+    <House slot="visual" active="renovation-interieure" markers={false} />
   </PageHero>
 
   <section class="s-paper section">
     <div class="wrap">
-      <Cote left="Le détail" right={`${services.length} services`} />
-      <div class="list"><LinkRows items={items} heading="h2" /></div>
+      <h2 class="group">Mes spécialités dans la maison</h2>
+      <div class="list"><LinkRows items={interieur} /></div>
+
+      <h2 class="group">Mes spécialités sur le toit</h2>
+      <div class="list"><LinkRows items={toit} /></div>
+
+      <h2 class="group">En complément, sur demande</h2>
+      <p class="note">Ce ne sont pas mes spécialités, mais je les réalise aussi, souvent en même temps que d'autres travaux.</p>
+      <div class="list"><LinkRows items={complements} compact /></div>
     </div>
   </section>
 
-  <Cta title="Plusieurs corps de métier sur votre projet ?" />
+  <Cta title="Plusieurs problèmes à régler sur le même chantier ?" />
 </Base>
 
 <style>
   .list { margin-top: 1.5rem; }
+  .group { font-size: var(--fs-2xl); }
+  .group:not(:first-child) { margin-top: clamp(3rem, 2rem + 3vw, 5rem); }
+  .note { margin-top: 1rem; color: var(--muted); max-width: 60ch; }
 </style>

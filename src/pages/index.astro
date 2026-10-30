@@ -3,14 +3,24 @@ import { getCollection } from 'astro:content';
 import Base from '../layouts/Base.astro';
 import CharenteMap from '../components/CharenteMap.astro';
 import Cote from '../components/Cote.astro';
+import Coupe from '../components/Coupe.astro';
 import Cta from '../components/Cta.astro';
 import Faq from '../components/Faq.astro';
 import House from '../components/House.astro';
-import Truss from '../components/Truss.astro';
-import { SERVICES, SITE, yearsSince } from '../data/site';
+import Realisations from '../components/Realisations.astro';
+import { COMPLEMENTS, SITE, SPECIALITES, yearsSince } from '../data/site';
+import { fr } from '../lib/typo';
 import geo from '../data/geo.json';
 
-const guides = (await getCollection('guides')).sort((a, b) => b.data.updated.valueOf() - a.data.updated.valueOf()).slice(0, 6);
+// Les guides des spécialités d'abord.
+const featured = ['prix-plaquiste-cloison-placo', 'prix-isolation-murs-interieur', 'prix-changer-fenetres', 'prix-demoussage-toiture', 'prix-pose-parquet-flottant-lino', 'prix-pose-cuisine'];
+const allGuides = await getCollection('guides');
+const guides = featured.map((id) => allGuides.find((g) => g.id === id)).filter((g) => g !== undefined);
+
+// La maison en coupe trace les spécialités une à une, puis la rénovation intérieure les réunit.
+const story = [...SPECIALITES].sort((a, b) => Number(a.slug === 'renovation-interieure') - Number(b.slug === 'renovation-interieure'));
+
+const marquee = ['Placo', 'Cloisons', 'Doublage', 'Isolation intérieure', 'Menuiserie', 'Parquet flottant', 'Lino', 'Dressing', 'Pose de cuisine', 'Démoussage', 'Hydrofuge', 'Rénovation intérieure'];
 const km = (slug: string) => geo.communes.find((c) => c.slug === slug)?.km;
 
 const facts = [
@@ -18,41 +28,47 @@ const facts = [
   ['Siège', `${SITE.address.street}, ${SITE.address.postalCode} ${SITE.address.city}`],
   ['Téléphone', SITE.phone],
   ['Horaires', SITE.hours.text],
-  ['Zone', `Toute la Charente, Charente-Maritime et Dordogne`],
+  ['Zone', 'Toute la Charente ; Charente-Maritime et Dordogne sur demande'],
   ['Entreprise', `SAS, SIRET ${SITE.legal.siret}`],
+  ['Assurances', 'Responsabilité civile professionnelle et décennale, références sur demande'],
+  ['Aides', 'Entreprise non qualifiée RGE : ses travaux n\'ouvrent pas droit aux aides'],
 ];
 
 const method = [
   { n: '01', title: 'Étude et devis', text: 'Analyse de votre projet et établissement d\'un devis détaillé, gratuit.' },
   { n: '02', title: 'Conception', text: 'Plans techniques et choix des matériaux adaptés à vos besoins.' },
-  { n: '03', title: 'Montage', text: 'Réalisation sur place, dans le respect des normes en vigueur.' },
+  { n: '03', title: 'Réalisation', text: 'Le chantier sur place, dans le respect des normes en vigueur.' },
 ];
 
 const faq = [
+  { q: 'Qui peut refaire mes cloisons ou poser du placo en Charente ?', a: `BR 16 BATIMENT, plaquiste à Champagne-Vigny, monte des cloisons, des doublages et des plafonds en placo dans toute la Charente, notamment autour d'Angoulême (${km('angouleme')} km de route). La plâtrerie est l'activité principale enregistrée de l'entreprise. Le devis est gratuit.` },
+  { q: 'Qui peut isoler mes murs par l\'intérieur en Charente ?', a: 'BR 16 BATIMENT isole les murs par l\'intérieur, les combles et les rampants, et réalise le doublage en placo qui va avec. L\'entreprise n\'est pas qualifiée RGE : ces travaux n\'ouvrent pas droit aux aides comme MaPrimeRénov\'.' },
+  { q: 'Qui peut démousser ma toiture et appliquer un hydrofuge ?', a: 'BR 16 BATIMENT démousse les toitures en Charente et applique un traitement hydrofuge sur des tuiles encore saines. L\'intervention s\'accompagne d\'un contrôle de la toiture. Si l\'hydrofuge n\'a pas d\'intérêt sur votre toit, je vous le dis.' },
+  { q: 'Qui peut poser mon parquet, mon lino ou ma cuisine, ou créer un dressing ?', a: 'BR 16 BATIMENT pose le parquet flottant, le lino et les cuisines, et crée des dressings et des placards, seuls ou dans une rénovation intérieure complète. Les raccordements en eau et en électricité restent à confier à votre plombier et à votre électricien.' },
   { q: 'Où intervient BR 16 BATIMENT ?', a: `L'entreprise est basée à Champagne-Vigny et intervient dans toute la Charente, notamment à Angoulême (${km('angouleme')} km de route), Barbezieux-Saint-Hilaire (${km('barbezieux-saint-hilaire')} km) et Cognac (${km('cognac')} km). Les déplacements en Charente-Maritime et en Dordogne sont possibles.` },
-  { q: 'Le devis est-il gratuit ?', a: `Oui. Vous pouvez demander un devis gratuit et sans engagement au ${SITE.phone} ou avec le formulaire de contact. Une réponse vous est apportée ${SITE.responseDelay}.` },
-  { q: 'L\'entreprise a-t-elle une assurance décennale ?', a: 'Oui. BR 16 BATIMENT est couverte par une assurance responsabilité civile professionnelle et décennale. Les références de l\'assurance sont communiquées sur demande.' },
-  { q: 'Quels travaux sont réalisés ?', a: `Charpente, couverture, nettoyage de toiture, isolation, aménagement de combles, plaquisterie, menuiserie, aménagement intérieur, ossature bois, bardage et rénovation, en neuf comme sur l'existant.` },
+  { q: 'Vos travaux donnent-ils droit à des aides ?', a: 'Non. BR 16 BATIMENT n\'est pas qualifiée RGE : ses travaux n\'ouvrent pas droit à MaPrimeRénov\', à l\'éco-prêt à taux zéro ni aux primes CEE. Si ces aides sont indispensables à votre projet, il faudra passer par une entreprise RGE.' },
+  { q: 'Quels sont vos prix ?', a: `Les prix sont établis sur devis, gratuit et sans engagement, au ${SITE.phone} ou avec le formulaire de contact. Une réponse vous est apportée ${SITE.responseDelay}. Les montants cités dans les guides sont des fourchettes publiées par des tiers, pour comparer : ce ne sont pas nos tarifs.` },
+  { q: 'L\'entreprise a-t-elle une assurance décennale ?', a: 'Oui. BR 16 BATIMENT est couverte par une assurance responsabilité civile professionnelle et décennale. Les références de l\'assurance sont communiquées sur demande : vérifiez qu\'elles couvrent bien les travaux prévus.' },
   { q: 'Depuis quand l\'entreprise existe-t-elle ?', a: `L'activité de BR 16 BATIMENT a été créée le 10 novembre 2017 à Champagne-Vigny et se poursuit depuis novembre 2025 sous la forme d'une SAS. Raphaël Bardan, titulaire d'un bac professionnel menuiserie obtenu en 1999, travaille dans le second œuvre depuis 2001, soit plus de ${yearsSince(2001) - 1} ans de métier.` },
 ];
 ---
 <Base
-  title="Charpentier couvreur en Charente (16) | BR 16 BATIMENT"
-  description="Charpente, couverture, isolation, plaquisterie et rénovation en Charente. BR 16 BATIMENT, artisan à Champagne-Vigny. Devis gratuit au 06 67 11 67 60."
+  title="Plaquiste et isolation en Charente | BR 16 BATIMENT"
+  description="Placo, isolation, menuiserie, démoussage et hydrofuge en Charente : BR 16 BATIMENT, artisan à Champagne-Vigny. Devis gratuit au 06 67 11 67 60."
 >
   <section class="hero s-dark">
     <div class="hero__grid" aria-hidden="true"></div>
     <div class="wrap hero__inner">
       <p class="label label--accent hero__kicker">{SITE.name} · {SITE.address.city} (16)</p>
       <h1 class="hero__title">
-        <span class="line" style="--i:0"><span>Charpente,</span></span>
-        <span class="line" style="--i:1"><span>couverture</span></span>
-        <span class="line" style="--i:2"><span>et rénovation</span></span>
+        <span class="line" style="--i:0"><span>Placo, isolation,</span></span>
+        <span class="line" style="--i:1"><span>menuiserie,</span></span>
+        <span class="line" style="--i:2"><span>démoussage</span></span>
         <span class="line" style="--i:3"><span class="accent">en Charente.</span></span>
       </h1>
-      <div class="hero__visual"><Truss class="hero__truss" /></div>
+      <div class="hero__visual"><Coupe class="hero__coupe" /></div>
       <div class="hero__foot">
-        <p class="lede">De la conception à la réalisation, je prends en charge vos travaux de charpente et de second œuvre, en neuf comme en rénovation.</p>
+        <p class="lede">Une pièce à redécouper, des murs froids, un sol usé, de la mousse sur le toit : je refais l'intérieur de votre maison et j'entretiens votre toiture.</p>
         <div class="btn-row">
           <a class="btn" href="/contact">Demander un devis gratuit <span class="arrow" aria-hidden="true">→</span></a>
           <a class="btn btn--ghost" href={SITE.phoneHref}>{SITE.phone}</a>
@@ -65,7 +81,7 @@ const faq = [
     <div class="marquee__track">
       {[0, 1].map(() => (
         <div class="marquee__group">
-          {SERVICES.map((s) => (<span>{s.label}<i class="diamond"></i></span>))}
+          {marquee.map((term) => (<span>{term}<i class="diamond"></i></span>))}
         </div>
       ))}
     </div>
@@ -75,13 +91,13 @@ const faq = [
     <div class="wrap who__grid">
       <div class="who__text">
         <p class="label">Qui sommes-nous ?</p>
-        <h2>Une seule entreprise, du faîtage au parquet.</h2>
+        <h2>Une seule entreprise pour refaire l'intérieur et entretenir le toit.</h2>
         <p data-reveal>
-          <strong>BR 16 BATIMENT est une entreprise artisanale du bâtiment installée à Champagne-Vigny, dans le sud de la Charente, et dirigée par Raphaël Bardan.</strong>
-          Elle réalise la charpente, la couverture, le nettoyage de toiture, l'isolation, l'aménagement de combles, la plaquisterie, la menuiserie, l'aménagement intérieur, l'ossature bois, le bardage et la rénovation.
+          <strong>BR 16 BATIMENT (BR16 Bâtiment) est une entreprise artisanale du bâtiment installée à Champagne-Vigny, dans le sud de la Charente, et dirigée par Raphaël Bardan.</strong>
+          Ses spécialités : la plaquisterie, l'isolation intérieure, la menuiserie, le démoussage et le traitement hydrofuge des toitures, et la rénovation intérieure des maisons, du parquet flottant et du lino au dressing et à la pose de cuisine. Elle réalise aussi, en complément, l'aménagement de combles, le bardage, la charpente, la couverture et l'ossature bois.
           L'activité a été créée en 2017 ; Raphaël Bardan travaille sur les chantiers depuis 2001, après un bac professionnel menuiserie obtenu en 1999.
           L'entreprise intervient dans toute la Charente, notamment à Angoulême, Barbezieux-Saint-Hilaire et Cognac, ainsi qu'en Charente-Maritime et en Dordogne.
-          Le devis est gratuit et les travaux sont couverts par une assurance décennale.
+          Le devis est gratuit. L'entreprise est assurée en responsabilité civile professionnelle et en décennale. Elle n'est pas qualifiée RGE : ses travaux n'ouvrent pas droit aux aides.
         </p>
         <a class="link-arrow" href="/a-propos">Découvrir le parcours de Raphaël <span aria-hidden="true">→</span></a>
       </div>
@@ -93,29 +109,38 @@ const faq = [
     </div>
   </section>
 
-  <section class="build s-dark" id="metiers">
+  <section class="build s-dark" id="besoins">
     <div class="wrap build__head">
-      <p class="label label--accent">La maison en coupe</p>
-      <h2 class="h1">Tous les métiers d'une maison, sous le même toit.</h2>
+      <p class="label label--accent">Votre problème, ce que j'y fais</p>
+      <h2 class="h1">Partez de ce qui ne va pas chez vous.</h2>
     </div>
     <div class="wrap build__grid">
       <div class="build__sticky"><House /></div>
-      <ol class="build__steps">
-        {SERVICES.map((s, i) => (
-          <li class="step" data-step={s.slug}>
-            <span class="label label--accent">{String(i + 1).padStart(2, '0')}</span>
-            <h3><a href={`/services/${s.slug}`}>{s.label}</a></h3>
-            <p>{s.short}</p>
-          </li>
-        ))}
-      </ol>
+      <div class="build__col">
+        <ol class="build__steps">
+          {story.map((s, i) => (
+            <li class="step" data-step={s.slug}>
+              <span class="label label--accent">{String(i + 1).padStart(2, '0')} · {s.label}</span>
+              <h3><a href={`/services/${s.slug}`}>{fr(s.problem)}</a></h3>
+              <p>{fr(s.short)}</p>
+            </li>
+          ))}
+        </ol>
+        <div class="build__more">
+          <p class="label">En complément, sur demande</p>
+          <ul>
+            {COMPLEMENTS.map((s) => <li><a href={`/services/${s.slug}`}>{s.label}</a></li>)}
+          </ul>
+        </div>
+      </div>
     </div>
+    <div class="wrap"><Realisations /></div>
   </section>
 
   <section class="method s-white section">
     <div class="wrap">
       <Cote left="Ma méthode" right="3 étapes" />
-      <h2 class="h1 method__title">Un projet clair, de l'étude au montage.</h2>
+      <h2 class="h1 method__title">Un projet clair, de l'étude à la réalisation.</h2>
       <div class="method__rail">
         <div class="method__line" aria-hidden="true"></div>
         <ol class="method__steps">
@@ -199,7 +224,7 @@ const faq = [
   @media (min-width: 60rem) {
     .hero__title { position: relative; z-index: 1; }
     .line { white-space: nowrap; }
-    .hero__visual { position: absolute; right: calc(var(--gutter) * -1); top: 4%; width: min(58%, 60rem); margin: 0; }
+    .hero__visual { position: absolute; right: calc(var(--gutter) * -1); top: 5%; width: min(56%, 60rem); margin: 0; }
     .hero__foot { grid-template-columns: minmax(0, 1fr) auto; }
   }
 
@@ -234,14 +259,16 @@ const faq = [
   .build__grid { display: grid; gap: 0; }
   .build__sticky { position: sticky; top: var(--header-h); z-index: 2; padding-block: 0.75rem; background: var(--anthracite); }
   .build__sticky :global(.house) { max-height: 38svh; }
-  .build__steps { display: grid; padding-block: 1rem 22svh; }
+  .build__steps { display: grid; padding-block: 1rem 0; }
+  .build__more { display: grid; gap: 0.7rem; padding-block: 2rem 18svh; border-top: 1px solid var(--line); }
+  .build__more ul { display: flex; flex-wrap: wrap; gap: 0.35rem 1.4rem; font-weight: 600; }
   .step { display: grid; gap: 0.35rem; min-height: 46svh; align-content: center; padding-block: 1.25rem; border-top: 1px solid var(--line); transition: opacity 0.4s; }
   .js .step { opacity: 0.42; }
   .js .step.is-current { opacity: 1; }
-  .step h3 { font-size: var(--fs-2xl); }
+  .step h3 { font-size: var(--fs-xl); }
   .step h3 a { text-decoration: none; background: linear-gradient(var(--yellow), var(--yellow)) left bottom / 0 4px no-repeat; transition: background-size 0.4s var(--ease-out), color 0.2s; }
   .step h3 a:hover { color: var(--yellow); background-size: 100% 4px; }
-  .step p { color: var(--muted); font-size: var(--fs-l); line-height: 1.3; max-width: 30ch; }
+  .step p { color: var(--muted); font-size: var(--fs-l); line-height: 1.3; max-width: 34ch; }
   @media (min-width: 60rem) {
     .build__grid { grid-template-columns: 1.45fr 1fr; gap: clamp(2rem, 4vw, 5rem); align-items: start; }
     .build__sticky { top: calc(var(--header-h) + 3svh); padding: 0; background: none; }

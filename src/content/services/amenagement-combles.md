@@ -3,8 +3,19 @@ title: "Aménagement de combles en Charente | BR 16 BATIMENT"
 description: "Transformer vos combles en chambre ou bureau : charpente, isolation, plaquisterie et fenêtres de toit, par une seule entreprise en Charente. Devis gratuit."
 h1: "Aménagement de combles en Charente : gagner une pièce sous le toit"
 label: "Aménagement de combles"
-order: 5
-answer: "BR 16 BATIMENT transforme les combles en pièces à vivre en Charente : chambre, bureau, salle de jeux ou suite parentale. Depuis Champagne-Vigny, l'entreprise réalise tous les corps de métier concernés : charpente, isolation, plaquisterie, fenêtres de toit et finitions. Un seul interlocuteur du premier relevé à la dernière plaque, et un devis gratuit."
+order: 10
+answer: "BR 16 BATIMENT transforme les combles en pièces à vivre en Charente : chambre, bureau, salle de jeux ou suite parentale. Depuis Champagne-Vigny, l'entreprise réalise les métiers concernés : isolation, plaquisterie, fenêtres de toit, charpente si besoin et finitions. Un seul interlocuteur du premier relevé à la dernière plaque, et un devis gratuit."
+names:
+  - "aménager ses combles"
+  - "transformer ses combles"
+problems:
+  - problem: "Il vous manque une pièce ?"
+    solution: "Je transforme les combles en chambre ou en bureau, plutôt que d'agrandir la maison."
+  - problem: "Des combles froids l'hiver, étouffants l'été ?"
+    solution: "J'isole les rampants et je pose le pare-vapeur avant les plaques."
+  - problem: "Vous ne savez pas si c'est faisable ?"
+    solution: "Je vérifie la hauteur, la charpente et l'accès avant de chiffrer."
+proof: "Le placo et l'isolation, qui font l'essentiel de ce chantier, sont mes spécialités."
 includes:
   - "Étude de faisabilité : hauteur, charpente, accès"
   - "Modification ou renfort de la charpente si nécessaire"
@@ -16,9 +27,9 @@ guides:
   - "prix-amenagement-combles"
   - "prix-isolation-combles"
 related:
-  - "charpente"
-  - "isolation"
+  - "isolation-interieure"
   - "plaquisterie"
+  - "dressing-amenagement-interieur"
 updated: 2026-10-30
 faq:
   - q: "Mes combles sont-ils aménageables ?"
@@ -26,9 +37,9 @@ faq:
   - q: "Faut-il une autorisation pour aménager ses combles ?"
     a: "Cela dépend. Si la hauteur, le plancher et la charpente existent déjà, service-public.fr indique qu'aucune autorisation n'est à demander. Sinon, une déclaration préalable est nécessaire au-delà de 5 m² créés. Une fenêtre de toit en demande une, quelle que soit sa surface. Le guide dédié détaille les seuils officiels."
   - q: "Combien coûte un aménagement de combles ?"
-    a: "Le prix dépend surtout de l'état de la charpente, du niveau de finition et du nombre de fenêtres de toit. Les fourchettes publiées au mètre carré figurent dans le guide dédié. Le devis est gratuit."
+    a: "Le prix dépend surtout de l'état de la charpente, du niveau de finition et du nombre de fenêtres de toit. Mes prix sont sur devis ; pour comparer, le guide dédié réunit des fourchettes publiées par des tiers. Le devis est gratuit."
   - q: "Peut-on rester dans la maison pendant les travaux ?"
-    a: "En général, oui, car le chantier se situe au-dessus des pièces de vie. Il faut tout de même prévoir de la poussière et du bruit, et protéger l'accès. Nous organisons le planning ensemble."
+    a: "En général, oui, car le chantier se situe au-dessus des pièces de vie. Il faut tout de même prévoir de la poussière et du bruit, et protéger l'accès. On organise le planning ensemble."
 ---
 
 Aménager ses combles, c'est souvent le moyen le plus économique de gagner de la surface : pas de terrassement, pas de fondations, pas de terrain perdu. La condition, c'est que le comble s'y prête et que tout soit pensé dans le bon ordre. Ce type de chantier mobilise plusieurs métiers, et c'est justement ce que je réunis.
@@ -37,7 +48,7 @@ Aménager ses combles, c'est souvent le moyen le plus économique de gagner de l
 
 Avant de rêver à une suite parentale, je vérifie trois choses.
 
-**La hauteur.** Seule la surface dont la hauteur sous plafond dépasse 1,80 m entre dans la surface de plancher. Il faut aussi tenir compte de l'épaisseur de l'isolant et du plancher, qui réduisent la hauteur disponible.
+**La hauteur.** Seule la surface dont la hauteur sous plafond dépasse 1,80 m entre dans la surface de plancher. Il faut aussi tenir compte de l'épaisseur de l'isolant et du plancher, qui réduisent la hauteur disponible.
 
 **La charpente.** Une charpente traditionnelle laisse généralement le volume libre. Des fermettes le remplissent : il faut alors une modification étudiée, plus coûteuse.
 
@@ -50,9 +61,9 @@ Tout se joue dans l'ordre d'intervention.
 1. Contrôle et, si besoin, renfort de [la charpente](/services/charpente), et vérification de [la couverture](/services/couverture).
 2. Renfort du plancher : un ancien plancher de grenier n'est pas toujours prévu pour supporter une pièce à vivre.
 3. Pose des fenêtres de toit et des réseaux.
-4. [Isolation](/services/isolation) des rampants et pose du pare-vapeur.
+4. [Isolation](/services/isolation-interieure) des rampants et pose du pare-vapeur.
 5. [Plaquisterie](/services/plaquisterie) : plafonds, cloisons et doublages.
-6. Finitions et [aménagement intérieur](/services/amenagement-interieur) : parquet, placards sous pente.
+6. Finitions et [aménagement intérieur](/services/dressing-amenagement-interieur) : parquet, placards sous pente.
 
 ## Quelle autorisation demander ?
 

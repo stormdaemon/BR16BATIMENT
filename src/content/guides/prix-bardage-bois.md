@@ -1,10 +1,10 @@
 ---
-title: "Prix d'un bardage bois au m² et démarches | BR 16"
+title: "Prix d'un bardage bois au m² et démarches | BR 16 BATIMENT"
 description: "Bardage bois : prix au m² pose comprise, exemple de devis, essences, déclaration préalable et points à vérifier. Repères sourcés pour une façade en Charente."
 h1: "Combien coûte un bardage bois ?"
 label: "Bardage"
 service: "bardage"
-answer: "Selon le comparateur Habitatpresto, en février 2025, un bardage bois coûte de 25 à 150 €/m² pose comprise, dont 35 à 65 €/m² de main-d'œuvre. L'écart vient surtout de l'essence, du traitement et de la préparation de la façade. Poser un bardage modifie généralement l'aspect extérieur : une déclaration préalable est à prévoir, à confirmer en mairie."
+answer: "Selon le comparateur Habitatpresto, en février 2025, un bardage bois coûte de 25 à 150 €/m² pose comprise, dont 35 à 65 €/m² de main-d'œuvre. L'écart vient surtout de l'essence, du traitement et de la préparation de la façade. Poser un bardage modifie généralement l'aspect extérieur : une déclaration préalable est à prévoir, à confirmer en mairie. Ce sont des repères pour comparer : chez BR 16 BATIMENT, le prix est sur devis."
 published: 2026-10-30
 updated: 2026-10-30
 faq:
@@ -43,7 +43,7 @@ Méfiez-vous du bas de la fourchette : à 25 €/m² pose comprise, la main-d'
 
 ## À quoi ressemble un devis type ?
 
-L'article détaille un exemple pour 100 m², en HT :
+L'article d'Habitatpresto détaille cet exemple pour 100 m², en HT. Ce n'est pas un devis de BR 16 BATIMENT :
 
 | Poste | Prix HT au m² |
 | --- | --- |
@@ -83,6 +83,6 @@ Service-public.fr demande une déclaration préalable pour les travaux qui modif
 
 ## Bardage et isolation : à prévoir ensemble
 
-Si le mur est mal isolé, c'est l'occasion de poser un isolant derrière le bardage, sans réduire la surface intérieure. Ce choix change le budget et l'épaisseur du mur, et donc les appuis de fenêtre. Mieux vaut y penser dès le début. Consultez aussi [le point sur les aides](/guides/aides-renovation-2026) : elles exigent en principe une entreprise RGE, ce que BR 16 BATIMENT n'est pas à ce jour.
+Si le mur est mal isolé, c'est l'occasion de poser un isolant derrière le bardage, sans réduire la surface intérieure. Ce choix change le budget et l'épaisseur du mur, et donc les appuis de fenêtre. Mieux vaut y penser dès le début. Les aides à l'isolation exigent en principe une entreprise RGE. BR 16 BATIMENT ne l'est pas : ses travaux n'y ouvrent pas droit.
 
 Pour un chiffrage en Charente, voyez [la page bardage](/services/bardage). Si le bardage habille une nouvelle construction, lisez aussi [le guide de l'extension en ossature bois](/guides/prix-extension-ossature-bois).

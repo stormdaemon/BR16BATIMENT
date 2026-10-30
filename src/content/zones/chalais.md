@@ -1,10 +1,10 @@
 ---
-title: "Couvreur et rénovation à Chalais (16210) | BR 16 BATIMENT"
-description: "Couverture, charpente, isolation et rénovation à Chalais, dans la vallée de la Tude. BR 16 BATIMENT, à 30 km de route. Sols argileux et crues pris en compte."
-h1: "Couvreur et rénovation à Chalais"
+title: "Plaquiste et démoussage à Chalais (16210) | BR 16 BATIMENT"
+description: "Placo, isolation, menuiseries et démoussage à Chalais, dans la vallée de la Tude. BR 16 BATIMENT, à 30 km de route. Sols argileux et crues pris en compte."
+h1: "Plaquiste, isolation et démoussage à Chalais"
 name: "Chalais"
 kind: "commune"
-answer: "BR 16 BATIMENT intervient à Chalais, à 30 km de route de Champagne-Vigny, pour la couverture, la charpente, l'isolation et la rénovation. La commune, traversée par la Tude, a connu des épisodes répétés de sécheresse et d'inondation : deux sujets à regarder avant tout chantier important. Le devis est gratuit."
+answer: "BR 16 BATIMENT intervient à Chalais, à 30 km de route de Champagne-Vigny, pour la plaquisterie, l'isolation intérieure, les menuiseries et le démoussage de toiture. La commune, traversée par la Tude, a connu des épisodes répétés de sécheresse et d'inondation : deux sujets à regarder avant tout chantier important. Le devis est gratuit."
 updated: 2026-10-30
 faq:
   - q: "Ma maison à Chalais peut-elle fissurer à cause de l'argile ?"
@@ -36,9 +36,9 @@ Ces données ne disent rien de votre maison en particulier, mais elles orientent
 
 Une maison qui reste au sec vit plus longtemps. Je regarde en priorité trois points :
 
-- **Le toit et l'évacuation de l'eau.** Une [couverture](/services/couverture) saine et des gouttières bien dimensionnées éloignent l'eau des murs.
+- **Le toit et l'évacuation de l'eau.** Une toiture [démoussée](/services/demoussage-toiture) et des gouttières dégagées éloignent l'eau des murs.
 - **Les murs intérieurs.** Avant un [doublage en plaques](/services/plaquisterie), il faut comprendre d'où vient l'humidité, pour ne pas l'enfermer derrière le nouveau mur.
-- **La ventilation.** Une maison mieux [isolée](/services/isolation) doit rester ventilée, sinon l'humidité s'accumule.
+- **La ventilation.** Une maison mieux [isolée](/services/isolation-interieure) doit rester ventilée, sinon l'humidité s'accumule.
 
 ## Le château et les règles locales
 

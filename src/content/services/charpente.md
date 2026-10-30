@@ -1,10 +1,24 @@
 ---
-title: "Charpentier en Charente : neuf et rénovation | BR 16"
-description: "Charpente traditionnelle ou fermettes, réparation, renfort : BR 16 BATIMENT, charpentier à Champagne-Vigny, intervient dans toute la Charente. Devis gratuit."
-h1: "Charpentier en Charente : charpente neuve et réparation"
+title: "Charpente : réparation, renfort, neuf | BR 16 BATIMENT"
+description: "Charpente traditionnelle ou fermettes, réparation et renfort : BR 16 BATIMENT réalise ces travaux en complément de ses spécialités, en Charente. Devis gratuit."
+h1: "Charpente en Charente, en complément de mes spécialités"
 label: "Charpente"
-order: 1
-answer: "BR 16 BATIMENT réalise et répare les charpentes bois en Charente, depuis Champagne-Vigny : charpente traditionnelle ou fermettes pour le neuf, remplacement des pièces abîmées et renfort pour l'existant. Raphaël Bardan, formé à la menuiserie, travaille sur les chantiers depuis 2001. Le devis est gratuit et les travaux sont couverts par une assurance décennale."
+order: 12
+answer: "En complément de ses spécialités, BR 16 BATIMENT réalise et répare les charpentes bois en Charente, depuis Champagne-Vigny : charpente traditionnelle ou fermettes pour le neuf, remplacement des pièces abîmées et renfort pour l'existant. Raphaël Bardan travaille sur les chantiers depuis 2001. Le devis est gratuit."
+names:
+  - "charpentier"
+  - "réparation de charpente"
+problems:
+  - problem: "Un toit qui ondule, un faîtage qui s'affaisse ?"
+    solution: "Je contrôle la charpente, puis je remplace ou je renforce les pièces abîmées."
+  - problem: "Des combles à aménager sur une charpente ancienne ?"
+    solution: "Je vérifie ce que la charpente permet et je la reprends si nécessaire, avant l'isolation et le placo."
+  - problem: "Une extension ou une annexe à couvrir ?"
+    solution: "Je réalise la charpente neuve, traditionnelle ou en fermettes."
+proof: "La charpente figure dans l'objet social publié au Bulletin officiel des annonces civiles et commerciales (BODACC), et c'est un métier appris sur les chantiers depuis 2001."
+limits:
+  - "Je réalise ces travaux en complément de mes spécialités : décrivez-moi votre projet, je vous dirai si je peux le prendre en charge."
+  - "Je n'interviens pas sur les termites ni sur le traitement des bois : adressez-vous à une entreprise spécialisée."
 includes:
   - "Charpente traditionnelle et charpente industrielle (fermettes)"
   - "Réparation : remplacement de pannes, chevrons et pièces abîmées"
@@ -14,15 +28,14 @@ includes:
   - "Pose de la couverture dans la foulée, avec la même entreprise"
 guides:
   - "prix-charpente"
-  - "traitement-charpente-termites-charente"
 related:
-  - "couverture"
   - "amenagement-combles"
-  - "ossature-bois"
+  - "couverture"
+  - "plaquisterie"
 updated: 2026-10-30
 faq:
   - q: "Combien coûte une charpente en Charente ?"
-    a: "Le prix dépend de la surface, du type de charpente (traditionnelle ou fermettes), de la complexité de la toiture et de l'accès au chantier. Les fourchettes publiées et ce qui les fait varier sont détaillées dans le guide des prix. Pour votre projet, le devis sur place est gratuit."
+    a: "Le prix dépend de la surface, du type de charpente (traditionnelle ou fermettes), de la complexité de la toiture et de l'accès au chantier. Mes prix sont sur devis ; pour comparer, le guide des prix détaille les fourchettes publiées par des tiers et ce qui les fait varier. Pour votre projet, le devis sur place est gratuit."
   - q: "Comment savoir si une charpente doit être réparée ?"
     a: "Les signes à surveiller : une toiture qui ondule ou s'affaisse, des bois qui se fendent, des traces d'humidité, des petits trous dans le bois avec de la sciure, ou une odeur de moisi dans les combles. Devant ces signes, mieux vaut faire contrôler la charpente rapidement : une réparation localisée coûte moins cher qu'une reprise complète."
   - q: "Peut-on aménager des combles avec une charpente en fermettes ?"
@@ -31,7 +44,7 @@ faq:
     a: "Une reprise à l'identique ne modifie pas l'aspect extérieur. Dès que la hauteur, la pente ou l'aspect de la toiture changent, une déclaration préalable ou un permis de construire est nécessaire. En secteur protégé, l'accord de l'Architecte des Bâtiments de France peut aussi être demandé."
 ---
 
-La charpente porte tout le toit. Sa conception conditionne la solidité de la maison, mais aussi ce que vous pourrez faire plus tard, comme aménager les combles. La charpente fait partie des métiers que j'ai appris sur le terrain, et que BR 16 BATIMENT réalise depuis sa création en 2017.
+La charpente porte tout le toit. Sa conception conditionne la solidité de la maison, mais aussi ce que vous pourrez faire plus tard, comme aménager les combles. La charpente fait partie des métiers que j'ai appris sur le terrain : je la réalise en complément de mes spécialités.
 
 ## Charpente traditionnelle ou fermettes : que choisir ?
 
@@ -50,7 +63,7 @@ Une charpente saine dure très longtemps, à condition de rester au sec. La plup
 - avant d'aménager les combles ou de poser une isolation lourde ;
 - dès que vous remarquez un affaissement du faîtage, une fissure dans les bois ou des traces d'humidité.
 
-Les insectes et champignons du bois sont un autre sujet, qui a ses propres règles : tout le département est classé à risque de termites par arrêté préfectoral. Je les détaille dans [le guide sur le traitement de charpente](/guides/traitement-charpente-termites-charente).
+Les insectes et champignons du bois sont un autre sujet : tout le département est classé à risque de termites par arrêté préfectoral. Je n'interviens pas sur les termites ni sur le traitement des bois : adressez-vous à une entreprise spécialisée.
 
 ## Comment se déroule un chantier de charpente ?
 
@@ -62,10 +75,6 @@ Le déroulé suit ma méthode habituelle, en trois temps.
 
 ## Pourquoi confier charpente et couverture à la même entreprise ?
 
-Sur un toit, les défauts naissent souvent à la jonction entre deux corps de métier. Quand la même entreprise réalise la charpente et la [couverture](/services/couverture), il n'y a qu'un seul planning et un seul interlocuteur en cas de question. C'est aussi plus simple si vous prévoyez dans la foulée [l'isolation](/services/isolation) ou [l'aménagement des combles](/services/amenagement-combles).
-
-## Où j'interviens
-
-Je suis installé à Champagne-Vigny, dans le sud de la Charente. J'interviens dans [tout le département](/zone-intervention), d'[Angoulême](/zone-intervention/angouleme) à [Barbezieux-Saint-Hilaire](/zone-intervention/barbezieux-saint-hilaire) en passant par [Cognac](/zone-intervention/cognac), et je me déplace aussi en Charente-Maritime et en Dordogne.
+Sur un toit, les défauts naissent souvent à la jonction entre deux corps de métier. Quand la même entreprise réalise la charpente et la [couverture](/services/couverture), il n'y a qu'un seul planning et un seul interlocuteur en cas de question. C'est aussi plus simple si vous prévoyez dans la foulée [l'isolation](/services/isolation-interieure) ou [l'aménagement des combles](/services/amenagement-combles).
 
 Pour estimer votre budget avant de me contacter, consultez [le guide des prix d'une charpente](/guides/prix-charpente).

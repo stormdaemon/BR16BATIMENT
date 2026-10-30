@@ -1,10 +1,10 @@
 ---
-title: "Artisan du bâtiment en Charente-Maritime | BR 16"
-description: "BR 16 BATIMENT se déplace en Charente-Maritime depuis Champagne-Vigny (16) : charpente, couverture, isolation et rénovation, secteur Jonzac, Pons ou Saintes."
-h1: "Charpente, toiture et rénovation en Charente-Maritime"
+title: "Placo et isolation en Charente-Maritime | BR 16 BATIMENT"
+description: "BR 16 BATIMENT se déplace en Charente-Maritime depuis Champagne-Vigny (16) : placo, isolation, menuiseries et démoussage, secteur Jonzac, Pons ou Saintes."
+h1: "Placo, isolation et menuiserie en Charente-Maritime"
 name: "Charente-Maritime"
 kind: "departement"
-answer: "BR 16 BATIMENT est basé à Champagne-Vigny, en Charente, et se déplace en Charente-Maritime pour la charpente, la couverture, l'isolation et la rénovation. Si votre chantier se situe du côté de Jonzac, de Pons ou de Saintes, décrivez-moi votre projet : je vous dirai sous 48 h si je peux le prendre en charge."
+answer: "BR 16 BATIMENT est basé à Champagne-Vigny, en Charente, et se déplace en Charente-Maritime pour la plaquisterie, l'isolation intérieure, les menuiseries et le démoussage de toiture. Si votre chantier se situe du côté de Jonzac, de Pons ou de Saintes, décrivez-moi votre projet : je vous dirai sous 48 h si je peux le prendre en charge."
 updated: 2026-10-30
 faq:
   - q: "Jusqu'où vous déplacez-vous en Charente-Maritime ?"
@@ -28,10 +28,10 @@ Ma zone principale reste la Charente, mais une maison ne s'arrête pas à une li
 
 Plus le chantier est éloigné, plus il doit être organisé. Il est généralement plus simple de réunir plusieurs postes en une seule opération que de faire une petite intervention isolée. Par exemple :
 
-- une [réfection de toiture](/services/couverture), avec contrôle de la [charpente](/services/charpente) ;
+- des [cloisons et doublages](/services/plaquisterie), avec leur [isolation](/services/isolation-interieure) ;
+- un [remplacement de fenêtres](/services/menuiserie) ;
 - un [aménagement de combles](/services/amenagement-combles) ;
-- une [extension en ossature bois](/services/ossature-bois), avec son [bardage](/services/bardage) ;
-- une [rénovation](/services/renovation) par lots.
+- une [rénovation intérieure](/services/renovation-interieure) par lots.
 
 ## Qu'est-ce qui change par rapport à la Charente ?
 
@@ -41,7 +41,7 @@ Le patrimoine y est aussi très présent. Le département compte plusieurs lieux
 
 ## Termites : que faut-il savoir ?
 
-La procédure est la même partout : le préfet délimite une zone lorsque des foyers sont identifiés. Dans une telle zone, la vente d'un bâtiment exige un état relatif à la présence de termites. Je détaille ces règles dans [le guide sur les termites et le traitement de charpente](/guides/traitement-charpente-termites-charente).
+La procédure est la même partout : le préfet délimite une zone lorsque des foyers sont identifiés. Dans une telle zone, la vente d'un bâtiment exige un état relatif à la présence de termites. BR 16 BATIMENT n'intervient pas sur les termites : adressez-vous à une entreprise spécialisée.
 
 ## Comment me contacter pour un chantier en Charente-Maritime ?
 

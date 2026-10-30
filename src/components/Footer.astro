@@ -2,7 +2,7 @@
 import { Picture } from 'astro:assets';
 import logo from '../assets/logo.png';
 import geo from '../data/geo.json';
-import { SERVICES, SITE } from '../data/site';
+import { SITE, SPECIALITES } from '../data/site';
 
 const year = new Date().getFullYear();
 const zones = [...geo.communes].sort((a, b) => b.population - a.population).slice(0, 8);
@@ -10,7 +10,7 @@ const zones = [...geo.communes].sort((a, b) => b.population - a.population).slic
 <footer class="site-footer s-ink">
   <div class="wrap grid">
     <div class="id">
-      <Picture src={logo} formats={['avif', 'webp']} width={220} alt="Logo BR 16 BATIMENT, depuis 2017 : charpente, couverture, isolation, plâtrerie et menuiserie" loading="lazy" />
+      <Picture src={logo} formats={['avif', 'webp']} width={220} alt="Logo BR 16 BATIMENT, depuis 2017" loading="lazy" />
       <address>
         <strong>{SITE.name}</strong><br />
         {SITE.address.street}<br />
@@ -25,7 +25,7 @@ const zones = [...geo.communes].sort((a, b) => b.population - a.population).slic
       <p class="label label--accent">Services</p>
       <ul>
         <li><a href="/services">Tous les services</a></li>
-        {SERVICES.map((s) => <li><a href={`/services/${s.slug}`}>{s.label}</a></li>)}
+        {SPECIALITES.map((s) => <li><a href={`/services/${s.slug}`}>{s.label}</a></li>)}
       </ul>
     </nav>
 

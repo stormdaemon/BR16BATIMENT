@@ -1,5 +1,7 @@
 # Plan de mise en œuvre SEO, GEO et refonte
 
+> Le 30 octobre 2026, le client a précisé ses priorités : voir [`05-recentrage.md`](05-recentrage.md), qui prime sur ce plan pour le positionnement et la liste des actions.
+
 > Étape 5. Exécuté par Claude dans la session, agents limités à Haiku 5.5. Plan validé par son auteur à la demande de l'utilisateur (voir « Auto-validation »).
 
 **Objectif :** rendre BR 16 BATIMENT trouvable sur Google et citable par les moteurs de réponse, sur une stack à jour et avec un design refait, sans changer son identité de couleurs.
@@ -84,7 +86,7 @@ Corrige ce qui fait du tort aujourd'hui, sans attendre la refonte.
 
 Par ordre d'impact. Aucune ne peut être faite à sa place.
 
-1. **Renouveler le certificat HTTPS** : Netlify → Domain management → HTTPS. Tant que ce n'est pas fait, le site reste inaccessible sur son domaine.
+1. ~~**Renouveler le certificat HTTPS**~~ : fait le 30 octobre 2026, valide jusqu'au 28 janvier 2027. À surveiller : le renouvellement automatique a déjà échoué une fois sans alerte.
 2. **Créer ou revendiquer la fiche Google Business Profile**, catégorie principale exacte, photos réelles. C'est le premier facteur du pack local et la source de Gemini.
 3. **Créer la fiche Bing Places**, source de ChatGPT Search et de Copilot, puis Apple Business Connect et PagesJaunes.
 4. **Demander des avis clients réels**, de façon régulière.
@@ -92,13 +94,13 @@ Par ordre d'impact. Aucune ne peut être faite à sa place.
 6. **Vérifier l'attestation décennale** : couverture, ossature bois et nettoyage de toiture ne figurent pas dans l'objet publié au BODACC.
 7. **Relire les pages services et guides** : les prestations exactes doivent être confirmées par Raphaël Bardan.
 8. **Déclarer le site à Google Search Console et Bing Webmaster Tools**, soumettre `sitemap-index.xml`.
-9. **Décider pour le RGE** : sans cette qualification, les clients de l'isolation et des fenêtres perdent l'accès aux principales aides.
+9. ~~**Décider pour le RGE**~~ : décidé par le client, l'entreprise n'est pas RGE et le site le dit clairement.
 
 ## Indicateurs
 
 | Indicateur | Point de départ | Comment suivre |
 | --- | --- | --- |
-| Accès au domaine | Certificat expiré | Navigateur |
+| Accès au domaine | Certificat réparé le 30/10/2026 | Navigateur, échéance du 28/01/2027 |
 | Pages indexables | 4 | Search Console |
 | Requêtes de marque | Aucune présence détectée | Google, Bing et les 4 assistants, chaque mois |
 | Requêtes locales | Non mesuré | Search Console |

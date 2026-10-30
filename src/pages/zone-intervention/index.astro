@@ -4,9 +4,11 @@ import CharenteMap from '../../components/CharenteMap.astro';
 import Cote from '../../components/Cote.astro';
 import Cta from '../../components/Cta.astro';
 import Faq from '../../components/Faq.astro';
+import LinkRows from '../../components/LinkRows.astro';
 import PageHero from '../../components/PageHero.astro';
+import Proof from '../../components/Proof.astro';
 import geo from '../../data/geo.json';
-import { SITE } from '../../data/site';
+import { SITE, SPECIALITES } from '../../data/site';
 
 const crumbs = [{ name: 'Accueil', href: '/' }, { name: "Zone d'intervention", href: '/zone-intervention' }];
 const towns = [...geo.communes].sort((a, b) => a.km - b.km);
@@ -19,15 +21,15 @@ const faq = [
 ];
 ---
 <Base
-  title="Zone d'intervention en Charente | BR 16 BATIMENT"
-  description="BR 16 BATIMENT intervient dans toute la Charente depuis Champagne-Vigny : Angoulême, Cognac, Barbezieux, Jarnac… et en Charente-Maritime et Dordogne."
+  title="Artisan en Charente : zone d'intervention | BR 16 BATIMENT"
+  description="Plaquiste, isolation, menuiserie, démoussage : BR 16 BATIMENT intervient dans toute la Charente depuis Champagne-Vigny, d'Angoulême à Cognac et Barbezieux."
   crumbs={crumbs}
 >
   <PageHero
     crumbs={crumbs}
     kicker="Zone d'intervention"
     h1="De Champagne-Vigny à toute la Charente."
-    answer={`BR 16 BATIMENT est basé à Champagne-Vigny (16250) et intervient dans toute la Charente, avec des déplacements possibles en Charente-Maritime et en Dordogne. Les communes les plus proches sont à moins de 25 km de route : ${near}.`}
+    answer={`BR 16 BATIMENT est basé à Champagne-Vigny (16250) et intervient dans toute la Charente pour la plaquisterie, l'isolation intérieure, la menuiserie, le démoussage de toiture et la rénovation intérieure, avec des déplacements possibles en Charente-Maritime et en Dordogne. Les communes les plus proches sont à moins de 25 km de route : ${near}.`}
   >
     <CharenteMap slot="visual" />
   </PageHero>
@@ -67,6 +69,16 @@ const faq = [
     </div>
   </section>
 
+  <section class="s-white section" data-section="problemes">
+    <div class="wrap">
+      <p class="label">Votre problème</p>
+      <h2 class="needs__title">Ce que je peux faire pour vous en Charente</h2>
+      <LinkRows items={SPECIALITES.map((s) => ({ href: `/services/${s.slug}`, meta: s.label, title: s.problem, text: s.short }))} compact />
+    </div>
+  </section>
+
+  <Proof />
+
   <section class="s-white section">
     <div class="wrap narrow"><Faq items={faq} title="Votre commune, vos questions" /></div>
   </section>
@@ -89,5 +101,6 @@ const faq = [
   .deps a:hover .label { color: var(--anthracite); }
   .dep { font-size: var(--fs-xl); }
   @media (min-width: 48rem) { .deps { grid-template-columns: 1fr 1fr; } }
+  .needs__title { margin-block: 0.75rem 1.5rem; }
   .narrow { max-width: 64rem; }
 </style>

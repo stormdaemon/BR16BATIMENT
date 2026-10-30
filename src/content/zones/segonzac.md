@@ -1,14 +1,14 @@
 ---
-title: "Toiture et rénovation à Segonzac (16130) | BR 16 BATIMENT"
-description: "Toiture, charpente et rénovation à Segonzac, capitale de la Grande Champagne, sur maisons et bâtiments du vignoble. BR 16 BATIMENT, à 34 km. Devis gratuit."
-h1: "Toiture, charpente et rénovation à Segonzac"
+title: "Démoussage et isolation à Segonzac (16130) | BR 16 BATIMENT"
+description: "Démoussage, isolation, placo et menuiseries à Segonzac, capitale de la Grande Champagne, sur maisons et bâtiments du vignoble. BR 16 BATIMENT, à 34 km."
+h1: "Démoussage, isolation et menuiserie à Segonzac"
 name: "Segonzac"
 kind: "commune"
-answer: "BR 16 BATIMENT intervient à Segonzac, capitale de la Grande Champagne, pour la toiture, la charpente, l'isolation et la rénovation. La commune est à 34 km de route de Champagne-Vigny, soit environ 34 minutes. Dans ce territoire viticole, le risque argile reste présent, mais il est moins généralisé qu'ailleurs en Charente. Le devis est gratuit."
+answer: "BR 16 BATIMENT intervient à Segonzac, capitale de la Grande Champagne, pour le démoussage de toiture, l'isolation intérieure, la plaquisterie et les menuiseries. La commune est à 34 km de route de Champagne-Vigny, soit environ 34 minutes. Dans ce territoire viticole, le risque argile reste présent, mais il est moins généralisé qu'ailleurs en Charente. Le devis est gratuit."
 updated: 2026-10-30
 faq:
   - q: "Rénovez-vous aussi des bâtiments agricoles ou viticoles ?"
-    a: "Décrivez-moi le bâtiment et son usage. Une charpente, une couverture ou un bardage peuvent être repris sur ce type de construction, mais un bâtiment de stockage d'alcool peut relever de règles de sécurité spécifiques, à vérifier en amont."
+    a: "Décrivez-moi le bâtiment et son usage. Une isolation, un démoussage ou un bardage peuvent être réalisés sur ce type de construction, mais un bâtiment de stockage d'alcool peut relever de règles de sécurité spécifiques, à vérifier en amont."
   - q: "Quel est le risque argile à Segonzac ?"
     a: "Il est important, mais moins généralisé que dans beaucoup de communes voisines : 62,2 % de la superficie et 771 bâtiments sur 1 054 sont en aléa moyen ou fort, selon les données de 2019. Vérifiez votre parcelle sur Géorisques."
   - q: "Y a-t-il des contraintes liées aux monuments ?"
@@ -24,7 +24,7 @@ Segonzac est la capitale de la Grande Champagne, le premier cru du cognac, et la
 
 ## Une toiture de maison ou de bâtiment d'exploitation, est-ce différent ?
 
-Oui, surtout par les dimensions et l'usage. Un grand volume demande de vérifier la [charpente](/services/charpente) sur toute sa longueur, car un affaissement localisé peut venir d'une ancienne infiltration. Pour la [couverture](/services/couverture), le choix du matériau dépend de la pente et de l'aspect du bâtiment. Et pour un habillage extérieur, un [bardage bois](/services/bardage) bien ventilé protège les murs des intempéries.
+Oui, surtout par les dimensions et l'usage. Sur un grand volume, un [démoussage](/services/demoussage-toiture) demande une organisation particulière et un accès sûr. C'est aussi l'occasion de repérer les tuiles à remplacer et les traces d'infiltration. Et pour un habillage extérieur, un [bardage bois](/services/bardage) bien ventilé protège les murs des intempéries.
 
 Si le bâtiment accueille des activités liées à l'alcool, renseignez-vous sur les règles de sécurité applicables, avant même de demander un devis.
 
@@ -43,4 +43,4 @@ Si votre maison est dans leurs abords, parlez-en au service urbanisme avant de c
 
 ## Comment préparer votre projet ?
 
-Commencez par ce qui protège le bâtiment : le toit, puis l'isolation. [Le guide des prix d'une réfection de toiture](/guides/prix-refection-toiture) et [celui de l'isolation des combles](/guides/prix-isolation-combles) vous donneront des ordres de grandeur. Pour un chantier précis, une visite sur place reste indispensable, et elle est gratuite.
+Commencez par ce qui protège le bâtiment : le toit, puis l'isolation. [Le guide du démoussage](/guides/prix-demoussage-toiture) et [celui de l'isolation des combles](/guides/prix-isolation-combles) vous donneront des ordres de grandeur. Pour un chantier précis, une visite sur place reste indispensable, et elle est gratuite.

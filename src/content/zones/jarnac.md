@@ -1,10 +1,10 @@
 ---
-title: "Couvreur et menuisier à Jarnac (16200) | BR 16 BATIMENT"
-description: "Toiture, menuiseries, charpente et rénovation à Jarnac, au bord de la Charente. BR 16 BATIMENT, à 35 km de route. Crues et sols argileux pris en compte."
-h1: "Couvreur et menuisier à Jarnac"
+title: "Menuisier et plaquiste à Jarnac (16200) | BR 16 BATIMENT"
+description: "Menuiseries, placo, isolation et démoussage à Jarnac, au bord de la Charente. BR 16 BATIMENT, à 35 km de route. Crues et sols argileux pris en compte."
+h1: "Menuisier et plaquiste à Jarnac"
 name: "Jarnac"
 kind: "commune"
-answer: "BR 16 BATIMENT intervient à Jarnac pour la couverture, les menuiseries, la charpente et la rénovation, à 35 km de route de Champagne-Vigny. Au bord de la Charente, la commune combine risque d'inondation et sols argileux : deux sujets à vérifier avant les gros travaux. Le devis est gratuit et personnalisé."
+answer: "BR 16 BATIMENT intervient à Jarnac pour les menuiseries, la plaquisterie, l'isolation intérieure et le démoussage de toiture, à 35 km de route de Champagne-Vigny. Au bord de la Charente, la commune combine risque d'inondation et sols argileux : deux sujets à vérifier avant les gros travaux. Le devis est gratuit et personnalisé."
 updated: 2026-10-30
 faq:
   - q: "Jarnac est-elle une commune inondable ?"
@@ -41,9 +41,9 @@ Avec 99,6 % de la superficie en aléa moyen ou fort, l'argile concerne presque 
 
 Pour une maison en bord de Charente ou dans le centre, ces travaux sont souvent les premiers à envisager :
 
-- [réfection de toiture](/services/couverture) et remplacement des tuiles ;
 - [remplacement des fenêtres et des portes](/services/menuiserie) ;
-- [isolation des combles](/services/isolation), souvent la plus efficace ;
-- [rénovation intérieure](/services/renovation), une fois la maison au sec.
+- [isolation intérieure](/services/isolation-interieure), des combles aux murs ;
+- [cloisons et doublages](/services/plaquisterie), une fois la maison au sec ;
+- [démoussage de la toiture](/services/demoussage-toiture), pour la faire durer.
 
-Jarnac est à 35 km de Champagne-Vigny, environ 43 minutes de route. Pour un chiffrage, une visite est nécessaire ; pour une première estimation, voyez [le guide du remplacement des fenêtres](/guides/prix-changer-fenetres) et [celui de la toiture](/guides/prix-refection-toiture).
+Jarnac est à 35 km de Champagne-Vigny, environ 43 minutes de route. Pour un chiffrage, une visite est nécessaire ; pour une première estimation, voyez [le guide du remplacement des fenêtres](/guides/prix-changer-fenetres) et [celui de l'isolation des combles](/guides/prix-isolation-combles).

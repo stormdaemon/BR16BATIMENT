@@ -1,10 +1,10 @@
 ---
-title: "Charpentier couvreur à Barbezieux-Saint-Hilaire | BR 16"
-description: "Charpente, couverture, isolation et rénovation à Barbezieux-Saint-Hilaire. BR 16 BATIMENT, artisan à 23 km, dans le même territoire des 4B. Devis gratuit."
-h1: "Charpentier et couvreur à Barbezieux-Saint-Hilaire"
+title: "Plaquiste à Barbezieux-Saint-Hilaire | BR 16 BATIMENT"
+description: "Placo, isolation, menuiseries et démoussage à Barbezieux-Saint-Hilaire. BR 16 BATIMENT, artisan à 23 km, dans les 4B Sud-Charente. Devis gratuit."
+h1: "Plaquiste et isolation à Barbezieux-Saint-Hilaire"
 name: "Barbezieux-Saint-Hilaire"
 kind: "commune"
-answer: "BR 16 BATIMENT réalise la charpente, la couverture, l'isolation, les menuiseries et la rénovation à Barbezieux-Saint-Hilaire. Installée à Champagne-Vigny, dans la même communauté de communes des 4B, l'entreprise est à 23 km de route, soit environ 23 minutes. Le devis est gratuit, et une réponse vous est apportée sous 48 h."
+answer: "BR 16 BATIMENT réalise la plaquisterie, l'isolation intérieure, les menuiseries et le démoussage de toiture à Barbezieux-Saint-Hilaire. Installée à Champagne-Vigny, dans la même communauté de communes, les 4B Sud-Charente, l'entreprise est à 23 km de route, soit environ 23 minutes. Le devis est gratuit, et une réponse vous est apportée sous 48 h."
 updated: 2026-10-30
 faq:
   - q: "Quel document d'urbanisme s'applique à Barbezieux ?"
@@ -39,4 +39,4 @@ Cela dépend de votre adresse. Le château de Barbezieux, reconnaissable à son 
 
 ## Quels travaux pour votre maison ?
 
-Je réalise ici tous les postes liés à la structure et au second œuvre : [charpente](/services/charpente), [couverture](/services/couverture), [nettoyage de toiture](/services/nettoyage-toiture), [isolation](/services/isolation), [cloisons et plafonds](/services/plaquisterie), [fenêtres et portes](/services/menuiserie). Pour préparer votre budget, commencez par [le guide des prix d'une réfection de toiture](/guides/prix-refection-toiture), ou [celui de la rénovation d'une maison](/guides/prix-renovation-maison).
+Je réalise notamment : [cloisons et plafonds](/services/plaquisterie), [isolation](/services/isolation-interieure), [fenêtres et portes](/services/menuiserie), et [démoussage de toiture](/services/demoussage-toiture). Pour préparer votre budget, commencez par [le guide des prix d'un plaquiste](/guides/prix-plaquiste-cloison-placo), ou [celui de la rénovation d'une maison](/guides/prix-renovation-maison).

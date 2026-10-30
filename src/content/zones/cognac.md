@@ -1,10 +1,10 @@
 ---
-title: "Artisan toiture et rénovation à Cognac | BR 16 BATIMENT"
-description: "Toiture, charpente, menuiseries et rénovation à Cognac, du vieux Cognac aux quartiers récents. BR 16 BATIMENT, à 50 km de route. Devis gratuit."
-h1: "Toiture, charpente et rénovation à Cognac"
+title: "Plaquiste et menuisier à Cognac | BR 16 BATIMENT"
+description: "Placo, isolation, menuiseries, rénovation intérieure et démoussage à Cognac, du vieux Cognac aux quartiers récents. BR 16 BATIMENT, à 50 km de route."
+h1: "Plaquiste, menuisier et démoussage à Cognac"
 name: "Cognac"
 kind: "commune"
-answer: "BR 16 BATIMENT intervient à Cognac pour la toiture, la charpente, les menuiseries, l'isolation et la rénovation. Depuis Champagne-Vigny, la ville est à 50 km de route, soit environ une heure. Bâti ancien du vieux Cognac, champignon noir sur les murs, risque d'inondation : chaque chantier se prépare selon l'adresse. Le devis est gratuit."
+answer: "BR 16 BATIMENT intervient à Cognac pour la plaquisterie, l'isolation intérieure, les menuiseries et le démoussage de toiture. Depuis Champagne-Vigny, la ville est à 50 km de route, soit environ une heure. Bâti ancien du vieux Cognac, champignon noir sur les murs, risque d'inondation : chaque chantier se prépare selon l'adresse. Le devis est gratuit."
 updated: 2026-10-30
 faq:
   - q: "Pourquoi certains murs et toits noircissent-ils à Cognac ?"
@@ -29,7 +29,7 @@ sources:
 
 Cognac a une particularité : un champignon noir prolifère à proximité des vapeurs d'eau-de-vie, et donne leur couleur sombre à certains murs, quartiers et arbres. La plupart des chais de vieillissement ont été déplacés hors du centre, mais le bâti ancien en garde souvent la trace.
 
-Si votre toiture noircit, le [démoussage](/services/nettoyage-toiture) n'est pas forcément la bonne réponse. La première étape est d'identifier la cause et de vérifier l'état de la couverture. Une tuile saine et tachée n'appelle pas le même traitement qu'une tuile poreuse. Le [guide du démoussage](/guides/prix-demoussage-toiture) détaille les différentes options.
+Si votre toiture noircit, le [démoussage](/services/demoussage-toiture) n'est pas forcément la bonne réponse. La première étape est d'identifier la cause et de vérifier l'état de la couverture. Une tuile saine et tachée n'appelle pas le même traitement qu'une tuile poreuse. Le [guide du démoussage](/guides/prix-demoussage-toiture) détaille les différentes options.
 
 ## Quelles règles dans le vieux Cognac ?
 
@@ -46,4 +46,4 @@ Deux sujets à regarder avant tout projet qui touche aux fondations.
 
 ## Une entreprise pour plusieurs métiers
 
-Sur une maison de ville, il est courant de combiner [toiture](/services/couverture), [isolation des combles](/services/isolation), [cloisons](/services/plaquisterie) et [menuiseries](/services/menuiserie). Les réunir limite le nombre d'interlocuteurs, ce qui compte encore plus pour un chantier éloigné.
+Sur une maison de ville, il est courant de combiner [cloisons](/services/plaquisterie), [isolation](/services/isolation-interieure), [menuiseries](/services/menuiserie) et [démoussage de la toiture](/services/demoussage-toiture). Les réunir limite le nombre d'interlocuteurs, ce qui compte encore plus pour un chantier éloigné.

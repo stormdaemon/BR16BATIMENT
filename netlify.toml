@@ -11,6 +11,37 @@
   to = "/sitemap-index.xml"
   status = 301
 
+# Pages renommées ou retirées quand l'entreprise a recentré son offre (octobre 2026).
+[[redirects]]
+  from = "/services/isolation"
+  to = "/services/isolation-interieure"
+  status = 301
+
+[[redirects]]
+  from = "/services/nettoyage-toiture"
+  to = "/services/demoussage-toiture"
+  status = 301
+
+[[redirects]]
+  from = "/services/renovation"
+  to = "/services/renovation-interieure"
+  status = 301
+
+[[redirects]]
+  from = "/services/amenagement-interieur"
+  to = "/services/dressing-amenagement-interieur"
+  status = 301
+
+[[redirects]]
+  from = "/guides/aides-renovation-2026"
+  to = "/faq"
+  status = 301
+
+[[redirects]]
+  from = "/guides/traitement-charpente-termites-charente"
+  to = "/faq"
+  status = 301
+
 [[headers]]
   for = "/*"
   [headers.values]

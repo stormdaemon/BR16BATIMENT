@@ -19,7 +19,7 @@ function buildHero() {
   const hero = document.querySelector<HTMLElement>('.hero');
   if (!hero) return;
   const scrub = { trigger: hero, start: 'top top', end: 'bottom top', scrub: true };
-  gsap.to('.hero__truss', { yPercent: -14, scale: 1.07, ease: 'none', scrollTrigger: scrub });
+  gsap.to('.hero__coupe', { yPercent: -14, scale: 1.07, ease: 'none', scrollTrigger: scrub });
   gsap.utils.toArray<HTMLElement>('.hero__title .line').forEach((line, i) => {
     gsap.to(line, { xPercent: i % 2 ? 7 : -4, ease: 'none', scrollTrigger: scrub });
   });
@@ -46,34 +46,35 @@ function buildHouse() {
   if (!house || !steps.length) return;
 
   house.classList.add('is-dim');
-  const select = (slug: string) => house.querySelectorAll(`[data-layer="${slug}"]`);
-  const setActive = (slug: string, on: boolean) => {
-    select(slug).forEach((el) => el.classList.toggle('is-active', on));
-  };
+  const stepped = new Set(steps.map((step) => step.dataset.step));
+  const layers = [...house.querySelectorAll<SVGGElement>('.layer')];
 
-  house.querySelectorAll('.layer > *').forEach((el) => gsap.set(el, { strokeDasharray: 1, strokeDashoffset: 1 }));
-  gsap.fromTo(house.querySelectorAll('.base > *'), { strokeDasharray: 1, strokeDashoffset: 1 }, {
+  // Les travaux complémentaires n'ont pas d'étape : ils sont dessinés d'emblée, en retrait.
+  // Seules les spécialités se tracent au défilement.
+  layers.filter((l) => stepped.has(l.dataset.layer)).forEach((l) => gsap.set(l.children, { strokeDasharray: 1, strokeDashoffset: 1 }));
+  const rest = layers.filter((l) => !stepped.has(l.dataset.layer)).flatMap((l) => [...l.children]);
+  gsap.fromTo([...house.querySelectorAll('.base > *'), ...rest], { strokeDasharray: 1, strokeDashoffset: 1 }, {
     strokeDashoffset: 0, stagger: 0.008, duration: 1.4, ease: 'power2.inOut',
     scrollTrigger: { trigger: house, start: 'top 80%' },
   });
 
   steps.forEach((step) => {
-    const slug = step.dataset.step ?? '';
-    const parts = house.querySelectorAll(`.layer[data-layer="${slug}"] > *`);
+    const slug = step.dataset.step;
     ScrollTrigger.create({
       trigger: step,
       start: 'top 62%',
       end: 'bottom 38%',
       onToggle: (self) => {
         step.classList.toggle('is-current', self.isActive);
-        if (slug === 'renovation') {
+        if (slug === 'renovation-interieure') {
           house.classList.toggle('is-all', self.isActive);
           house.classList.toggle('is-dim', !self.isActive);
         } else {
-          setActive(slug, self.isActive);
+          house.querySelectorAll(`[data-layer="${slug}"]`).forEach((el) => el.classList.toggle('is-active', self.isActive));
         }
       },
     });
+    const parts = layers.filter((l) => l.dataset.layer === slug).flatMap((l) => [...l.children]);
     if (parts.length) {
       gsap.to(parts, {
         strokeDashoffset: 0, ease: 'none', stagger: 0.04,

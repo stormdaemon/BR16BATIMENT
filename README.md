@@ -21,6 +21,7 @@ Node 22.23 ou plus récent. TypeScript reste en v6 tant que `@astrojs/check` n'a
 | --- | --- |
 | Téléphone, adresse, SIRET, horaires, parcours, liste des services | `src/data/site.ts` |
 | Le texte d'un service | `src/content/services/<service>.md` |
+| Les photos de chantiers et les avis réels | `src/data/preuves.ts`, photos dans `src/assets/realisations/` |
 | Le texte d'une commune ou d'un département | `src/content/zones/<commune>.md` |
 | Un guide | `src/content/guides/<guide>.md` |
 | Couleurs, typographie, espacements | `src/styles/global.css` |
@@ -39,9 +40,14 @@ Les champs de chaque type de page sont définis et validés dans `src/content.co
 - un seul H1, une canonique exacte, un JSON-LD valide ;
 - aucun lien interne cassé, aucune page orpheline ;
 - un nombre de mots minimal par type de page, sans JavaScript ;
-- pas plus de 40 % de texte commun entre deux pages locales, pour éviter les pages satellites ;
+- pas plus de 40 % de texte commun entre deux pages locales ou deux pages services ;
 - un sitemap complet et sans page exclue ;
-- aucune couleur hors de la palette de l'identité.
+- aucune couleur hors de la palette de l'identité ;
+- sur chaque page service, le fil problème, exemples, preuves, zone et devis, avec les mots employés par les clients ;
+- aucun montant hors des guides, et la mention « prix sur devis » dans chaque guide qui en affiche : les prix de l'entreprise sont sur devis ;
+- aucune promesse sur les aides ou les termites, et jamais le nom de l'entreprise tronqué.
+
+Les priorités commerciales et leurs raisons sont dans `docs/seo/05-recentrage.md`.
 
 ## Identité
 

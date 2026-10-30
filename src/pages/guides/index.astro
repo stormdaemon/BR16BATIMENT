@@ -6,20 +6,22 @@ import Cote from '../../components/Cote.astro';
 import LinkRows from '../../components/LinkRows.astro';
 import PageHero from '../../components/PageHero.astro';
 
-const guides = (await getCollection('guides')).sort((a, b) => a.data.label.localeCompare(b.data.label, 'fr'));
+// Les guides des spécialités d'abord, ceux des travaux complémentaires ensuite.
+const order = ['prix-plaquiste-cloison-placo', 'prix-isolation-murs-interieur', 'prix-isolation-combles', 'prix-changer-fenetres', 'prix-demoussage-toiture', 'prix-renovation-maison', 'prix-pose-parquet-flottant-lino', 'prix-dressing-sur-mesure', 'prix-pose-cuisine', 'prix-pose-porte-interieure', 'choisir-artisan-batiment-charente', 'prix-amenagement-combles', 'prix-bardage-bois', 'prix-refection-toiture', 'fuite-toiture-que-faire', 'prix-charpente', 'prix-extension-ossature-bois'];
+const guides = (await getCollection('guides')).sort((a, b) => order.indexOf(a.id) - order.indexOf(b.id));
 const crumbs = [{ name: 'Accueil', href: '/' }, { name: 'Guides', href: '/guides' }];
 const items = guides.map((g) => ({ href: `/guides/${g.id}`, title: g.data.h1, meta: g.data.label, text: g.data.description }));
 ---
 <Base
-  title="Guides travaux : prix, aides et règles en Charente | BR 16"
-  description="Prix au m², aides, autorisations d'urbanisme, garanties : des guides sourcés pour préparer vos travaux de toiture, d'isolation et de rénovation en Charente."
+  title="Guides travaux : prix et règles en Charente | BR 16 BATIMENT"
+  description="Prix du placo, de l'isolation, des fenêtres, du parquet ou du démoussage, règles et garanties : des guides sourcés pour préparer vos travaux en Charente."
   crumbs={crumbs}
 >
   <PageHero
     crumbs={crumbs}
     kicker="Guides travaux"
     h1="Comprendre avant de signer."
-    answer="Combien coûte une toiture, faut-il une autorisation pour aménager des combles, quelles aides existent : ces guides répondent aux questions les plus fréquentes, avec les sources officielles et les fourchettes de prix publiées. Ils ne remplacent pas un devis, mais vous aident à le lire."
+    answer="Combien coûte un plaquiste, quel prix pour isoler ses murs ou changer ses fenêtres, faut-il un hydrofuge sur sa toiture : ces guides répondent aux questions les plus fréquentes, avec leurs sources, officielles pour les règles, commerciales pour les prix. Ces montants servent à comparer : ce ne sont pas mes tarifs, qui sont sur devis."
   />
   <section class="s-paper section">
     <div class="wrap">

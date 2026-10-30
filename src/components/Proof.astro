@@ -1,0 +1,43 @@
+---
+// Les preuves : uniquement ce qu'un client peut vérifier. Photos et avis s'ajoutent quand ils existent.
+import { SITE, yearsSince } from '../data/site';
+import { fr } from '../lib/typo';
+import Realisations from './Realisations.astro';
+
+interface Props { line?: string; service?: string }
+const { line, service } = Astro.props;
+
+const items = [
+  ...(line ? [{ title: 'Sur ce métier', text: line }] : []),
+  { title: 'Expérience', text: `Sur les chantiers depuis 2001, soit plus de ${yearsSince(2001) - 1} ans de métier, après un bac professionnel menuiserie obtenu en 1999.` },
+  { title: 'Entreprise', text: `Activité créée en 2017, société depuis novembre 2025. SIRET ${SITE.legal.siret}.`, link: { href: `https://annuaire-entreprises.data.gouv.fr/entreprise/${SITE.legal.siren.replace(/\s/g, '')}`, text: 'Vérifier sur l\'Annuaire des entreprises' } },
+  { title: 'Assurances', text: 'Responsabilité civile professionnelle et décennale. Les références sont communiquées sur demande : vérifiez qu\'elles couvrent bien vos travaux.' },
+  { title: 'Devis', text: `Gratuit et sans engagement, avec une réponse ${SITE.responseDelay}.` },
+];
+---
+<section class="proof s-dark section" data-section="preuves">
+  <div class="wrap">
+    <p class="label label--accent">Parcours et garanties</p>
+    <h2 class="h1 proof__title">Ce que vous pouvez vérifier avant de m'appeler.</h2>
+    <ul class="proof__list">
+      {items.map((item, i) => (
+        <li data-reveal style={`--d:${(i % 4) * 0.06}s`}>
+          <h3>{item.title}</h3>
+          <p>{fr(item.text)}</p>
+          {item.link && <a href={item.link.href} rel="noopener">{item.link.text}</a>}
+        </li>
+      ))}
+    </ul>
+    <Realisations service={service} />
+  </div>
+</section>
+
+<style>
+  .proof__title { max-width: 20ch; margin-block: 1rem clamp(2rem, 1.5rem + 2vw, 3.5rem); }
+  .proof__list { display: grid; gap: 1.75rem 2.5rem; }
+  .proof__list li { display: grid; gap: 0.5rem; align-content: start; padding-top: 0.9rem; border-top: 2px solid var(--yellow); }
+  .proof__list p { color: var(--paper-70); }
+  .proof__list a { font-weight: 600; font-size: var(--fs-s); }
+  @media (min-width: 48rem) { .proof__list { grid-template-columns: repeat(2, 1fr); } }
+  @media (min-width: 72rem) { .proof__list { grid-template-columns: repeat(3, 1fr); } }
+</style>

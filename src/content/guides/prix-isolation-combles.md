@@ -1,10 +1,10 @@
 ---
-title: "Prix de l'isolation des combles et aides 2026 | BR 16"
-description: "Isolation des combles perdus ou aménagés : prix au m² par technique, résistance thermique, TVA et fin de MaPrimeRénov' par geste. Repères sourcés à jour."
+title: "Prix de l'isolation des combles au m² | BR 16 BATIMENT"
+description: "Isolation des combles perdus ou aménagés : prix au m² par technique, résistance thermique, TVA et point sur les aides. Repères sourcés et à jour."
 h1: "Combien coûte l'isolation des combles en 2026 ?"
 label: "Isolation"
-service: "isolation"
-answer: "L'isolation de combles perdus coûte de 20 à 70 €/m² selon Effy, et de 25 à 100 €/m² selon Habitatpresto. Les combles aménagés ou rampants vont de 30 à 280 €/m², selon la technique. Attention : depuis le 1er septembre 2026, MaPrimeRénov' par geste ne finance plus l'isolation. Elle reste possible en rénovation d'ampleur, avec une entreprise RGE."
+service: "isolation-interieure"
+answer: "L'isolation de combles perdus coûte de 20 à 70 €/m² selon Effy, et de 25 à 100 €/m² selon Habitatpresto. Les combles aménagés ou rampants vont de 30 à 280 €/m², selon la technique. Attention : depuis le 1er septembre 2026, MaPrimeRénov' par geste ne finance plus l'isolation. Elle reste possible en rénovation d'ampleur, avec une entreprise RGE, ce que BR 16 BATIMENT n'est pas. Ce sont des repères pour comparer : chez BR 16 BATIMENT, le prix est sur devis."
 published: 2026-10-30
 updated: 2026-10-30
 faq:
@@ -15,7 +15,7 @@ faq:
   - q: "Quelle résistance thermique viser ?"
     a: "La fiche CEE BAR-EN-101 demande une résistance d'au moins 7 m².K/W en comble perdu et 6 m².K/W en rampant de toiture. Le site officiel indique que ses simulations ne sont plus à jour : faites confirmer ces valeurs avant de signer."
   - q: "BR 16 BATIMENT peut-il isoler mes combles avec des aides ?"
-    a: "BR 16 BATIMENT n'est pas qualifiée RGE à ce jour. Or MaPrimeRénov' et l'éco-prêt à taux zéro exigent une entreprise RGE. Si ces aides comptent dans votre budget, dites-le dès le premier contact."
+    a: "Non. BR 16 BATIMENT n'est pas qualifiée RGE : ses travaux n'ouvrent pas droit à MaPrimeRénov', à l'éco-prêt à taux zéro ni aux primes CEE. Si ces aides comptent dans votre budget, il faudra passer par une entreprise RGE."
 sources:
   - label: "Habitatpresto : prix de l'isolation des combles"
     url: "https://www.habitatpresto.com/mag/isolation/prix-isolation-combles"
@@ -74,11 +74,9 @@ C'est le point à vérifier avant de signer.
 - **Primes CEE.** La fiche BAR-EN-101 existe toujours. Le montant dépend de l'organisme qui verse la prime : demandez un chiffrage écrit.
 - **TVA.** D'après impots.gouv.fr, le taux de 5,5 % s'applique aux travaux de rénovation énergétique, notamment l'amélioration de l'isolation thermique.
 
-Le détail figure dans [le guide des aides](/guides/aides-renovation-2026).
-
 ## Un point de transparence sur le RGE
 
-MaPrimeRénov' et l'éco-prêt à taux zéro exigent une entreprise qualifiée RGE, et les primes CEE aussi en principe. **BR 16 BATIMENT n'est pas qualifiée RGE à ce jour.** Si ces aides sont décisives pour votre budget, vérifiez ce point avant de signer, et consultez un conseiller France Rénov'. Si vous financez vous-même les travaux, cette condition ne vous concerne pas.
+MaPrimeRénov' et l'éco-prêt à taux zéro exigent une entreprise qualifiée RGE, et les primes CEE aussi en principe. **BR 16 BATIMENT n'est pas qualifiée RGE : ses travaux n'ouvrent pas droit à ces aides.** Si elles sont décisives pour votre budget, consultez un conseiller France Rénov', qui vous orientera vers une entreprise qualifiée. Si vous financez vous-même les travaux, cette condition ne vous concerne pas.
 
 ## Comment éviter une isolation ratée ?
 
@@ -88,4 +86,4 @@ Avant de poser un isolant, contrôlez trois choses :
 2. **La ventilation :** les combles et la maison doivent continuer à évacuer l'humidité.
 3. **Les éléments du comble :** spots, conduits et trappes demandent des précautions.
 
-Pour une visite en Charente, voyez [la page isolation](/services/isolation). Si vous voulez aussi utiliser cet espace, lisez [le guide de l'aménagement de combles](/guides/prix-amenagement-combles).
+Pour une visite en Charente, voyez [la page isolation](/services/isolation-interieure). Si vous voulez aussi utiliser cet espace, lisez [le guide de l'aménagement de combles](/guides/prix-amenagement-combles).

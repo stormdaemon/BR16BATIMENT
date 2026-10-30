@@ -11,9 +11,33 @@ const km = (slug: string) => geo.communes.find((c) => c.slug === slug)?.km;
 
 const groups = [
   {
+    title: 'Vos besoins',
+    items: [
+      { q: 'Je cherche un plaquiste en Charente : pouvez-vous intervenir ?', a: `Oui. BR 16 BATIMENT est installé à ${SITE.address.city} et intervient dans toute la Charente pour les cloisons, les doublages et les plafonds en placo. La plâtrerie est l'activité principale enregistrée de l'entreprise (code NAF 43.31Z).` },
+      { q: 'Qui peut refaire mes cloisons ou poser du placo ?', a: 'BR 16 BATIMENT monte et remplace les cloisons, double les murs et pose les plafonds en plaques de plâtre, jusqu\'aux bandes et aux enduits prêts à peindre. Voyez la page plaquisterie.' },
+      { q: 'Intervenez-vous autour d\'Angoulême ?', a: `Oui. Angoulême est à ${km('angouleme')} km de route de ${SITE.address.city}, La Couronne à ${km('la-couronne')} km, Soyaux à ${km('soyaux')} km et Ruelle-sur-Touvre à ${km('ruelle-sur-touvre')} km.` },
+      { q: 'Qui peut isoler mes murs par l\'intérieur ?', a: 'BR 16 BATIMENT réalise l\'isolation intérieure des murs, avec le doublage en placo qui la termine, ainsi que l\'isolation des combles et des rampants. L\'entreprise n\'est pas qualifiée RGE : ces travaux n\'ouvrent pas droit aux aides.' },
+      { q: 'Qui peut rénover l\'intérieur de ma maison ?', a: 'BR 16 BATIMENT prend en charge la rénovation intérieure, pièce par pièce ou maison entière : cloisons, doublages, isolation, menuiseries, parquet flottant, lino, dressing et pose de cuisine. L\'électricité et la plomberie restent à confier à vos artisans, avec qui les interventions sont coordonnées.' },
+      { q: 'Posez-vous du parquet flottant et du lino ?', a: 'Oui, avec la préparation du support quand elle est nécessaire, les plinthes et les finitions. Voyez la page parquet flottant et lino.' },
+      { q: 'Pouvez-vous créer un dressing ou poser une cuisine ?', a: 'Oui. BR 16 BATIMENT crée des dressings et des placards, y compris sous une pente de toit, et monte les cuisines. Les raccordements en eau et en électricité relèvent de votre plombier et de votre électricien.' },
+      { q: 'Réalisez-vous la menuiserie intérieure ?', a: 'Oui : portes intérieures, placards et finitions, en plus des fenêtres et des portes d\'entrée en PVC, aluminium ou bois. Raphaël Bardan est titulaire d\'un bac professionnel menuiserie obtenu en 1999.' },
+      { q: 'Qui peut démousser ma toiture en Charente ?', a: 'BR 16 BATIMENT démousse les toitures dans toute la Charente et vide les gouttières à la fin de l\'intervention. Je vous signale aussi ce que je vois sur le toit : tuiles cassées, faîtage abîmé.' },
+      { q: 'Un traitement hydrofuge est-il utile sur ma toiture ?', a: 'Pas systématiquement. Un hydrofuge limite l\'absorption d\'eau par des tuiles encore saines, mais il ne répare pas une couverture usée. BR 16 BATIMENT l\'applique quand il a un intérêt, et vous le dit quand il n\'en a pas.' },
+    ],
+  },
+  {
+    title: 'Ce que je ne fais pas',
+    items: [
+      { q: 'Vos travaux donnent-ils droit à des aides ?', a: 'Non. BR 16 BATIMENT n\'est pas qualifiée RGE : ses travaux n\'ouvrent pas droit à MaPrimeRénov\', à l\'éco-prêt à taux zéro ni aux primes CEE. Si ces aides sont indispensables à votre projet, il faudra passer par une entreprise RGE. Un conseiller France Rénov\' peut vous orienter gratuitement.' },
+      { q: 'Intervenez-vous sur les termites ?', a: 'Non. BR 16 BATIMENT n\'intervient pas sur les termites ni sur le traitement des bois : adressez-vous à une entreprise spécialisée. À savoir : un arrêté du préfet de la Charente du 24 juillet 2026 classe tout le département à risque. Toute vente s\'accompagne donc d\'un état parasitaire de moins de 6 mois, et la présence de termites se déclare en mairie.' },
+      { q: 'Réalisez-vous l\'électricité et la plomberie ?', a: 'Non. Ces lots sont à confier à des artisans spécialisés, et les interventions sont coordonnées avec eux.' },
+      { q: 'Êtes-vous charpentier ou couvreur ?', a: 'Je réalise la charpente, la couverture et l\'ossature bois en complément, souvent en même temps que d\'autres travaux, mais ce ne sont pas mes spécialités. Pour ces chantiers, décrivez-moi votre projet : je vous dirai si je peux le prendre en charge.' },
+    ],
+  },
+  {
     title: 'L\'entreprise',
     items: [
-      { q: 'Qu\'est-ce que BR 16 BATIMENT ?', a: `BR 16 BATIMENT est une entreprise artisanale du bâtiment installée à ${SITE.address.city}, dans le sud de la Charente. Elle réalise la charpente, la couverture, le nettoyage de toiture, l'isolation, l'aménagement de combles, la plaquisterie, la menuiserie, l'aménagement intérieur, l'ossature bois, le bardage et la rénovation.` },
+      { q: 'Qu\'est-ce que BR16 Bâtiment ?', a: `BR16 Bâtiment, de son nom officiel BR 16 BATIMENT, est une entreprise artisanale du bâtiment installée à ${SITE.address.city}, dans le sud de la Charente. Ses spécialités sont la plaquisterie, l'isolation intérieure, la menuiserie, le démoussage et l'hydrofuge de toiture, et la rénovation intérieure. Elle réalise aussi, en complément, l'aménagement de combles, le bardage, la charpente, la couverture et l'ossature bois.` },
       { q: 'Qui dirige BR 16 BATIMENT ?', a: `L'entreprise est présidée par ${SITE.owner}. Titulaire d'un bac professionnel menuiserie obtenu en 1999, il travaille dans le second œuvre depuis 2001, soit plus de ${yearsSince(2001) - 1} ans d'expérience.` },
       { q: 'L\'entreprise est-elle en activité ?', a: `Oui. BR 16 BATIMENT est une ${SITE.legal.form}, immatriculée le ${SITE.legal.registered} (${SITE.legal.rcs}, SIRET ${SITE.legal.siret}). Elle prolonge l'activité créée en 2017 en entreprise individuelle, dont l'immatriculation (SIREN 833 229 727) a pris fin le 31 octobre 2025. Si un annuaire affiche l'ancienne entreprise comme fermée, c'est pour cette raison.` },
       { q: 'Comment contacter BR 16 BATIMENT ?', a: `Par téléphone au ${SITE.phone}, par email à ${SITE.email} ou avec le formulaire de la page contact. ${SITE.hours.text}` },
@@ -23,6 +47,7 @@ const groups = [
   {
     title: 'Le devis',
     items: [
+      { q: 'Quels sont vos prix ?', a: 'Les prix sont établis sur devis, après avoir vu votre chantier. Les montants cités dans les guides de ce site sont des fourchettes publiées par des tiers, pour vous aider à comparer : ce ne sont pas les tarifs de BR 16 BATIMENT.' },
       { q: 'Le devis est-il gratuit ?', a: 'Oui, le devis est gratuit et sans engagement.' },
       { q: 'En combien de temps ai-je une réponse ?', a: `Une réponse vous est apportée ${SITE.responseDelay} pour discuter de votre projet.` },
       { q: 'Que dois-je préparer pour demander un devis ?', a: 'Décrivez votre projet : nature des travaux, commune, dimensions approximatives, matériaux souhaités, délai et budget si vous en avez un. Des photos aident beaucoup. Pour un chiffrage définitif, une visite sur place reste nécessaire.' },
@@ -33,7 +58,6 @@ const groups = [
     title: 'Les garanties',
     items: [
       { q: 'BR 16 BATIMENT a-t-elle une assurance décennale ?', a: 'Oui. L\'entreprise est couverte par une assurance responsabilité civile professionnelle et décennale. Les références de l\'assurance sont communiquées sur demande. Vérifiez toujours que l\'attestation couvre bien les travaux prévus : c\'est valable pour n\'importe quel artisan.' },
-      { q: 'BR 16 BATIMENT est-elle certifiée RGE ?', a: 'Non. L\'entreprise n\'est pas qualifiée RGE à ce jour. Or MaPrimeRénov\', les primes CEE et l\'éco-prêt à taux zéro exigent en principe une entreprise RGE. Si ces aides sont importantes pour votre projet, signalez-le dès le premier contact.' },
       { q: 'Quelles garanties s\'appliquent à des travaux ?', a: 'Trois garanties légales encadrent la construction : la garantie de parfait achèvement pendant un an, la garantie biennale de bon fonctionnement pendant deux ans et la garantie décennale pendant dix ans, à compter de la réception des travaux.' },
     ],
   },
@@ -47,26 +71,23 @@ const groups = [
   {
     title: 'Les travaux',
     items: [
-      { q: 'Quels types de travaux réalisez-vous ?', a: 'Charpente, couverture, nettoyage de toiture, isolation thermique et phonique, aménagement de combles, plaquisterie, menuiserie en PVC, aluminium et bois, pose de cuisines, placards et parquets flottants, ossature bois, bardage et rénovation.' },
       { q: 'Travaillez-vous pour les particuliers ?', a: 'Oui. Depuis 2024, BR 16 BATIMENT a renforcé son engagement auprès des particuliers pour concrétiser leurs projets, en neuf comme en rénovation.' },
-      { q: 'Réalisez-vous l\'électricité et la plomberie ?', a: 'Ces lots ne font pas partie des prestations de l\'entreprise. Ils sont à confier à des artisans spécialisés, et les interventions sont coordonnées avec eux.' },
-      { q: 'Y a-t-il des termites en Charente ?', a: "L'arrêté préfectoral du 24 juillet 2026 considère la totalité du département comme contaminée ou susceptible de l'être à court terme. Toute transaction immobilière doit donc s'accompagner d'un état parasitaire de moins de 6 mois, et la présence de termites se déclare en mairie." },
       { q: 'Faut-il une autorisation pour mes travaux ?', a: 'Cela dépend : changer l\'aspect extérieur d\'une maison ou créer de la surface impose en général une déclaration préalable ou un permis de construire. Dans un secteur protégé, l\'avis de l\'Architecte des Bâtiments de France peut s\'ajouter. Votre mairie reste la référence, et les guides détaillent les cas les plus courants.' },
-      { q: 'Dans quel ordre rénover une maison ?', a: 'On commence par mettre la maison hors d\'eau et hors d\'air : toiture, charpente et menuiseries. Viennent ensuite les réseaux, l\'isolation, les cloisons et les plafonds, puis les finitions.' },
+      { q: 'Dans quel ordre rénover l\'intérieur d\'une maison ?', a: 'On vérifie d\'abord que la maison est saine et hors d\'eau : toiture et menuiseries. Viennent ensuite les réseaux, l\'isolation, les cloisons et les plafonds, puis les sols, les finitions, le dressing et la cuisine.' },
     ],
   },
 ];
 ---
 <Base
   title="Questions fréquentes sur nos travaux | BR 16 BATIMENT"
-  description="Devis, assurance décennale, RGE, zone d'intervention, travaux réalisés : toutes les réponses sur BR 16 BATIMENT, artisan du bâtiment à Champagne-Vigny (16)."
+  description="Qui peut refaire vos cloisons, isoler vos murs, démousser votre toit ? Besoins couverts, devis, assurances, aides, zone : les réponses de BR 16 BATIMENT (16)."
   crumbs={crumbs}
 >
   <PageHero
     crumbs={crumbs}
     kicker="Questions fréquentes"
     h1="Les réponses, sans détour."
-    answer="Qui est BR 16 BATIMENT, où intervient l'entreprise, ce que couvrent ses garanties et comment demander un devis : cette page réunit les questions qu'on nous pose le plus souvent, avec des réponses vérifiables."
+    answer="Ce que BR 16 BATIMENT peut faire pour vous, ce que l'entreprise ne fait pas, où elle intervient, ce que couvrent ses garanties et comment demander un devis : des réponses directes et vérifiables."
   />
 
   {groups.map((g, i) => (

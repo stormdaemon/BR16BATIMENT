@@ -1,9 +1,9 @@
 ---
-title: "Comment choisir un artisan du bâtiment en Charente | BR 16"
-description: "SIRET, attestation décennale, devis, acompte, rétractation : les vérifications à faire avant de signer avec un couvreur ou un charpentier en Charente."
+title: "Choisir un artisan du bâtiment en Charente | BR 16 BATIMENT"
+description: "SIRET, attestation décennale, devis, acompte, rétractation : les vérifications à faire avant de signer avec un artisan du bâtiment en Charente."
 h1: "Comment choisir un artisan du bâtiment en Charente ?"
 label: "Choisir un artisan"
-service: "renovation"
+service: "renovation-interieure"
 answer: "Pour bien choisir un artisan du bâtiment, vérifiez qu'il est en activité grâce à son SIRET, demandez son attestation d'assurance décennale et assurez-vous qu'elle couvre vos travaux. Exigez un devis détaillé, comparez-en plusieurs, et distinguez acompte et arrhes. Si vous visez une aide, contrôlez aussi sa qualification RGE dans l'annuaire officiel."
 published: 2026-10-30
 updated: 2026-10-30
@@ -12,7 +12,7 @@ faq:
     a: "Demandez l'attestation, qui doit être jointe aux devis et factures depuis le 1er juillet 2016. Vérifiez l'identité de l'assuré, le numéro de contrat, la période de validité et les activités couvertes. En cas de doute, appelez l'assureur."
   - q: "Quel acompte peut demander un artisan ?"
     a: "Le montant se fixe sur le devis : méfiez-vous d'une demande très élevée avant tout démarrage. Retenez surtout la différence : un acompte engage définitivement les deux parties, tandis que des arrhes permettent de renoncer. Si rien n'est indiqué sur le devis, la somme versée est considérée comme des arrhes."
-  - q: "Comment trouver un bon couvreur en Charente ?"
+  - q: "Comment trouver un bon artisan en Charente ?"
     a: "Faites établir plusieurs devis détaillés, vérifiez le SIRET et l'assurance, et lisez les avis récents en regardant comment l'entreprise y répond. Méfiez-vous du démarchage après une tempête : un vrai professionnel vous laisse le temps de comparer."
   - q: "Puis-je annuler après avoir signé un devis ?"
     a: "Si vous avez signé à domicile, vous disposez en principe de 14 jours pour vous rétracter, sauf pour des travaux et réparations d'urgence. Si vous avez signé dans les locaux de l'entreprise, vous ne pouvez en principe pas vous rétracter."
@@ -102,6 +102,6 @@ Les avis renseignent, à condition d'être lus avec recul. Regardez leur date, l
 
 ## Faut-il un artisan RGE ?
 
-Seulement si vous visez une aide qui l'exige, comme MaPrimeRénov' ou l'éco-PTZ. BR 16 BATIMENT n'est pas qualifiée RGE à ce jour. Voir [le guide des aides](/guides/aides-renovation-2026).
+Seulement si vous visez une aide qui l'exige, comme MaPrimeRénov' ou l'éco-PTZ. BR 16 BATIMENT n'est pas qualifiée RGE : ses travaux n'y ouvrent pas droit.
 
-Pour une étude de votre projet, voyez [les services de BR 16 BATIMENT](/services/renovation), ou les prix publiés pour [une toiture](/guides/prix-refection-toiture) et [une rénovation](/guides/prix-renovation-maison).
+Pour une étude de votre projet, voyez [les services de BR 16 BATIMENT](/services), ou les prix publiés pour [des cloisons en placo](/guides/prix-plaquiste-cloison-placo) et [une rénovation](/guides/prix-renovation-maison).

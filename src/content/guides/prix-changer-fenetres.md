@@ -1,10 +1,10 @@
 ---
 title: "Prix pour changer ses fenêtres en 2026 | BR 16 BATIMENT"
-description: "Changer ses fenêtres : prix par fenêtre en PVC, aluminium ou bois, déclaration préalable, éco-PTZ et MaPrimeRénov' en 2026. Repères sourcés pour la Charente."
+description: "Changer ses fenêtres : prix par fenêtre en PVC, aluminium ou bois, déclaration préalable, mode de pose et TVA. Repères sourcés pour la Charente, à jour en 2026."
 h1: "Combien coûte le remplacement d'une fenêtre ?"
 label: "Fenêtres"
 service: "menuiserie"
-answer: "Selon Effy, une fenêtre en PVC coûte de 750 à 1 300 € installation comprise, et une fenêtre en bois de 1 600 à 2 700 €. Les fenêtres en aluminium vont de 150 à 2 000 € selon le modèle. Si l'aspect extérieur change, une déclaration préalable est nécessaire. En 2026, MaPrimeRénov' par geste ne prévoit plus de forfait pour les fenêtres."
+answer: "Selon Effy, une fenêtre en PVC coûte de 750 à 1 300 € installation comprise, et une fenêtre en bois de 1 600 à 2 700 €. Les fenêtres en aluminium vont de 150 à 2 000 € selon le modèle. Si l'aspect extérieur change, une déclaration préalable est nécessaire. BR 16 BATIMENT n'étant pas qualifiée RGE, ses travaux n'ouvrent pas droit aux aides. Ce sont des repères pour comparer : chez BR 16 BATIMENT, le prix est sur devis."
 published: 2026-10-30
 updated: 2026-10-30
 faq:
@@ -13,7 +13,7 @@ faq:
   - q: "Faut-il une autorisation pour changer ses fenêtres ?"
     a: "Si vos travaux modifient l'aspect extérieur, une déclaration préalable est nécessaire. Un remplacement avec les mêmes matériaux, formes et couleurs n'en relève généralement pas. En secteur protégé, renseignez-vous en mairie avant de commander."
   - q: "Y a-t-il des aides pour changer ses fenêtres en 2026 ?"
-    a: "Le guide de l'Anah de septembre 2026 ne liste pas les fenêtres parmi les forfaits par geste de MaPrimeRénov'. Elles restent un geste possible en rénovation d'ampleur. L'éco-PTZ prévoit jusqu'à 7 000 € pour des parois vitrées. Ces dispositifs exigent une entreprise RGE."
+    a: "Le guide de l'Anah de septembre 2026 ne liste pas les fenêtres parmi les forfaits par geste de MaPrimeRénov'. Elles restent un geste possible en rénovation d'ampleur. L'éco-PTZ prévoit jusqu'à 7 000 € pour des parois vitrées. Ces dispositifs exigent une entreprise RGE. BR 16 BATIMENT ne l'est pas : ses travaux n'y ouvrent pas droit."
   - q: "Vaut-il mieux une pose en rénovation ou une dépose totale ?"
     a: "La pose en rénovation garde l'ancien dormant s'il est sain : elle est plus rapide, mais réduit un peu la surface vitrée. La dépose totale retire tout : elle est plus longue, mais conserve la lumière et traite mieux les défauts anciens."
 sources:
@@ -68,7 +68,7 @@ Un rappel utile : si votre maison devient plus étanche, elle doit rester bien 
 
 ## Quelles démarches ?
 
-D'après service-public.fr, changer ses fenêtres fait partie des travaux qui modifient l'aspect extérieur, donc soumis à déclaration préalable. Un remplacement avec les mêmes matériaux, formes et couleurs ne relève généralement pas d'une autorisation.
+D'après service-public.fr, un remplacement avec les mêmes matériaux, formes et couleurs ne relève généralement pas d'une autorisation. Si le nouveau modèle modifie l'aspect extérieur, une déclaration préalable est nécessaire.
 
 En secteur protégé ou aux abords d'un monument historique, le matériau, la teinte et le dessin des petits bois peuvent être imposés. C'est le cas à vérifier à [Angoulême](/zone-intervention/angouleme), à [Cognac](/zone-intervention/cognac) ou à [Aubeterre-sur-Dronne](/zone-intervention/aubeterre-sur-dronne).
 
@@ -81,7 +81,7 @@ Les règles ont changé le 1er septembre 2026 :
 - **Éco-PTZ :** jusqu'à 7 000 € pour une action sur les parois vitrées, sans condition de ressources, avec une entreprise RGE.
 - **TVA :** impots.gouv.fr prévoit 5,5 % pour l'amélioration de l'isolation thermique et 10 % pour les autres travaux d'amélioration. Le taux dépend des caractéristiques de la fenêtre : le devis doit le préciser et le justifier.
 
-BR 16 BATIMENT n'est pas qualifiée RGE à ce jour. Si ces aides comptent dans votre budget, dites-le dès le premier contact, ou voyez [le guide complet](/guides/aides-renovation-2026).
+**BR 16 BATIMENT n'est pas qualifiée RGE : ses travaux n'ouvrent pas droit à ces aides.** Si elles comptent dans votre budget, un conseiller France Rénov' peut vous orienter gratuitement vers une entreprise qualifiée.
 
 ## Par où commencer ?
 

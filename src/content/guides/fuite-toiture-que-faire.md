@@ -1,15 +1,15 @@
 ---
-title: "Fuite de toiture : que faire et à quel prix ? | BR 16"
+title: "Fuite de toiture : que faire, quel prix ? | BR 16 BATIMENT"
 description: "Fuite de toiture : les gestes d'urgence, comment trouver l'origine, le prix d'une réparation, l'assurance et la garantie décennale. Guide pratique en Charente."
 h1: "Fuite de toiture : que faire, et dans quel ordre ?"
 label: "Urgence"
 service: "couverture"
-answer: "En cas de fuite de toiture, protégez d'abord l'intérieur et coupez l'électricité si l'eau approche d'un appareil, puis photographiez les dégâts et prévenez votre assurance. Ne montez pas sur un toit mouillé. Selon le comparateur Habitatpresto, une réparation coûte de 650 à 2 800 € TTC, début 2026. Un couvreur en identifiera ensuite l'origine."
+answer: "En cas de fuite de toiture, protégez d'abord l'intérieur et coupez l'électricité si l'eau approche d'un appareil, puis photographiez les dégâts et prévenez votre assurance. Ne montez pas sur un toit mouillé. Selon le comparateur Habitatpresto, une réparation coûte de 650 à 2 800 € TTC, début 2026. Un couvreur en identifiera ensuite l'origine. Ce sont des repères pour comparer : chez BR 16 BATIMENT, le prix est sur devis."
 published: 2026-10-30
 updated: 2026-10-30
 faq:
   - q: "Qui appeler pour une fuite de toiture ?"
-    a: "Un couvreur, pour la réparation, et votre assurance habitation, pour déclarer le sinistre. Si vous êtes locataire, prévenez aussi votre propriétaire. En Charente, BR 16 BATIMENT est joignable au 06 67 11 67 60."
+    a: "Un couvreur, pour la réparation, et votre assurance habitation, pour déclarer le sinistre. Si vous êtes locataire, prévenez aussi votre propriétaire. En Charente, BR 16 BATIMENT réalise ces réparations en complément de ses spécialités : 06 67 11 67 60."
   - q: "Combien coûte la réparation d'une fuite de toiture ?"
     a: "Le comparateur Habitatpresto indique un montant total de 650 à 2 800 € TTC, dans un article de janvier 2026. Le prix dépend de l'origine de la fuite, de l'accès et de l'étendue des dégâts."
   - q: "Ma toiture est récente : la garantie décennale s'applique-t-elle ?"
@@ -86,4 +86,4 @@ Demandez toujours un devis détaillé, le SIRET de l'entreprise et son attestati
 
 ## Comment éviter que ça recommence ?
 
-Une fois la réparation faite, deux habitudes limitent les mauvaises surprises : un contrôle visuel du toit chaque année et après les fortes tempêtes, et des gouttières vidées avant l'hiver. Si la mousse s'installe, [un nettoyage de toiture](/services/nettoyage-toiture) est bien moins coûteux qu'une nouvelle infiltration. Pour une intervention en Charente, voyez [la page couverture](/services/couverture).
+Une fois la réparation faite, deux habitudes limitent les mauvaises surprises : un contrôle visuel du toit chaque année et après les fortes tempêtes, et des gouttières vidées avant l'hiver. Si la mousse s'installe, [un nettoyage de toiture](/services/demoussage-toiture) est bien moins coûteux qu'une nouvelle infiltration. Pour une intervention en Charente, voyez [la page couverture](/services/couverture).

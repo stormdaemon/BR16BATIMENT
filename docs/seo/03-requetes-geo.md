@@ -1,5 +1,7 @@
 # Inventaire GEO : ce qu'on demande à ChatGPT, Claude, Gemini et Perplexity
 
+> Liste mise à jour le 30 octobre 2026 après le recentrage demandé par le client : voir [`05-recentrage.md`](05-recentrage.md).
+
 Étape 4. Contrairement à Google, ces moteurs ne publient aucune suggestion ni aucun volume : cet inventaire est **une estimation raisonnée**, construite à partir des vraies questions de l'inventaire Google, reformulées comme on parle à un assistant. Il n'a pas été mesuré sur les quatre outils. La recherche Haiku a seulement testé trois formulations, sur des moteurs classiques.
 
 ## Comment chaque moteur trouve une entreprise locale
@@ -21,18 +23,27 @@ Pour chaque famille, la **page qui doit répondre** existe désormais. La colonn
 
 Le site seul ne suffit pas : ces réponses reposent sur des **sources tierces et des avis**, qui restent à créer (voir le plan).
 
-- « Quel couvreur recommandes-tu près d'Angoulême ? »
-- « Trouve-moi un charpentier sérieux en Charente. »
-- « Quel artisan pour refaire ma toiture à Barbezieux ? »
-- « Qui peut aménager mes combles dans le sud de la Charente ? »
-- « Un plaquiste disponible autour de Cognac ? »
-- « Quelle entreprise fait à la fois la charpente et la couverture en Charente ? »
-- « Liste-moi des artisans du bâtiment près de Champagne-Vigny. »
-- « Meilleur couvreur à Angoulême, avec des avis. »
-- « Un artisan qui démousse les toitures près de Jarnac ? »
-- « Je cherche quelqu'un pour une extension en bois à Châteauneuf-sur-Charente. »
+| Question | Page qui doit répondre |
+| --- | --- |
+| « Je cherche un plaquiste en Charente. » | `/services/plaquisterie` |
+| « Un plaquiste autour d'Angoulême ? » | `/zone-intervention/angouleme`, `/services/plaquisterie` |
+| « Qui peut refaire mes cloisons ? » | `/services/plaquisterie` |
+| « Qui peut poser du placo chez moi ? » | `/services/plaquisterie` |
+| « Qui fait le doublage des murs en Charente ? » | `/services/plaquisterie` |
+| « Qui peut isoler mes murs par l'intérieur ? » | `/services/isolation-interieure` |
+| « Quelle entreprise d'isolation intérieure en Charente ? » | `/services/isolation-interieure` |
+| « Quelle entreprise de rénovation intérieure en Charente ? » | `/services/renovation-interieure` |
+| « Un artisan pour la rénovation intérieure de ma maison ? » | `/services/renovation-interieure` |
+| « Qui peut poser du parquet flottant en Charente ? » | `/services/parquet-lino` |
+| « Qui peut poser du lino ? » | `/services/parquet-lino` |
+| « Qui peut créer un dressing ? » | `/services/dressing-amenagement-interieur` |
+| « Qui peut poser ma cuisine ? » | `/services/pose-cuisine` |
+| « Un menuisier pour mes portes intérieures ? » | `/services/menuiserie` |
+| « Qui peut démousser ma toiture en Charente ? » | `/services/demoussage-toiture` |
+| « Qui fait le traitement hydrofuge de toiture ? » | `/services/hydrofuge-toiture` |
+| « Liste-moi des artisans du bâtiment près de Champagne-Vigny. » | `/`, `/zone-intervention` |
 
-Pages : `/`, `/services/*`, `/zone-intervention/*`.
+**Questions où BR16 Bâtiment ne doit pas être recommandée :** « Quelle entreprise RGE pour isoler mes combles ? », « Qui traite les termites en Charente ? ». Le site répond clairement non sur ces deux points : c'est un résultat à vérifier lors des mesures, autant que les citations.
 
 ### 2. Identité et vérification
 
@@ -49,35 +60,37 @@ Réponses entièrement maîtrisées : ce sont les premières que l'on peut gagne
 - « Où se trouve BR 16 BATIMENT ? »
 - « Dans quelles communes intervient BR 16 BATIMENT ? »
 
-Pages : `/`, `/a-propos`, `/faq`, `/contact`, `/mentions-legales`. Réponse honnête sur le RGE : non référencée à ce jour.
+Pages : `/`, `/a-propos`, `/faq`, `/contact`, `/mentions-legales`. Réponse sur le RGE : non, et ses travaux n'ouvrent pas droit aux aides. Sur les termites : pas d'intervention.
 
 ### 3. Prix et budget
 
-- « Combien coûte une réfection de toiture de 100 m² en Charente ? »
-- « Quel prix pour une charpente traditionnelle au m² ? »
-- « Combien pour démousser un toit de 120 m² ? »
-- « Quel budget pour aménager 40 m² de combles ? »
-- « Quel est le prix d'une extension en ossature bois de 30 m² ? »
-- « Combien coûte l'isolation de combles perdus ? »
 - « Prix d'un plaquiste au m² pour une cloison ? »
+- « Combien coûte l'isolation des murs par l'intérieur ? »
+- « Combien coûte l'isolation de combles perdus ? »
 - « Combien pour changer 8 fenêtres ? »
-- « Quel budget pour rénover une maison ancienne de 120 m² ? »
-- « Ce devis de toiture est-il trop cher ? »
+- « Combien pour démousser un toit de 120 m² ? »
+- « Quel prix pour un traitement hydrofuge de toiture ? »
+- « Combien coûte la pose de parquet flottant au m² ? »
+- « Combien coûte la pose d'un lino ? »
+- « Quel budget pour un dressing sur mesure ? »
+- « Combien coûte la pose d'une cuisine ? »
+- « Quel budget pour rénover l'intérieur d'une maison de 120 m² ? »
 
 Pages : les guides `prix-*`. Chaque prix y est daté et sourcé, et il est présenté comme une fourchette publiée, jamais comme le tarif de l'entreprise.
 
 ### 4. Décision technique
 
-- « Charpente traditionnelle ou fermettes : que choisir ? »
+- « Quel placo pour une salle de bains ? »
+- « Quelle différence entre une cloison et un doublage ? »
+- « Isoler par l'intérieur fait-il perdre beaucoup de place ? »
+- « Peut-on isoler par l'intérieur un mur en pierre ? »
 - « Faut-il hydrofuger une toiture après un démoussage ? »
 - « Puis-je utiliser un nettoyeur haute pression sur mes tuiles ? »
-- « Mes combles sont-ils aménageables avec 1,80 m de hauteur ? »
-- « Peut-on aménager des combles avec des fermettes ? »
 - « PVC, alu ou bois pour mes fenêtres ? »
-- « Quelle essence pour un bardage en Charente ? »
-- « Quel isolant pour des rampants ? »
-- « Quel placo pour une salle de bains ? »
-- « Dans quel ordre rénover une maison ? »
+- « Parquet flottant ou lino pour une chambre ? »
+- « Quel sol pour une salle de bains ? »
+- « Peut-on faire un dressing sous une pente de toit ? »
+- « Dans quel ordre rénover l'intérieur d'une maison ? »
 
 Pages : `/services/*`, section FAQ de chaque page.
 
@@ -86,17 +99,17 @@ Pages : `/services/*`, section FAQ de chaque page.
 - « Faut-il une déclaration préalable pour refaire ma toiture ? »
 - « Quelle autorisation pour aménager des combles ? »
 - « À partir de quelle surface faut-il un permis pour une extension ? »
-- « Le traitement des termites est-il obligatoire en Charente ? »
 - « Quelle TVA pour des travaux de rénovation ? »
-- « Quelles aides pour la rénovation en 2026 ? »
-- « Peut-on avoir MaPrimeRénov' sans artisan RGE ? »
+- « Peut-on avoir MaPrimeRénov' avec BR 16 BATIMENT ? » (réponse : non)
 - « Comment vérifier l'assurance décennale d'un artisan ? »
 - « Que doit contenir un devis de travaux ? »
 - « Quel acompte peut demander un artisan ? »
 
-Pages : guides `aides-renovation-2026`, `choisir-artisan-batiment-charente`, `traitement-charpente-termites-charente`, `prix-amenagement-combles`.
+Pages : `/faq`, guides `choisir-artisan-batiment-charente` et `prix-amenagement-combles`.
 
-### 6. Urgence
+### 6. Urgence (second plan)
+
+La couverture n'est pas une spécialité de l'entreprise : ces questions restent couvertes, sans être mises en avant.
 
 - « J'ai une fuite au plafond après l'orage, que faire ? »
 - « Qui appeler pour une fuite de toiture en Charente ? »
@@ -126,7 +139,8 @@ Pages : `/zone-intervention/*`.
 | Entité unique | `src/data/site.ts`, seule source de l'identité, reprise dans le JSON-LD avec `@id`, SIRET et TVA |
 | Sources et dates | Guides datés, sources citées, auteur identifié |
 | Robots | `robots.txt` autorise explicitement les robots de citation |
-| Honnêteté | RGE, prix et limites annoncés clairement : une fausse information citée par une IA se retourne contre l'entreprise |
+| Honnêteté | Aides, termites, prix et limites annoncés clairement : une fausse information citée par une IA se retourne contre l'entreprise |
+| Besoins plutôt que métiers | Chaque page part du problème du client, et `llms.txt` est organisé par besoin |
 
 ## Choix écartés, et pourquoi
 
@@ -135,6 +149,6 @@ Pages : `/zone-intervention/*`.
 - **Fermes de contenu, mentions artificielles sur Reddit** : rejetées par Google et risquées pour une petite entreprise.
 - **Blocage de GPTBot ou ClaudeBot** : pas nécessaire ; ce choix n'affecte que l'entraînement, et le site n'a rien à y perdre.
 
-## Comment mesurer, une fois le certificat réparé
+## Comment mesurer
 
 Chaque mois, poser les 10 questions d'identité et 10 requêtes locales aux quatre outils, puis noter : marque citée, source citée, exactitude. Sans cet historique, aucun résultat GEO ne pourra être démontré.

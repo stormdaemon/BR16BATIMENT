@@ -1,10 +1,10 @@
 ---
-title: "Rénovation et charpente à Montmoreau (16) | BR 16"
-description: "Charpente, couverture, isolation et rénovation à Montmoreau et Saint-Cybard, à 21 km de Champagne-Vigny. BR 16 BATIMENT, entreprise artisanale. Devis gratuit."
-h1: "Charpente, toiture et rénovation à Montmoreau"
+title: "Plaquiste et isolation à Montmoreau (16) | BR 16 BATIMENT"
+description: "Placo, isolation, menuiseries et démoussage à Montmoreau et Saint-Cybard, à 21 km de Champagne-Vigny. BR 16 BATIMENT, entreprise artisanale. Devis gratuit."
+h1: "Plaquiste, isolation et menuiserie à Montmoreau"
 name: "Montmoreau"
 kind: "commune"
-answer: "BR 16 BATIMENT réalise la charpente, la couverture, l'isolation et la rénovation à Montmoreau, à 21 km de route de Champagne-Vigny, soit environ 23 minutes. Le château classé qui domine la ville et l'église Saint-Denis peuvent influer sur vos démarches : on le vérifie avant de commencer. Le devis est gratuit et sans engagement."
+answer: "BR 16 BATIMENT réalise la plaquisterie, l'isolation intérieure, les menuiseries et le démoussage de toiture à Montmoreau, à 21 km de route de Champagne-Vigny, soit environ 23 minutes. Le château classé qui domine la ville et l'église Saint-Denis peuvent influer sur vos démarches : on le vérifie avant de commencer. Le devis est gratuit et sans engagement."
 updated: 2026-10-30
 faq:
   - q: "Le château de Montmoreau a-t-il un effet sur mes travaux ?"
@@ -20,7 +20,7 @@ sources:
     url: "https://www.culture.gouv.fr/thematiques/monuments-sites/interventions-demarches/travaux-sur-un-objet-un-immeuble-un-espace/realiser-des-travaux-en-abords-d-un-monument-historique"
 ---
 
-De Champagne-Vigny à Montmoreau, on compte un peu plus de vingt minutes de route. Sur cette commune de la communauté de communes Lavalette Tude Dronne, je prends en charge les travaux de la structure jusqu'aux finitions.
+De Champagne-Vigny à Montmoreau, on compte un peu plus de vingt minutes de route. Sur cette commune de la communauté de communes Lavalette Tude Dronne, je prends en charge les cloisons, l'isolation, les menuiseries et l'entretien des toitures.
 
 ## Que vérifier à côté du château et de l'église ?
 
@@ -44,4 +44,4 @@ Pour vous répondre vite, j'ai besoin de quelques éléments simples :
 
 ## Par où commencer ?
 
-Si la maison est ancienne, commencez par le haut : un toit sain protège tout le reste. Un contrôle de la [couverture](/services/couverture) et de la [charpente](/services/charpente) permet ensuite de décider de [l'isolation des combles](/services/isolation), puis des [menuiseries](/services/menuiserie). L'ordre complet figure sur la page [rénovation](/services/renovation).
+Si la maison est ancienne, commencez par le haut : un toit sain protège tout le reste, et un [démoussage](/services/demoussage-toiture) suffit parfois. Viennent ensuite [l'isolation](/services/isolation-interieure), les [menuiseries](/services/menuiserie), puis les [cloisons](/services/plaquisterie). L'ordre complet figure sur la page [rénovation](/services/renovation-interieure).

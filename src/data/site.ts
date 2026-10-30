@@ -6,8 +6,10 @@
 export const SITE = {
   url: 'https://br16batiment.com',
   name: 'BR 16 BATIMENT',
+  // L'écriture officielle est celle du logo et des registres ; les clients écrivent aussi :
+  alternateNames: ['BR16 Bâtiment', 'BR 16 Bâtiment', 'BR16 BATIMENT'],
   owner: 'Raphaël Bardan',
-  tagline: 'Charpente, couverture et rénovation en Charente',
+  tagline: 'Plaquisterie, isolation, menuiserie et démoussage en Charente',
   phone: '06 67 11 67 60',
   phoneHref: 'tel:+33667116760',
   phoneE164: '+33667116760',
@@ -73,19 +75,27 @@ export const NAV = [
   { href: '/contact', label: 'Contact' },
 ] as const;
 
-// Ordre et libellés courts des services, y compris pour la maison en coupe de l'accueil.
+// Les priorités de l'entreprise : tier 1, ce qu'elle veut faire et mettre en avant ;
+// tier 2, ce qu'elle réalise aussi, en complément, sans le pousser.
+// Chaque service part du problème du client (problem) et dit ce qu'elle y fait (short).
 export const SERVICES = [
-  { slug: 'charpente', label: 'Charpente', short: 'Traditionnelle ou fermettes, neuve ou réparée.' },
-  { slug: 'couverture', label: 'Couverture', short: 'Tuiles, réfection, fuites et zinguerie.' },
-  { slug: 'nettoyage-toiture', label: 'Nettoyage de toiture', short: 'Démoussage et traitement pour faire durer le toit.' },
-  { slug: 'isolation', label: 'Isolation', short: 'Thermique et phonique, des combles aux murs.' },
-  { slug: 'amenagement-combles', label: 'Aménagement de combles', short: 'Gagner une pièce sous le toit.' },
-  { slug: 'plaquisterie', label: 'Plaquisterie', short: 'Cloisons, doublages et plafonds.' },
-  { slug: 'menuiserie', label: 'Menuiserie', short: 'Fenêtres et portes en PVC, aluminium ou bois.' },
-  { slug: 'amenagement-interieur', label: 'Aménagement intérieur', short: 'Cuisines, placards et parquets flottants.' },
-  { slug: 'ossature-bois', label: 'Ossature bois', short: 'Maison ou extension, construction durable.' },
-  { slug: 'bardage', label: 'Bardage', short: 'Habillage extérieur en bois.' },
-  { slug: 'renovation', label: 'Rénovation', short: 'L\'amélioration de votre habitat, poste par poste.' },
+  { slug: 'plaquisterie', label: 'Plaquisterie', tier: 1, place: 'interieur', problem: 'Une pièce à redécouper, des cloisons à refaire ?', short: 'Je monte vos cloisons, doublages et plafonds en placo, prêts à peindre.' },
+  { slug: 'isolation-interieure', label: 'Isolation intérieure', tier: 1, place: 'interieur', problem: 'Des murs froids, une pièce difficile à chauffer ?', short: 'J\'isole vos murs par l\'intérieur, vos combles et vos rampants.' },
+  { slug: 'menuiserie', label: 'Menuiserie', tier: 1, place: 'interieur', problem: 'Des fenêtres qui laissent passer l\'air, des portes à changer ?', short: 'Je remplace fenêtres et portes, et je réalise vos menuiseries intérieures.' },
+  { slug: 'demoussage-toiture', label: 'Démoussage de toiture', tier: 1, place: 'toit', problem: 'De la mousse qui envahit le toit ?', short: 'Je démousse la toiture et je vide les gouttières, sans abîmer les tuiles.' },
+  { slug: 'hydrofuge-toiture', label: 'Traitement hydrofuge', tier: 1, place: 'toit', problem: 'Des tuiles qui restent gorgées d\'eau ?', short: 'J\'applique un hydrofuge sur des tuiles encore saines, et je vous dis quand il ne sert à rien.' },
+  { slug: 'renovation-interieure', label: 'Rénovation intérieure', tier: 1, place: 'interieur', problem: 'Tout l\'intérieur à reprendre ?', short: 'Cloisons, isolation, sols, menuiseries, cuisine : un seul interlocuteur, pièce par pièce.' },
+  { slug: 'parquet-lino', label: 'Parquet flottant et lino', tier: 1, place: 'interieur', problem: 'Un sol usé à remplacer ?', short: 'Je pose votre parquet flottant ou votre lino, avec plinthes et finitions.' },
+  { slug: 'dressing-amenagement-interieur', label: 'Dressing et aménagement intérieur', tier: 1, place: 'interieur', problem: 'Plus assez de rangement ?', short: 'Je crée votre dressing ou vos placards, y compris sous une pente de toit.' },
+  { slug: 'pose-cuisine', label: 'Pose de cuisine', tier: 1, place: 'interieur', problem: 'Une cuisine à installer ?', short: 'Je monte et je pose votre cuisine, et je prépare les murs si besoin.' },
+  { slug: 'amenagement-combles', label: 'Aménagement de combles', tier: 2, place: 'interieur', problem: 'Des combles à transformer en pièce ?', short: 'Isolation, placo, fenêtres de toit et finitions.' },
+  { slug: 'bardage', label: 'Bardage', tier: 2, place: 'exterieur', problem: 'Une façade à habiller ?', short: 'Pose de bardage bois sur une maison, une extension ou une annexe.' },
+  { slug: 'charpente', label: 'Charpente', tier: 2, place: 'exterieur', problem: 'Une charpente à réparer ?', short: 'Réparation, renfort ou charpente neuve, en complément de mes autres travaux.' },
+  { slug: 'couverture', label: 'Couverture', tier: 2, place: 'exterieur', problem: 'Des tuiles à remplacer, une fuite ?', short: 'Réparation et réfection de toiture, en complément de mes autres travaux.' },
+  { slug: 'ossature-bois', label: 'Ossature bois', tier: 2, place: 'exterieur', problem: 'Une extension en bois ?', short: 'Extension ou annexe à ossature bois.' },
 ] as const;
+
+export const SPECIALITES = SERVICES.filter((s) => s.tier === 1);
+export const COMPLEMENTS = SERVICES.filter((s) => s.tier === 2);
 
 export type ServiceSlug = (typeof SERVICES)[number]['slug'];

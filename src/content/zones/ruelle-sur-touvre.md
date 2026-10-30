@@ -1,10 +1,10 @@
 ---
-title: "Rénovation à Ruelle-sur-Touvre (16600) | BR 16 BATIMENT"
-description: "Rénovation, toiture, isolation et plaquisterie à Ruelle-sur-Touvre, au nord du Grand Angoulême. BR 16 BATIMENT, à 35 km de route. Devis gratuit."
-h1: "Rénovation et toiture à Ruelle-sur-Touvre"
+title: "Plaquiste et rénovation à Ruelle-sur-Touvre | BR 16 BATIMENT"
+description: "Placo, isolation, menuiseries et rénovation intérieure à Ruelle-sur-Touvre, au nord-est du Grand Angoulême. BR 16 BATIMENT, à 35 km de route. Devis gratuit."
+h1: "Plaquiste et rénovation intérieure à Ruelle-sur-Touvre"
 name: "Ruelle-sur-Touvre"
 kind: "commune"
-answer: "BR 16 BATIMENT intervient à Ruelle-sur-Touvre pour la rénovation, la toiture, l'isolation et la plaquisterie, à 35 km de route de Champagne-Vigny. Toute la commune est en aléa moyen ou fort de retrait-gonflement des argiles, un point à prendre en compte avant les gros travaux. Le devis est gratuit, et la réponse arrive sous 48 h."
+answer: "BR 16 BATIMENT intervient à Ruelle-sur-Touvre pour la plaquisterie, l'isolation intérieure, les menuiseries et la rénovation intérieure, à 35 km de route de Champagne-Vigny. Toute la commune est en aléa moyen ou fort de retrait-gonflement des argiles, un point à prendre en compte avant les gros travaux. Le devis est gratuit, et la réponse arrive sous 48 h."
 updated: 2026-10-30
 faq:
   - q: "Toute la commune est-elle concernée par l'argile ?"
@@ -46,7 +46,7 @@ La logique est la même partout, mais elle compte encore plus sur un sol sensibl
 1. Contrôler la [toiture](/services/couverture) et la [charpente](/services/charpente).
 2. Remplacer les [fenêtres](/services/menuiserie) si besoin.
 3. Faire passer les réseaux, avec vos artisans.
-4. Poser l'[isolation](/services/isolation) et les [plaques](/services/plaquisterie).
-5. Terminer par les finitions et l'[aménagement intérieur](/services/amenagement-interieur).
+4. Poser l'[isolation](/services/isolation-interieure) et les [plaques](/services/plaquisterie).
+5. Terminer par les finitions et l'[aménagement intérieur](/services/dressing-amenagement-interieur).
 
 Le détail des budgets figure dans [le guide de la rénovation d'une maison](/guides/prix-renovation-maison).

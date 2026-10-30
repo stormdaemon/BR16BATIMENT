@@ -1,10 +1,24 @@
 ---
-title: "Couvreur en Charente : toiture, réfection, fuites | BR 16"
-description: "Réfection de toiture, réparation de fuite, tuiles et zinguerie : BR 16 BATIMENT, couvreur à Champagne-Vigny, intervient dans toute la Charente. Devis gratuit."
-h1: "Couvreur en Charente : réfection de toiture et réparation de fuites"
+title: "Couverture : réfection, tuiles, fuites | BR 16 BATIMENT"
+description: "Réfection de toiture, réparation de fuite, tuiles, zinguerie : BR 16 BATIMENT réalise ces travaux en complément de ses spécialités, en Charente. Devis gratuit."
+h1: "Couverture en Charente, en complément de mes spécialités"
 label: "Couverture"
-order: 2
-answer: "BR 16 BATIMENT réalise la couverture des maisons en Charente, depuis Champagne-Vigny : toiture neuve, réfection complète, remplacement de tuiles, réparation de fuite, zinguerie et fenêtres de toit. Le même artisan peut aussi reprendre la charpente et isoler le toit. Le devis est gratuit, avec une assurance décennale et une réponse sous 48 h."
+order: 13
+answer: "En complément de ses spécialités, BR 16 BATIMENT réalise la couverture des maisons en Charente, depuis Champagne-Vigny : réfection, remplacement de tuiles, réparation de fuite, zinguerie et fenêtres de toit. Pour l'entretien courant du toit, voyez plutôt le démoussage et l'hydrofuge. Le devis est gratuit, avec une réponse sous 48 h."
+names:
+  - "couvreur"
+  - "réfection de toiture"
+  - "réparation de fuite de toiture"
+problems:
+  - problem: "Une fuite, des tuiles cassées ?"
+    solution: "Je cherche l'origine de l'infiltration et je remplace ce qui doit l'être."
+  - problem: "Une toiture en fin de vie ?"
+    solution: "Je réalise la réfection, et je contrôle la charpente pendant que tout est accessible."
+  - problem: "Des gouttières qui débordent ?"
+    solution: "Je reprends la zinguerie : gouttières, descentes et noues."
+proof: "Un métier appris sur les chantiers depuis 2001."
+limits:
+  - "Je réalise ces travaux en complément de mes spécialités : décrivez-moi votre projet, je vous dirai si je peux le prendre en charge."
 includes:
   - "Toiture neuve et réfection complète"
   - "Réparation de fuite et remplacement de tuiles cassées"
@@ -17,13 +31,13 @@ guides:
   - "fuite-toiture-que-faire"
   - "prix-demoussage-toiture"
 related:
+  - "demoussage-toiture"
+  - "hydrofuge-toiture"
   - "charpente"
-  - "nettoyage-toiture"
-  - "isolation"
 updated: 2026-10-30
 faq:
   - q: "Combien coûte une réfection de toiture ?"
-    a: "Le prix se calcule au mètre carré et varie surtout selon le matériau, la pente, l'état de la charpente et l'accès au chantier. Le guide des prix donne les fourchettes publiées et leurs sources. Pour un montant fiable, il faut une visite : le devis est gratuit."
+    a: "Le prix se calcule au mètre carré et varie surtout selon le matériau, la pente, l'état de la charpente et l'accès au chantier. Mes prix sont sur devis ; pour comparer, le guide des prix donne les fourchettes publiées par des tiers, avec leurs sources. Pour un montant fiable, il faut une visite : le devis est gratuit."
   - q: "J'ai une fuite sur mon toit, que faire en urgence ?"
     a: "Protégez d'abord l'intérieur, coupez l'électricité si l'eau approche d'un appareil, et prenez des photos pour votre assurance. Ne montez pas sur le toit par temps humide. Appelez ensuite un couvreur : une fuite peut venir d'une tuile, mais aussi d'une gouttière bouchée ou d'une noue. Le guide dédié détaille ces étapes."
   - q: "Faut-il une autorisation pour refaire sa toiture ?"
@@ -62,10 +76,10 @@ Le choix dépend de la maison, de la pente de son toit et des règles locales. S
 
 ## Pourquoi profiter d'une réfection pour isoler ?
 
-Quand le toit est ouvert, tout est accessible. C'est le moment le plus simple pour contrôler [la charpente](/services/charpente) et poser [une isolation](/services/isolation) par l'extérieur ou sous rampants. Faire ces travaux ensemble évite de revenir plus tard et de payer deux fois l'installation du chantier.
+Quand le toit est ouvert, tout est accessible. C'est le moment le plus simple pour contrôler [la charpente](/services/charpente) et poser [une isolation](/services/isolation-interieure) par l'extérieur ou sous rampants. Faire ces travaux ensemble évite de revenir plus tard et de payer deux fois l'installation du chantier.
 
 ## Comment entretenir sa couverture ?
 
-Un contrôle visuel chaque année et après chaque grosse tempête, des gouttières vidées avant l'hiver, et un [nettoyage de toiture](/services/nettoyage-toiture) lorsque la mousse s'installe : ces gestes simples prolongent nettement la durée de vie d'un toit.
+Un contrôle visuel chaque année et après chaque grosse tempête, des gouttières vidées avant l'hiver, et un [démoussage](/services/demoussage-toiture) lorsque la mousse s'installe : ces gestes simples prolongent nettement la durée de vie d'un toit.
 
 Pour préparer votre budget, consultez [le guide des prix d'une réfection de toiture](/guides/prix-refection-toiture). En cas d'infiltration, commencez par [le guide « fuite de toiture : que faire ? »](/guides/fuite-toiture-que-faire).

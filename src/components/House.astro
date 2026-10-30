@@ -1,7 +1,7 @@
 ---
 // La maison en coupe : chaque service correspond à un calque (data-layer).
-// À l'accueil, le défilement la construit calque par calque ; sur une page service,
-// le calque du service est mis en avant. Sans JavaScript, le dessin reste complet.
+// À l'accueil, le défilement trace les spécialités une à une, le reste de la maison restant en retrait.
+// Sur une page service, le calque du service est mis en avant. Sans JavaScript, le dessin reste complet.
 interface Props { active?: string; class?: string; markers?: boolean }
 const { active, class: cls, markers = true } = Astro.props;
 
@@ -49,26 +49,40 @@ const purlins = [0.3, 0.55, 0.8].flatMap((t) => {
 const studs = Array.from({ length: 6 }, (_, i) => 716 + i * 36);
 const topAt = (x: number) => 428 + ((x - 680) / 225) * 28;
 const roofWindow = at(EL, R, 0.62);
+
+// Les touffes de mousse, posées sur le versant gauche.
+const tufts = [0.12, 0.26, 0.4, 0.56, 0.72].map((t) => {
+  const [x, y] = at(EL, R, t);
+  return { x: f(x - 15), y: f(y - 19) };
+});
+
+// L'eau qui perle sur le versant droit, traité à l'hydrofuge.
 const droplets = [0.2, 0.34, 0.48, 0.62, 0.76].map((t, i) => {
   const [x, y] = at(ER, R, t);
   return { x: f(x + 26 + (i % 2) * 12), y: f(y - 30 - (i % 3) * 8) };
 });
 
+// Les lames du sol, à chaque niveau.
+const boards = (y0: number, y1: number, shift = 0) => {
+  let d = `M172 ${y0}H648`;
+  for (let x = 190 + shift; x < 648; x += 46) d += `M${x} ${y0}V${y1}`;
+  return d;
+};
+
+// Les numéros suivent les étapes de l'accueil.
 const mark = [
-  { layer: 'charpente', n: '01', x: 410, y: 216 },
-  { layer: 'couverture', n: '02', x: 250, y: 176 },
-  { layer: 'nettoyage-toiture', n: '03', x: 620, y: 186 },
-  { layer: 'isolation', n: '04', x: 560, y: 306 },
-  { layer: 'amenagement-combles', n: '05', x: 262, y: 300 },
-  { layer: 'plaquisterie', n: '06', x: 400, y: 440 },
-  { layer: 'menuiserie', n: '07', x: 245, y: 420 },
-  { layer: 'amenagement-interieur', n: '08', x: 540, y: 575 },
-  { layer: 'ossature-bois', n: '09', x: 790, y: 545 },
-  { layer: 'bardage', n: '10', x: 930, y: 500 },
+  { layer: 'plaquisterie', n: '01', x: 412, y: 586 },
+  { layer: 'isolation-interieure', n: '02', x: 560, y: 318 },
+  { layer: 'menuiserie', n: '03', x: 245, y: 420 },
+  { layer: 'demoussage-toiture', n: '04', x: 172, y: 196 },
+  { layer: 'hydrofuge-toiture', n: '05', x: 640, y: 170 },
+  { layer: 'parquet-lino', n: '06', x: 594, y: 486 },
+  { layer: 'dressing-amenagement-interieur', n: '07', x: 345, y: 424 },
+  { layer: 'pose-cuisine', n: '08', x: 538, y: 622 },
 ];
 ---
-<svg class:list={['house', cls, { 'house--static': !!active, 'is-all': active === 'renovation' }]} viewBox="0 0 1000 720" role="img" aria-labelledby="house-t" data-active={active}>
-  <title id="house-t">Coupe d'une maison montrant chaque corps de métier réalisé par BR 16 BATIMENT : charpente, couverture, isolation, plaquisterie, menuiserie, aménagement intérieur, ossature bois et bardage</title>
+<svg class:list={['house', cls, { 'house--static': !!active, 'is-all': active === 'renovation-interieure' }]} viewBox="0 0 1000 720" role="img" aria-labelledby="house-t" data-active={active}>
+  <title id="house-t">Coupe d'une maison montrant les travaux réalisés par BR 16 BATIMENT : cloisons et doublages en placo, isolation, menuiseries, sols, dressing, cuisine, démoussage et hydrofuge de la toiture</title>
 
   <g class="base">
     <path pathLength="1" d="M0 660H1000" />
@@ -94,12 +108,16 @@ const mark = [
     <path pathLength="1" d="M108 356V660" />
   </g>
 
-  <g class:list={['layer', { 'is-active': active === 'nettoyage-toiture' }]} data-layer="nettoyage-toiture">
-    {droplets.map((d) => <path pathLength="1" d={`M${d.x} ${d.y}c-7 10-9 13-9 17a9 9 0 0 0 18 0c0-4-2-7-9-17z`} />)}
-    <path pathLength="1" d="M782 150l6 14 14 6-14 6-6 14-6-14-14-6 14-6zM846 214l4 10 10 4-10 4-4 10-4-10-10-4 10-4z" />
+  <g class:list={['layer', { 'is-active': active === 'demoussage-toiture' }]} data-layer="demoussage-toiture" data-group="toit">
+    {tufts.map((t) => <path pathLength="1" d="M-15 0a7 7 0 0 1 8-6a8 8 0 0 1 13-1a6 6 0 0 1 9 7z" transform={`translate(${t.x} ${t.y}) rotate(${f(deg)})`} />)}
+    <path pathLength="1" d="M116 174l4 10 10 4-10 4-4 10-4-10-10-4 10-4zM232 92l5 12 12 5-12 5-5 12-5-12-12-5 12-5z" />
   </g>
 
-  <g class:list={['layer', { 'is-active': active === 'isolation' }]} data-layer="isolation">
+  <g class:list={['layer', { 'is-active': active === 'hydrofuge-toiture' }]} data-layer="hydrofuge-toiture" data-group="toit">
+    {droplets.map((d) => <path pathLength="1" d={`M${d.x} ${d.y}c-7 10-9 13-9 17a9 9 0 0 0 18 0c0-4-2-7-9-17z`} />)}
+  </g>
+
+  <g class:list={['layer', { 'is-active': active === 'isolation-interieure' }]} data-layer="isolation-interieure" data-group="interieur">
     <path pathLength="1" d={wool(176, 390, 318)} />
     <path pathLength="1" d={wool(430, 645, 318)} />
     <path pathLength="1" d="M151 350l-6 10 12 10-12 10 12 10-12 10 12 10-12 10 12 10-12 10 12 10-12 10 12 10M669 350l-6 10 12 10-12 10 12 10-12 10 12 10-12 10 12 10-12 10 12 10-12 10 12 10" />
@@ -111,7 +129,7 @@ const mark = [
     <path pathLength="1" d="M440 322v-34h96v34M448 288v-14h24v14" />
   </g>
 
-  <g class:list={['layer', { 'is-active': active === 'plaquisterie' }]} data-layer="plaquisterie">
+  <g class:list={['layer', { 'is-active': active === 'plaquisterie' }]} data-layer="plaquisterie" data-group="interieur">
     <path pathLength="1" d="M172 352H648" />
     <path pathLength="1" d="M172 352V490M648 352V490" />
     <path pathLength="1" d="M394 352V490M402 352V490" />
@@ -120,7 +138,7 @@ const mark = [
     <path pathLength="1" d="M408 512V660M416 512V660" />
   </g>
 
-  <g class:list={['layer', { 'is-active': active === 'menuiserie' }]} data-layer="menuiserie">
+  <g class:list={['layer', { 'is-active': active === 'menuiserie' }]} data-layer="menuiserie" data-group="interieur">
     <rect pathLength="1" x="200" y="385" width="90" height="70" />
     <path pathLength="1" d="M245 385V455M200 420H290" />
     <rect pathLength="1" x="480" y="385" width="110" height="70" />
@@ -130,14 +148,24 @@ const mark = [
     <path pathLength="1" d="M274 660h14v-19h14v-19h14v-19h14v-19h14v-19h14v-19h14v-19h14v-14" />
   </g>
 
-  <g class:list={['layer', { 'is-active': active === 'amenagement-interieur' }]} data-layer="amenagement-interieur">
-    <rect pathLength="1" x="440" y="600" width="196" height="60" />
-    <path pathLength="1" d="M489 600V660M538 600V660M587 600V660M434 596H642" />
-    <rect pathLength="1" x="470" y="530" width="136" height="36" />
-    <path pathLength="1" d="M538 530V566" />
-    <rect pathLength="1" x="312" y="372" width="74" height="118" />
-    <path pathLength="1" d="M349 372V490M340 430h3M355 430h3" />
-    <path pathLength="1" d="M172 656H258M172 650H258" />
+  <g class:list={['layer', { 'is-active': active === 'parquet-lino' }]} data-layer="parquet-lino" data-group="interieur">
+    <path pathLength="1" d={boards(482, 490)} />
+    <path pathLength="1" d={boards(652, 660, 23)} />
+  </g>
+
+  <g class:list={['layer', { 'is-active': active === 'dressing-amenagement-interieur' }]} data-layer="dressing-amenagement-interieur" data-group="interieur">
+    <rect pathLength="1" x="304" y="366" width="82" height="116" />
+    <path pathLength="1" d="M345 366V482" />
+    <path pathLength="1" d="M310 382H339M316 382v12M325 382v12M334 382v12" />
+    <path pathLength="1" d="M345 396H386M345 424H386M345 452H386" />
+  </g>
+
+  <g class:list={['layer', { 'is-active': active === 'pose-cuisine' }]} data-layer="pose-cuisine" data-group="interieur">
+    <rect pathLength="1" x="440" y="592" width="196" height="60" />
+    <path pathLength="1" d="M489 592V652M538 592V652M587 592V652M434 588H642" />
+    <rect pathLength="1" x="470" y="524" width="136" height="36" />
+    <path pathLength="1" d="M538 524V560" />
+    <path pathLength="1" d="M506 588v-12a7 7 0 0 1 14 0" />
   </g>
 
   <g class:list={['layer', { 'is-active': active === 'ossature-bois' }]} data-layer="ossature-bois">
@@ -176,17 +204,19 @@ const mark = [
   .layer.is-active { color: var(--yellow); opacity: 1; }
   .layer.is-active path, .layer.is-active rect { stroke-width: 2.4; }
   .layer.is-active .thick { stroke-width: 4.5; }
-  .house.is-all .layer { color: var(--yellow); opacity: 1; }
   .house.is-dim .layer:not(.is-active) { opacity: 0.32; }
+  .house--static .layer:not(.is-active) { opacity: 0.3; }
+  .house.is-all .layer[data-group='interieur'] { color: var(--yellow); opacity: 1; }
+  .house.is-all .layer[data-group='interieur'] path, .house.is-all .layer[data-group='interieur'] rect { stroke-width: 2.4; }
 
   .mark path { fill: var(--anthracite); stroke: var(--paper-40); stroke-width: 1.2; transition: fill 0.3s, stroke 0.3s; }
   .mark text { font-family: var(--font-mono), monospace; font-size: 14px; fill: var(--paper-70); transition: fill 0.3s; }
   .mark.is-active path { fill: var(--yellow); stroke: var(--yellow); }
   .mark.is-active text { fill: var(--anthracite); }
 
-  .house--static .layer:not(.is-active) { opacity: 0.3; }
   @media (prefers-reduced-motion: no-preference) {
     .house--static .layer.is-active > * { stroke-dasharray: 1; stroke-dashoffset: 1; animation: house-draw 1.6s var(--ease-inout) 0.25s forwards; }
+    .house--static.is-all .layer[data-group='interieur'] > * { stroke-dasharray: 1; stroke-dashoffset: 1; animation: house-draw 1.6s var(--ease-inout) 0.25s forwards; }
   }
   @keyframes house-draw { to { stroke-dashoffset: 0; } }
 </style>

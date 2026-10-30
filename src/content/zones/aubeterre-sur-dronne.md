@@ -1,10 +1,10 @@
 ---
-title: "Toiture et rénovation à Aubeterre-sur-Dronne | BR 16"
-description: "Rénover à Aubeterre-sur-Dronne, l'un des Plus Beaux Villages de France : monuments, craie et ruissellement. BR 16 BATIMENT, à 34 km. Devis gratuit."
+title: "Menuiserie et placo à Aubeterre-sur-Dronne | BR 16 BATIMENT"
+description: "Rénover à Aubeterre-sur-Dronne, l'un des Plus Beaux Villages de France : isolation, menuiseries et placo. Monuments et démarches. BR 16 BATIMENT, à 34 km."
 h1: "Rénover une maison à Aubeterre-sur-Dronne"
 name: "Aubeterre-sur-Dronne"
 kind: "commune"
-answer: "BR 16 BATIMENT intervient à Aubeterre-sur-Dronne pour la toiture, la charpente, les menuiseries et la rénovation, à 34 km de route de Champagne-Vigny. Ce village labellisé Plus Beaux Villages de France compte quatre monuments protégés : tout changement visible s'y prépare avec la mairie et l'Architecte des Bâtiments de France. Le devis est gratuit."
+answer: "BR 16 BATIMENT intervient à Aubeterre-sur-Dronne pour l'isolation intérieure, les menuiseries, la plaquisterie et le démoussage de toiture, à 34 km de route de Champagne-Vigny. Ce village labellisé Plus Beaux Villages de France compte quatre monuments protégés : tout changement visible s'y prépare avec la mairie et l'Architecte des Bâtiments de France. Le devis est gratuit."
 updated: 2026-10-30
 faq:
   - q: "Peut-on changer les tuiles ou les fenêtres à Aubeterre-sur-Dronne ?"
@@ -48,4 +48,4 @@ Avant tout chantier qui touche au sol, à un mur porteur ou à un plancher bas, 
 
 ## Travaux intérieurs : plus de liberté
 
-Tout n'est pas soumis aux mêmes contraintes. L'[isolation des combles](/services/isolation), les [cloisons](/services/plaquisterie) et l'[aménagement intérieur](/services/amenagement-interieur) ne modifient pas l'aspect extérieur. Ils relèvent donc rarement des mêmes démarches, sauf si le bâtiment lui-même est protégé. C'est souvent par là qu'une rénovation peut démarrer le plus simplement.
+Tout n'est pas soumis aux mêmes contraintes. L'[isolation des combles](/services/isolation-interieure), les [cloisons](/services/plaquisterie) et l'[aménagement intérieur](/services/dressing-amenagement-interieur) ne modifient pas l'aspect extérieur. Ils relèvent donc rarement des mêmes démarches, sauf si le bâtiment lui-même est protégé. C'est souvent par là qu'une rénovation peut démarrer le plus simplement.

@@ -1,15 +1,15 @@
 ---
-title: "Prix d'une charpente au m² : repères 2026 | BR 16"
+title: "Prix d'une charpente au m² : repères 2026 | BR 16 BATIMENT"
 description: "Charpente traditionnelle ou fermettes : prix au m² publiés, réparation, facteurs de variation et règles d'urbanisme. Repères sourcés pour un projet en Charente."
 h1: "Combien coûte une charpente au mètre carré ?"
 label: "Charpente"
 service: "charpente"
-answer: "Les prix publiés situent une charpente traditionnelle entre 95 et 240 €/m² pose comprise, et une charpente en fermettes entre 70 et 120 €/m², selon le guide d'Obat mis à jour en octobre 2024. La rénovation d'une charpente coûte de 90 à 220 €/m² selon Habitatpresto, début 2026. Le choix dépend surtout de vos projets pour les combles."
+answer: "Les prix publiés situent une charpente traditionnelle entre 95 et 240 €/m² pose comprise, et une charpente en fermettes entre 70 et 120 €/m², selon le guide d'Obat mis à jour en octobre 2024. La rénovation d'une charpente coûte de 90 à 220 €/m² selon Habitatpresto, début 2026. Le choix dépend surtout de vos projets pour les combles. Ce sont des repères pour comparer : chez BR 16 BATIMENT, le prix est sur devis."
 published: 2026-10-30
 updated: 2026-10-30
 faq:
   - q: "Quel budget pour une charpente de 100 m² ?"
-    a: "D'après les fourchettes publiées, comptez environ 9 500 à 24 000 € pour une charpente traditionnelle et 7 000 à 12 000 € pour des fermettes. Ce calcul reste indicatif : la forme du toit, l'essence et l'accès font varier le prix."
+    a: "D'après les fourchettes publiées, cela représente environ 9 500 à 24 000 € pour une charpente traditionnelle et 7 000 à 12 000 € pour des fermettes. Ce calcul reste indicatif : la forme du toit, l'essence et l'accès font varier le prix."
   - q: "Fermettes ou charpente traditionnelle : laquelle choisir ?"
     a: "Les fermettes coûtent généralement moins cher à la pose, mais leurs pièces occupent le comble. La charpente traditionnelle laisse plus de volume libre et se prête mieux à un aménagement. Si vous envisagez d'utiliser les combles un jour, posez la question dès le début."
   - q: "Combien coûte le traitement d'une charpente ?"
@@ -72,7 +72,7 @@ Une charpente saine dure très longtemps. Dans bien des cas, on peut remplacer l
 - de petits trous et de la sciure ;
 - une odeur de moisi dans les combles.
 
-En Charente, la question des insectes est particulièrement importante, puisque tout le département est classé à risque de termites. Le [guide dédié](/guides/traitement-charpente-termites-charente) explique les obligations.
+En Charente, la question des insectes est particulièrement importante, puisque tout le département est classé à risque de termites. BR 16 BATIMENT n'intervient pas sur les termites ni sur le traitement des bois : adressez-vous à une entreprise spécialisée.
 
 ## Quelles démarches prévoir ?
 

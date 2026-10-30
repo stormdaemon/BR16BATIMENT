@@ -1,0 +1,36 @@
+---
+// La zone d'intervention sur une page service : les communes, avec leur distance réelle par la route.
+import geo from '../data/geo.json';
+import { SITE } from '../data/site';
+
+const towns = [...geo.communes].sort((a, b) => a.km - b.km);
+---
+<section class="zl s-paper section" data-section="zone">
+  <div class="wrap zl__grid">
+    <div class="zl__text">
+      <p class="label">Zone d'intervention</p>
+      <h2>Où j'interviens</h2>
+      <p>Je suis installé à {SITE.address.city}, dans le sud de la Charente. J'interviens dans tout le département et, sur demande, en Charente-Maritime et en Dordogne. Ces communes sont des repères, pas une limite.</p>
+      <a class="zl__more" href="/zone-intervention">Toute la zone d'intervention</a>
+    </div>
+    <ul class="zl__list">
+      {towns.map((c) => (
+        <li><a href={`/zone-intervention/${c.slug}`}>{c.name}</a> <span>{c.km}&nbsp;km</span></li>
+      ))}
+    </ul>
+  </div>
+</section>
+
+<style>
+  .zl__grid { display: grid; gap: 2rem; }
+  .zl__text { display: grid; gap: 0.9rem; justify-items: start; align-content: start; }
+  .zl__text p:not(.label) { max-width: 52ch; }
+  .zl__more { font-weight: 700; }
+  .zl__list { display: grid; gap: 0.1rem 2rem; border-top: 2px solid var(--anthracite); padding-top: 0.6rem; }
+  .zl__list li { display: flex; justify-content: space-between; gap: 1rem; padding-block: 0.4rem; border-bottom: 1px solid var(--line); font-weight: 500; }
+  .zl__list a { text-decoration: none; }
+  .zl__list a:hover { text-decoration: underline; }
+  .zl__list span { color: var(--muted); font-size: var(--fs-s); font-variant-numeric: tabular-nums; white-space: nowrap; }
+  @media (min-width: 40rem) { .zl__list { grid-template-columns: 1fr 1fr; } }
+  @media (min-width: 60rem) { .zl__grid { grid-template-columns: 1fr 1.5fr; gap: clamp(3rem, 6vw, 7rem); } }
+</style>

@@ -1,10 +1,10 @@
 ---
-title: "Artisan à Blanzac et Coteaux-du-Blanzacais | BR 16"
-description: "Votre artisan voisin à Blanzac-Porcheresse et Coteaux-du-Blanzacais : charpente, toiture, isolation et rénovation, à 6 km de Champagne-Vigny. Devis gratuit."
+title: "Artisan à Blanzac et Coteaux-du-Blanzacais | BR 16 BATIMENT"
+description: "Votre artisan voisin à Blanzac-Porcheresse et Coteaux-du-Blanzacais : placo, isolation, menuiseries et démoussage, à 6 km de Champagne-Vigny. Devis gratuit."
 h1: "Votre artisan à Blanzac et dans les Coteaux-du-Blanzacais"
 name: "Coteaux-du-Blanzacais"
 kind: "commune"
-answer: "BR 16 BATIMENT est à 6 km des Coteaux-du-Blanzacais, soit environ 10 minutes de route depuis Champagne-Vigny. L'entreprise y réalise la charpente, la couverture, l'isolation, les menuiseries et la rénovation. C'est la commune la plus proche de cette liste : une visite avant le devis, gratuit, se prévoit facilement."
+answer: "BR 16 BATIMENT est à 6 km des Coteaux-du-Blanzacais, soit environ 10 minutes de route depuis Champagne-Vigny. L'entreprise y réalise la plaquisterie, l'isolation intérieure, les menuiseries et le démoussage de toiture. C'est la commune la plus proche de cette liste : une visite avant le devis, gratuit, se prévoit facilement."
 updated: 2026-10-30
 faq:
   - q: "Blanzac-Porcheresse et Coteaux-du-Blanzacais, est-ce la même commune ?"
@@ -38,6 +38,6 @@ La commune s'étend sur des coteaux calcaires et sur la vallée du Né, où se t
 
 ## Pourquoi la proximité change les choses
 
-Être si près, c'est pouvoir passer voir une tuile déplacée, contrôler une fuite ou reprendre un détail sans organiser un long déplacement. C'est particulièrement utile pour de petites interventions, comme [une réparation de toiture](/services/couverture) ou [un démoussage](/services/nettoyage-toiture), mais aussi pour suivre de près [une rénovation](/services/renovation) par étapes.
+Être si près, c'est pouvoir passer voir une tuile déplacée, contrôler une fuite ou reprendre un détail sans organiser un long déplacement. C'est particulièrement utile pour de petites interventions, comme [un démoussage](/services/demoussage-toiture) ou [une cloison](/services/plaquisterie), mais aussi pour suivre de près [une rénovation](/services/renovation-interieure) par étapes.
 
 Appelez le 06 67 11 67 60, ou décrivez votre projet sur [la page contact](/contact).

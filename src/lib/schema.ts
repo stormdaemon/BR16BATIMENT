@@ -1,4 +1,4 @@
-import { SITE, SERVICES } from '../data/site';
+import { COMPLEMENTS, SITE, SPECIALITES } from '../data/site';
 import geo from '../data/geo.json';
 
 const ORG_ID = `${SITE.url}/#entreprise`;
@@ -7,14 +7,34 @@ const PERSON_ID = `${SITE.url}/a-propos#raphael-bardan`;
 
 export const abs = (path: string) => new URL(path, SITE.url).href.replace(/\/$/, path === '/' ? '/' : '');
 
+// Les termes employés par les clients pour décrire les spécialités de l'entreprise.
+const KNOWS_ABOUT = [
+  'Plaquisterie', 'Pose de placo', 'Cloisons', 'Doublage', 'Plafonds en plaques de plâtre',
+  'Isolation intérieure', 'Isolation des murs par l\'intérieur', 'Isolation des combles',
+  'Menuiserie intérieure', 'Menuiserie extérieure', 'Remplacement de fenêtres',
+  'Démoussage de toiture', 'Traitement hydrofuge de toiture',
+  'Rénovation intérieure', 'Pose de parquet flottant', 'Pose de lino', 'Création de dressing', 'Aménagement intérieur', 'Pose de cuisine',
+];
+
+const catalog = (name: string, services: readonly { slug: string; label: string }[]) => ({
+  '@type': 'OfferCatalog',
+  name,
+  itemListElement: services.map((s) => ({
+    '@type': 'Offer',
+    itemOffered: { '@type': 'Service', name: s.label, url: abs(`/services/${s.slug}`) },
+  })),
+});
+
 export function organization() {
   return {
-    '@type': ['GeneralContractor', 'RoofingContractor'],
+    '@type': 'HomeAndConstructionBusiness',
     '@id': ORG_ID,
     name: SITE.name,
     legalName: SITE.legal.denomination,
+    alternateName: SITE.alternateNames,
+    slogan: SITE.tagline,
     description:
-      'Entreprise artisanale du bâtiment dirigée par Raphaël Bardan à Champagne-Vigny (Charente) : charpente, couverture, plaquisterie, isolation, menuiserie, ossature bois, bardage, aménagement intérieur, nettoyage de toiture et rénovation. Activité créée en 2017, société par actions simplifiée depuis novembre 2025.',
+      'Entreprise artisanale du bâtiment dirigée par Raphaël Bardan à Champagne-Vigny (Charente). Spécialités : plaquisterie, isolation intérieure, menuiserie, démoussage et traitement hydrofuge de toiture, rénovation intérieure (parquet flottant, lino, dressing, pose de cuisine). Réalise aussi, en complément, l\'aménagement de combles, le bardage, la charpente, la couverture et l\'ossature bois. Non qualifiée RGE. Activité créée en 2017, société par actions simplifiée depuis novembre 2025.',
     url: `${SITE.url}/`,
     logo: abs('/logo.png'),
     image: abs('/og-image.png'),
@@ -46,14 +66,15 @@ export function organization() {
       { '@type': 'AdministrativeArea', name: 'Dordogne' },
       ...geo.communes.map((c) => ({ '@type': 'City', name: c.name })),
     ],
-    knowsAbout: SERVICES.map((s) => s.label),
+    knowsAbout: KNOWS_ABOUT,
     hasOfferCatalog: {
       '@type': 'OfferCatalog',
       name: 'Travaux réalisés par BR 16 BATIMENT',
-      itemListElement: SERVICES.map((s) => ({
-        '@type': 'Offer',
-        itemOffered: { '@type': 'Service', name: s.label, url: abs(`/services/${s.slug}`) },
-      })),
+      itemListElement: [
+        catalog('Spécialités : intérieur de la maison', SPECIALITES.filter((s) => s.place === 'interieur')),
+        catalog('Spécialités : entretien de la toiture', SPECIALITES.filter((s) => s.place === 'toit')),
+        catalog('Travaux réalisés en complément', COMPLEMENTS),
+      ],
     },
   };
 }
@@ -76,7 +97,7 @@ export function person() {
 }
 
 export function website() {
-  return { '@type': 'WebSite', '@id': SITE_ID, url: `${SITE.url}/`, name: SITE.name, inLanguage: 'fr-FR', publisher: { '@id': ORG_ID } };
+  return { '@type': 'WebSite', '@id': SITE_ID, url: `${SITE.url}/`, name: SITE.name, alternateName: SITE.alternateNames, inLanguage: 'fr-FR', publisher: { '@id': ORG_ID } };
 }
 
 export function webpage(path: string, title: string, description: string, modified?: Date) {
@@ -100,11 +121,12 @@ export function breadcrumbList(crumbs: { name: string; href: string }[]) {
   };
 }
 
-export function service(path: string, name: string, description: string) {
+export function service(path: string, name: string, description: string, names: string[] = []) {
   return {
     '@type': 'Service',
     '@id': `${abs(path)}#service`,
     name,
+    ...(names.length ? { alternateName: names } : {}),
     description,
     url: abs(path),
     serviceType: name,

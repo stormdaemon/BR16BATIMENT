@@ -1,28 +1,55 @@
 ---
-title: "Plaquiste en Charente : cloisons, placo, plafonds | BR 16"
-description: "Cloisons, doublages, faux plafonds et finitions : BR 16 BATIMENT, plaquiste et plâtrier à Champagne-Vigny, intervient dans toute la Charente. Devis gratuit."
-h1: "Plaquiste en Charente : cloisons, doublages et faux plafonds"
+title: "Plaquiste en Charente : cloisons et placo | BR 16 BATIMENT"
+description: "Refaire des cloisons, poser du placo, doubler un mur : BR 16 BATIMENT, plaquiste à Champagne-Vigny, intervient dans toute la Charente et autour d'Angoulême."
+h1: "Plaquiste en Charente : cloisons, placo, doublages et plafonds"
 label: "Plaquisterie"
-order: 6
-answer: "BR 16 BATIMENT réalise les travaux de plaquisterie et de plâtrerie en Charente, depuis Champagne-Vigny : cloisons, doublages isolants, faux plafonds et bandes de finition, en neuf comme en rénovation. La plâtrerie est l'activité principale enregistrée de l'entreprise (code NAF 43.31Z). Le devis est gratuit et les plaques sont adaptées à chaque pièce, y compris les pièces humides."
+order: 1
+names:
+  - "plaquiste"
+  - "pose de placo"
+  - "cloisons"
+  - "doublage"
+  - "faux plafond"
+answer: "BR 16 BATIMENT est un plaquiste installé à Champagne-Vigny, en Charente. L'entreprise refait vos cloisons, pose du placo, double vos murs et réalise vos plafonds, en neuf comme en rénovation, dans tout le département et autour d'Angoulême. La plâtrerie est son activité principale enregistrée (code d'activité NAF 43.31Z). Le devis est gratuit."
+problems:
+  - problem: "Une grande pièce à couper en deux, un étage à redessiner ?"
+    solution: "Je monte des cloisons sur ossature métallique, légères et rapides à poser, où les réseaux peuvent passer. Je les termine jusqu'à la surface prête à peindre."
+  - problem: "Des cloisons anciennes abîmées ou mal placées ?"
+    solution: "Je les dépose et je les refais au bon endroit, avec la plaque adaptée à chaque pièce."
+  - problem: "Un mur de travers, de la pierre à habiller, un mur froid ?"
+    solution: "Je pose un doublage sur ossature, avec ou sans isolant, après avoir cherché l'origine d'une éventuelle humidité."
+  - problem: "Un plafond fissuré, trop haut ou plein de réseaux apparents ?"
+    solution: "Je pose un plafond en plaques sur ossature, qui cache les réseaux et peut recevoir des spots."
+  - problem: "Trop de bruit entre deux pièces ?"
+    solution: "Je monte une cloison avec isolant dans l'ossature, avec des plaques phoniques si besoin, et je soigne les jonctions."
+  - problem: "Une salle de bains ou une buanderie à monter ?"
+    solution: "J'utilise des plaques hydrofuges dans les pièces humides. L'étanchéité sous la douche se traite à part."
 includes:
-  - "Cloisons de distribution sur ossature métallique"
-  - "Doublage des murs, avec ou sans isolant"
-  - "Faux plafonds et plafonds suspendus"
-  - "Plaques adaptées aux pièces humides"
+  - "Cloison pour séparer une chambre, une entrée ou un bureau"
+  - "Dépose et remplacement de cloisons anciennes"
+  - "Doublage d'un mur irrégulier ou d'un mur en pierre, avec ou sans isolant"
+  - "Faux plafond et plafond suspendu, avec passage des spots"
+  - "Plaques hydrofuges pour salle de bains, cuisine et buanderie"
   - "Bandes, joints et préparation avant peinture"
-  - "Isolation phonique des cloisons"
+proof: "La plâtrerie est l'activité principale enregistrée de BR 16 BATIMENT (code NAF 43.31Z) et figure dans son objet social, publié au Bulletin officiel des annonces civiles et commerciales (BODACC)."
+limits:
+  - "Je ne réalise ni l'électricité ni la plomberie : vos artisans passent les réseaux avant la fermeture des cloisons."
+  - "Mes travaux n'ouvrent pas droit aux aides : je ne suis pas qualifié RGE."
 guides:
   - "prix-plaquiste-cloison-placo"
   - "prix-renovation-maison"
 related:
-  - "isolation"
+  - "isolation-interieure"
+  - "renovation-interieure"
   - "amenagement-combles"
-  - "renovation"
 updated: 2026-10-30
 faq:
+  - q: "Qui peut refaire mes cloisons en Charente ?"
+    a: "BR 16 BATIMENT dépose et refait les cloisons dans toute la Charente, depuis Champagne-Vigny. Décrivez-moi la pièce, sa surface et ce que vous voulez changer : le devis est gratuit, et une réponse vous est apportée sous 48 h."
   - q: "Quel est le prix d'un plaquiste au mètre carré ?"
-    a: "Il dépend du type d'ouvrage (cloison, doublage ou plafond), de la hauteur, du type de plaques et du niveau de finition. Le guide dédié réunit les fourchettes publiées et leurs sources. Le devis sur place est gratuit."
+    a: "Il dépend du type d'ouvrage (cloison, doublage ou plafond), de la hauteur, du type de plaques et du niveau de finition. Mes prix sont sur devis ; pour comparer, le guide dédié réunit des fourchettes publiées par des tiers, avec leurs sources. Le devis sur place est gratuit."
+  - q: "Quelle différence entre une cloison et un doublage ?"
+    a: "Une cloison sépare deux pièces : elle crée un nouveau mur. Un doublage habille un mur existant : il le redresse, le rend présentable et peut recevoir un isolant. Les deux utilisent des plaques de plâtre et peuvent se combiner sur un même chantier."
   - q: "Quelle plaque choisir pour une salle de bains ?"
     a: "Dans une pièce humide, on utilise des plaques hydrofuges, reconnaissables à leur parement, le plus souvent vert. Elles résistent mieux à l'humidité, mais ne remplacent pas l'étanchéité sous la douche, qui se traite séparément."
   - q: "Une cloison en plaques isole-t-elle du bruit ?"
@@ -31,13 +58,13 @@ faq:
     a: "Le plaquiste assemble des plaques de plâtre sur une ossature ; le plâtrier applique traditionnellement l'enduit. Aujourd'hui, les deux métiers se recoupent largement, et la plaquisterie est devenue la technique la plus courante sur les chantiers."
 ---
 
-Les plaques de plâtre sont partout dans une maison, mais le résultat dépend presque entièrement de la pose : un mur droit, un plafond sans fissure et des joints invisibles sous la peinture, ça ne s'improvise pas. La plâtrerie et la pose de plaques isolantes sont l'activité principale enregistrée de BR 16 BATIMENT.
+Les plaques de plâtre sont partout dans une maison, mais le résultat dépend presque entièrement de la pose : un mur droit, un plafond sans fissure et des joints invisibles sous la peinture, ça ne s'improvise pas. C'est le cœur de mon activité : la plâtrerie et la pose de plaques isolantes sont l'activité principale enregistrée de BR 16 BATIMENT.
 
-## Quels travaux réalise un plaquiste ?
+## Que peut faire un plaquiste chez vous ?
 
-**Les cloisons de distribution.** Créer une chambre, séparer une entrée, redessiner un étage. Une cloison en plaques est légère, rapide à monter, et permet d'y passer les réseaux.
+**Refaire ou créer des cloisons.** Créer une chambre, séparer une entrée, redessiner un étage, remplacer une ancienne cloison abîmée. Une cloison en plaques est légère, rapide à monter, et permet d'y passer les réseaux.
 
-**Les doublages.** Redresser un mur irrégulier, habiller de la pierre ou poser un isolant : c'est souvent le premier poste d'une rénovation dans une maison ancienne.
+**Poser du placo sur les murs : le doublage.** Redresser un mur irrégulier, habiller de la pierre ou poser un isolant : c'est souvent le premier poste d'une rénovation dans une maison ancienne. Si le mur est froid, voyez aussi [l'isolation intérieure](/services/isolation-interieure), que je réalise en même temps.
 
 **Les plafonds.** Un faux plafond cache des réseaux, baisse une hauteur excessive, améliore l'isolation et permet d'intégrer des spots.
 
@@ -63,11 +90,13 @@ Dans les maisons anciennes de Charente, les murs en pierre sont rarement d'aplom
 
 Sur une rénovation, la plaquisterie arrive après les gros travaux et le passage des réseaux, mais avant les finitions. L'ordre habituel :
 
-1. [Toiture](/services/couverture) et [menuiseries](/services/menuiserie) pour mettre la maison hors d'eau et hors d'air ;
+1. toiture et [menuiseries](/services/menuiserie), pour mettre la maison hors d'eau et hors d'air ;
 2. réseaux d'électricité et de plomberie, gérés par vos artisans ;
-3. [isolation](/services/isolation) et plaques ;
-4. peinture et [revêtements de sol](/services/amenagement-interieur).
+3. [isolation](/services/isolation-interieure) et plaques ;
+4. peinture et [revêtements de sol](/services/parquet-lino).
 
-Comme j'interviens sur plusieurs de ces postes, nous gagnons du temps de coordination. Pour une vue d'ensemble, voyez aussi [mes rénovations de maison](/services/renovation).
+Comme j'interviens sur plusieurs de ces postes, vous gagnez du temps de coordination. Pour une vue d'ensemble, voyez [la rénovation intérieure](/services/renovation-interieure).
 
-Pour estimer votre budget, consultez [le guide des prix d'un plaquiste](/guides/prix-plaquiste-cloison-placo).
+## Vous cherchez un plaquiste autour d'Angoulême ?
+
+Je suis installé à Champagne-Vigny, à 24 km de route d'[Angoulême](/zone-intervention/angouleme). J'interviens aussi à [La Couronne](/zone-intervention/la-couronne), à [Soyaux](/zone-intervention/soyaux) et à [Ruelle-sur-Touvre](/zone-intervention/ruelle-sur-touvre), comme dans le reste de la Charente. Pour estimer votre budget avant de m'appeler, consultez [le guide des prix d'un plaquiste](/guides/prix-plaquiste-cloison-placo).

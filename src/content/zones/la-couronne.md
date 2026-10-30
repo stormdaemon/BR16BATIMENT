@@ -1,10 +1,10 @@
 ---
-title: "Couvreur et plaquiste à La Couronne (16400) | BR 16"
-description: "Couverture, plaquisterie, isolation et rénovation à La Couronne, dans le Grand Angoulême. BR 16 BATIMENT, à 20 km de route de Champagne-Vigny. Devis gratuit."
-h1: "Couvreur et plaquiste à La Couronne"
+title: "Plaquiste et isolation à La Couronne (16) | BR 16 BATIMENT"
+description: "Placo, isolation, menuiseries et démoussage à La Couronne, dans le Grand Angoulême. BR 16 BATIMENT, à 20 km de route de Champagne-Vigny. Devis gratuit."
+h1: "Plaquiste et isolation à La Couronne"
 name: "La Couronne"
 kind: "commune"
-answer: "BR 16 BATIMENT intervient à La Couronne pour la couverture, la plaquisterie, l'isolation et la rénovation. Cette commune du Grand Angoulême est à 20 km de route de Champagne-Vigny, soit environ 23 minutes. Sur son sol très argileux, certaines vérifications s'imposent avant les gros travaux. Le devis est gratuit, avec une réponse sous 48 h."
+answer: "BR 16 BATIMENT intervient à La Couronne pour la plaquisterie, l'isolation intérieure, les menuiseries et le démoussage de toiture. Cette commune du Grand Angoulême est à 20 km de route de Champagne-Vigny, soit environ 23 minutes. Sur son sol très argileux, certaines vérifications s'imposent avant les gros travaux. Le devis est gratuit, avec une réponse sous 48 h."
 updated: 2026-10-30
 faq:
   - q: "Mon logement à La Couronne est-il concerné par l'argile ?"

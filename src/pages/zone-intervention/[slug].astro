@@ -4,9 +4,11 @@ import Base from '../../layouts/Base.astro';
 import CharenteMap from '../../components/CharenteMap.astro';
 import Cta from '../../components/Cta.astro';
 import Faq from '../../components/Faq.astro';
+import LinkRows from '../../components/LinkRows.astro';
 import PageHero from '../../components/PageHero.astro';
+import Proof from '../../components/Proof.astro';
 import Sources from '../../components/Sources.astro';
-import { SERVICES } from '../../data/site';
+import { SPECIALITES } from '../../data/site';
 import geo from '../../data/geo.json';
 
 export async function getStaticPaths() {
@@ -18,6 +20,7 @@ const { entry } = Astro.props;
 const { Content } = await render(entry);
 const d = entry.data;
 const commune = geo.communes.find((c) => c.slug === entry.id);
+const where = d.kind === 'commune' ? `à ${d.name}` : `en ${d.name}`;
 
 const crumbs = [
   { name: 'Accueil', href: '/' },
@@ -60,12 +63,6 @@ const facts = commune
       <article class="prose"><Content /></article>
       <aside class="side">
         <div>
-          <h2 class="label">Travaux réalisés sur place</h2>
-          <ul class="side__list">
-            {SERVICES.map((s) => <li><a href={`/services/${s.slug}`}>{s.label}</a></li>)}
-          </ul>
-        </div>
-        <div>
           <h2 class="label">À proximité</h2>
           <ul class="side__list">
             {neighbours.map((c) => <li><a href={`/zone-intervention/${c.slug}`}>{c.name}</a></li>)}
@@ -76,9 +73,19 @@ const facts = commune
     </div>
   </section>
 
+  <section class="s-white section" data-section="problemes">
+    <div class="wrap">
+      <p class="label">Votre problème</p>
+      <h2 class="needs__title">Ce que je peux faire pour vous {where}</h2>
+      <LinkRows items={SPECIALITES.map((s) => ({ href: `/services/${s.slug}`, meta: s.label, title: s.problem, text: s.short }))} compact />
+    </div>
+  </section>
+
+  <Proof />
+
   {d.faq.length > 0 && (
     <section class="s-white section">
-      <div class="wrap narrow"><Faq items={d.faq} title={`Travaux à ${d.name} : vos questions`} /></div>
+      <div class="wrap narrow"><Faq items={d.faq} title={`Travaux ${where} : vos questions`} /></div>
     </section>
   )}
 
@@ -88,7 +95,7 @@ const facts = commune
     </section>
   )}
 
-  <Cta title={`Un chantier à ${d.name} ?`} />
+  <Cta title={`Un chantier ${where} ?`} />
 </Base>
 
 <style>
@@ -98,12 +105,13 @@ const facts = commune
   @media (min-width: 60rem) { .facts dl { grid-template-columns: repeat(4, 1fr); } }
   .body { display: grid; gap: 3rem; }
   .side { display: grid; gap: 2.25rem; align-content: start; }
-  .side__list { margin-top: 0.7rem; display: grid; grid-template-columns: 1fr 1fr; gap: 0.45rem 1rem; border-top: 2px solid var(--anthracite); padding-top: 0.8rem; font-size: var(--fs-s); font-weight: 500; }
+  .side__list { margin-top: 0.7rem; display: grid; gap: 0.45rem 1rem; border-top: 2px solid var(--anthracite); padding-top: 0.8rem; font-size: var(--fs-s); font-weight: 500; }
   .more { display: inline-block; margin-top: 0.8rem; font-weight: 700; }
   @media (min-width: 60rem) {
     .body { grid-template-columns: minmax(0, 1fr) 21rem; gap: clamp(3rem, 6vw, 7rem); }
     .side { position: sticky; top: calc(var(--header-h) + 1.5rem); }
   }
+  .needs__title { margin-block: 0.75rem 1.5rem; }
   .narrow { max-width: 64rem; }
   .src { padding-block: 0 var(--section); }
 </style>

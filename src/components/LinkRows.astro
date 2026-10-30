@@ -2,10 +2,10 @@
 import { fr } from '../lib/typo';
 // Liste de liens à grande échelle, avec remplissage jaune au survol.
 interface Item { href: string; title: string; meta?: string; text?: string }
-interface Props { items: Item[]; heading?: 'h2' | 'h3' }
-const { items, heading: H = 'h3' } = Astro.props;
+interface Props { items: Item[]; heading?: 'h2' | 'h3'; compact?: boolean }
+const { items, heading: H = 'h3', compact = false } = Astro.props;
 ---
-<ul class="rows">
+<ul class:list={['rows', { 'rows--compact': compact }]}>
   {items.map((item, i) => (
     <li data-reveal style={`--d:${(i % 4) * 0.05}s`}>
       <a href={item.href}>
@@ -26,6 +26,9 @@ const { items, heading: H = 'h3' } = Astro.props;
   a:hover::before { scale: 1 1; }
   a:hover .label, a:hover p { color: var(--anthracite); }
   .rows__title { font-size: var(--fs-xl); font-variation-settings: 'wdth' 80; }
+  .rows--compact a { padding-block: 0.8rem; }
+  .rows--compact .rows__title { font-size: var(--fs-l); }
+  .rows--compact p { font-size: var(--fs-s); }
   p { color: var(--muted); max-width: 60ch; }
   .rows__go { position: absolute; right: 0.75rem; top: 50%; translate: 0 -50%; font-size: var(--fs-xl); transition: translate 0.3s var(--ease-out); }
   a:hover .rows__go { translate: 0.3em -50%; }

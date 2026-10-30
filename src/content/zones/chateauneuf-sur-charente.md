@@ -1,10 +1,10 @@
 ---
-title: "Artisan à Châteauneuf-sur-Charente (16120) | BR 16"
-description: "Charpente, couverture, cloisons et rénovation à Châteauneuf-sur-Charente, à 17 km de Champagne-Vigny. BR 16 BATIMENT, l'artisan d'à côté. Devis gratuit."
+title: "Plaquiste à Châteauneuf-sur-Charente (16) | BR 16 BATIMENT"
+description: "Placo, isolation, menuiseries et démoussage à Châteauneuf-sur-Charente, à 17 km de Champagne-Vigny. BR 16 BATIMENT, l'artisan d'à côté. Devis gratuit."
 h1: "Artisan du bâtiment à Châteauneuf-sur-Charente"
 name: "Châteauneuf-sur-Charente"
 kind: "commune"
-answer: "BR 16 BATIMENT est à 17 km de Châteauneuf-sur-Charente, soit environ 21 minutes de route. L'entreprise y réalise la charpente, la couverture, l'isolation, les cloisons et la rénovation. Pierre de taille, sols argileux et vallée de la Charente font partie des points à regarder sur une maison de la commune. Le devis est gratuit."
+answer: "BR 16 BATIMENT est à 17 km de Châteauneuf-sur-Charente, soit environ 21 minutes de route. L'entreprise y réalise la plaquisterie, l'isolation intérieure, les menuiseries et le démoussage de toiture. Pierre de taille, sols argileux et vallée de la Charente font partie des points à regarder sur une maison de la commune. Le devis est gratuit."
 updated: 2026-10-30
 faq:
   - q: "Est-ce près de Champagne-Vigny ?"
@@ -27,7 +27,7 @@ Châteauneuf-sur-Charente est à une vingtaine de minutes de mon entreprise. La 
 Une maison en pierre ne se traite pas comme une construction récente. La pierre absorbe l'humidité puis la restitue : si on la bloque, elle remonte ailleurs et abîme le mur. Trois précautions évitent la plupart des problèmes :
 
 - ne pas coller de plaques directement sur un mur humide, mais prévoir [une ossature et une lame d'air](/services/plaquisterie) ;
-- choisir un [isolant](/services/isolation) compatible et une ventilation efficace ;
+- choisir un [isolant](/services/isolation-interieure) compatible et une ventilation efficace ;
 - traiter d'abord l'origine de l'eau, souvent une [gouttière ou une toiture](/services/couverture) défaillante.
 
 ## Quelles contraintes liées à l'église Saint-Pierre ?
@@ -44,4 +44,4 @@ Ces deux points sont à vérifier avant une [extension](/guides/prix-extension-o
 
 ## Pourquoi faire appel à un artisan proche ?
 
-La proximité a un avantage concret : il est plus simple de passer contrôler une fuite ou de suivre un chantier en plusieurs phases. Que ce soit pour [aménager vos combles](/services/amenagement-combles), [refaire vos cloisons](/services/plaquisterie) ou [rénover la maison](/services/renovation) par étapes, je peux organiser ces visites sans long déplacement.
+La proximité a un avantage concret : il est plus simple de passer contrôler une fuite ou de suivre un chantier en plusieurs phases. Que ce soit pour [aménager vos combles](/services/amenagement-combles), [refaire vos cloisons](/services/plaquisterie) ou [rénover la maison](/services/renovation-interieure) par étapes, je peux organiser ces visites sans long déplacement.

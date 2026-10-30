@@ -1,10 +1,10 @@
 ---
-title: "Charpente, toiture, rénovation en Dordogne | BR 16"
-description: "BR 16 BATIMENT se déplace en Dordogne depuis la Charente : charpente, couverture et rénovation, côté Ribérac et Dronne notamment. Réponse sous 48 h."
-h1: "Charpente, toiture et rénovation en Dordogne"
+title: "Placo, isolation et menuiserie en Dordogne | BR 16 BATIMENT"
+description: "BR 16 BATIMENT se déplace en Dordogne depuis la Charente : placo, isolation et menuiseries, côté Ribérac et Dronne notamment. Réponse sous 48 h."
+h1: "Placo, isolation et menuiserie en Dordogne"
 name: "Dordogne"
 kind: "departement"
-answer: "BR 16 BATIMENT, basé à Champagne-Vigny en Charente, se déplace en Dordogne pour la charpente, la couverture et la rénovation. Si votre maison se trouve du côté de la vallée de la Dronne ou de Ribérac, décrivez-moi votre projet : je vous dirai sous 48 h si je peux le prendre en charge. Le devis est gratuit."
+answer: "BR 16 BATIMENT, basé à Champagne-Vigny en Charente, se déplace en Dordogne pour la plaquisterie, l'isolation intérieure, les menuiseries et la rénovation intérieure. Si votre maison se trouve du côté de la vallée de la Dronne ou de Ribérac, décrivez-moi votre projet : je vous dirai sous 48 h si je peux le prendre en charge. Le devis est gratuit."
 updated: 2026-10-30
 faq:
   - q: "Intervenez-vous partout en Dordogne ?"
@@ -26,7 +26,7 @@ La Dordogne commence tout près du sud de la Charente, juste de l'autre côté d
 
 ## Quel type de chantier est adapté à ce déplacement ?
 
-Pour un chantier éloigné, il vaut mieux regrouper le travail. Une [réfection de toiture](/services/couverture), la reprise d'une [charpente](/services/charpente), un [aménagement de combles](/services/amenagement-combles) ou une [rénovation](/services/renovation) par lots se prêtent bien à cette organisation. Pour une simple réparation de quelques tuiles, un artisan à proximité immédiate sera sans doute plus adapté, et je vous le dirai.
+Pour un chantier éloigné, il vaut mieux regrouper le travail. Des [cloisons et doublages](/services/plaquisterie), une [isolation](/services/isolation-interieure), un [remplacement de fenêtres](/services/menuiserie) ou une [rénovation intérieure](/services/renovation-interieure) par lots se prêtent bien à cette organisation. Pour une petite intervention isolée, un artisan à proximité immédiate sera sans doute plus adapté, et je vous le dirai.
 
 ## Bâti ancien : pierre et patrimoine
 
@@ -35,7 +35,7 @@ Le département est connu pour ses bastides, comme Monpazier et Domme, et pour s
 Pour votre maison, deux conséquences pratiques :
 
 - **Dans les abords d'un monument**, à moins de 500 mètres et en covisibilité, l'accord de l'Architecte des Bâtiments de France peut s'imposer pour un changement de couverture ou de [menuiseries](/services/menuiserie).
-- **Dans un mur en pierre**, l'humidité doit pouvoir s'évacuer : un [doublage](/services/plaquisterie) ou une [isolation](/services/isolation) mal conçus peuvent aggraver un problème existant.
+- **Dans un mur en pierre**, l'humidité doit pouvoir s'évacuer : un [doublage](/services/plaquisterie) ou une [isolation](/services/isolation-interieure) mal conçus peuvent aggraver un problème existant.
 
 ## Un climat plus contrasté qu'en Charente
 

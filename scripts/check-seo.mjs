@@ -21,6 +21,20 @@ const MIN_WORDS = [
   [/^\/a-propos$/, 350],
 ];
 
+// Les besoins que l'entreprise veut couvrir : chaque page emploie les mots de ses clients.
+const BESOINS = {
+  '/services/plaquisterie': ['plaquiste', 'placo', 'cloison', 'doublage', 'charente'],
+  '/services/isolation-interieure': ['isolation intérieure', "murs par l'intérieur", 'rge', 'charente'],
+  '/services/menuiserie': ['menuiserie intérieure', 'fenêtre', 'porte', 'charente'],
+  '/services/renovation-interieure': ['rénovation intérieure', 'artisan', 'charente'],
+  '/services/parquet-lino': ['parquet flottant', 'lino', 'charente'],
+  '/services/dressing-amenagement-interieur': ['dressing', 'aménagement intérieur', 'charente'],
+  '/services/pose-cuisine': ['pose de cuisine', 'charente'],
+  '/services/demoussage-toiture': ['démoussage', 'toiture', 'charente'],
+  '/services/hydrofuge-toiture': ['hydrofuge', 'toiture', 'charente'],
+  '/zone-intervention/angouleme': ['plaquiste', 'angoulême'],
+};
+
 const errors = [];
 const warnings = [];
 const fail = (page, msg) => errors.push(`${page} : ${msg}`);
@@ -45,6 +59,7 @@ const resolves = (path) => path === '/' || exists.has(path) || exists.has(`${pat
 const titles = new Map();
 const descriptions = new Map();
 const zoneTexts = new Map();
+const serviceTexts = new Map();
 const indexable = new Set();
 const inbound = new Map();
 
@@ -59,6 +74,7 @@ for (const file of htmlFiles) {
   const title = root.querySelector('title')?.text.trim() ?? '';
   if (!title) fail(page, 'titre absent');
   else if (title.length < 30 || title.length > 60) fail(page, `titre de ${title.length} caractères (30-60) : « ${title} »`);
+  if (/BR 16(?! BATIMENT)/.test(title)) fail(page, `nom de l'entreprise tronqué dans le titre : « ${title} »`);
   if (titles.has(title)) fail(page, `titre identique à ${titles.get(title)}`);
   titles.set(title, page);
 
@@ -124,6 +140,34 @@ for (const file of htmlFiles) {
   const voice = text.match(/je n.ai (pas trouvé|trouvé aucune?|pas pu|pas vérifié|pas de donnée|pas identifié)|sources? (ouvertes?|consultées?)|pu être consultés?|reprises? par wikipédia/i);
   if (voice) fail(page, `tournure à reformuler : « ${voice[0]} »`);
 
+  if (/BR 16(?! BATIMENT)/.test(text)) fail(page, `nom de l'entreprise tronqué : « ${text.match(/.{0,30}BR 16(?! BATIMENT).{0,20}/)[0]} »`);
+
+  // Ce que l'entreprise ne fait pas ne doit jamais ressembler à une offre.
+  const promise = text.match(/rge à ce jour|dites-le dès|traitement (curatif|anti-termites) (de|du|des) |éligibles? aux aides/i);
+  if (promise) fail(page, `promesse à retirer : « ${promise[0]} »`);
+
+  const lower = text.toLowerCase().replace(/\u00a0/g, ' ').replace(/’/g, "'");
+  for (const term of BESOINS[page] ?? []) {
+    if (!lower.includes(term)) fail(page, `besoin non couvert : « ${term} » absent`);
+  }
+
+  // Les prix de l'entreprise sont sur devis : un montant n'apparaît que dans un guide, annoncé comme une fourchette de comparaison.
+  if (/€/.test(text)) {
+    if (page === '/' || /^\/(services|zone-intervention)(\/|$)/.test(page)) fail(page, 'un montant affiché hors des guides ressemble à un tarif');
+    if (page.startsWith('/guides/') && !/sur devis/.test(text)) fail(page, 'montants affichés sans la mention « prix sur devis »');
+    const answer = root.querySelector('.ph__answer')?.text ?? '';
+    if (/€/.test(answer) && !/sur devis/.test(answer)) fail(page, 'résumé avec un montant, sans la mention « sur devis »');
+  }
+
+  // Chaque page service suit le même fil : problème, exemples, preuves, zone, devis.
+  if (/^\/services\/.+/.test(page)) {
+    for (const part of ['problemes', 'exemples', 'preuves', 'zone']) {
+      if (!root.querySelector(`[data-section="${part}"]`)) fail(page, `section « ${part} » absente`);
+    }
+    if (!root.querySelector('.cta')) fail(page, 'appel à devis absent');
+    serviceTexts.set(page, (main?.querySelector('article')?.text ?? '').toLowerCase());
+  }
+
   if (page.startsWith('/zone-intervention/')) zoneTexts.set(page, (main?.querySelector('article')?.text ?? '').toLowerCase());
 }
 
@@ -134,16 +178,21 @@ const shingles = (t) => {
   for (let i = 0; i + 4 < w.length; i++) out.add(w.slice(i, i + 5).join(' '));
   return out;
 };
-const zones = [...zoneTexts].map(([p, t]) => [p, shingles(t)]);
-for (let i = 0; i < zones.length; i++) {
-  for (let j = i + 1; j < zones.length; j++) {
-    const [pa, a] = zones[i];
-    const [pb, b] = zones[j];
-    const inter = [...a].filter((x) => b.has(x)).length;
-    const sim = inter / Math.max(1, Math.min(a.size, b.size));
-    if (sim > 0.4) fail(pa, `texte trop proche de ${pb} (${Math.round(sim * 100)} %)`);
+const compare = (texts) => {
+  const list = [...texts].map(([p, t]) => [p, shingles(t)]);
+  for (let i = 0; i < list.length; i++) {
+    for (let j = i + 1; j < list.length; j++) {
+      const [pa, a] = list[i];
+      const [pb, b] = list[j];
+      const inter = [...a].filter((x) => b.has(x)).length;
+      const sim = inter / Math.max(1, Math.min(a.size, b.size));
+      if (sim > 0.4) fail(pa, `texte trop proche de ${pb} (${Math.round(sim * 100)} %)`);
+    }
   }
-}
+  return list;
+};
+compare(serviceTexts);
+const zones = compare(zoneTexts);
 if (zones.length >= 30) warn('zones', `${zones.length} pages locales : au-delà de 30, surveiller le risque de pages satellites`);
 
 // Pas de page orpheline.

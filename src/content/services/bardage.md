@@ -1,10 +1,23 @@
 ---
-title: "Bardage bois en Charente : pose et rénovation | BR 16"
+title: "Pose de bardage bois en Charente | BR 16 BATIMENT"
 description: "Pose de bardage bois en Charente pour habiller, protéger ou isoler vos façades : essences, entretien et démarches, par BR 16 BATIMENT. Devis gratuit."
 h1: "Bardage bois en Charente : habiller et protéger vos façades"
 label: "Bardage"
-order: 10
-answer: "BR 16 BATIMENT pose des bardages bois en Charente, sur maison, extension ou annexe. Le bardage habille la façade, la protège des intempéries et peut accompagner une isolation par l'extérieur. Depuis Champagne-Vigny, l'entreprise réalise aussi l'ossature bois et la charpente, pour un résultat cohérent. Le devis est gratuit et sans engagement."
+order: 11
+answer: "En complément de ses spécialités, BR 16 BATIMENT pose des bardages bois en Charente, sur maison, extension ou annexe. Le bardage habille la façade, la protège des intempéries et peut accompagner une isolation par l'extérieur. L'entreprise, formée au travail du bois, intervient depuis Champagne-Vigny. Le devis est gratuit et sans engagement."
+names:
+  - "bardage bois"
+  - "habillage de façade"
+problems:
+  - problem: "Une façade abîmée ou sans charme ?"
+    solution: "Un bardage bois l'habille et la protège de la pluie et du soleil."
+  - problem: "Un pignon exposé, un mur froid ?"
+    solution: "Le bardage peut accompagner une isolation par l'extérieur, sans réduire la surface intérieure."
+  - problem: "Une extension à habiller ?"
+    solution: "Je pose le bardage sur tasseaux, avec pare-pluie et lame d'air ventilée."
+proof: "Une formation au travail du bois : bac professionnel menuiserie obtenu en 1999."
+limits:
+  - "Je réalise ces travaux en complément de mes spécialités : décrivez-moi votre projet, je vous dirai si je peux le prendre en charge."
 includes:
   - "Pose de bardage bois vertical ou horizontal"
   - "Pose sur ossature bois, extension ou annexe"
@@ -17,12 +30,12 @@ guides:
   - "prix-extension-ossature-bois"
 related:
   - "ossature-bois"
-  - "isolation"
-  - "charpente"
+  - "isolation-interieure"
+  - "menuiserie"
 updated: 2026-10-30
 faq:
   - q: "Quel est le prix d'un bardage bois au mètre carré ?"
-    a: "Il dépend de l'essence, du profil, de la hauteur de la façade et de l'accès. Le guide dédié réunit les fourchettes publiées et leurs sources. Le devis sur place est gratuit."
+    a: "Il dépend de l'essence, du profil, de la hauteur de la façade et de l'accès. Mes prix sont sur devis ; pour comparer, le guide dédié réunit des fourchettes publiées par des tiers, avec leurs sources. Le devis sur place est gratuit."
   - q: "Quelle est la durée de vie d'un bardage bois ?"
     a: "Elle varie selon l'essence, l'exposition et la qualité de la pose. Une essence adaptée, ventilée à l'arrière et protégée de l'eau au pied du mur, dure plusieurs décennies. La lame d'air est un point essentiel."
   - q: "Faut-il une autorisation pour poser un bardage ?"
@@ -60,7 +73,7 @@ La pose verticale évacue naturellement l'eau et allonge la silhouette de la mai
 
 ## Bardage et isolation : une bonne occasion
 
-Poser un bardage, c'est aussi l'occasion d'isoler le mur par l'extérieur. On ajoute alors une couche isolante derrière le bardage, sans réduire la surface intérieure. Cette solution est particulièrement intéressante sur une extension ou un pignon exposé. Je la combine avec [l'isolation](/services/isolation) et, si besoin, avec [une structure à ossature bois](/services/ossature-bois).
+Poser un bardage, c'est aussi l'occasion d'isoler le mur par l'extérieur. On ajoute alors une couche isolante derrière le bardage, sans réduire la surface intérieure. Cette solution est particulièrement intéressante sur une extension ou un pignon exposé. Je la combine avec [l'isolation](/services/isolation-interieure) et, si besoin, avec [une structure à ossature bois](/services/ossature-bois).
 
 ## Quelles démarches prévoir ?
 

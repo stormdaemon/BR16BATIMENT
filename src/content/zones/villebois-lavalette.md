@@ -1,10 +1,10 @@
 ---
-title: "Travaux de toiture à Villebois-Lavalette | BR 16 BATIMENT"
-description: "Toiture, charpente et rénovation à Villebois-Lavalette, Petite Cité de caractère : monuments et démarches. BR 16 BATIMENT, à 23 km. Devis gratuit."
-h1: "Toiture et rénovation à Villebois-Lavalette"
+title: "Menuiserie et placo à Villebois-Lavalette | BR 16 BATIMENT"
+description: "Isolation, menuiseries, placo et démoussage à Villebois-Lavalette, Petite Cité de caractère : monuments et démarches. BR 16 BATIMENT, à 23 km."
+h1: "Isolation et menuiserie à Villebois-Lavalette"
 name: "Villebois-Lavalette"
 kind: "commune"
-answer: "BR 16 BATIMENT intervient à Villebois-Lavalette pour la toiture, la charpente, les menuiseries et la rénovation, à 23 km de route de Champagne-Vigny. Ce bourg classé Petite Cité de caractère réunit plusieurs monuments protégés : les matériaux et les teintes s'y choisissent avec soin. Le devis est gratuit et sans engagement."
+answer: "BR 16 BATIMENT intervient à Villebois-Lavalette pour l'isolation intérieure, les menuiseries, la plaquisterie et le démoussage de toiture, à 23 km de route de Champagne-Vigny. Ce bourg classé Petite Cité de caractère réunit plusieurs monuments protégés : les matériaux et les teintes s'y choisissent avec soin. Le devis est gratuit et sans engagement."
 updated: 2026-10-30
 faq:
   - q: "Le centre de Villebois-Lavalette est-il protégé ?"
@@ -40,6 +40,6 @@ Bonne nouvelle en revanche côté argile : seuls 9,9 % de la superficie sont c
 
 ## Quels travaux dans le bourg et aux alentours ?
 
-La [réfection d'une toiture](/services/couverture) et la [réparation d'une charpente](/services/charpente) sont les chantiers les plus sensibles dans ce type de bâti, parce qu'ils se voient. L'[isolation des combles](/services/isolation) et les [cloisons intérieures](/services/plaquisterie) sont plus libres, puisqu'elles ne modifient pas l'aspect extérieur.
+Les [fenêtres et les portes](/services/menuiserie) sont les travaux les plus sensibles dans ce type de bâti, parce qu'ils se voient. L'[isolation des combles](/services/isolation-interieure) et les [cloisons intérieures](/services/plaquisterie) sont plus libres, puisqu'elles ne modifient pas l'aspect extérieur.
 
-Villebois-Lavalette est à 23 minutes de Champagne-Vigny. Une visite permet de voir ensemble ce qui est faisable, avant le moindre engagement. Pour estimer votre budget, voyez [le guide de la réfection de toiture](/guides/prix-refection-toiture).
+Villebois-Lavalette est à 23 minutes de Champagne-Vigny. Une visite permet de voir ensemble ce qui est faisable, avant le moindre engagement. Pour estimer votre budget, voyez [le guide du remplacement des fenêtres](/guides/prix-changer-fenetres).
