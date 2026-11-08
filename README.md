@@ -49,6 +49,17 @@ Les champs de chaque type de page sont définis et validés dans `src/content.co
 
 Les priorités commerciales et leurs raisons sont dans `docs/seo/05-recentrage.md`.
 
+## Mesurer les prises de contact
+
+Le site compte les clics sur le téléphone et l'email, et les demandes de devis envoyées, sans cookie ni donnée personnelle (`netlify/functions/mesures.mts`, `src/scripts/mesure.ts`). Chaque prise de contact garde l'heure, la page, le projet choisi et le site d'origine de la visite (google.com, bing.com, direct…).
+
+```bash
+npm run mesures          # bilan des 30 derniers jours
+npm run mesures -- 90    # bilan des 90 derniers jours
+```
+
+La clé de lecture est la variable `MESURES_CLE` du site sur Netlify. Copiez-la dans `.env.local` (`MESURES_CLE=...`), fichier non versionné. Les essais faits sur un déploiement de test vont dans un espace séparé et ne faussent pas les chiffres. Un clic sur le numéro ne prouve pas que l'appel a abouti : c'est une intention d'appel.
+
 ## Signaler une modification à Bing
 
 `npm run indexnow -- services/plaquisterie faq` envoie ces pages à Bing et aux autres moteurs IndexNow, une fois le déploiement terminé. Sans argument, le script envoie tout le sitemap. Aucun compte n'est nécessaire : la clé est le fichier `.txt` à la racine de `public/`. Google n'utilise pas ce protocole.

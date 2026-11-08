@@ -2,6 +2,10 @@
   command = "npm run build"
   publish = "dist"
 
+# Comptage des prises de contact (appels, emails, devis) : netlify/functions/mesures.mts.
+[functions]
+  directory = "netlify/functions"
+
 [build.environment]
   NODE_VERSION = "24"
 
