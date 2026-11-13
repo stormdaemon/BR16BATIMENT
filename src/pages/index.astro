@@ -9,7 +9,7 @@ import Cta from '../components/Cta.astro';
 import Faq from '../components/Faq.astro';
 import House from '../components/House.astro';
 import { COMPLEMENTS, SITE, SPECIALITES, yearsSince } from '../data/site';
-import { fr } from '../lib/typo';
+import { deux, fr } from '../lib/typo';
 import geo from '../data/geo.json';
 
 // Les guides des spécialités d'abord.
@@ -120,7 +120,7 @@ const faq = [
         <ol class="build__steps">
           {story.map((s, i) => (
             <li class="step" data-step={s.slug}>
-              <span class="label label--accent">{String(i + 1).padStart(2, '0')} · {s.label}</span>
+              <span class="label label--accent">{deux(i + 1)} · {s.label}</span>
               <h3><a href={`/services/${s.slug}`}>{fr(s.problem)}</a></h3>
               <p>{fr(s.short)}</p>
             </li>
@@ -249,10 +249,6 @@ const faq = [
   .who__facts > div { display: grid; gap: 0.15rem; padding-block: 0.8rem; border-bottom: 1px solid var(--line); }
   .who__facts dd { font-weight: 500; }
   @media (min-width: 60rem) { .who__grid { grid-template-columns: 1.25fr 1fr; } }
-  .link-arrow { display: inline-flex; gap: 0.6em; font-weight: 700; text-decoration: underline; text-decoration-thickness: 3px; }
-  .link-arrow span { transition: translate 0.25s var(--ease-out); }
-  .link-arrow:hover span { translate: 0.3em 0; }
-
   /* Maison en coupe */
   .build { padding-block: var(--section) 0; position: relative; }
   .build__head { display: grid; gap: 1rem; padding-bottom: clamp(2rem, 1rem + 3vw, 4rem); }

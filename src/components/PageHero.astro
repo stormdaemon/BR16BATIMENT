@@ -1,6 +1,7 @@
 ---
 import { SITE } from '../data/site';
 import { fr } from '../lib/typo';
+import Crumbs from './Crumbs.astro';
 interface Crumb { name: string; href: string }
 interface Props { crumbs: Crumb[]; kicker?: string; h1: string; answer?: string; contactHref?: string; cta?: boolean }
 const { crumbs, kicker, h1, answer, contactHref = '/contact', cta = true } = Astro.props;
@@ -10,13 +11,7 @@ const hasVisual = Astro.slots.has('visual');
   <div class="ph__grid-bg" aria-hidden="true"></div>
   <div class:list={['wrap', 'ph__grid', { 'ph__grid--visual': hasVisual }]}>
     <div class="ph__text">
-      <nav aria-label="Fil d'Ariane">
-        <ol class="crumbs label">
-          {crumbs.map((c, i) => (
-            <li>{i < crumbs.length - 1 ? <a href={c.href}>{c.name}</a> : <span aria-current="page">{c.name}</span>}</li>
-          ))}
-        </ol>
-      </nav>
+      <Crumbs crumbs={crumbs} />
       {kicker && <p class="label label--accent">{kicker}</p>}
       <h1>{fr(h1)}</h1>
       {answer && <p class="ph__answer">{fr(answer)}</p>}
@@ -37,10 +32,6 @@ const hasVisual = Astro.slots.has('visual');
   .ph__grid-bg { position: absolute; inset: 0; background-image: linear-gradient(var(--paper-06) 1px, transparent 1px), linear-gradient(90deg, var(--paper-06) 1px, transparent 1px); background-size: clamp(3rem, 8.33vw, 8rem) clamp(3rem, 8.33vw, 8rem); mask-image: linear-gradient(to bottom, var(--ink) 30%, transparent); }
   .ph__grid { position: relative; display: grid; gap: 2rem; padding-block: clamp(1.75rem, 1rem + 3vw, 4rem) clamp(3rem, 2rem + 4vw, 6rem); align-items: center; }
   .ph__text { display: grid; gap: 1.1rem; justify-items: start; min-width: 0; }
-  .crumbs { display: flex; flex-wrap: wrap; gap: 0.2rem 0.55rem; }
-  .crumbs li + li::before { content: '/'; margin-right: 0.55rem; color: var(--paper-40); }
-  .crumbs a { text-decoration: none; }
-  .crumbs a:hover { color: var(--yellow); }
   h1 { font-size: clamp(2.4rem, 1.35rem + 3.7vw, 4.75rem); }
   .ph__answer { font-size: clamp(1.0625rem, 1rem + 0.35vw, 1.3rem); line-height: 1.45; max-width: 62ch; }
   .btn-row { margin-top: 0.5rem; }

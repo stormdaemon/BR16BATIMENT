@@ -4,19 +4,12 @@
 import { Picture } from 'astro:assets';
 import Cliche from './Cliche.astro';
 import Cote from './Cote.astro';
-import { SERVICES } from '../data/site';
-import { CHANTIERS, TOTAL_PHOTOS } from '../lib/realisations';
-import { fr } from '../lib/typo';
+import { CHANTIERS, RECIT, TOTAL_PHOTOS, metier } from '../lib/realisations';
+import { deux, fr } from '../lib/typo';
 
-const vedette = CHANTIERS.find((c) => c.recit?.length);
-const etapes = (vedette?.recit ?? []).flatMap((e) => {
-  const cliche = vedette?.cliches.find((c) => c.fichier === e.fichier);
-  return cliche ? [{ ...e, cliche }] : [];
-});
-const autres = CHANTIERS.filter((c) => c !== vedette);
-const metier = (slug: string) => SERVICES.find((s) => s.slug === slug)?.label ?? '';
+const autres = CHANTIERS.filter((c) => c !== RECIT?.chantier);
 ---
-{vedette && etapes.length > 0 && (
+{RECIT && (
   <section class="chantier s-paper section">
     <div class="wrap">
       <Cote left="Réalisations" right={`${TOTAL_PHOTOS} photos de chantiers`} />
@@ -26,9 +19,9 @@ const metier = (slug: string) => SERVICES.find((s) => s.slug === slug)?.label ??
       </div>
 
       <ol class="chantier__etapes">
-        {etapes.map((e, i) => (
+        {RECIT.etapes.map((e, i) => (
           <li data-reveal style={`--d:${i * 0.1}s`}>
-            <span class="chantier__n display" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
+            <span class="chantier__n display" aria-hidden="true">{deux(i + 1)}</span>
             <Cliche cliche={e.cliche} cadre="4/3" legende={false} sizes="(min-width: 60rem) 30vw, 100vw" />
             <h3>{e.titre}</h3>
             <p>{fr(e.texte)}</p>
@@ -44,7 +37,7 @@ const metier = (slug: string) => SERVICES.find((s) => s.slug === slug)?.label ??
               <li data-reveal style={`--d:${(i % 6) * 0.05}s`}>
                 <a href={`/realisations#${c.slug}`}>
                   <span class="chantier__vignette"><Picture src={c.une.image} formats={['avif', 'webp']} widths={[240, 480]} sizes="(min-width: 60rem) 15vw, (min-width: 40rem) 30vw, 45vw" alt="" loading="lazy" /></span>
-                  <span class="label">{metier(c.services[0])}</span>
+                  <span class="label">{metier(c.services[0])?.label}</span>
                   <span class="chantier__titre">{fr(c.titre)}</span>
                 </a>
               </li>

@@ -1,10 +1,10 @@
 // Visionneuse des photos de chantier : agrandir, passer à la suivante, fermer.
 // Amélioration progressive : sans ce script, chaque lien ouvre simplement son image.
+import { deux } from '../lib/typo';
+
 let dialog: HTMLDialogElement | undefined;
 let liens: HTMLAnchorElement[] = [];
 let index = 0;
-
-const deux = (n: number) => String(n).padStart(2, '0');
 
 function creer() {
   const d = document.createElement('dialog');

@@ -148,6 +148,10 @@ a:hover { text-decoration-color: currentColor; }
 .btn--ghost:hover { --btn-shadow: transparent; }
 .btn--dark { --btn-bg: var(--anthracite); --btn-fg: var(--yellow); --btn-shadow: var(--white); }
 .btn-row { display: flex; flex-wrap: wrap; gap: 1rem 1.25rem; align-items: center; }
+/* Lien de renvoi : la flèche avance au survol. */
+.link-arrow { display: inline-flex; gap: 0.6em; font-weight: 700; text-decoration: underline; text-decoration-thickness: 3px; }
+.link-arrow span { transition: translate 0.25s var(--ease-out); }
+.link-arrow:hover span { translate: 0.3em 0; }
 
 /* Corps de texte des services, zones et guides. */
 .prose { max-width: var(--measure); }

@@ -5,8 +5,8 @@ import { Picture, getImage } from 'astro:assets';
 import type { Cliche } from '../lib/realisations';
 import { fr } from '../lib/typo';
 
-interface Props { cliche: Cliche; sizes: string; cadre?: string; etiquette?: string; legende?: boolean; eager?: boolean }
-const { cliche, sizes, cadre, etiquette, legende = true, eager = false } = Astro.props;
+interface Props { cliche: Cliche; sizes: string; cadre?: string; etiquette?: string; legende?: boolean }
+const { cliche, sizes, cadre, etiquette, legende = true } = Astro.props;
 const { image } = cliche;
 
 const echelle = Math.min(1, 1600 / Math.max(image.width, image.height));
@@ -15,7 +15,7 @@ const grand = await getImage({ src: image, width: Math.round(image.width * echel
 <figure class="cliche">
   <a class:list={['cliche__cadre', { 'cliche__cadre--fixe': cadre }]} href={grand.src} style={cadre ? `--cadre:${cadre}` : undefined} data-visionneuse data-alt={cliche.alt} data-legende={fr(cliche.legende)}>
     <span class="sr-only">Agrandir la photo. </span>
-    <Picture src={image} formats={['avif', 'webp']} widths={[360, 540, 720, 1080]} sizes={sizes} alt={cliche.alt} loading={eager ? 'eager' : 'lazy'} />
+    <Picture src={image} formats={['avif', 'webp']} widths={[360, 540, 720, 1080]} sizes={sizes} alt={cliche.alt} loading="lazy" />
     <span class="cliche__plus" aria-hidden="true"></span>
   </a>
   {legende && (

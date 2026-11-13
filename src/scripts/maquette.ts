@@ -2,7 +2,7 @@
 // Chaque pièce est un volume plein de la couleur du fond, bordé de ses arêtes : les faces cachent
 // ce qui est derrière, comme sur une perspective de plan. Le rendu se fait à la demande.
 import {
-  BoxGeometry, Box3, BufferGeometry, Color, CylinderGeometry, EdgesGeometry, Euler, ExtrudeGeometry, Group, Mesh,
+  BoxGeometry, Box3, BufferGeometry, Color, CylinderGeometry, EdgesGeometry, ExtrudeGeometry, Group, Mesh,
   MeshBasicMaterial, OrthographicCamera, Raycaster, Scene, Shape, Vector2, Vector3, WebGLRenderer,
 } from 'three';
 import { LineMaterial } from 'three/examples/jsm/lines/LineMaterial.js';
@@ -13,7 +13,12 @@ import type { Maquette, Piece } from '../data/maquettes';
 interface Noeud { groupe: Group; base: Vector3; e: Vector3; c: number; plein?: Mesh }
 interface Matieres { plein: MeshBasicMaterial; trait: LineMaterial }
 
-const borne = (v: number, min = 0, max = 1) => Math.min(max, Math.max(min, v));
+// Au-dessus de ce seuil, une couche est tenue pour opaque : elle n'a plus besoin de transparence.
+const SEUIL_OPAQUE = 0.999;
+// Écartement moyen des couches à partir duquel le cadrage est celui de la vue éclatée.
+const ECLATEMENT_CADRE = 0.8;
+
+export const borne = (v: number, min = 0, max = 1) => Math.min(max, Math.max(min, v));
 
 function geometrie(p: Piece): BufferGeometry | undefined {
   if (p.t === 'boite' && p.s) return new BoxGeometry(p.s[0], p.s[1], p.s[2]);
@@ -54,6 +59,14 @@ export class Vue3D {
   private rayon = new Raycaster();
   private largeur = 1;
   private hauteur = 1;
+  // Champs préalloués pour rendre() et placerEtiquettes(), qui tournent à chaque image.
+  private min = new Vector3();
+  private max = new Vector3();
+  private centre = new Vector3();
+  private coin = new Vector3();
+  private point = new Vector3();
+  // Dernières valeurs de style écrites sur chaque étiquette, pour ne pas réécrire le DOM à l'identique.
+  private memoEtiquettes: { translate: string; opacity: string }[] = [];
 
   constructor(private canvas: HTMLCanvasElement, maquette: Maquette, private etiquettes: HTMLElement[] = []) {
     const style = getComputedStyle(canvas);
@@ -114,7 +127,9 @@ export class Vue3D {
       this.modele.updateMatrixWorld(true);
       return new Box3().setFromObject(this.modele);
     };
-    this.boites = [mesure(1), mesure(0)].reverse() as [Box3, Box3];
+    const eclatee = mesure(1);
+    const assemblee = mesure(0);
+    this.boites = [assemblee, eclatee];
 
     // Le point où s'accroche l'étiquette de chaque couche : le bord de ses pièces, du côté
     // qui reste dégagé quand la maquette s'éclate (le dessus, ou le flanc si elle s'ouvre en hauteur).
@@ -161,28 +176,29 @@ export class Vue3D {
       m.plein.color.copy(this.fond);
       if (estActif) m.plein.color.lerp(this.jaune, 0.2);
       m.plein.opacity = o;
-      const voile = m.trait.opacity < 0.999;
+      const voile = m.trait.opacity < SEUIL_OPAQUE;
       if (m.trait.transparent !== voile) { m.trait.transparent = voile; m.trait.needsUpdate = true; }
-      if (m.plein.transparent !== o < 0.999) { m.plein.transparent = o < 0.999; m.plein.needsUpdate = true; }
+      if (m.plein.transparent !== o < SEUIL_OPAQUE) { m.plein.transparent = o < SEUIL_OPAQUE; m.plein.needsUpdate = true; }
     });
 
     // Le cadrage suit l'écartement moyen : serré quand tout est assemblé. Il se règle sur
     // l'encombrement réellement vu sous cet angle, pour que le dessin remplisse son cadre.
-    const m = borne(eclats.reduce((s, v) => s + v, 0) / eclats.length / 0.8);
+    let somme = 0;
+    for (const v of eclats) somme += v;
+    const m = borne(somme / eclats.length / ECLATEMENT_CADRE);
     const [b0, b1] = this.boites;
-    const min = b0.min.clone().lerp(b1.min, m);
-    const max = b0.max.clone().lerp(b1.max, m);
-    const centre = min.clone().add(max).multiplyScalar(0.5);
-    this.modele.position.copy(centre).multiplyScalar(-1);
+    this.min.copy(b0.min).lerp(b1.min, m);
+    this.max.copy(b0.max).lerp(b1.max, m);
+    this.centre.addVectors(this.min, this.max).multiplyScalar(0.5);
+    this.modele.position.copy(this.centre).multiplyScalar(-1);
     this.pivot.rotation.set(this.el, this.az, 0);
-    const angle = new Euler(this.el, this.az, 0);
-    const coin = new Vector3();
     let ex = 0;
     let ey = 0;
     for (let i = 0; i < 8; i++) {
-      coin.set(i & 1 ? max.x : min.x, i & 2 ? max.y : min.y, i & 4 ? max.z : min.z).sub(centre).applyEuler(angle);
-      ex = Math.max(ex, Math.abs(coin.x));
-      ey = Math.max(ey, Math.abs(coin.y));
+      this.coin.set(i & 1 ? this.max.x : this.min.x, i & 2 ? this.max.y : this.min.y, i & 4 ? this.max.z : this.min.z)
+        .sub(this.centre).applyEuler(this.pivot.rotation);
+      ex = Math.max(ex, Math.abs(this.coin.x));
+      ey = Math.max(ey, Math.abs(this.coin.y));
     }
     const ratio = this.largeur / this.hauteur;
     const dy = Math.max(ey, ex / ratio) * this.marge;
@@ -196,14 +212,20 @@ export class Vue3D {
 
   private placerEtiquettes() {
     if (!this.etiquettes.length) return;
-    const v = new Vector3();
     this.etiquettes.forEach((el, c) => {
       const ancre = this.ancres[c];
       if (!ancre) return;
-      v.copy(ancre.base).addScaledVector(ancre.e, this.eclats[c]);
-      this.modele.localToWorld(v).project(this.camera);
-      el.style.translate = `${((v.x + 1) / 2) * this.largeur}px ${((1 - v.y) / 2) * this.hauteur}px`;
-      el.style.opacity = String(this.opacites[c]);
+      this.point.copy(ancre.base).addScaledVector(ancre.e, this.eclats[c]);
+      this.modele.localToWorld(this.point).project(this.camera);
+      let memo = this.memoEtiquettes[c];
+      if (!memo) {
+        memo = { translate: '', opacity: '' };
+        this.memoEtiquettes[c] = memo;
+      }
+      const translate = `${((this.point.x + 1) / 2) * this.largeur}px ${((1 - this.point.y) / 2) * this.hauteur}px`;
+      if (translate !== memo.translate) { el.style.translate = translate; memo.translate = translate; }
+      const opacite = String(this.opacites[c]);
+      if (opacite !== memo.opacity) { el.style.opacity = opacite; memo.opacity = opacite; }
       el.classList.toggle('is-active', this.actif === c);
     });
   }

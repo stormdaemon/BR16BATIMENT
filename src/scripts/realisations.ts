@@ -2,12 +2,12 @@
 // sans ce script, la page garde ses textes, ses photos et sa visionneuse.
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { deux } from '../lib/typo';
 import { MAQUETTES } from '../data/maquettes';
-import { Vue3D } from './maquette';
+import { Vue3D, borne } from './maquette';
 
 const reduit = matchMedia('(prefers-reduced-motion: reduce)').matches;
 const souris = matchMedia('(hover: hover) and (pointer: fine)').matches;
-const borne = (v: number, min: number, max: number) => Math.min(max, Math.max(min, v));
 const adoucir = (t: number) => t * t * (3 - 2 * t);
 
 gsap.registerPlugin(ScrollTrigger);
@@ -40,7 +40,8 @@ function maquette(hote: HTMLElement) {
 
   let vue: Vue3D | undefined;
   let visible = false;
-  let image = 0;
+  // L'image demandée à requestAnimationFrame, ou 0 quand la boucle est arrêtée.
+  let attente = 0;
   let t = 0;
   let cible = 0;
   let [az, el] = modele.vue;
@@ -48,29 +49,37 @@ function maquette(hote: HTMLElement) {
   let survol: number | null = null;
   let touchee = false;
   let demo = false;
+  let actifAffiche: number | null | undefined;
   const depart = performance.now();
 
   const viser = (v: number) => {
     cible = borne(v, 0, 1);
     bouton?.setAttribute('aria-pressed', String(cible > 0.5));
+    lancer();
   };
 
   const boucle = (maintenant: number) => {
-    image = 0;
+    attente = 0;
     if (!vue || !visible) return;
     t += (cible - t) * 0.085;
     if (Math.abs(cible - t) < 0.0015) t = cible;
+    const actif = survol ?? choisi;
     vue.eclater(adoucir(t));
     vue.az = az + (touchee || reduit ? 0 : Math.sin((maintenant - depart) / 2600) * 0.16);
     vue.el = el;
-    vue.actif = survol ?? choisi;
+    vue.actif = actif;
     vue.rendre();
     hote.classList.toggle('is-eclate', t > 0.3);
-    if (curseur && document.activeElement !== curseur) curseur.value = String(Math.round(t * 100));
-    legende.forEach((b, i) => b.classList.toggle('is-active', vue?.actif === i));
-    image = requestAnimationFrame(boucle);
+    const valeur = String(Math.round(t * 100));
+    if (curseur && document.activeElement !== curseur && curseur.value !== valeur) curseur.value = valeur;
+    if (actif !== actifAffiche) {
+      actifAffiche = actif;
+      legende.forEach((b, i) => b.classList.toggle('is-active', actif === i));
+    }
+    // Il reste à éclater, ou le balancement tourne : une image de plus. Sinon la boucle s'arrête.
+    if (t !== cible || (!touchee && !reduit)) attente = requestAnimationFrame(boucle);
   };
-  const lancer = () => { if (!image && visible) image = requestAnimationFrame(boucle); };
+  const lancer = () => { if (!attente && visible) attente = requestAnimationFrame(boucle); };
 
   const monter = () => {
     if (vue) return;
@@ -90,24 +99,24 @@ function maquette(hote: HTMLElement) {
         prise = { x: e.clientX, y: e.clientY };
         if (!touchee) { touchee = true; hote.classList.add('is-touchee'); }
       } else if (e.pointerType === 'mouse') {
-        const cadre = canvas.getBoundingClientRect();
-        survol = vue?.viser(e.clientX - cadre.left, e.clientY - cadre.top) ?? null;
+        survol = vue?.viser(e.offsetX, e.offsetY) ?? null;
       }
+      lancer();
     });
     const lacher = () => { prise = undefined; };
     canvas.addEventListener('pointerup', lacher);
     canvas.addEventListener('pointercancel', lacher);
-    canvas.addEventListener('pointerleave', () => { survol = null; });
+    canvas.addEventListener('pointerleave', () => { survol = null; lancer(); });
   };
 
   bouton?.addEventListener('click', () => viser(cible > 0.5 ? 0 : 1));
   curseur?.addEventListener('input', () => { viser(Number(curseur.value) / 100); t = cible; });
   legende.forEach((b, i) => {
-    b.addEventListener('click', () => { choisi = choisi === i ? null : i; if (cible < 0.5) viser(1); });
-    b.addEventListener('pointerenter', () => { survol = i; });
-    b.addEventListener('pointerleave', () => { survol = null; });
+    b.addEventListener('click', () => { choisi = choisi === i ? null : i; if (cible < 0.5) viser(1); lancer(); });
+    b.addEventListener('pointerenter', () => { survol = i; lancer(); });
+    b.addEventListener('pointerleave', () => { survol = null; lancer(); });
   });
-  new ResizeObserver(() => vue?.taille()).observe(zone);
+  new ResizeObserver(() => { vue?.taille(); lancer(); }).observe(zone);
 
   // Proche de l'écran : la maquette existe et s'anime. Loin : son contexte WebGL est rendu.
   new IntersectionObserver(([entree]) => {
@@ -129,6 +138,10 @@ function maquette(hote: HTMLElement) {
 // Le premier chantier se monte au défilement : la maquette reçoit ses couches une à une,
 // les photos du chantier se succèdent, puis tout se referme sur le mur fini.
 function recit() {
+  // Écartement d'une couche pas encore arrivée : elle part de là et rejoint sa place.
+  const DEPART = 1.9;
+  // Durée du balayage d'une photo, et de la fermeture finale.
+  const BALAYAGE = 0.42;
   const section = document.querySelector<HTMLElement>('.recit');
   const pin = section?.querySelector<HTMLElement>('.recit__pin');
   const zone = section?.querySelector('.recit__toile');
@@ -144,7 +157,6 @@ function recit() {
     return;
   }
   section.classList.add('is-scene');
-  vue.taille();
 
   const n = modele.couches.length;
   const etapes = [...section.querySelectorAll<HTMLElement>('.recit__etapes li')];
@@ -154,8 +166,8 @@ function recit() {
   const jauge = section.querySelector<HTMLElement>('.recit__jauge span');
 
   // L'état animé : écartement et opacité de chaque couche, angle de vue.
-  const etat: Record<string, number> = { az: modele.vue[0] - 0.3 };
-  for (let c = 0; c < n; c++) { etat[`e${c}`] = c ? 1.9 : 0; etat[`o${c}`] = c ? 0 : 1; }
+  const couches = modele.couches.map((_, c) => ({ ecart: c ? DEPART : 0, opacite: c ? 0 : 1 }));
+  const angle = { az: modele.vue[0] - 0.3 };
 
   // À quelle étape du récit chaque couche arrive. La dernière couche clôt le chantier.
   const arrivees = [0.05, 0.5, 1.08, 2.08].slice(0, n - 1);
@@ -164,8 +176,8 @@ function recit() {
 
   const appliquer = () => {
     const temps = tl.time();
-    for (let c = 0; c < n; c++) { vue.eclats[c] = etat[`e${c}`]; vue.opacites[c] = etat[`o${c}`]; }
-    vue.az = etat.az;
+    for (let c = 0; c < n; c++) { vue.eclats[c] = couches[c].ecart; vue.opacites[c] = couches[c].opacite; }
+    vue.az = angle.az;
     const arrivee = arrivees.reduce((dernier, a, i) => (temps >= a ? i : dernier), -1);
     vue.actif = temps >= fin || arrivee < 0 ? null : arrivee + 1;
     vue.rendre();
@@ -173,7 +185,7 @@ function recit() {
     if (etape !== courante) {
       courante = etape;
       etapes.forEach((li, i) => li.classList.toggle('is-current', i === etape));
-      if (compteur) compteur.textContent = String(etape + 1).padStart(2, '0');
+      if (compteur) compteur.textContent = deux(etape + 1);
     }
     section.classList.toggle('is-ferme', temps >= fin);
     if (jauge) jauge.style.scale = `${tl.progress()} 1`;
@@ -186,17 +198,17 @@ function recit() {
     scrollTrigger: { trigger: pin, start: () => `top ${haut()}px`, end: '+=330%', pin: true, scrub: 0.7, invalidateOnRefresh: true },
   });
 
-  tl.to(etat, { az: modele.vue[0] + 0.28, duration: 3.2, ease: 'none' }, 0);
+  tl.to(angle, { az: modele.vue[0] + 0.28, duration: 3.2, ease: 'none' }, 0);
   arrivees.forEach((quand, i) => {
-    tl.to(etat, { [`e${i + 1}`]: 1, [`o${i + 1}`]: 1 }, quand);
+    tl.to(couches[i + 1], { ecart: 1, opacite: 1 }, quand);
   });
   photos.slice(1).forEach((photo, i) => {
     const quand = i + 1;
-    tl.fromTo(photo, { clipPath: 'inset(0% 0% 0% 100%)' }, { clipPath: 'inset(0% 0% 0% 0%)', duration: 0.42, ease: 'power1.inOut' }, quand);
-    if (laser) tl.fromTo(laser, { left: '100%', opacity: 1 }, { left: '0%', opacity: 1, duration: 0.42, ease: 'power1.inOut' }, quand).set(laser, { opacity: 0 });
+    tl.fromTo(photo, { clipPath: 'inset(0% 0% 0% 100%)' }, { clipPath: 'inset(0% 0% 0% 0%)', duration: BALAYAGE, ease: 'power1.inOut' }, quand);
+    if (laser) tl.fromTo(laser, { left: '100%', opacity: 1 }, { left: '0%', opacity: 1, duration: BALAYAGE, ease: 'power1.inOut' }, quand).set(laser, { opacity: 0 });
   });
   // Tout se referme : le mur est fini.
-  for (let c = 1; c < n; c++) tl.to(etat, { [`e${c}`]: 0, duration: 0.42, ease: 'power2.inOut' }, fin + (n - 1 - c) * 0.02);
+  for (let c = 1; c < n; c++) tl.to(couches[c], { ecart: 0, duration: BALAYAGE, ease: 'power2.inOut' }, fin + (n - 1 - c) * 0.02);
   tl.to({}, { duration: 0.12 });
 
   new ResizeObserver(() => { vue.taille(); appliquer(); }).observe(zone);
@@ -244,8 +256,12 @@ function apercus() {
     tourner(borne((e.clientX - dernier) * 0.5, -8, 8));
     dernier = e.clientX;
   });
-  liste.querySelectorAll<HTMLAnchorElement>('a[data-apercu]').forEach((lien) => {
-    new Image().src = lien.dataset.apercu ?? '';
+  const liens = [...liste.querySelectorAll<HTMLAnchorElement>('a[data-apercu]')];
+  // Les aperçus ne se téléchargent qu'au premier passage sur la liste.
+  liste.addEventListener('pointerenter', () => {
+    liens.forEach((lien) => { new Image().src = lien.dataset.apercu ?? ''; });
+  }, { once: true });
+  liens.forEach((lien) => {
     lien.addEventListener('pointerenter', (e) => {
       img.src = lien.dataset.apercu ?? '';
       gsap.set(cadre, { x: e.clientX, y: e.clientY });

@@ -3,11 +3,11 @@
 // Le dessin est décrit dans src/data/maquettes.ts et rendu par src/scripts/realisations.ts.
 // Sans JavaScript ou sans WebGL, le bloc n'apparaît pas : les photos se suffisent.
 import { MAQUETTES } from '../data/maquettes';
+import { deux } from '../lib/typo';
 
 interface Props { slug: string }
 const { slug } = Astro.props;
 const couches = MAQUETTES[slug]?.().couches ?? [];
-const deux = (n: number) => String(n).padStart(2, '0');
 ---
 {couches.length > 0 && (
   <div class="maq" data-maquette={slug}>
@@ -27,7 +27,7 @@ const deux = (n: number) => String(n).padStart(2, '0');
     </div>
     <ol class="maq__legende">
       {couches.map((c, i) => (
-        <li><button type="button" data-couche={i}><span class="label">{deux(i + 1)}</span>{c.nom}</button></li>
+        <li><button type="button"><span class="label">{deux(i + 1)}</span>{c.nom}</button></li>
       ))}
     </ol>
   </div>

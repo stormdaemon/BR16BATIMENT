@@ -1,0 +1,19 @@
+---
+// Le fil d'Ariane : le chemin de la page, du plus général au plus précis. La dernière étape n'est pas un lien.
+interface Props { crumbs: { name: string; href: string }[] }
+const { crumbs } = Astro.props;
+---
+<nav aria-label="Fil d'Ariane">
+  <ol class="crumbs label">
+    {crumbs.map((c, i) => (
+      <li>{i < crumbs.length - 1 ? <a href={c.href}>{c.name}</a> : <span aria-current="page">{c.name}</span>}</li>
+    ))}
+  </ol>
+</nav>
+
+<style>
+  .crumbs { display: flex; flex-wrap: wrap; gap: 0.2rem 0.55rem; }
+  .crumbs li + li::before { content: '/'; margin-right: 0.55rem; color: var(--paper-40); }
+  .crumbs a { text-decoration: none; }
+  .crumbs a:hover { color: var(--yellow); }
+</style>
