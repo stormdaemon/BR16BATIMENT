@@ -1,0 +1,102 @@
+---
+// Toutes les photos de chantiers, chantier par chantier. Le contenu vient de src/data/preuves.ts.
+import { Picture } from 'astro:assets';
+import Base from '../layouts/Base.astro';
+import Cote from '../components/Cote.astro';
+import Cta from '../components/Cta.astro';
+import Galerie from '../components/Galerie.astro';
+import PageHero from '../components/PageHero.astro';
+import { SERVICES } from '../data/site';
+import { CHANTIERS, TOTAL_PHOTOS } from '../lib/realisations';
+import { fr } from '../lib/typo';
+
+const crumbs = [{ name: 'Accueil', href: '/' }, { name: 'Réalisations', href: '/realisations' }];
+const metier = (slug: string) => SERVICES.find((s) => s.slug === slug);
+const deux = (n: number) => String(n).padStart(2, '0');
+
+// Les étapes d'un chantier sont numérotées dans l'ordre où elles apparaissent.
+const etiquettes = (chantier: (typeof CHANTIERS)[number]) => {
+  const ordre = [...new Set(chantier.cliches.map((c) => c.etape).filter((e) => e !== undefined))];
+  return chantier.cliches.map((c) => (c.etape ? `Étape ${ordre.indexOf(c.etape) + 1} · ${c.etape}` : undefined));
+};
+const lieu = (c: (typeof CHANTIERS)[number]) => [c.commune, c.annee].filter(Boolean).join(', ');
+const pile = [CHANTIERS[1]?.une, CHANTIERS[0]?.une].filter((c) => c !== undefined);
+---
+<Base
+  title="Réalisations et photos de chantiers | BR 16 BATIMENT"
+  description="Photos des chantiers de BR 16 BATIMENT : doublage isolé, plafond en placo, plaques hydrofuges, menuiseries, pose de cuisine et couverture, étape par étape."
+  crumbs={crumbs}
+>
+  <PageHero
+    crumbs={crumbs}
+    kicker={`Réalisations · ${TOTAL_PHOTOS} photos`}
+    h1="Mes chantiers, en photos."
+    answer="Ces photos viennent des chantiers de BR 16 BATIMENT. La plupart sont prises pendant les travaux : l'ossature, l'isolant, les plaques, les bandes. Vous voyez ce qu'il y a derrière un mur fini, et pas seulement le résultat. Touchez une photo pour l'agrandir."
+  >
+    {pile.length === 2 && (
+      <div class="pile" slot="visual" aria-hidden="true">
+        <span class="pile__a"><Picture src={pile[0].image} formats={['avif', 'webp']} widths={[360, 540, 720]} sizes="(min-width: 60rem) 26vw, 60vw" alt="" loading="eager" /></span>
+        <span class="pile__b"><Picture src={pile[1].image} formats={['avif', 'webp']} widths={[360, 540, 720]} sizes="(min-width: 60rem) 22vw, 50vw" alt="" loading="eager" /></span>
+      </div>
+    )}
+  </PageHero>
+
+  <nav class="sommaire s-yellow" aria-label="Chantiers présentés">
+    <div class="wrap">
+      <h2 class="label">{CHANTIERS.length} chantiers</h2>
+      <ul>
+        {CHANTIERS.map((c) => (
+          <li><a href={`#${c.slug}`}><span class="diamond" aria-hidden="true"></span>{fr(c.titre)}</a></li>
+        ))}
+      </ul>
+    </div>
+  </nav>
+
+  {CHANTIERS.map((c, i) => (
+    <section id={c.slug} class:list={['rc', 'section', i % 2 ? 's-white' : 's-paper']}>
+      <div class="wrap">
+        <Cote left={`Chantier ${deux(i + 1)}`} right={lieu(c) || `${c.cliches.length} photo${c.cliches.length > 1 ? 's' : ''}`} />
+        <div class="rc__head">
+          <h2 class="h1">{fr(c.titre)}</h2>
+          <div class="rc__text">
+            <p>{fr(c.texte)}</p>
+            <ul class="rc__services">
+              {c.services.map((s) => metier(s)).filter((s) => s !== undefined).map((s) => (
+                <li><a href={`/services/${s.slug}`}>{s.label} <span aria-hidden="true">→</span></a></li>
+              ))}
+            </ul>
+          </div>
+        </div>
+        <Galerie cliches={c.cliches} etiquettes={etiquettes(c)} />
+      </div>
+    </section>
+  ))}
+
+  <Cta title="Un chantier du même genre chez vous ?" />
+</Base>
+
+<style>
+  /* Deux photos qui se chevauchent, comme posées sur un plan. */
+  .pile { position: relative; width: min(100%, 26rem); margin-inline: auto; padding: 0 0 22% 20%; }
+  .pile span { display: block; border: 2px solid var(--paper); background: var(--ink); overflow: clip; }
+  .pile__a { box-shadow: 8px 8px 0 var(--yellow); }
+  .pile__b { position: absolute; left: 0; bottom: 0; width: 58%; box-shadow: 6px 6px 0 var(--yellow); }
+  .pile :global(img) { width: 100%; height: auto; }
+  .pile__a :global(img) { aspect-ratio: 4 / 5; object-fit: cover; }
+
+  .sommaire { padding-block: clamp(2rem, 1.5rem + 2vw, 3.5rem); }
+  .sommaire ul { list-style: none; padding: 0; display: grid; gap: 0.6rem 2.5rem; margin-top: 1.1rem; }
+  .sommaire a { display: flex; gap: 0.8rem; align-items: baseline; font-weight: 600; font-size: var(--fs-l); line-height: 1.25; text-decoration: none; }
+  .sommaire a:hover { text-decoration: underline; text-decoration-color: var(--anthracite); }
+  .sommaire .diamond { --accent: var(--anthracite); }
+  @media (min-width: 48rem) { .sommaire ul { grid-template-columns: repeat(2, 1fr); } }
+
+  .rc__head { display: grid; gap: 1.5rem; margin-block: 1.5rem clamp(2.5rem, 2rem + 2vw, 4rem); }
+  .rc__head h2 { max-width: 20ch; }
+  .rc__text { display: grid; gap: 1.1rem; align-content: start; max-width: 60ch; }
+  .rc__services { display: flex; flex-wrap: wrap; gap: 0.4rem 1.5rem; font-weight: 700; }
+  .rc__services a { display: inline-flex; gap: 0.5em; text-decoration-thickness: 3px; }
+  .rc__services span { transition: translate 0.25s var(--ease-out); }
+  .rc__services a:hover span { translate: 0.3em 0; }
+  @media (min-width: 60rem) { .rc__head { grid-template-columns: 1.2fr 1fr; gap: clamp(2rem, 4vw, 5rem); align-items: end; } }
+</style>

@@ -56,6 +56,7 @@ ${guides.map((g) => line(`/guides/${g.id}`, g.data.h1, g.data.description)).join
 ## Pages utiles
 
 ${line('/services', 'Services', 'Tous les besoins couverts par l\'entreprise, classés par problème.')}
+${line('/realisations', 'Réalisations', 'Photos de chantiers, étape par étape : doublage isolé, plafonds en placo, menuiseries, pose de cuisine, couverture.')}
 ${line('/a-propos', 'À propos', 'Le parcours de Raphaël Bardan et l\'histoire de l\'entreprise.')}
 ${line('/faq', 'Questions fréquentes', 'Réponses sur les besoins couverts, les devis, la zone, les garanties et ce que l\'entreprise ne fait pas.')}
 ${line('/contact', 'Contact', 'Demande de devis gratuit.')}

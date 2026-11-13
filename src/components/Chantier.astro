@@ -1,0 +1,88 @@
+---
+// Accueil : un chantier raconté en étapes, puis un aperçu des autres réalisations.
+// Le chantier raconté est celui qui porte un « recit » dans src/data/preuves.ts.
+import { Picture } from 'astro:assets';
+import Cliche from './Cliche.astro';
+import Cote from './Cote.astro';
+import { SERVICES } from '../data/site';
+import { CHANTIERS, TOTAL_PHOTOS } from '../lib/realisations';
+import { fr } from '../lib/typo';
+
+const vedette = CHANTIERS.find((c) => c.recit?.length);
+const etapes = (vedette?.recit ?? []).flatMap((e) => {
+  const cliche = vedette?.cliches.find((c) => c.fichier === e.fichier);
+  return cliche ? [{ ...e, cliche }] : [];
+});
+const autres = CHANTIERS.filter((c) => c !== vedette);
+const metier = (slug: string) => SERVICES.find((s) => s.slug === slug)?.label ?? '';
+---
+{vedette && etapes.length > 0 && (
+  <section class="chantier s-paper section">
+    <div class="wrap">
+      <Cote left="Réalisations" right={`${TOTAL_PHOTOS} photos de chantiers`} />
+      <div class="chantier__head">
+        <h2 class="h1">Derrière un mur fini, trois étapes.</h2>
+        <p class="lede">{fr('Avant de regarder le résultat, regardez ce qu\'il y a derrière. Voici un doublage isolé dans une maison en pierre, photographié du début à la fin.')}</p>
+      </div>
+
+      <ol class="chantier__etapes">
+        {etapes.map((e, i) => (
+          <li data-reveal style={`--d:${i * 0.1}s`}>
+            <span class="chantier__n display" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
+            <Cliche cliche={e.cliche} cadre="4/3" legende={false} sizes="(min-width: 60rem) 30vw, 100vw" />
+            <h3>{e.titre}</h3>
+            <p>{fr(e.texte)}</p>
+          </li>
+        ))}
+      </ol>
+
+      {autres.length > 0 && (
+        <div class="chantier__autres">
+          <h3 class="label">D'autres chantiers</h3>
+          <ul>
+            {autres.map((c, i) => (
+              <li data-reveal style={`--d:${(i % 6) * 0.05}s`}>
+                <a href={`/realisations#${c.slug}`}>
+                  <span class="chantier__vignette"><Picture src={c.une.image} formats={['avif', 'webp']} widths={[240, 480]} sizes="(min-width: 60rem) 15vw, (min-width: 40rem) 30vw, 45vw" alt="" loading="lazy" /></span>
+                  <span class="label">{metier(c.services[0])}</span>
+                  <span class="chantier__titre">{fr(c.titre)}</span>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+
+      <a class="btn chantier__btn" href="/realisations">Voir toutes les réalisations <span class="arrow" aria-hidden="true">→</span></a>
+    </div>
+  </section>
+)}
+
+<style>
+  .chantier__head { display: grid; gap: 1.25rem; margin-block: 1.5rem clamp(3rem, 2.25rem + 3vw, 5rem); }
+  .chantier__head h2 { max-width: 16ch; }
+  .chantier__etapes { display: grid; gap: 3.5rem; }
+  .chantier__etapes li { position: relative; display: grid; gap: 0.6rem; align-content: start; }
+  .chantier__etapes h3 { margin-top: 0.9rem; font-size: var(--fs-xl); }
+  .chantier__etapes p { color: var(--muted); max-width: 34ch; }
+  /* Le numéro d'étape : une étiquette posée sur le coin de la photo, comme un repère de plan. */
+  .chantier__n { position: absolute; left: -0.5rem; top: -1.4rem; z-index: 1; padding: 0.12em 0.3em 0.06em; border: 2px solid var(--anthracite); background: var(--yellow); font-size: var(--fs-xl); line-height: 1; pointer-events: none; }
+
+  .chantier__autres { display: grid; gap: 1.25rem; margin-top: clamp(3.5rem, 2.5rem + 4vw, 6rem); padding-top: 1.5rem; border-top: 2px solid var(--anthracite); }
+  .chantier__autres ul { list-style: none; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.75rem 1rem; }
+  .chantier__autres a { display: grid; gap: 0.35rem; align-content: start; text-decoration: none; }
+  .chantier__vignette { display: block; margin-bottom: 0.4rem; border: 2px solid var(--anthracite); background: var(--ink); overflow: clip; }
+  .chantier__vignette :global(img) { width: 100%; height: auto; aspect-ratio: 1; object-fit: cover; transition: scale 0.7s var(--ease-out); }
+  .chantier__autres a:hover .chantier__vignette :global(img) { scale: 1.06; }
+  .chantier__titre { font-weight: 600; line-height: 1.25; background: linear-gradient(var(--yellow), var(--yellow)) left bottom / 0 3px no-repeat; transition: background-size 0.4s var(--ease-out); justify-self: start; }
+  .chantier__autres a:hover .chantier__titre { background-size: 100% 3px; }
+  .chantier__btn { --btn-shadow: var(--anthracite); margin-top: clamp(2.5rem, 2rem + 2vw, 4rem); }
+
+  @media (min-width: 40rem) { .chantier__autres ul { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+  @media (min-width: 60rem) {
+    .chantier__head { grid-template-columns: 1.3fr 1fr; align-items: end; gap: clamp(2rem, 4vw, 5rem); }
+    .chantier__etapes { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(1.75rem, 3vw, 3.5rem); }
+    .chantier__autres ul { grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 1.25rem; }
+    .chantier__titre { font-size: var(--fs-s); }
+  }
+</style>

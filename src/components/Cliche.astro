@@ -1,0 +1,46 @@
+---
+// Une photo de chantier dans son cadre. Le lien ouvre la photo en grand :
+// la visionneuse l'intercepte, et sans JavaScript le navigateur affiche simplement l'image.
+import { Picture, getImage } from 'astro:assets';
+import type { Cliche } from '../lib/realisations';
+import { fr } from '../lib/typo';
+
+interface Props { cliche: Cliche; sizes: string; cadre?: string; etiquette?: string; legende?: boolean; eager?: boolean }
+const { cliche, sizes, cadre, etiquette, legende = true, eager = false } = Astro.props;
+const { image } = cliche;
+
+const echelle = Math.min(1, 1600 / Math.max(image.width, image.height));
+const grand = await getImage({ src: image, width: Math.round(image.width * echelle), format: 'webp', quality: 82 });
+---
+<figure class="cliche">
+  <a class:list={['cliche__cadre', { 'cliche__cadre--fixe': cadre }]} href={grand.src} style={cadre ? `--cadre:${cadre}` : undefined} data-visionneuse data-alt={cliche.alt} data-legende={fr(cliche.legende)}>
+    <span class="sr-only">Agrandir la photo. </span>
+    <Picture src={image} formats={['avif', 'webp']} widths={[360, 540, 720, 1080]} sizes={sizes} alt={cliche.alt} loading={eager ? 'eager' : 'lazy'} />
+    <span class="cliche__plus" aria-hidden="true"></span>
+  </a>
+  {legende && (
+    <figcaption>
+      {etiquette && <span class="label">{etiquette}</span>}
+      <span>{fr(cliche.legende)}</span>
+    </figcaption>
+  )}
+</figure>
+
+<style>
+  .cliche { display: grid; gap: 0.8rem; align-content: start; }
+  .cliche__cadre { position: relative; display: block; margin-right: 6px; border: 2px solid var(--fg, var(--anthracite)); background: var(--ink); box-shadow: 6px 6px 0 var(--yellow); overflow: clip; transition: translate 0.18s var(--ease-out), box-shadow 0.18s var(--ease-out); }
+  .cliche__cadre:hover { translate: 2px 2px; box-shadow: 4px 4px 0 var(--yellow); }
+  .cliche__cadre :global(img) { width: 100%; height: auto; transition: scale 0.7s var(--ease-out); }
+  .cliche__cadre--fixe :global(img) { aspect-ratio: var(--cadre); object-fit: cover; }
+  .cliche__cadre:hover :global(img) { scale: 1.035; }
+  .cliche__plus { position: absolute; right: 0; bottom: 0; width: 2.25rem; height: 2.25rem; background: var(--yellow); border-left: 2px solid var(--anthracite); border-top: 2px solid var(--anthracite); }
+  .cliche__plus::before, .cliche__plus::after { content: ''; position: absolute; left: 50%; top: 50%; width: 0.85rem; height: 2px; background: var(--anthracite); translate: -50% -50%; transition: rotate 0.3s var(--ease-out); }
+  .cliche__plus::after { rotate: 90deg; }
+  .cliche__cadre:hover .cliche__plus::before { rotate: 90deg; }
+  .cliche__cadre:hover .cliche__plus::after { rotate: 180deg; }
+  figcaption { display: grid; gap: 0.25rem; padding-right: 6px; font-size: var(--fs-s); line-height: 1.4; color: var(--muted); }
+</style>
+
+<script>
+  import '../scripts/visionneuse';
+</script>

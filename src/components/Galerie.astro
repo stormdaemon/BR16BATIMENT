@@ -1,0 +1,24 @@
+---
+// Une rangée de photos à la même hauteur, chacune dans son format d'origine : aucune n'est rognée.
+import Cliche from './Cliche.astro';
+import type { Cliche as Photo } from '../lib/realisations';
+
+interface Props { cliches: Photo[]; etiquettes?: (string | undefined)[] }
+const { cliches, etiquettes = [] } = Astro.props;
+---
+<ul class="galerie">
+  {cliches.map((c, i) => (
+    <li style={`--r:${(c.image.width / c.image.height).toFixed(3)};--d:${(i % 3) * 0.07}s`} data-reveal>
+      <Cliche cliche={c} etiquette={etiquettes[i]} sizes="(min-width: 60rem) 30vw, (min-width: 40rem) 50vw, 100vw" />
+    </li>
+  ))}
+</ul>
+
+<style>
+  /* Largeur proportionnelle au format : les photos d'une même rangée ont la même hauteur. */
+  .galerie { display: flex; flex-wrap: wrap; gap: 2rem 1.5rem; }
+  .galerie li { flex: var(--r) 1 100%; min-width: 0; }
+  @media (min-width: 40rem) {
+    .galerie li { flex-basis: calc(var(--r) * 14rem); max-width: calc(var(--r) * 26rem); }
+  }
+</style>

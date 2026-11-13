@@ -180,6 +180,29 @@ a:hover { text-decoration-color: currentColor; }
 .js .cote[data-reveal] .cote__line { scale: 0 1; transition: scale 1.1s var(--ease-inout); }
 .js .cote[data-reveal].is-in .cote__line { scale: 1 1; }
 
+/* Visionneuse des photos de chantier (src/scripts/visionneuse.ts). */
+.visio { --fg: var(--paper); --muted: var(--paper-70); --focus: var(--yellow); position: fixed; inset: 0; width: 100%; height: 100dvh; max-width: none; max-height: none; margin: 0; padding: 0; border: 0; background: var(--ink); color: var(--paper); overflow: hidden; }
+.visio[open] { display: grid; grid-template-rows: auto minmax(0, 1fr) auto; }
+.visio::backdrop { background: var(--ink); }
+html:has(.visio[open]) { overflow: hidden; }
+.visio__bar { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 0.75rem var(--gutter); }
+.visio__count { color: var(--yellow); }
+.visio__close { padding: 0.45rem 0.9rem; border: 2px solid var(--yellow); background: none; color: var(--yellow); font-weight: 600; }
+.visio__close:hover { background: var(--yellow); color: var(--anthracite); }
+.visio__scene { display: grid; grid-template: minmax(0, 1fr) / minmax(0, 1fr); place-items: center; min-height: 0; padding: 0 calc(var(--gutter) + 8px) 8px var(--gutter); }
+.visio__img { max-width: 100%; max-height: 100%; width: auto; height: auto; border: 2px solid var(--paper); box-shadow: 8px 8px 0 var(--yellow); opacity: 0; transition: opacity 0.3s; touch-action: pan-y; }
+.visio__img.is-in { opacity: 1; }
+.visio__pied { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; gap: 1rem; padding: 1.1rem var(--gutter) calc(1.1rem + env(safe-area-inset-bottom)); }
+.visio__legende { max-width: 60ch; margin-inline: auto; text-align: center; font-size: var(--fs-s); line-height: 1.4; }
+.visio__nav { width: 3rem; height: 3rem; border: 2px solid var(--yellow); background: var(--yellow); color: var(--anthracite); font-size: var(--fs-l); font-weight: 700; line-height: 1; transition: translate 0.18s var(--ease-out); }
+.visio__nav:hover { translate: 0.2rem 0; }
+.visio__nav[data-pas='-1']:hover { translate: -0.2rem 0; }
+.visio.is-seule .visio__nav { visibility: hidden; }
+@media (prefers-reduced-motion: no-preference) {
+  .visio[open] { animation: visio-in 0.35s var(--ease-out); }
+}
+@keyframes visio-in { from { opacity: 0; scale: 0.98; } }
+
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
   .js [data-reveal] { opacity: 1; translate: 0 0; }

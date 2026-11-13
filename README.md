@@ -21,7 +21,7 @@ Node 22.23 ou plus récent. TypeScript reste en v6 tant que `@astrojs/check` n'a
 | --- | --- |
 | Téléphone, adresse, SIRET, horaires, parcours, liste des services | `src/data/site.ts` |
 | Le texte d'un service | `src/content/services/<service>.md` |
-| Les photos de chantiers et les avis réels | `src/data/preuves.ts`, photos dans `src/assets/realisations/` |
+| Les photos de chantiers et les avis réels | `src/data/preuves.ts`, photos dans `src/assets/realisations/`. Elles alimentent la page `/realisations`, l'accueil et les pages services |
 | Le texte d'une commune ou d'un département | `src/content/zones/<commune>.md` |
 | Un guide | `src/content/guides/<guide>.md` |
 | Couleurs, typographie, espacements | `src/styles/global.css` |

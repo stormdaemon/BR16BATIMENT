@@ -1,13 +1,13 @@
 ---
 import { getCollection } from 'astro:content';
 import Base from '../layouts/Base.astro';
+import Chantier from '../components/Chantier.astro';
 import CharenteMap from '../components/CharenteMap.astro';
 import Cote from '../components/Cote.astro';
 import Coupe from '../components/Coupe.astro';
 import Cta from '../components/Cta.astro';
 import Faq from '../components/Faq.astro';
 import House from '../components/House.astro';
-import Realisations from '../components/Realisations.astro';
 import { COMPLEMENTS, SITE, SPECIALITES, yearsSince } from '../data/site';
 import { fr } from '../lib/typo';
 import geo from '../data/geo.json';
@@ -134,8 +134,9 @@ const faq = [
         </div>
       </div>
     </div>
-    <div class="wrap"><Realisations /></div>
   </section>
+
+  <Chantier />
 
   <section class="method s-white section">
     <div class="wrap">
