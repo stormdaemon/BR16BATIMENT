@@ -1,0 +1,66 @@
+---
+// La maquette 3D d'un chantier : on la tourne, on l'éclate, on survole ses couches.
+// Le dessin est décrit dans src/data/maquettes.ts et rendu par src/scripts/realisations.ts.
+// Sans JavaScript ou sans WebGL, le bloc n'apparaît pas : les photos se suffisent.
+import { MAQUETTES } from '../data/maquettes';
+
+interface Props { slug: string }
+const { slug } = Astro.props;
+const couches = MAQUETTES[slug]?.().couches ?? [];
+const deux = (n: number) => String(n).padStart(2, '0');
+---
+{couches.length > 0 && (
+  <div class="maq" data-maquette={slug}>
+    <div class="maq__scene">
+      <div class="maq__toile"></div>
+      <div class="maq__numeros" aria-hidden="true">
+        {couches.map((_, i) => <span>{deux(i + 1)}</span>)}
+      </div>
+      <p class="label maq__note">Schéma de principe</p>
+      <p class="label maq__geste" aria-hidden="true">Faites tourner</p>
+    </div>
+    <div class="maq__bar">
+      <button type="button" class="maq__eclater" aria-pressed="false">
+        <span class="maq__si-ferme">Éclater</span><span class="maq__si-ouvert">Assembler</span>
+      </button>
+      <input class="maq__curseur" type="range" min="0" max="100" value="0" aria-label="Écartement des couches de la maquette" />
+    </div>
+    <ol class="maq__legende">
+      {couches.map((c, i) => (
+        <li><button type="button" data-couche={i}><span class="label">{deux(i + 1)}</span>{c.nom}</button></li>
+      ))}
+    </ol>
+  </div>
+)}
+
+<style>
+  .maq { display: none; gap: 0.9rem; }
+  :global(.js) .maq { display: grid; }
+  :global(.js) .maq.is-ko { display: none; }
+
+  /* Le fond quadrillé d'une feuille de plan. */
+  .maq__scene { position: relative; aspect-ratio: 5 / 4; border: 2px solid var(--fg); background-color: var(--bg); background-image: linear-gradient(var(--line) 1px, transparent 1px), linear-gradient(90deg, var(--line) 1px, transparent 1px); background-size: 2rem 2rem; background-position: center; box-shadow: 6px 6px 0 var(--yellow); margin-right: 6px; overflow: clip; }
+  .maq__toile, .maq__numeros { position: absolute; inset: 0; }
+  .maq__toile :global(canvas) { display: block; width: 100%; height: 100%; cursor: grab; touch-action: pan-y; }
+  .maq__toile :global(canvas:active) { cursor: grabbing; }
+  .maq__numeros { pointer-events: none; opacity: 0; transition: opacity 0.4s; }
+  .maq.is-eclate .maq__numeros { opacity: 1; }
+  .maq__numeros span { position: absolute; left: 0; top: 0; display: grid; place-items: center; width: 1.7rem; height: 1.7rem; margin: -0.85rem 0 0 -0.85rem; border: 1.5px solid var(--fg); background: var(--bg); font-family: var(--font-mono), monospace; font-size: 0.6875rem; line-height: 1; transition: background-color 0.2s, color 0.2s, border-color 0.2s, scale 0.2s; }
+  .maq__numeros span:global(.is-active) { background: var(--yellow); border-color: var(--yellow); color: var(--anthracite); scale: 1.2; }
+  .maq__note, .maq__geste { position: absolute; bottom: 0.6rem; pointer-events: none; }
+  .maq__note { left: 0.75rem; }
+  .maq__geste { right: 0.75rem; color: var(--accent); transition: opacity 0.4s; }
+  .maq.is-touchee .maq__geste { opacity: 0; }
+
+  .maq__bar { display: flex; align-items: center; gap: 1rem; margin-right: 6px; }
+  .maq__eclater { flex: none; min-width: 8.5rem; padding: 0.6rem 1rem; border: 2px solid var(--fg); background: var(--fg); color: var(--bg); font-weight: 700; transition: background-color 0.2s, color 0.2s; }
+  .maq__eclater:hover { background: var(--yellow); border-color: var(--yellow); color: var(--anthracite); }
+  .maq__si-ouvert, .maq__eclater[aria-pressed='true'] .maq__si-ferme { display: none; }
+  .maq__eclater[aria-pressed='true'] .maq__si-ouvert { display: inline; }
+  .maq__curseur { flex: 1; min-width: 0; height: 2rem; }
+
+  .maq__legende { display: grid; grid-template-columns: repeat(auto-fill, minmax(11.5rem, 1fr)); gap: 0 1.25rem; margin: 0 6px 0 0; padding: 0; list-style: none; border-top: 1px solid var(--line); }
+  .maq__legende button { display: flex; gap: 0.7rem; align-items: baseline; width: 100%; padding: 0.55rem 0.4rem; border: 0; border-bottom: 1px solid var(--line); background: none; text-align: left; font-size: var(--fs-s); font-weight: 500; line-height: 1.25; transition: background-color 0.2s, color 0.2s; }
+  .maq__legende button:hover, .maq__legende button:global(.is-active) { background: var(--yellow); color: var(--anthracite); }
+  .maq__legende button:hover .label, .maq__legende button:global(.is-active) .label { color: var(--anthracite); }
+</style>
