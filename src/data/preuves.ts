@@ -3,7 +3,8 @@
 //
 // Ajouter une photo : la déposer dans src/assets/realisations/, puis l'ajouter à un chantier ci-dessous.
 //   - alt décrit ce que l'on voit, legende est la phrase affichée sous la photo ;
-//   - commune et annee ne se renseignent que si elles sont connues ;
+//   - commune et annee ne se renseignent que si elles sont connues. L'année se lit dans la date
+//     de prise de vue du fichier d'origine (avant d'en retirer les métadonnées), qui prime sur un souvenir ;
 //   - pas de visage, de plaque d'immatriculation ni de nom de client à l'image.
 // Ajouter un avis : le recopier tel quel depuis sa source, avec l'accord du client.
 import type { ServiceSlug } from './site';
@@ -49,7 +50,7 @@ export const REALISATIONS: Realisation[] = [
     services: ['plaquisterie', 'isolation-interieure', 'renovation-interieure'],
     titre: 'Doublage isolé et plafond en placo dans une maison en pierre',
     texte: 'Les murs en pierre sont doublés sur une ossature métallique, avec un isolant en laine minérale, et le plafond est refait en plaques de plâtre. Les photos suivent le chantier dans l\'ordre : l\'ossature, les plaques, puis les bandes.',
-    annee: 2026,
+    annee: 2025,
     recit: [
       { titre: 'L\'ossature et l\'isolant', texte: 'Je monte une ossature métallique devant le mur en pierre, puis je pose l\'isolant.', fichier: 'doublage-pierre-ossature.jpg' },
       { titre: 'Les plaques', texte: 'Je visse les plaques de plâtre sur l\'ossature, aux murs comme au plafond.', fichier: 'doublage-pierre-plaques.jpg' },
@@ -82,7 +83,7 @@ export const REALISATIONS: Realisation[] = [
     services: ['plaquisterie'],
     titre: 'Plafond en placo avec spots encastrés',
     texte: 'Un plafond refait en plaques de plâtre, avec les découpes pour les spots encastrés. Les bandes et les têtes de vis sont enduites avant le ponçage et la peinture.',
-    annee: 2024,
+    annee: 2025,
     photos: [
       { fichier: 'plafond-placo-spots.jpg', une: true, alt: 'Plafond en plaques de plâtre aux joints enduits, avec quatre spots encastrés, près d\'un escalier en bois', legende: 'Les joints sont enduits, les spots sont en place.' },
       { fichier: 'plafond-placo-retombee.jpg', alt: 'Angle d\'un plafond en plaques de plâtre, avec un coffrage le long du mur', legende: 'Le plafond se termine par un coffrage le long du mur.' },
@@ -103,6 +104,7 @@ export const REALISATIONS: Realisation[] = [
     services: ['menuiserie'],
     titre: 'Porte d\'entrée et baie coulissante gris anthracite',
     texte: 'Deux menuiseries extérieures de la même teinte dans une maison : une porte d\'entrée à vitrage en demi-lune et une baie coulissante à deux vantaux. Le sol et la cuisine de la pièce ont été posés sur le même chantier.',
+    annee: 2024,
     photos: [
       { fichier: 'porte-entree-anthracite.jpg', une: true, alt: 'Porte d\'entrée gris anthracite à vitrage en demi-lune, vue de l\'intérieur', legende: 'La porte d\'entrée, vue de l\'intérieur.' },
       { fichier: 'baie-coulissante-anthracite.jpg', alt: 'Baie coulissante gris anthracite à deux vantaux, vue de l\'extérieur le soir', legende: 'La baie coulissante, vue de l\'extérieur.' },
