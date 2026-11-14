@@ -21,7 +21,9 @@ const etiquettes = (chantier: Chantier) => {
   const ordre = [...new Set(chantier.cliches.map((c) => c.etape).filter((e) => e !== undefined))];
   return chantier.cliches.map((c) => (c.etape ? `Étape ${ordre.indexOf(c.etape) + 1} · ${c.etape}` : undefined));
 };
-const lieu = (c: Chantier) => [c.commune, c.annee].filter(Boolean).join(', ');
+// Sans commune connue, le secteur : tous les chantiers sont en Charente ou dans un département voisin (17, 24, 33).
+const SECTEUR = 'Secteur Charente et alentours';
+const lieu = (c: Chantier) => [c.commune ?? SECTEUR, c.annee].filter(Boolean).join(', ');
 const nombre = (c: Chantier) => `${c.cliches.length} photo${c.cliches.length > 1 ? 's' : ''}`;
 
 const couches = RECIT ? (MAQUETTES[RECIT.chantier.slug]?.().couches ?? []) : [];
@@ -145,7 +147,7 @@ const planche = [
     <section id={c.slug} class:list={['rc', i % 2 ? 's-dark' : 's-paper']}>
       <span class="rc__n display" aria-hidden="true">{deux(i + 1)}</span>
       <div class="wrap">
-        <Cote left={`Chantier ${deux(i + 1)}`} right={lieu(c) || nombre(c)} />
+        <Cote left={`Chantier ${deux(i + 1)}`} right={lieu(c)} />
         <header class="rc__head">
           <h2 class="h1">{fr(c.titre)}</h2>
           <div class="rc__text">
